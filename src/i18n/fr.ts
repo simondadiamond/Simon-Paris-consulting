@@ -96,6 +96,9 @@ const fr: TranslationKeys = {
     or: 'Ou, posez-moi votre question ici :',
     sticky: 'Réserver une démo'
   },
+  partners: {
+    title: 'Partenaires de confiance'
+  },
   footer: {
     blurb: "Automatisation bilingue pour PME québécoises. Conçu pour aujourd’hui, prêt pour demain.",
     language: 'Pour tout le Québec • FR/EN',
