@@ -10,6 +10,7 @@ const FinalCTA = () => {
   });
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const [heroInView, setHeroInView] = useState(true);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -26,6 +27,19 @@ const FinalCTA = () => {
     }
 
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const heroElement = document.getElementById('hero');
+    if (!heroElement) return;
+
+    const heroObserver = new IntersectionObserver(
+      ([entry]) => setHeroInView(entry.isIntersecting),
+      { threshold: 0 }
+    );
+
+    heroObserver.observe(heroElement);
+    return () => heroObserver.disconnect();
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -164,7 +178,7 @@ const FinalCTA = () => {
       </section>
 
       {/* Sticky CTA for mobile */}
-      <div className="sticky-cta">
+      <div className={`sticky-cta ${heroInView ? 'hidden' : ''}`}>
         <button className="btn-primary w-full text-lg py-4">
           Book Free Demo
         </button>
