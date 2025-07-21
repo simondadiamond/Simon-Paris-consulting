@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLanguage } from './LanguageProvider';
 import { 
   Globe, Menu, X, Send, Calendar, ArrowRight, Sparkles, 
   Users, Clock, Star, Shield, CheckCircle, Zap, Target, Award,
   ChevronDown, ChevronUp, MessageSquare, TrendingUp, AlertTriangle,
-  Phone, Mail, MapPin
+  Mail, MapPin
 } from 'lucide-react';
 
 // Header Component
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t, lang, setLang } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,23 +32,26 @@ const Header = () => {
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
               <div className="text-2xl font-bold text-white">
-                Simon Paris
+                {t.header.brand}
               </div>
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
-              <div className="flex items-center text-sm text-gray-300">
+              <button
+                className="flex items-center text-sm text-gray-300"
+                onClick={() => setLang(lang === 'en' ? 'fr' : 'en')}
+              >
                 <Globe className="w-4 h-4 mr-2" />
-                <span>EN/FR</span>
-              </div>
-              <a 
-                href="mailto:info@simonparis.ca"
+                <span>{t.header.languageToggle}</span>
+              </button>
+              <a
+                href={`mailto:${t.header.email}`}
                 className="transition-colors duration-300 font-medium text-white hover:text-[#2280FF]"
               >
-                info@simonparis.ca
+                {t.header.email}
               </a>
               <button className="btn-primary text-sm px-6 py-3">
-                Book Demo
+                {t.header.bookDemo}
               </button>
             </div>
 
@@ -71,18 +76,21 @@ const Header = () => {
         }`}>
           <div className="p-6 pt-20">
             <div className="space-y-6">
-              <a 
-                href="mailto:info@simonparis.ca"
+              <a
+                href={`mailto:${t.header.email}`}
                 className="block text-white hover:text-teal-400 font-medium"
               >
-                info@simonparis.ca
+                {t.header.email}
               </a>
-              <div className="flex items-center text-gray-300">
+              <button
+                onClick={() => setLang(lang === 'en' ? 'fr' : 'en')}
+                className="flex items-center text-gray-300 w-full justify-center"
+              >
                 <Globe className="w-4 h-4 mr-2" />
-                <span>EN/FR</span>
-              </div>
+                <span>{t.header.languageToggle}</span>
+              </button>
               <button className="btn-primary w-full">
-                Book Demo
+                {t.header.bookDemo}
               </button>
             </div>
           </div>
@@ -95,6 +103,7 @@ const Header = () => {
 // Hero Component
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     setIsVisible(true);
@@ -112,36 +121,35 @@ const Hero = () => {
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="inline-flex items-center card-glass rounded-full px-4 py-2 mb-8">
             <Sparkles className="w-4 h-4 mr-2 text-[#2280FF]" />
-            <span className="text-sm font-medium text-white">Bilingual Automation for Québec SMBs</span>
+            <span className="text-sm font-medium text-white">{t.hero.tagline}</span>
           </div>
           
           <h1 className="text-hero text-white mb-6">
-            Stop Losing Business to 
-            <span className="text-[#2ED3CF]"> Missed Follow-ups</span>
+            {t.hero.heading}
+            <span className="text-[#2ED3CF]">{t.hero.highlight}</span>
           </h1>
           
           <p className="text-lg text-gray-400 mb-4 max-w-2xl mx-auto">
-            Automation for today. AI-ready for tomorrow.
+            {t.hero.sub1}
           </p>
           
           <p className="text-subhead max-w-3xl mx-auto mb-12 text-gray-300">
-            Automate your follow-ups, reviews & reminders. 100% bilingual & Bill 96 compliant 
-            automation for Québec clinics, trades, and wellness businesses.
+            {t.hero.sub2}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
             <button className="btn-primary text-xl px-10 py-5 group">
               <Calendar className="w-6 h-6 mr-3" />
-              Book Your Free Demo
+              {t.hero.bookDemo}
               <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform" />
             </button>
             
             <a 
-              href="mailto:info@simonparis.ca"
+              href={`mailto:${t.header.email}`}
               className="btn-outline text-lg px-8 py-4 group"
             >
               <Send className="w-5 h-5 mr-2" />
-              Quick Question?
+              {t.hero.quickQuestion}
             </a>
           </div>
         </div>
@@ -154,6 +162,7 @@ const Hero = () => {
 const ProblemSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -172,43 +181,21 @@ const ProblemSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  const problems = [
-    {
-      icon: MessageSquare,
-      title: "Missed Leads",
-      description: "Every hour without follow-up = 60% less chance of conversion",
-      impact: "Lost Revenue"
-    },
-    {
-      icon: Clock,
-      title: "No-Shows",
-      description: "25% of appointments are no-shows without proper reminders",
-      impact: "Wasted Time"
-    },
-    {
-      icon: Star,
-      title: "Poor Reviews",
-      description: "90% of customers never leave reviews unless asked",
-      impact: "Invisible Online"
-    },
-    {
-      icon: AlertTriangle,
-      title: "Bill 96 Risk",
-      description: "Non-compliant communications can result in hefty fines",
-      impact: "Legal Exposure"
-    }
-  ];
+  const problems = t.problems.list.map((p, i) => ({
+    ...p,
+    icon: [MessageSquare, Clock, Star, AlertTriangle][i]
+  }));
 
   return (
     <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#121C2D' }}>
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-display text-white mb-6">
-            The Hidden Costs of 
-            <span className="text-[#2ED3CF]"> Manual Follow-ups</span>
+            {t.problems.heading}
+            <span className="text-[#2ED3CF]">{t.problems.highlight}</span>
           </h2>
           <p className="text-subhead max-w-3xl mx-auto text-gray-300">
-            Every missed follow-up, no-show, and poor review is money walking out the door
+            {t.problems.subheading}
           </p>
         </div>
         
@@ -248,6 +235,7 @@ const ProblemSection = () => {
 const HowItWorks = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -266,37 +254,21 @@ const HowItWorks = () => {
     return () => observer.disconnect();
   }, []);
 
-  const steps = [
-    {
-      number: "1",
-      title: "Free Demo & Audit",
-      description: "I'll show you exactly where you're losing money and demo your custom automation live",
-      icon: TrendingUp
-    },
-    {
-      number: "2", 
-      title: "Custom Setup",
-      description: "I build your bilingual automation workflows and ensure 100% Bill 96 compliance",
-      icon: Shield
-    },
-    {
-      number: "3",
-      title: "Launch & Support",
-      description: "Go live with your automation and get ongoing support directly from me",
-      icon: Zap
-    }
-  ];
+  const steps = t.howItWorks.steps.map((s, i) => ({
+    ...s,
+    icon: [TrendingUp, Shield, Zap][i]
+  }));
 
   return (
     <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#121C2D' }}>
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-display text-white mb-6">
-            How It Works: 
-            <span className="text-[#2ED3CF]"> Demo First, Pay Later</span>
+            {t.howItWorks.heading}
+            <span className="text-[#2ED3CF]">{t.howItWorks.highlight}</span>
           </h2>
           <p className="text-subhead max-w-3xl mx-auto text-gray-300">
-            See your exact automation in action before you commit to anything
+            {t.howItWorks.subheading}
           </p>
         </div>
         
@@ -342,6 +314,7 @@ const HowItWorks = () => {
 const Services = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -360,50 +333,15 @@ const Services = () => {
     return () => observer.disconnect();
   }, []);
 
-  const services = [
-    {
-      icon: Users,
-      title: "Missed Lead Rescue",
-      description: "Instantly follow up on every inquiry (web, phone, email, DM), in English and French.",
-      features: ["Instant response automation", "Bilingual templates", "Multi-channel integration"],
-    },
-    {
-      icon: Clock,
-      title: "No-Show & Invoice Chaser",
-      description: "Automated reminders for appointments and overdue invoices—clients pay and show up.",
-      features: ["Smart reminder sequences", "Payment automation", "Appointment confirmations"],
-    },
-    {
-      icon: Star,
-      title: "Review Engine",
-      description: "Request, track, and respond to reviews in both languages—boost your reputation and Google ranking.",
-      features: ["Automated review requests", "Response management", "Reputation monitoring"],
-    },
-    {
-      icon: Shield,
-      title: "Bill 96 Compliance Review",
-      description: "Ensure every message, reminder, and review request is 100% legal and ready for audit.",
-      features: ["Legal compliance check", "Bilingual verification", "Audit-ready documentation"],
-    }
-  ];
+  const services = t.services.list.map((s, i) => ({
+    ...s,
+    icon: [Users, Clock, Star, Shield][i]
+  }));
 
-  const benefits = [
-    {
-      icon: CheckCircle,
-      title: "Demo-first",
-      description: "See your process automated before you commit",
-    },
-    {
-      icon: Target,
-      title: "Personal Support",
-      description: "Expert support—no agency handoff",
-    },
-    {
-      icon: Zap,
-      title: "Fast ROI",
-      description: "Fast setup, flat pricing, visible ROI",
-    }
-  ];
+  const benefits = t.services.benefits.map((b, i) => ({
+    ...b,
+    icon: [CheckCircle, Target, Zap][i]
+  }));
 
   return (
     <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#121C2D' }}>
@@ -411,15 +349,14 @@ const Services = () => {
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="inline-flex items-center card-glass rounded-full px-4 py-2 mb-6">
             <Award className="w-4 h-4 mr-2 text-[#2280FF]" />
-            <span className="text-sm font-medium text-white">Premium Automation Suite</span>
+            <span className="text-sm font-medium text-white">{t.services.tagline}</span>
           </div>
           <h2 className="text-display text-white mb-6">
-            Automations that 
-            <span className="text-[#2ED3CF]"> Pay for Themselves</span>
+            {t.services.heading}
+            <span className="text-[#2ED3CF]">{t.services.highlight}</span>
           </h2>
           <p className="text-subhead max-w-3xl mx-auto text-gray-300">
-            Transform your business operations with intelligent automation that works 24/7, 
-            speaks both languages, and keeps you compliant.
+            {t.services.subheading}
           </p>
         </div>
         
@@ -460,7 +397,7 @@ const Services = () => {
           <div className="card-dark p-12 relative overflow-hidden">
             <div className="relative z-10">
               <h3 className="text-2xl lg:text-3xl font-bold text-white text-center mb-12">
-                Why Work With Simon Paris?
+                {t.services.whyTitle}
               </h3>
               
               <div className="grid md:grid-cols-3 gap-8">
@@ -481,11 +418,11 @@ const Services = () => {
               
               <div className="text-center mt-12">
                 <button className="btn-primary px-10 py-4">
-                  Start Your Automation Journey
+                  {t.services.startJourney}
                 </button>
                 
                 <p className="text-gray-300 mt-6 max-w-2xl mx-auto leading-relaxed">
-                  I'm not just solving today's admin headaches—I'm helping Québec businesses get ready for the next wave of AI-driven growth.
+                  {t.services.whyParagraph}
                 </p>
               </div>
             </div>
@@ -500,6 +437,7 @@ const Services = () => {
 const ProofSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -523,11 +461,11 @@ const ProofSection = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-display text-white mb-6">
-            Built for 
-            <span className="text-[#2ED3CF]"> Québec SMBs</span>
+            {t.proof.heading}
+            <span className="text-[#2ED3CF]">{t.proof.highlight}</span>
           </h2>
           <p className="text-subhead max-w-3xl mx-auto text-gray-300">
-            Every automation is fully demoed before you buy. Book a live walkthrough and see how it works for your business.
+            {t.proof.subheading}
           </p>
         </div>
         
@@ -539,30 +477,24 @@ const ProofSection = () => {
               </div>
               
               <h3 className="text-2xl font-bold text-white mb-6">
-                Bilingual automation, built in Québec for Québec SMBs
+                {t.proof.calloutHeading}
               </h3>
               
               <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-                Tested for Bill 96 compliance—so you can sleep easy. Real results, real stories—coming soon.
+                {t.proof.calloutText}
               </p>
               
               <div className="grid md:grid-cols-3 gap-8 mb-8">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-[#2280FF] mb-2">100%</div>
-                  <div className="text-gray-300">Bill 96 Compliant</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-[#2280FF] mb-2">24/7</div>
-                  <div className="text-gray-300">Automated Follow-ups</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-[#2280FF] mb-2">EN/FR</div>
-                  <div className="text-gray-300">Fully Bilingual</div>
-                </div>
+                {t.proof.items.map((label, i) => (
+                  <div key={`stat-${i}`} className="text-center">
+                    <div className="text-3xl font-bold text-[#2280FF] mb-2">{['100%', '24/7', 'EN/FR'][i]}</div>
+                    <div className="text-gray-300">{label}</div>
+                  </div>
+                ))}
               </div>
               
               <button className="btn-primary px-8 py-4">
-                See Your Demo
+                {t.proof.button}
               </button>
             </div>
           </div>
@@ -577,6 +509,7 @@ const FAQ = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -595,39 +528,18 @@ const FAQ = () => {
     return () => observer.disconnect();
   }, []);
 
-  const faqs = [
-    {
-      question: "How quickly can you set up my automation?",
-      answer: "Most setups are completed within 1-2 weeks after our demo call. I handle all the technical work while you focus on running your business."
-    },
-    {
-      question: "Is this really Bill 96 compliant?",
-      answer: "Absolutely. Every message template and automation workflow is reviewed for Bill 96 compliance. I provide documentation showing compliance for audit purposes."
-    },
-    {
-      question: "What if I'm not tech-savvy?",
-      answer: "Perfect! That's exactly who this is built for. You don't need to understand the technology—just see the results. I handle all the technical setup and maintenance."
-    },
-    {
-      question: "How much does it cost?",
-      answer: "Pricing depends on your specific needs and business size. I offer transparent, flat-rate pricing with no hidden fees. We'll discuss exact costs during your free demo."
-    },
-    {
-      question: "Can you help us with AI adoption or strategy?",
-      answer: "Absolutely. I'm always researching the latest AI tools and trends for SMBs. If you want to talk about how AI could help your business, just mention it when you book a demo."
-    }
-  ];
+  const faqs = t.faq.list;
 
   return (
     <section ref={sectionRef} className="relative py-12 lg:py-20 overflow-hidden" style={{ background: '#121C2D' }}>
       <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-display text-white mb-6">
-            Frequently Asked 
-            <span className="text-[#2ED3CF]"> Questions</span>
+            {t.faq.heading}
+            <span className="text-[#2ED3CF]">{t.faq.highlight}</span>
           </h2>
           <p className="text-subhead text-gray-300">
-            Everything you need to know about getting started
+            {t.faq.subheading}
           </p>
         </div>
         
@@ -675,6 +587,7 @@ const FinalCTA = () => {
   });
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -715,17 +628,17 @@ const FinalCTA = () => {
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8">
           <div className={`text-center mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="inline-flex items-center card-glass rounded-full px-4 py-2 mb-6">
-              <Sparkles className="w-4 h-4 mr-2 text-[#2280FF]" />
-              <span className="text-sm font-medium text-white">Ready to Transform Your Business?</span>
-            </div>
-            <h2 className="text-display text-white mb-6">
-              Ready to Stop Losing Business and 
-              <span className="text-[#2ED3CF]"> Sleep Easy on Compliance</span>?
-            </h2>
-            <p className="text-subhead text-gray-300">
-              Get your free workflow audit and see exactly where you're losing money
-            </p>
+              <div className="inline-flex items-center card-glass rounded-full px-4 py-2 mb-6">
+                <Sparkles className="w-4 h-4 mr-2 text-[#2280FF]" />
+                <span className="text-sm font-medium text-white">{t.finalCTA.tagline}</span>
+              </div>
+              <h2 className="text-display text-white mb-6">
+                {t.finalCTA.heading}
+                <span className="text-[#2ED3CF]">{t.finalCTA.highlight}</span>
+              </h2>
+              <p className="text-subhead text-gray-300">
+                {t.finalCTA.subheading}
+              </p>
           </div>
           
           <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -734,7 +647,7 @@ const FinalCTA = () => {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-semibold text-white mb-3">
-                      Name *
+                      {t.finalCTA.nameLabel}
                     </label>
                     <input
                       type="text"
@@ -744,13 +657,13 @@ const FinalCTA = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       className="w-full px-6 py-4 bg-white border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-teal-400/20 focus:border-teal-400 transition-all duration-300 text-lg text-gray-900"
-                      placeholder="Your full name"
+                      placeholder={t.finalCTA.namePlaceholder}
                     />
                   </div>
                   
                   <div>
                     <label htmlFor="email" className="block text-sm font-semibold text-white mb-3">
-                      Email *
+                      {t.finalCTA.emailLabel}
                     </label>
                     <input
                       type="email"
@@ -760,15 +673,15 @@ const FinalCTA = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       className="w-full px-6 py-4 bg-white border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#2280FF]/20 focus:border-[#2280FF] transition-all duration-300 text-lg text-gray-900"
-                      placeholder="your@email.com"
+                      placeholder={t.finalCTA.emailPlaceholder}
                     />
                   </div>
                 </div>
                 
                 <div>
-                  <label htmlFor="businessType" className="block text-sm font-semibold text-white mb-3">
-                    Business Type *
-                  </label>
+                    <label htmlFor="businessType" className="block text-sm font-semibold text-white mb-3">
+                      {t.finalCTA.businessLabel}
+                    </label>
                   <select
                     id="businessType"
                     name="businessType"
@@ -777,18 +690,16 @@ const FinalCTA = () => {
                     onChange={handleInputChange}
                     className="w-full px-6 py-4 bg-white border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#2280FF]/20 focus:border-[#2280FF] transition-all duration-300 text-lg text-gray-900"
                   >
-                    <option value="">Select your business type</option>
-                    <option value="clinic">Medical/Dental Clinic</option>
-                    <option value="wellness">Wellness/Spa Business</option>
-                    <option value="trades">Trades/Contractor</option>
-                    <option value="other">Other Service Business</option>
+                    {t.finalCTA.businessOptions.map((o, i) => (
+                      <option key={i} value={['', 'clinic', 'wellness', 'trades', 'other'][i]}>{o}</option>
+                    ))}
                   </select>
                 </div>
                 
                 <div>
-                  <label htmlFor="painPoint" className="block text-sm font-semibold text-white mb-3">
-                    Your Biggest Pain Point
-                  </label>
+                    <label htmlFor="painPoint" className="block text-sm font-semibold text-white mb-3">
+                      {t.finalCTA.painLabel}
+                    </label>
                   <textarea
                     id="painPoint"
                     name="painPoint"
@@ -796,7 +707,7 @@ const FinalCTA = () => {
                     value={formData.painPoint}
                     onChange={handleInputChange}
                     className="w-full px-6 py-4 bg-white border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#2280FF]/20 focus:border-[#2280FF] transition-all duration-300 text-lg resize-none text-gray-900"
-                    placeholder="What's your biggest challenge with follow-ups, no-shows, or reviews?"
+                    placeholder={t.finalCTA.painPlaceholder}
                   />
                 </div>
                 
@@ -806,20 +717,20 @@ const FinalCTA = () => {
                     className="w-full btn-primary text-xl py-6 group"
                   >
                     <Calendar className="w-6 h-6 mr-3" />
-                    Book Your Free 15-Minute Demo
+                    {t.finalCTA.submit}
                     <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
               </form>
               
               <div className="mt-8 pt-8 border-t border-gray-600 text-center">
-                <p className="text-gray-300 mb-4 text-lg">Or, send a quick question to:</p>
-                <a 
-                  href="mailto:info@simonparis.ca"
+                <p className="text-gray-300 mb-4 text-lg">{t.finalCTA.or}</p>
+                <a
+                  href={`mailto:${t.header.email}`}
                   className="inline-flex items-center font-semibold text-lg group transition-colors duration-300 text-[#2280FF] hover:text-[#2ED3CF]"
                 >
                   <Send className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" />
-                  info@simonparis.ca
+                  {t.header.email}
                 </a>
               </div>
             </div>
@@ -830,7 +741,7 @@ const FinalCTA = () => {
       {/* Sticky CTA for mobile */}
       <div className="sticky-cta">
         <button className="btn-primary w-full text-lg py-4">
-          Book Free Demo
+          {t.finalCTA.sticky}
         </button>
       </div>
     </>
@@ -839,46 +750,46 @@ const FinalCTA = () => {
 
 // Footer Component
 const Footer = () => {
+  const { t } = useLanguage();
   return (
     <footer className="relative py-16" style={{ background: '#0A0E14' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           <div>
             <div className="text-2xl font-bold text-white mb-4">
-              Simon Paris
+              {t.header.brand}
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
-              Bilingual automation for Québec SMBs. Built for today's needs, ready for tomorrow's AI.
+              {t.footer.blurb}
             </p>
             <div className="flex items-center text-gray-400">
               <Globe className="w-4 h-4 mr-2" />
-              <span>Serving all of Québec • EN/FR</span>
+              <span>{t.footer.language}</span>
             </div>
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4">Services</h4>
+            <h4 className="text-lg font-semibold text-white mb-4">{t.footer.services}</h4>
             <ul className="space-y-2 text-gray-400">
-              <li>Lead Follow-up Automation</li>
-              <li>Appointment Reminders</li>
-              <li>Review Management</li>
-              <li>Bill 96 Compliance</li>
+              {t.footer.servicesList.map(item => (
+                <li key={item}>{item}</li>
+              ))}
             </ul>
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4">Contact</h4>
+            <h4 className="text-lg font-semibold text-white mb-4">{t.footer.contact}</h4>
             <div className="space-y-3">
-              <a 
-                href="mailto:info@simonparis.ca"
+              <a
+                href={`mailto:${t.header.email}`}
                 className="flex items-center text-gray-400 hover:text-[#2280FF] transition-colors"
               >
                 <Mail className="w-4 h-4 mr-2" />
-                info@simonparis.ca
+                {t.header.email}
               </a>
               <div className="flex items-center text-gray-400">
                 <MapPin className="w-4 h-4 mr-2" />
-                Québec, Canada
+                {t.footer.location}
               </div>
             </div>
           </div>
@@ -887,10 +798,10 @@ const Footer = () => {
         <div className="pt-8 border-t border-gray-700">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 mb-4 md:mb-0">
-              © 2024 Simon Paris Consulting. All rights reserved.
+              {t.footer.copyright}
             </p>
             <p className="text-gray-400 text-sm">
-              Curious about the next wave of AI for SMBs? Ask Simon.
+              {t.footer.curiosity}
             </p>
           </div>
         </div>
