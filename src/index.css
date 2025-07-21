@@ -40,7 +40,7 @@ body {
 .text-hero {
   font-size: clamp(3rem, 7vw, 6rem);
   font-weight: 800;
-  line-height: 0.95;
+  line-height: 1.05;
   letter-spacing: -0.04em;
   font-feature-settings: 'ss01', 'ss02';
 }

@@ -110,7 +110,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background: '#121C2D' }}>
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background: '#121C2D' }}>
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-float" />
@@ -143,14 +143,6 @@ const Hero = () => {
               {t.hero.bookDemo}
               <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform" />
             </button>
-            
-            <a 
-              href={`mailto:${t.header.email}`}
-              className="btn-outline text-lg px-8 py-4 group"
-            >
-              <Send className="w-5 h-5 mr-2" />
-              {t.hero.quickQuestion}
-            </a>
           </div>
         </div>
       </div>
@@ -180,6 +172,9 @@ const ProblemSection = () => {
 
     return () => observer.disconnect();
   }, []);
+
+
+  
 
   const problems = t.problems.list.map((p, i) => ({
     ...p,
@@ -587,6 +582,7 @@ const FinalCTA = () => {
   });
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const [heroInView, setHeroInView] = useState(true);
   const { t } = useLanguage();
 
   useEffect(() => {
@@ -603,6 +599,19 @@ const FinalCTA = () => {
       observer.observe(sectionRef.current);
     }
 
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const heroElement = document.getElementById('hero');
+    if (!heroElement) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setHeroInView(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+
+    observer.observe(heroElement);
     return () => observer.disconnect();
   }, []);
 
@@ -739,7 +748,7 @@ const FinalCTA = () => {
       </section>
 
       {/* Sticky CTA for mobile */}
-      <div className="sticky-cta">
+      <div className={`sticky-cta ${heroInView ? 'hidden' : ''}`}>
         <button className="btn-primary w-full text-lg py-4">
           {t.finalCTA.sticky}
         </button>
