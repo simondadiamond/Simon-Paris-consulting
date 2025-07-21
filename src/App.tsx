@@ -579,7 +579,7 @@ const FinalCTA = () => {
   });
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const [heroInView, setHeroInView] = useState(true);
+  const [atTop, setAtTop] = useState(true);
   const { t } = useLanguage();
 
   useEffect(() => {
@@ -600,16 +600,15 @@ const FinalCTA = () => {
   }, []);
 
   useEffect(() => {
-    const heroElement = document.getElementById('hero');
-    if (!heroElement) return;
+    const checkTop = () => {
+      setAtTop(window.scrollY === 0);
+    };
 
-    const heroObserver = new IntersectionObserver(
-      ([entry]) => setHeroInView(entry.isIntersecting),
-      { threshold: 0 }
-    );
-
-    heroObserver.observe(heroElement);
-    return () => heroObserver.disconnect();
+    checkTop();
+    window.addEventListener('scroll', checkTop);
+    return () => {
+      window.removeEventListener('scroll', checkTop);
+    };
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -745,7 +744,7 @@ const FinalCTA = () => {
       </section>
 
       {/* Sticky CTA for mobile */}
-      <div className={`sticky-cta ${heroInView ? 'hidden' : ''}`}>
+      <div className={`sticky-cta ${atTop ? 'hidden' : ''}`}>
         <button className="btn-primary w-full text-lg py-4">
           {t.finalCTA.sticky}
         </button>
