@@ -173,9 +173,6 @@ const ProblemSection = () => {
     return () => observer.disconnect();
   }, []);
 
-
-  
-
   const problems = t.problems.list.map((p, i) => ({
     ...p,
     icon: [MessageSquare, Clock, Star, AlertTriangle][i]
@@ -606,13 +603,13 @@ const FinalCTA = () => {
     const heroElement = document.getElementById('hero');
     if (!heroElement) return;
 
-    const observer = new IntersectionObserver(
+    const heroObserver = new IntersectionObserver(
       ([entry]) => setHeroInView(entry.isIntersecting),
-      { threshold: 0.1 }
+      { threshold: 0 }
     );
 
-    observer.observe(heroElement);
-    return () => observer.disconnect();
+    heroObserver.observe(heroElement);
+    return () => heroObserver.disconnect();
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
