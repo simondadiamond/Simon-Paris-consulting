@@ -33,13 +33,18 @@ const FinalCTA = () => {
     const heroElement = document.getElementById('hero');
     if (!heroElement) return;
 
-    const heroObserver = new IntersectionObserver(
-      ([entry]) => setHeroInView(entry.isIntersecting),
-      { threshold: 0 }
-    );
+    const checkHero = () => {
+      const rect = heroElement.getBoundingClientRect();
+      setHeroInView(rect.bottom > 0);
+    };
 
-    heroObserver.observe(heroElement);
-    return () => heroObserver.disconnect();
+    checkHero();
+    window.addEventListener('scroll', checkHero);
+    window.addEventListener('resize', checkHero);
+    return () => {
+      window.removeEventListener('scroll', checkHero);
+      window.removeEventListener('resize', checkHero);
+    };
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
