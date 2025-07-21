@@ -203,15 +203,9 @@ body {
   left: 20px;
   right: 20px;
   z-index: 50;
-  display: none;
   padding: 0 16px;
 }
 
-@media (max-width: 768px) {
-  .sticky-cta {
-    display: block;
-  }
-}
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {

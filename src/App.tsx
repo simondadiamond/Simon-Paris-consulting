@@ -579,7 +579,7 @@ const FinalCTA = () => {
   });
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const [atTop, setAtTop] = useState(true);
+  const [heroVisible, setHeroVisible] = useState(true);
   const { t } = useLanguage();
 
   useEffect(() => {
@@ -600,14 +600,21 @@ const FinalCTA = () => {
   }, []);
 
   useEffect(() => {
-    const checkTop = () => {
-      setAtTop(window.scrollY === 0);
+    const hero = document.getElementById('hero');
+    if (!hero) return;
+
+    const checkVisibility = () => {
+      const rect = hero.getBoundingClientRect();
+      const visible = rect.bottom > 0 && rect.top < window.innerHeight;
+      setHeroVisible(visible);
     };
 
-    checkTop();
-    window.addEventListener('scroll', checkTop);
+    checkVisibility();
+    window.addEventListener('scroll', checkVisibility, { passive: true });
+    window.addEventListener('resize', checkVisibility);
     return () => {
-      window.removeEventListener('scroll', checkTop);
+      window.removeEventListener('scroll', checkVisibility);
+      window.removeEventListener('resize', checkVisibility);
     };
   }, []);
 
@@ -744,7 +751,7 @@ const FinalCTA = () => {
       </section>
 
       {/* Sticky CTA for mobile */}
-      <div className={`sticky-cta ${atTop ? 'hidden' : ''}`}>
+      <div className={`sticky-cta md:hidden ${heroVisible ? 'hidden' : 'block'}`}>
         <button className="btn-primary w-full text-lg py-4">
           {t.finalCTA.sticky}
         </button>
