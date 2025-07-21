@@ -77,7 +77,7 @@ const Services = () => {
           </div>
           <h2 className="text-display text-white mb-6">
             Automations that 
-            <span className="text-[#2ED3CF]"> Pay for Themselves</span>
+            <span className="title-highlight"> Pay for Themselves</span>
           </h2>
           <p className="text-subhead max-w-3xl mx-auto text-gray-300">
             Transform your business operations with intelligent automation that works 24/7, 

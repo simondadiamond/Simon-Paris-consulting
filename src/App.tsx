@@ -3,7 +3,7 @@ import {
   Globe, Menu, X, Send, Calendar, ArrowRight, Sparkles, 
   Users, Clock, Star, Shield, CheckCircle, Zap, Target, Award,
   ChevronDown, ChevronUp, MessageSquare, TrendingUp, AlertTriangle,
-  Phone, Mail, MapPin
+  Mail, MapPin
 } from 'lucide-react';
 
 // Header Component
@@ -117,7 +117,7 @@ const Hero = () => {
           
           <h1 className="text-hero text-white mb-6">
             Stop Losing Business to 
-            <span className="text-[#2ED3CF]"> Missed Follow-ups</span>
+            <span className="title-highlight"> Missed Follow-ups</span>
           </h1>
           
           <p className="text-lg text-gray-400 mb-4 max-w-2xl mx-auto">
@@ -205,7 +205,7 @@ const ProblemSection = () => {
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-display text-white mb-6">
             The Hidden Costs of 
-            <span className="text-[#2ED3CF]"> Manual Follow-ups</span>
+            <span className="title-highlight"> Manual Follow-ups</span>
           </h2>
           <p className="text-subhead max-w-3xl mx-auto text-gray-300">
             Every missed follow-up, no-show, and poor review is money walking out the door
@@ -293,7 +293,7 @@ const HowItWorks = () => {
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-display text-white mb-6">
             How It Works: 
-            <span className="text-[#2ED3CF]"> Demo First, Pay Later</span>
+            <span className="title-highlight"> Demo First, Pay Later</span>
           </h2>
           <p className="text-subhead max-w-3xl mx-auto text-gray-300">
             See your exact automation in action before you commit to anything
@@ -415,7 +415,7 @@ const Services = () => {
           </div>
           <h2 className="text-display text-white mb-6">
             Automations that 
-            <span className="text-[#2ED3CF]"> Pay for Themselves</span>
+            <span className="title-highlight"> Pay for Themselves</span>
           </h2>
           <p className="text-subhead max-w-3xl mx-auto text-gray-300">
             Transform your business operations with intelligent automation that works 24/7, 
@@ -524,7 +524,7 @@ const ProofSection = () => {
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-display text-white mb-6">
             Built for 
-            <span className="text-[#2ED3CF]"> Québec SMBs</span>
+            <span className="title-highlight"> Québec SMBs</span>
           </h2>
           <p className="text-subhead max-w-3xl mx-auto text-gray-300">
             Every automation is fully demoed before you buy. Book a live walkthrough and see how it works for your business.
@@ -624,7 +624,7 @@ const FAQ = () => {
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-display text-white mb-6">
             Frequently Asked 
-            <span className="text-[#2ED3CF]"> Questions</span>
+            <span className="title-highlight"> Questions</span>
           </h2>
           <p className="text-subhead text-gray-300">
             Everything you need to know about getting started
@@ -721,7 +721,7 @@ const FinalCTA = () => {
             </div>
             <h2 className="text-display text-white mb-6">
               Ready to Stop Losing Business and 
-              <span className="text-[#2ED3CF]"> Sleep Easy on Compliance</span>?
+              <span className="title-highlight"> Sleep Easy on Compliance</span>?
             </h2>
             <p className="text-subhead text-gray-300">
               Get your free workflow audit and see exactly where you're losing money
