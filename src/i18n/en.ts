@@ -94,6 +94,9 @@ export const en = {
     or: 'Or, send a quick question to:',
     sticky: 'Book Free Demo'
   },
+  partners: {
+    title: 'Trusted & Supported By'
+  },
   footer: {
     blurb: "Bilingual automation for Québec SMBs. Built for today's needs, ready for tomorrow's AI.",
     language: 'Serving all of Québec • EN/FR',
