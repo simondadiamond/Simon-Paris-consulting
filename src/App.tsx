@@ -605,7 +605,8 @@ const FinalCTA = () => {
 
     const checkHero = () => {
       const rect = heroElement.getBoundingClientRect();
-      setHeroInView(rect.bottom > 0);
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      setHeroInView(inView);
     };
 
     checkHero();
