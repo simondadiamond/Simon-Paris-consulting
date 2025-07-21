@@ -486,7 +486,7 @@ const ProofSection = () => {
               
               <div className="grid md:grid-cols-3 gap-8 mb-8">
                 {t.proof.items.map((label, i) => (
-                  <div key={label} className="text-center">
+                  <div key={`stat-${i}`} className="text-center">
                     <div className="text-3xl font-bold text-[#2280FF] mb-2">{['100%', '24/7', 'EN/FR'][i]}</div>
                     <div className="text-gray-300">{label}</div>
                   </div>
