@@ -8,11 +8,12 @@
   --primary-blue: #2280FF;
   --accent-teal: #2ED3CF;
   --dark-blue: #121C2D;
-  --off-white: #F8F9FB;
+  --off-white: #FFFFFF;
   --pure-white: #FFFFFF;
-  --text-primary: #121C2D;
+  --text-primary: #333333;
   --text-secondary: #4B5563;
   --text-muted: #6B7280;
+  --btn-gradient: linear-gradient(to right, #2280FF, #2ED3CF);
 }
 
 * {
@@ -127,7 +128,7 @@ body {
 /* Premium Buttons */
 .btn-primary {
   @apply inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white rounded-xl;
-  background: linear-gradient(135deg, #2280FF 0%, #2ED3CF 100%);
+  background: var(--btn-gradient);
   border: none;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -146,15 +147,16 @@ body {
 
 .btn-secondary {
   @apply inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-xl;
-  background: #2280FF;
-  color: white;
-  border: none;
+  background: transparent;
+  color: var(--dark-blue);
+  border: 2px solid var(--dark-blue);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-secondary:hover {
-  background: #1a6bff;
+  background: var(--dark-blue);
+  color: white;
   transform: translateY(-1px);
   box-shadow: 0 8px 32px rgba(34, 128, 255, 0.3);
 }
