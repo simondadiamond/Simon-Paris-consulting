@@ -96,6 +96,7 @@ const fr: TranslationKeys = {
     or: 'Ou, posez-moi votre question ici :',
     sticky: 'Réserver une démo'
   },
+  trustBadge: 'Conforme au Québec (Loi 96 & Loi 25 – EN/FR intégré)',
   partners: {
     title: 'Partenaires de confiance'
   },

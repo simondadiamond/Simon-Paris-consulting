@@ -6,13 +6,14 @@
 
 :root {
   --primary-blue: #2280FF;
-  --accent-teal: #2ED3CF;
+  --accent-teal: #139E9B;
   --dark-blue: #121C2D;
-  --off-white: #F8F9FB;
+  --off-white: #F9FAFB;
   --pure-white: #FFFFFF;
-  --text-primary: #FFFFFF;
-  --text-secondary: #B8C5D1;
-  --text-muted: #8B9AAB;
+  --text-primary: #333333;
+  --text-secondary: #4B5563;
+  --text-muted: #6B7280;
+  --btn-gradient: linear-gradient(to right, #2280FF, #139E9B);
 }
 
 * {
@@ -30,7 +31,7 @@ body {
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   line-height: 1.6;
   color: var(--text-primary);
-  background: var(--dark-blue);
+  background: var(--off-white);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -39,7 +40,7 @@ body {
 /* Premium Typography */
 .text-hero {
   font-size: clamp(3rem, 7vw, 6rem);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.04em;
   font-feature-settings: 'ss01', 'ss02';
@@ -126,8 +127,9 @@ body {
 
 /* Premium Buttons */
 .btn-primary {
-  @apply inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white rounded-xl;
-  background: linear-gradient(135deg, #2280FF 0%, #2ED3CF 100%);
+  @apply inline-flex items-center justify-center font-bold uppercase rounded-xl text-base sm:text-lg text-white;
+  padding: 14px 28px;
+  background: var(--btn-gradient);
   border: none;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -145,16 +147,18 @@ body {
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-xl;
-  background: #2280FF;
-  color: white;
-  border: none;
+  @apply inline-flex items-center justify-center font-semibold rounded-xl text-base sm:text-lg;
+  padding: 14px 28px;
+  background: transparent;
+  color: var(--dark-blue);
+  border: 2px solid var(--dark-blue);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-secondary:hover {
-  background: #1a6bff;
+  background: var(--dark-blue);
+  color: white;
   transform: translateY(-1px);
   box-shadow: 0 8px 32px rgba(34, 128, 255, 0.3);
 }
@@ -190,6 +194,21 @@ body {
   border-color: rgba(34, 128, 255, 0.3);
 }
 
+/* Light themed card for white sections */
+.card-light {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-light:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 64px rgba(0, 0, 0, 0.1);
+  border-color: rgba(34, 128, 255, 0.3);
+}
+
 .card-glass {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);
@@ -197,10 +216,10 @@ body {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
-/* Step badges */
-.step-badge {
-  @apply w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold;
-  background: rgba(34, 128, 255, 0.2);
+/* Step numbers overlay */
+.step-number {
+  @apply absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold;
+  background: #ffffff;
   color: #2280FF;
   border: 2px solid #2280FF;
 }
@@ -251,7 +270,8 @@ body {
   .btn-primary,
   .btn-secondary,
   .btn-outline {
-    @apply px-6 py-3 text-base;
+    padding: 12px 24px;
+    font-size: 1rem;
     min-height: 48px;
   }
 }
