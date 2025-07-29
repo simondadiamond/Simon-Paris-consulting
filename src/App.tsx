@@ -50,7 +50,7 @@ const Header = () => {
               </button>
               <a
                 href={`mailto:${t.header.email}`}
-                className={`transition-colors duration-300 font-medium ${isScrolled ? 'text-gray-900' : 'text-white'} hover:text-[#2280FF]`}
+                className={`transition-colors duration-300 font-medium ${isScrolled ? 'text-gray-900' : 'text-white'} hover:text-[#2ED3CF]`}
               >
                 {t.header.email}
               </a>
@@ -82,7 +82,7 @@ const Header = () => {
             <div className="space-y-6">
               <a
                 href={`mailto:${t.header.email}`}
-                className="block text-gray-900 hover:text-[#2280FF] font-medium"
+                className="block text-gray-900 hover:text-[#2ED3CF] font-medium"
               >
                 {t.header.email}
               </a>
@@ -124,7 +124,7 @@ const Hero = () => {
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 text-center">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="inline-flex items-center card-glass rounded-full px-4 py-2 mb-8">
-            <Sparkles className="w-4 h-4 mr-2 text-[#2280FF]" />
+            <Sparkles className="w-4 h-4 mr-2 text-[#2ED3CF]" />
             <span className="text-sm font-medium text-white">{t.hero.tagline}</span>
           </div>
           
@@ -141,13 +141,20 @@ const Hero = () => {
             {t.hero.sub2}
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
             <button className="btn-primary text-xl px-10 py-5 group">
               <Calendar className="w-6 h-6 mr-3" />
               {t.hero.bookDemo}
-              <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform group-hover:text-[#2ED3CF]" />
             </button>
           </div>
+
+          <p className="text-sm font-medium flex justify-center items-center text-[#2280FF] mb-8">
+            <CheckCircle className="w-4 h-4 mr-2 text-[#2ED3CF]" />
+            {t.trustBadge}
+          </p>
+
+          <div className="w-16 h-1 bg-[#2ED3CF] rounded-full mx-auto" />
         </div>
       </div>
     </section>
@@ -354,7 +361,7 @@ const HowItWorks = () => {
               
               {index < steps.length - 1 && (
                 <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
-                  <ArrowRight className="w-8 h-8 text-[#2280FF]" />
+                  <ArrowRight className="w-8 h-8 text-[#2ED3CF]" />
                 </div>
               )}
             </div>
@@ -439,7 +446,7 @@ const Services = () => {
               <ul className="space-y-2">
                 {service.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-center text-sm text-gray-600">
-                    <CheckCircle className="w-4 h-4 mr-2 flex-shrink-0 text-[#2280FF]" />
+                    <CheckCircle className="w-4 h-4 mr-2 flex-shrink-0 text-[#2ED3CF]" />
                     {feature}
                   </li>
                 ))}
@@ -704,7 +711,7 @@ const FinalCTA = () => {
         <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8">
           <div className={`text-center mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <div className="inline-flex items-center card-glass rounded-full px-4 py-2 mb-6">
-                <Sparkles className="w-4 h-4 mr-2 text-[#2280FF]" />
+                <Sparkles className="w-4 h-4 mr-2 text-[#2ED3CF]" />
                 <span className="text-sm font-medium text-gray-900">{t.finalCTA.tagline}</span>
               </div>
               <h2 className="text-display text-gray-900 mb-6">
@@ -797,7 +804,7 @@ const FinalCTA = () => {
                   >
                     <Calendar className="w-6 h-6 mr-3" />
                     {t.finalCTA.submit}
-                    <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 group-hover:text-[#2ED3CF] transition-transform" />
                   </button>
                 </div>
               </form>
@@ -808,7 +815,7 @@ const FinalCTA = () => {
                   href={`mailto:${t.header.email}`}
                   className="inline-flex items-center font-semibold text-lg group transition-colors duration-300 text-[#2280FF] hover:text-[#2ED3CF]"
                 >
-                  <Send className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" />
+                  <Send className="w-5 h-5 mr-2 group-hover:translate-x-1 group-hover:text-[#2ED3CF] transition-transform" />
                   {t.header.email}
                 </a>
               </div>
@@ -861,7 +868,7 @@ const Footer = () => {
             <div className="space-y-3">
               <a
                 href={`mailto:${t.header.email}`}
-                className="flex items-center text-gray-400 hover:text-[#2280FF] transition-colors"
+                className="flex items-center text-gray-400 hover:text-[#2ED3CF] transition-colors"
               >
                 <Mail className="w-4 h-4 mr-2" />
                 {t.header.email}
