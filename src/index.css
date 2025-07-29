@@ -10,9 +10,9 @@
   --dark-blue: #121C2D;
   --off-white: #F8F9FB;
   --pure-white: #FFFFFF;
-  --text-primary: #FFFFFF;
-  --text-secondary: #B8C5D1;
-  --text-muted: #8B9AAB;
+  --text-primary: #121C2D;
+  --text-secondary: #4B5563;
+  --text-muted: #6B7280;
 }
 
 * {
@@ -30,7 +30,7 @@ body {
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   line-height: 1.6;
   color: var(--text-primary);
-  background: var(--dark-blue);
+  background: var(--off-white);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -187,6 +187,21 @@ body {
 .card-dark:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 64px rgba(0, 0, 0, 0.4);
+  border-color: rgba(34, 128, 255, 0.3);
+}
+
+/* Light themed card for white sections */
+.card-light {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-light:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 64px rgba(0, 0, 0, 0.1);
   border-color: rgba(34, 128, 255, 0.3);
 }
 
