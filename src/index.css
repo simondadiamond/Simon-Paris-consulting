@@ -8,7 +8,7 @@
   --primary-blue: #2280FF;
   --accent-teal: #2ED3CF;
   --dark-blue: #121C2D;
-  --off-white: #FFFFFF;
+  --off-white: #F9FAFB;
   --pure-white: #FFFFFF;
   --text-primary: #333333;
   --text-secondary: #4B5563;
@@ -40,7 +40,7 @@ body {
 /* Premium Typography */
 .text-hero {
   font-size: clamp(3rem, 7vw, 6rem);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.04em;
   font-feature-settings: 'ss01', 'ss02';
@@ -127,7 +127,8 @@ body {
 
 /* Premium Buttons */
 .btn-primary {
-  @apply inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white rounded-xl;
+  @apply inline-flex items-center justify-center font-bold uppercase rounded-xl text-base sm:text-lg text-white;
+  padding: 14px 28px;
   background: var(--btn-gradient);
   border: none;
   cursor: pointer;
@@ -146,7 +147,8 @@ body {
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-xl;
+  @apply inline-flex items-center justify-center font-semibold rounded-xl text-base sm:text-lg;
+  padding: 14px 28px;
   background: transparent;
   color: var(--dark-blue);
   border: 2px solid var(--dark-blue);
@@ -268,7 +270,8 @@ body {
   .btn-primary,
   .btn-secondary,
   .btn-outline {
-    @apply px-6 py-3 text-base;
+    padding: 12px 24px;
+    font-size: 1rem;
     min-height: 48px;
   }
 }

@@ -185,7 +185,7 @@ const PartnerBar = () => {
   const repeatedPartners = Array(numberOfRepetitions).fill(partners).flat();
 
   return (
-    <section className="py-12" style={{ background: '#FFFFFF' }}>
+    <section className="py-12 border-t border-[#E0E0E0]" style={{ background: '#F9FAFB' }}>
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-center text-sm font-semibold tracking-wider uppercase font-mono mb-8 text-gray-900">
           {t.partners.title}
@@ -242,7 +242,7 @@ const ProblemSection = () => {
   }));
 
   return (
-    <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+    <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden border-t border-[#E0E0E0]" style={{ background: '#FFFFFF' }}>
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-display text-gray-900 mb-6">
@@ -315,7 +315,7 @@ const HowItWorks = () => {
   }));
 
   return (
-    <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+    <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden border-t border-[#E0E0E0]" style={{ background: '#F9FAFB' }}>
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-display text-gray-900 mb-6">
@@ -399,7 +399,7 @@ const Services = () => {
   }));
 
   return (
-    <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+    <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden border-t border-[#E0E0E0]" style={{ background: '#FFFFFF' }}>
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="inline-flex items-center card-glass rounded-full px-4 py-2 mb-6">
@@ -512,7 +512,7 @@ const ProofSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+    <section ref={sectionRef} className="relative py-20 overflow-hidden border-t border-[#E0E0E0]" style={{ background: '#F9FAFB' }}>
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-display text-gray-900 mb-6">
@@ -586,7 +586,7 @@ const FAQ = () => {
   const faqs = t.faq.list;
 
   return (
-    <section ref={sectionRef} className="relative py-12 lg:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+    <section ref={sectionRef} className="relative py-12 lg:py-20 overflow-hidden border-t border-[#E0E0E0]" style={{ background: '#FFFFFF' }}>
       <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-display text-gray-900 mb-6">
@@ -695,7 +695,7 @@ const FinalCTA = () => {
 
   return (
     <>
-      <section ref={sectionRef} className="relative py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+      <section ref={sectionRef} className="relative py-20 overflow-hidden border-t border-[#E0E0E0]" style={{ background: '#F9FAFB' }}>
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-72 h-72 bg-teal-400/5 rounded-full blur-3xl animate-float" />
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
@@ -714,6 +714,10 @@ const FinalCTA = () => {
               <p className="text-subhead text-gray-600">
                 {t.finalCTA.subheading}
               </p>
+              <div className="mt-4 inline-flex items-center px-3 py-1 rounded-full bg-[#2280FF]/10 text-[#2280FF] text-sm font-semibold">
+                <CheckCircle className="w-4 h-4 mr-2" />
+                Bill 96 &amp; Law 25 Compliant – EN/FR Built-In
+              </div>
           </div>
           
           <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -827,7 +831,7 @@ const FinalCTA = () => {
 const Footer = () => {
   const { t } = useLanguage();
   return (
-    <footer className="relative py-16" style={{ background: '#121C2D' }}>
+    <footer className="relative py-16 border-t border-[#E0E0E0]" style={{ background: '#121C2D' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           <div>
