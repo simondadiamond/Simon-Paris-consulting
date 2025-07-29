@@ -6,14 +6,14 @@
 
 :root {
   --primary-blue: #2280FF;
-  --accent-teal: #2ED3CF;
+  --accent-teal: #139E9B;
   --dark-blue: #121C2D;
   --off-white: #F9FAFB;
   --pure-white: #FFFFFF;
   --text-primary: #333333;
   --text-secondary: #4B5563;
   --text-muted: #6B7280;
-  --btn-gradient: linear-gradient(to right, #2280FF, #2ED3CF);
+  --btn-gradient: linear-gradient(to right, #2280FF, #139E9B);
 }
 
 * {

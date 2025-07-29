@@ -94,7 +94,7 @@ export const en = {
     or: 'Or, send a quick question to:',
     sticky: 'Book Free Demo'
   },
-  trustBadge: '✅ Fully Québec compliant (Bill 96 & Law 25 – EN/FR built-in)',
+  trustBadge: 'Fully Québec compliant (Bill 96 & Law 25 – EN/FR built-in)',
   partners: {
     title: 'Trusted & Supported By'
   },
