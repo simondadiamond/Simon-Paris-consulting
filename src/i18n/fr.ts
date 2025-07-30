@@ -8,63 +8,88 @@ const fr: TranslationKeys = {
     bookDemo: 'Réserver une démo'
   },
   hero: {
-    tagline: 'Automatisation bilingue pour PME du Québec',
-    heading: 'Arrêtez de perdre des clients à cause de',
-    highlight: ' suivis manqués',
-    sub1: "L'automatisation pour aujourd'hui. L'IA pour demain.",
-    sub2: "Automatisez vos suivis, demandes d'avis et rappels. Automatisation 100% bilingue et conforme à la Loi 96 pour cliniques, commerces et entreprises de services du Québec.",
-    bookDemo: 'Réserver votre démo gratuite',
+    tagline: 'Pensé pour les PME du Québec',
+    heading: 'Dites adieu aux',
+    highlight: ' absences, suivis oubliés et factures impayées.',
+    sub1: 'J\u2019automatise vos rappels, suivis et demandes d\u2019avis\u2014en français, conforme aux lois du Québec, et sans effort.',
+    sub2: 'Conforme aux lois 25 et 96 \u2022 Français en priorité \u2022 Démo avant engagement',
+    bookDemo: 'Voir une automatisation en action',
     quickQuestion: 'Une question rapide ?'
   },
   problems: {
-    heading: 'Les coûts cachés des',
-    highlight: ' suivis manuels',
-    subheading: "Chaque suivi manqué, rendez-vous oublié ou mauvais avis, c'est de l'argent qui s'envole.",
+    heading: 'Vous reconnaissez ces',
+    highlight: ' situations?',
+    subheading: 'Si vous g\u00e9rez une clinique, un commerce ou une entreprise de services au Qu\u00e9bec, ces probl\u00e8mes vous parlent s\u00fbr\u00e9ment\u00a0:',
     list: [
-      { title: 'Clients potentiels perdus', description: 'Chaque heure sans suivi = 60% moins de chances de convertir', impact: 'Revenus perdus' },
-      { title: 'Absentéisme', description: '25% des rendez-vous sont manqués sans rappels automatisés', impact: 'Temps perdu' },
-      { title: 'Peu d’avis positifs', description: '90% des clients ne laissent jamais d’avis sans sollicitation', impact: 'Invisible en ligne' },
-      { title: 'Risque Loi 96', description: 'Des communications non conformes peuvent coûter très cher', impact: 'Risque légal' }
+      { title: 'Clients qui ne donnent plus de nouvelles', description: 'Les gens remplissent un formulaire ou vous \u00e9crivent\u2026 et disparaissent.', impact: 'Clients perdus' },
+      { title: 'Rendez-vous oubli\u00e9s ou annul\u00e9s', description: 'Des absences de derni\u00e8re minute qui nuisent \u00e0 votre horaire et vos revenus.', impact: 'Temps gaspill\u00e9' },
+      { title: 'Factures en attente', description: 'Des paiements qui tra\u00eenent, sans automatisation pour faire le suivi.', impact: 'Tr\u00e9sorerie \u00e0 risque' },
+      { title: 'Doutes sur la conformit\u00e9', description: 'Vous ne savez plus si vos messages ou rappels respectent la Loi 96.', impact: 'Risque l\u00e9gal r\u00e9el' }
     ]
   },
   howItWorks: {
-    heading: 'Comment ça marche :',
-    highlight: ' Démo d’abord, payez après',
-    subheading: 'Voyez exactement comment votre automatisation fonctionnera, avant de vous engager.',
+    heading: 'Démo d\u2019abord.',
+    highlight: ' Paiement après.',
+    subheading: 'Voyez une automatisation fonctionnelle, adaptée à votre entreprise, avant de vous engager.',
     steps: [
-      { number: '1', title: 'Démo et audit gratuits', description: "Je vous montre en direct où vous perdez temps et argent, et je vous fais la démo de votre automatisation sur mesure." },
-      { number: '2', title: 'Mise en place personnalisée', description: 'Je bâtis vos automatisations bilingues et je m’assure de la conformité Loi 96 à 100%.' },
-      { number: '3', title: 'Lancement & soutien', description: 'Votre automatisation est en ligne, avec support direct—pas d’intermédiaire.' }
+      { number: '1', title: 'Démo personnalisée gratuite', description: 'Je vous montre en direct où vous perdez temps et argent\u2014et ce qu\u2019on peut automatiser.' },
+      { number: '2', title: 'Mise en place sur mesure', description: 'Je bâtis vos automatisations en fonction de vos outils actuels, en français d\u2019abord, avec conformité totale.' },
+      { number: '3', title: 'Résultats rapides et visibles', description: 'Gain de temps, suivis automatiques, moins d\u2019oublis, plus de paiements. Concrètement.' }
     ]
   },
   services: {
-    tagline: 'Suite d’automatisation haut de gamme',
+    tagline: 'Ce que j\u2019automatise',
     heading: 'Des automatisations qui',
-    highlight: ' se paient d’elles-mêmes',
-    subheading: 'Transformez vos opérations avec une automatisation intelligente, bilingue, conforme et disponible 24/7.',
+    highlight: ' font gagner du temps et de l\u2019argent.',
+    subheading: 'Voici les processus que j\u2019automatise le plus souvent pour mes clients au Qu\u00e9bec \u00a0:',
     list: [
-      { title: 'Sauvetage des prospects', description: 'Relances instantanées sur chaque demande (web, téléphone, courriel, DM), en français et en anglais.', features: ['Relance automatique', 'Modèles bilingues', 'Intégration multi-canaux'] },
-      { title: 'Chasseur d’absences et de paiements', description: 'Rappels automatisés pour RDV et factures en retard—vos clients paient et se présentent.', features: ['Séquences de rappels intelligents', 'Automatisation des paiements', 'Confirmation de rendez-vous'] },
-      { title: 'Propulseur d’avis', description: 'Demande, suivi et réponse aux avis dans les deux langues—boostez votre réputation et Google.', features: ['Demande d’avis automatisée', 'Gestion des réponses', 'Surveillance de réputation'] },
-      { title: 'Vérification Loi 96', description: 'Chaque message, rappel et demande d’avis est 100% légal et prêt pour audit.', features: ['Vérification légale', 'Validation bilingue', 'Documentation prête pour inspection'] }
+      { title: 'Relance de prospects', description: '', features: ['Suivi automatique après formulaire, appel manqu\u00e9 ou message', 'Mod\u00e8les bilingues inclus', 'Int\u00e9gration \u00e0 vos outils (ex. Google, Meta, Square)'] },
+      { title: 'Chasseur d\u2019absences et de paiements', description: '', features: ['Rappels automatis\u00e9s avant les rendez-vous', 'Relance pour factures en retard', 'Messages FR/EN conformes et polis'] },
+      { title: 'G\u00e9n\u00e9rateur d\u2019avis clients', description: '', features: ['Envoi automatique apr\u00e8s prestation', 'Gestion des r\u00e9ponses', 'Aide au positionnement local (SEO)'] },
+        { title: 'Conformité Loi 96 – pour vos automatisations', description: "Chaque message, rappel et demande d'avis est envoyé en français d'abord, vérifié pour la clarté juridique et prêt pour inspection.", features: ['Conformité linguistique prioritaire', 'Validation bilingue des messages', 'Documentation disponible sur demande'] },
     ],
     benefits: [
-      { title: 'Démo d’abord', description: 'Voyez le résultat avant de vous engager' },
-      { title: 'Soutien personnalisé', description: 'Support d’expert—pas de sous-traitance' },
-      { title: 'ROI rapide', description: 'Installation rapide, tarif fixe, résultats visibles' }
+      { title: 'Démo en direct', description: 'Voyez votre automatisation réelle en action—avant de vous décider.' },
+      { title: 'Support personnalis\u00e9', description: 'Vous travaillez avec moi, pas avec un repr\u00e9sentant ou une agence.' },
+      { title: 'R\u00e9sultats concrets', description: 'Moins de gestion. Moins d\u2019oublis. Plus de revenus.' }
     ],
     whyTitle: 'Pourquoi choisir Simon Paris ?',
-    whyParagraph: "Je ne règle pas seulement vos problèmes d’administration : j’aide les PME du Québec à se préparer à la prochaine vague de croissance par l’IA.",
-    startJourney: 'Commencez votre transformation'
+    whyParagraph: 'Vous verrez le tout fonctionner avant de vous engager. Aucun bla-bla, aucune surprise.',
+    startJourney: 'Voir une automatisation en action'
+  },
+  miniCourse: {
+    heading: 'NOUVEAU\u00a0: Comprenez les lois 25 et 96 en moins d\u2019une heure.',
+    subheading: 'Vous craignez les amendes? Ce mini-cours autonome vous simplifie la conformit\u00e9.',
+    list: [
+      'Mod\u00e8les de messages bilingues (courriels, SMS, demandes d\u2019avis)',
+      'Listes de v\u00e9rification avec liens vers les sources officielles',
+      'Exemples r\u00e9els pour PME qu\u00e9b\u00e9coises',
+      'Moins d\u2019une heure pour tout comprendre'
+    ],
+    cta: 'D\u00e9couvrir le mini-cours'
+  },
+  fullCourse: {
+    heading: 'Bient\u00f4t\u00a0: Ma\u00eetrise compl\u00e8te des automatisations',
+    subheading: 'Apprenez \u00e0 automatiser la capture de prospects, les rappels, les paiements et les avis clients.',
+    list: [
+      'Le\u00e7ons pas \u00e0 pas avec d\u00e9mos r\u00e9elles',
+      'Mod\u00e8les bilingues fournis',
+      'Con\u00e7u pour les cliniques, commerces et services du Qu\u00e9bec'
+    ],
+    cta: 'Rejoindre la liste d\u2019attente'
+  },
+  courses: {
+    title: "Apprenez à automatiser et rester conforme",
+    subheading: "Des formations conçues pour les entreprises québécoises qui veulent clarté, contrôle et croissance conforme."
   },
   proof: {
-    heading: 'Conçu pour',
-    highlight: ' les PME québécoises',
-    subheading: 'Chaque automatisation est testée en démo avant engagement. Réservez une démo et voyez le résultat concret pour votre entreprise.',
-    calloutHeading: 'Automatisation bilingue, bâtie au Québec pour le Québec',
-    calloutText: 'Testée et conforme Loi 96—pour dormir tranquille. Témoignages et résultats réels—à venir.',
-    items: ['Conforme Loi 96', 'Suivis automatisés', 'Bilingue natif'],
-    button: 'Voir la démo'
+    heading: 'Pensé pour',
+    highlight: ' les PME du Québec',
+    subheading: 'Chaque automatisation est testée en direct avant d\u2019\u00eatre mise en place. Mon contenu, mes messages et mes rappels respectent la Loi 96, sont offerts en français d\u2019abord, et adapt\u00e9s \u00e0 votre r\u00e9alit\u00e9 d\u2019affaires locale.',
+    calloutHeading: '',
+    calloutText: '',
+    items: [],
+    button: ''
   },
   faq: {
     heading: 'Foire aux',
@@ -79,10 +104,10 @@ const fr: TranslationKeys = {
     ]
   },
   finalCTA: {
-    tagline: 'Prêt à transformer votre entreprise ?',
-    heading: 'Prêt à arrêter de perdre des clients et',
-    highlight: ' dormir tranquille côté conformité',
-    subheading: "Recevez un audit gratuit et voyez exactement où vous perdez temps et argent",
+    tagline: '',
+    heading: 'Vous avez des suivis \u00e0 automatiser?',
+    highlight: ' On commence avec une vraie d\u00e9mo.',
+    subheading: '',
     nameLabel: 'Nom *',
     namePlaceholder: 'Votre nom complet',
     emailLabel: 'Courriel *',
@@ -92,11 +117,11 @@ const fr: TranslationKeys = {
     businessOptions: ['Sélectionnez votre secteur', 'Clinique médicale/dentaire', 'Entreprise de bien-être/spa', 'Commerçant/entrepreneur', 'Autre service'],
     painLabel: 'Votre principal enjeu',
     painPlaceholder: 'Quel est votre plus grand défi : suivis, absences, avis ?',
-    submit: 'Réservez votre démo gratuite (15 min)',
+    submit: 'R\u00e9server une d\u00e9monstration gratuite',
     or: 'Ou, posez-moi votre question ici :',
     sticky: 'Réserver une démo'
   },
-  trustBadge: 'Conforme au Québec (Loi 96 & Loi 25 – EN/FR intégré)',
+  trustBadge: 'Conçu pour le Québec • Démo en direct • Bilingue et conforme à la Loi 96',
   partners: {
     title: 'Partenaires de confiance'
   },

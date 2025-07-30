@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from './LanguageProvider';
 import { 
-  Globe, Menu, X, Send, Calendar, ArrowRight, Sparkles, 
+  Globe, Menu, X, Send, Calendar, ArrowRight, Sparkles,
   Users, Clock, Star, Shield, CheckCircle, Zap, Target, Award,
   ChevronDown, ChevronUp, MessageSquare, TrendingUp, AlertTriangle,
-  Mail, MapPin
+  Mail, MapPin, BookOpenCheck, GraduationCap
 } from 'lucide-react';
 
 // Header Component
@@ -249,7 +249,7 @@ const ProblemSection = () => {
   }));
 
   return (
-    <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden border-t border-[#E0E0E0]" style={{ background: '#FFFFFF' }}>
+    <section id="automations" ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden border-t border-[#E0E0E0]" style={{ background: '#FFFFFF' }}>
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-display text-gray-900 mb-6">
@@ -421,9 +421,9 @@ const Services = () => {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {services.map((service, index) => (
-            <div 
+            <div
               key={index}
-              className={`card-light p-6 group transition-all duration-700 ${
+              className={`card-light p-6 group transition-all duration-700 hover:shadow-xl hover:-translate-y-1 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
@@ -452,7 +452,7 @@ const Services = () => {
           ))}
         </div>
         
-        <div className={`transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div id="why-simon" className={`transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="card-light p-12 relative overflow-hidden">
             <div className="relative z-10">
               <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 text-center mb-12">
@@ -484,6 +484,93 @@ const Services = () => {
                   {t.services.whyParagraph}
                 </p>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Courses Section Component
+const Courses = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useLanguage();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section
+      id="courses"
+      ref={sectionRef}
+      className="relative py-20 lg:py-24 overflow-hidden border-t border-[#E0E0E0] mt-16"
+      style={{ background: '#F9FAFB' }}
+    >
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+        <div className={`text-center mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}> 
+          <h2 className="text-display text-gray-900 mb-4">{t.courses.title}</h2>
+          <p className="text-subhead text-gray-600">{t.courses.subheading}</p>
+        </div>
+        <div
+          className={`grid md:grid-cols-2 gap-8 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className="card-light p-8 hover:shadow-xl hover:-translate-y-1 transition-all">
+            <div className="w-16 h-16 rounded-2xl bg-[#2280FF] flex items-center justify-center mx-auto mb-6">
+              <BookOpenCheck className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">
+              {t.miniCourse.heading}
+            </h3>
+            <p className="text-gray-600 mb-6 text-center">{t.miniCourse.subheading}</p>
+            <ul className="space-y-2 mb-6">
+              {t.miniCourse.list.map((item: string, idx: number) => (
+                <li key={idx} className="flex items-center text-gray-600">
+                  <CheckCircle className="w-4 h-4 mr-2 text-[#139E9B]" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div className="text-center">
+              <button className="btn-primary px-8 py-4">{t.miniCourse.cta}</button>
+            </div>
+          </div>
+
+          <div className="card-light p-8 hover:shadow-xl hover:-translate-y-1 transition-all">
+            <div className="w-16 h-16 rounded-2xl bg-[#2280FF] flex items-center justify-center mx-auto mb-6">
+              <GraduationCap className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">
+              {t.fullCourse.heading}
+            </h3>
+            <p className="text-gray-600 mb-6 text-center">{t.fullCourse.subheading}</p>
+            <ul className="space-y-2 mb-6">
+              {t.fullCourse.list.map((item: string, idx: number) => (
+                <li key={idx} className="flex items-center text-gray-600">
+                  <CheckCircle className="w-4 h-4 mr-2 text-[#139E9B]" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div className="text-center">
+              <button className="btn-primary px-8 py-4">{t.fullCourse.cta}</button>
             </div>
           </div>
         </div>
@@ -720,7 +807,7 @@ const FinalCTA = () => {
               </p>
               <div className="mt-4 inline-flex items-center px-3 py-1 rounded-full bg-[#2280FF]/10 text-[#2280FF] text-sm font-semibold">
                 <CheckCircle className="w-4 h-4 mr-2" />
-                Bill 96 &amp; Law 25 Compliant – EN/FR Built-In
+                {t.trustBadge}
               </div>
           </div>
           
@@ -903,6 +990,7 @@ function App() {
       <ProblemSection />
       <HowItWorks />
       <Services />
+      <Courses />
       <ProofSection />
       <FAQ />
       <FinalCTA />

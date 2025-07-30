@@ -6,23 +6,23 @@ export const en = {
     bookDemo: 'Book Demo'
   },
   hero: {
-    tagline: 'Bilingual Automation for Québec SMBs',
-    heading: 'Stop Losing Business to',
-    highlight: ' Missed Follow-ups',
-    sub1: 'Automation for today. AI-ready for tomorrow.',
-    sub2: 'Automate your follow-ups, reviews & reminders. 100% bilingual & Bill 96 compliant automation for Québec clinics, trades, and wellness businesses.',
-    bookDemo: 'Book Your Free Demo',
+    tagline: 'Built for Québec clinics, trades, and wellness businesses.',
+    heading: 'Stop losing clients to',
+    highlight: ' admin chaos',
+    sub1: 'Automate your reminders, follow-ups, and reviews—bilingually, legally, and without lifting a finger.',
+    sub2: 'Bill 96 + Law 25 safe. Demo before you decide.',
+    bookDemo: 'Show Me a Working Automation',
     quickQuestion: 'Quick Question?'
   },
   problems: {
-    heading: 'The Hidden Costs of',
-    highlight: ' Manual Follow-ups',
-    subheading: 'Every missed follow-up, no-show, and poor review is money walking out the door',
+    heading: 'Does this sound',
+    highlight: ' familiar?',
+    subheading: 'I fix all of that—with automation that speaks French, follows the law, and actually works.',
     list: [
-      { title: 'Missed Leads', description: 'Every hour without follow-up = 60% less chance of conversion', impact: 'Lost Revenue' },
-      { title: 'No-Shows', description: '25% of appointments are no-shows without proper reminders', impact: 'Wasted Time' },
-      { title: 'Poor Reviews', description: '90% of customers never leave reviews unless asked', impact: 'Invisible Online' },
-      { title: 'Bill 96 Risk', description: 'Non-compliant communications can result in hefty fines', impact: 'Legal Exposure' }
+      { title: 'Ghosted Leads', description: 'Leads disappear after filling out your form', impact: 'Lost Sales' },
+      { title: 'Missed Appointments', description: 'Clients forget or arrive late', impact: 'Wasted Time' },
+      { title: 'Late Invoices', description: 'Outstanding invoices keep piling up', impact: 'Cash Flow Squeeze' },
+      { title: 'Legal Uncertainty', description: 'Unsure if your texts or emails comply with Québec law', impact: 'Risk of Fines' }
     ]
   },
   howItWorks: {
@@ -36,24 +36,58 @@ export const en = {
     ]
   },
   services: {
-    tagline: 'Premium Automation Suite',
+    tagline: 'What I Automate',
     heading: 'Automations that',
-    highlight: ' Pay for Themselves',
-    subheading: 'Transform your business operations with intelligent automation that works 24/7, speaks both languages, and keeps you compliant.',
+    highlight: ' Save Time & Stay Compliant',
+    subheading: 'I create automations that save time, recover lost revenue, and make legal compliance effortless.',
     list: [
-      { title: 'Missed Lead Rescue', description: 'Instantly follow up on every inquiry (web, phone, email, DM), in English and French.', features: ['Instant response automation', 'Bilingual templates', 'Multi-channel integration'] },
-      { title: 'No-Show & Invoice Chaser', description: 'Automated reminders for appointments and overdue invoices—clients pay and show up.', features: ['Smart reminder sequences', 'Payment automation', 'Appointment confirmations'] },
-      { title: 'Review Engine', description: 'Request, track, and respond to reviews in both languages—boost your reputation and Google ranking.', features: ['Automated review requests', 'Response management', 'Reputation monitoring'] },
-      { title: 'Bill 96 Compliance Review', description: 'Ensure every message, reminder, and review request is 100% legal and ready for audit.', features: ['Legal compliance check', 'Bilingual verification', 'Audit-ready documentation'] }
+      { title: 'Speed to Lead', description: 'Auto-follow-up in EN/FR with every contact form, DM, or missed call', features: ['Instant response automation', 'Bilingual templates', 'Multi-channel integration'] },
+      { title: 'No-Show & Invoice Chaser', description: 'Automatic reminders, confirmations, and polite escalation sequences', features: ['Smart reminder sequences', 'Payment automation', 'Appointment confirmations'] },
+      { title: 'Review Engine', description: 'Sends smart, bilingual review requests and replies—compliance-safe, client-friendly', features: ['Automated review requests', 'Response management', 'Reputation monitoring'] },
+      {
+        title: 'Loi 96 Compliance – For Your Automations',
+        description:
+          'Every message, reminder, and review request is delivered in French first, reviewed for legal clarity, and ready for inspection.',
+        features: [
+          'Language-first compliance',
+          'Bilingual message validation',
+          'Documentation available on request'
+        ]
+      }
     ],
     benefits: [
-      { title: 'Demo-first', description: 'See your process automated before you commit' },
+      { title: 'Demo-first', description: 'See your real-world automation in action—before you decide.' },
       { title: 'Personal Support', description: 'Expert support—no agency handoff' },
       { title: 'Fast ROI', description: 'Fast setup, flat pricing, visible ROI' }
     ],
     whyTitle: 'Why Work With Simon Paris?',
-    whyParagraph: "I'm not just solving today's admin headaches—I'm helping Québec businesses get ready for the next wave of AI-driven growth.",
-    startJourney: 'Start Your Automation Journey'
+    whyParagraph: "You'll see it work before you commit. No fluff, no guessing.",
+    startJourney: 'Show Me a Working Automation'
+  },
+  miniCourse: {
+    heading: 'NEW: Understand Bill 96 & Law 25 in under an hour.',
+    subheading: 'Worried about compliance fines? This self-paced mini-course makes it simple.',
+    list: [
+      'Bilingual message templates (email, SMS, review requests)',
+      'Compliance checklists with official links',
+      'Real examples for Québec SMBs',
+      'Finish in under 60 minutes'
+    ],
+    cta: 'Explore the Compliance Kit'
+  },
+  fullCourse: {
+    heading: 'COMING SOON: AI-Powered Workflow Mastery',
+    subheading: 'Learn to automate lead capture, reminders, payments, and reviews yourself.',
+    list: [
+      'Step-by-step lessons with live demos',
+      'Bilingual templates included',
+      'Designed for Québec clinics, trades, and wellness businesses'
+    ],
+    cta: 'Join the Waitlist'
+  },
+  courses: {
+    title: 'Learn How to Automate & Stay Compliant',
+    subheading: 'Courses designed for Québec businesses who want clarity, control, and compliant growth.'
   },
   proof: {
     heading: 'Built for',
@@ -77,10 +111,10 @@ export const en = {
     ]
   },
   finalCTA: {
-    tagline: 'Ready to Transform Your Business?',
-    heading: 'Ready to Stop Losing Business and',
-    highlight: ' Sleep Easy on Compliance',
-    subheading: "Get your free workflow audit and see exactly where you're losing money",
+    tagline: 'Save time, get paid faster, and relax knowing you\u2019re compliant.',
+    heading: 'Ready to Automate and',
+    highlight: ' Stay Compliant?',
+    subheading: 'See a working automation before you commit.',
     nameLabel: 'Name *',
     namePlaceholder: 'Your full name',
     emailLabel: 'Email *',
@@ -90,11 +124,11 @@ export const en = {
     businessOptions: ['Select your business type', 'Medical/Dental Clinic', 'Wellness/Spa Business', 'Trades/Contractor', 'Other Service Business'],
     painLabel: 'Your Biggest Pain Point',
     painPlaceholder: "What's your biggest challenge with follow-ups, no-shows, or reviews?",
-    submit: 'Book Your Free 15-Minute Demo',
+    submit: 'Show Me a Working Automation',
     or: 'Or, send a quick question to:',
     sticky: 'Book Free Demo'
   },
-  trustBadge: 'Fully Québec compliant (Bill 96 & Law 25 – EN/FR built-in)',
+  trustBadge: 'Built for Québec • Demo-first • Fully bilingual & Law 96\u2013compliant',
   partners: {
     title: 'Trusted & Supported By'
   },
