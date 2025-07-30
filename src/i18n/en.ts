@@ -43,15 +43,25 @@ export const en = {
     list: [
       { title: 'Speed to Lead', description: 'Auto-follow-up in EN/FR with every contact form, DM, or missed call', features: ['Instant response automation', 'Bilingual templates', 'Multi-channel integration'] },
       { title: 'No-Show & Invoice Chaser', description: 'Automatic reminders, confirmations, and polite escalation sequences', features: ['Smart reminder sequences', 'Payment automation', 'Appointment confirmations'] },
-      { title: 'Review Engine', description: 'Sends smart, bilingual review requests and replies—compliance-safe, client-friendly', features: ['Automated review requests', 'Response management', 'Reputation monitoring'] }
+      { title: 'Review Engine', description: 'Sends smart, bilingual review requests and replies—compliance-safe, client-friendly', features: ['Automated review requests', 'Response management', 'Reputation monitoring'] },
+      {
+        title: 'Loi 96 Compliance – For Your Automations',
+        description:
+          'Every message, reminder, and review request is delivered in French first, reviewed for legal clarity, and ready for inspection.',
+        features: [
+          'Language-first compliance',
+          'Bilingual message validation',
+          'Documentation available on request'
+        ]
+      }
     ],
     benefits: [
-      { title: 'Demo-first', description: 'See your process automated before you commit' },
+      { title: 'Demo-first', description: 'See your real-world automation in action—before you decide.' },
       { title: 'Personal Support', description: 'Expert support—no agency handoff' },
       { title: 'Fast ROI', description: 'Fast setup, flat pricing, visible ROI' }
     ],
     whyTitle: 'Why Work With Simon Paris?',
-    whyParagraph: 'Everything is shown to you before you decide. Nothing vague. No surprises.',
+    whyParagraph: "You'll see it work before you commit. No fluff, no guessing.",
     startJourney: 'Show Me a Working Automation'
   },
   miniCourse: {
@@ -74,6 +84,10 @@ export const en = {
       'Designed for Québec clinics, trades, and wellness businesses'
     ],
     cta: 'Join the Waitlist'
+  },
+  courses: {
+    title: 'Learn How to Automate & Stay Compliant',
+    subheading: 'Courses designed for Québec businesses who want clarity, control, and compliant growth.'
   },
   proof: {
     heading: 'Built for',
@@ -114,7 +128,7 @@ export const en = {
     or: 'Or, send a quick question to:',
     sticky: 'Book Free Demo'
   },
-  trustBadge: '100% Bill 96 & Law 25 compliant • French-first bilingual • Demo-first',
+  trustBadge: 'Built for Québec • Demo-first • Fully bilingual & Law 96\u2013compliant',
   partners: {
     title: 'Trusted & Supported By'
   },

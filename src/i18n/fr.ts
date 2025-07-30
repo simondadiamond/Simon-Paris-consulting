@@ -45,15 +45,16 @@ const fr: TranslationKeys = {
     list: [
       { title: 'Relance de prospects', description: '', features: ['Suivi automatique après formulaire, appel manqu\u00e9 ou message', 'Mod\u00e8les bilingues inclus', 'Int\u00e9gration \u00e0 vos outils (ex. Google, Meta, Square)'] },
       { title: 'Chasseur d\u2019absences et de paiements', description: '', features: ['Rappels automatis\u00e9s avant les rendez-vous', 'Relance pour factures en retard', 'Messages FR/EN conformes et polis'] },
-      { title: 'G\u00e9n\u00e9rateur d\u2019avis clients', description: '', features: ['Envoi automatique apr\u00e8s prestation', 'Gestion des r\u00e9ponses', 'Aide au positionnement local (SEO)'] }
+      { title: 'G\u00e9n\u00e9rateur d\u2019avis clients', description: '', features: ['Envoi automatique apr\u00e8s prestation', 'Gestion des r\u00e9ponses', 'Aide au positionnement local (SEO)'] },
+        { title: 'Conformité Loi 96 – pour vos automatisations', description: "Chaque message, rappel et demande d'avis est envoyé en français d'abord, vérifié pour la clarté juridique et prêt pour inspection.", features: ['Conformité linguistique prioritaire', 'Validation bilingue des messages', 'Documentation disponible sur demande'] },
     ],
     benefits: [
-      { title: 'D\u00e9mo en direct', description: 'Je vous montre une solution r\u00e9elle, test\u00e9e avec votre contexte, avant tout paiement.' },
+      { title: 'Démo en direct', description: 'Voyez votre automatisation réelle en action—avant de vous décider.' },
       { title: 'Support personnalis\u00e9', description: 'Vous travaillez avec moi, pas avec un repr\u00e9sentant ou une agence.' },
       { title: 'R\u00e9sultats concrets', description: 'Moins de gestion. Moins d\u2019oublis. Plus de revenus.' }
     ],
     whyTitle: 'Pourquoi choisir Simon Paris ?',
-    whyParagraph: '',
+    whyParagraph: 'Vous verrez le tout fonctionner avant de vous engager. Aucun bla-bla, aucune surprise.',
     startJourney: 'Voir une automatisation en action'
   },
   miniCourse: {
@@ -76,6 +77,10 @@ const fr: TranslationKeys = {
       'Con\u00e7u pour les cliniques, commerces et services du Qu\u00e9bec'
     ],
     cta: 'Rejoindre la liste d\u2019attente'
+  },
+  courses: {
+    title: "Apprenez à automatiser et rester conforme",
+    subheading: "Des formations conçues pour les entreprises québécoises qui veulent clarté, contrôle et croissance conforme."
   },
   proof: {
     heading: 'Pensé pour',
@@ -116,7 +121,7 @@ const fr: TranslationKeys = {
     or: 'Ou, posez-moi votre question ici :',
     sticky: 'Réserver une démo'
   },
-  trustBadge: '100 % conforme Lois 25 et 96 • Bilingue en priorité français • Démo en direct',
+  trustBadge: 'Conçu pour le Québec • Démo en direct • Bilingue et conforme à la Loi 96',
   partners: {
     title: 'Partenaires de confiance'
   },
