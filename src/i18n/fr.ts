@@ -8,23 +8,23 @@ const fr: TranslationKeys = {
     bookDemo: 'Réserver une démo'
   },
   hero: {
-    tagline: 'Automatisation bilingue pour PME du Québec',
-    heading: 'Arrêtez de perdre des clients à cause de',
-    highlight: ' suivis manqués',
-    sub1: "L'automatisation pour aujourd'hui. L'IA pour demain.",
-    sub2: "Automatisez vos suivis, demandes d'avis et rappels. Automatisation 100% bilingue et conforme à la Loi 96 pour cliniques, commerces et entreprises de services du Québec.",
-    bookDemo: 'Réserver votre démo gratuite',
+    tagline: 'Pensé pour les cliniques, commerces et entreprises de services du Québec.',
+    heading: 'Assez de perdre des clients à cause du',
+    highlight: ' chaos administratif',
+    sub1: 'Automatisez vos rappels, suivis et demandes d\u2019avis—en français, conforme à la loi, sans effort.',
+    sub2: 'Conforme aux lois 25 et 96. Démo avant engagement.',
+    bookDemo: 'Voir une automatisation réelle',
     quickQuestion: 'Une question rapide ?'
   },
   problems: {
-    heading: 'Les coûts cachés des',
-    highlight: ' suivis manuels',
-    subheading: "Chaque suivi manqué, rendez-vous oublié ou mauvais avis, c'est de l'argent qui s'envole.",
+    heading: 'Vous reconnaissez ces',
+    highlight: ' problèmes\u00A0?',
+    subheading: 'Je règle tout ça\u2014avec de l\u2019automatisation bilingue, conforme et 100% fonctionnelle.',
     list: [
-      { title: 'Clients potentiels perdus', description: 'Chaque heure sans suivi = 60% moins de chances de convertir', impact: 'Revenus perdus' },
-      { title: 'Absentéisme', description: '25% des rendez-vous sont manqués sans rappels automatisés', impact: 'Temps perdu' },
-      { title: 'Peu d’avis positifs', description: '90% des clients ne laissent jamais d’avis sans sollicitation', impact: 'Invisible en ligne' },
-      { title: 'Risque Loi 96', description: 'Des communications non conformes peuvent coûter très cher', impact: 'Risque légal' }
+      { title: 'Prospects fant\u00F4mes', description: 'Des clients ne r\u00E9pondent pas apr\u00E8s avoir rempli votre formulaire', impact: 'Ventes perdues' },
+      { title: 'Rendez-vous oubli\u00E9s', description: 'Des rendez-vous oubli\u00E9s ou annul\u00E9s \u00E0 la derni\u00E8re minute', impact: 'Temps gaspill\u00E9' },
+      { title: 'Factures en retard', description: 'Des factures en retard\u2026 et personne pour faire le suivi', impact: 'Tr\u00E9sorerie sous pression' },
+      { title: 'Incertain de la loi', description: 'Vous n\u2019\u00EAtes plus certain que vos messages respectent la loi', impact: 'Risque l\u00E9gal' }
     ]
   },
   howItWorks: {
@@ -38,15 +38,14 @@ const fr: TranslationKeys = {
     ]
   },
   services: {
-    tagline: 'Suite d’automatisation haut de gamme',
+    tagline: 'Ce que j\u2019automatise',
     heading: 'Des automatisations qui',
-    highlight: ' se paient d’elles-mêmes',
-    subheading: 'Transformez vos opérations avec une automatisation intelligente, bilingue, conforme et disponible 24/7.',
+    highlight: ' font gagner du temps',
+    subheading: 'J\u2019automatise ce qui vous fait perdre du temps et de l\u2019argent—tout en assurant votre conformité.',
     list: [
-      { title: 'Sauvetage des prospects', description: 'Relances instantanées sur chaque demande (web, téléphone, courriel, DM), en français et en anglais.', features: ['Relance automatique', 'Modèles bilingues', 'Intégration multi-canaux'] },
-      { title: 'Chasseur d’absences et de paiements', description: 'Rappels automatisés pour RDV et factures en retard—vos clients paient et se présentent.', features: ['Séquences de rappels intelligents', 'Automatisation des paiements', 'Confirmation de rendez-vous'] },
-      { title: 'Propulseur d’avis', description: 'Demande, suivi et réponse aux avis dans les deux langues—boostez votre réputation et Google.', features: ['Demande d’avis automatisée', 'Gestion des réponses', 'Surveillance de réputation'] },
-      { title: 'Vérification Loi 96', description: 'Chaque message, rappel et demande d’avis est 100% légal et prêt pour audit.', features: ['Vérification légale', 'Validation bilingue', 'Documentation prête pour inspection'] }
+      { title: 'Relance immédiate des prospects', description: 'Suivi automatique (formulaires, messages, appels manqués) en FR/EN', features: ['Relance automatique', 'Modèles bilingues', 'Intégration multi-canaux'] },
+      { title: 'Chasseur de retards et d\u2019absences', description: 'Rappels, confirmations et relances polies, tout automatisé', features: ['Séquences de rappels intelligents', 'Automatisation des paiements', 'Confirmation de rendez-vous'] },
+      { title: 'Générateur d\u2019avis clients', description: 'Demandes d’avis conformes, bilingues et efficaces—sans intervention manuelle', features: ['Demande d’avis automatisée', 'Gestion des réponses', 'Surveillance de réputation'] }
     ],
     benefits: [
       { title: 'Démo d’abord', description: 'Voyez le résultat avant de vous engager' },
@@ -54,8 +53,8 @@ const fr: TranslationKeys = {
       { title: 'ROI rapide', description: 'Installation rapide, tarif fixe, résultats visibles' }
     ],
     whyTitle: 'Pourquoi choisir Simon Paris ?',
-    whyParagraph: "Je ne règle pas seulement vos problèmes d’administration : j’aide les PME du Québec à se préparer à la prochaine vague de croissance par l’IA.",
-    startJourney: 'Commencez votre transformation'
+    whyParagraph: 'Et tout ça, vous le voyez fonctionner avant de vous engager.',
+    startJourney: 'Voir une automatisation en action'
   },
   proof: {
     heading: 'Conçu pour',
@@ -79,10 +78,10 @@ const fr: TranslationKeys = {
     ]
   },
   finalCTA: {
-    tagline: 'Prêt à transformer votre entreprise ?',
-    heading: 'Prêt à arrêter de perdre des clients et',
-    highlight: ' dormir tranquille côté conformité',
-    subheading: "Recevez un audit gratuit et voyez exactement où vous perdez temps et argent",
+    tagline: 'Gagnez du temps, encaissez plus vite et dormez tranquille c\u00f4t\u00e9 conformit\u00e9.',
+    heading: 'Pr\u00eat \u00e0 automatiser et \u00e0',
+    highlight: ' rester en r\u00e8gle\u00a0?',
+    subheading: 'Voyez-le fonctionner avant de vous engager.',
     nameLabel: 'Nom *',
     namePlaceholder: 'Votre nom complet',
     emailLabel: 'Courriel *',
@@ -92,11 +91,11 @@ const fr: TranslationKeys = {
     businessOptions: ['Sélectionnez votre secteur', 'Clinique médicale/dentaire', 'Entreprise de bien-être/spa', 'Commerçant/entrepreneur', 'Autre service'],
     painLabel: 'Votre principal enjeu',
     painPlaceholder: 'Quel est votre plus grand défi : suivis, absences, avis ?',
-    submit: 'Réservez votre démo gratuite (15 min)',
+    submit: 'Montrez-moi une automatisation en action',
     or: 'Ou, posez-moi votre question ici :',
     sticky: 'Réserver une démo'
   },
-  trustBadge: 'Conforme au Québec (Loi 96 & Loi 25 – EN/FR intégré)',
+  trustBadge: '100 % conforme Lois 25 et 96 • Bilingue en priorité français • Démo en direct',
   partners: {
     title: 'Partenaires de confiance'
   },
