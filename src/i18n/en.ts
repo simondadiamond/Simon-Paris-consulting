@@ -54,6 +54,27 @@ export const en = {
     whyParagraph: 'Everything is shown to you before you decide. Nothing vague. No surprises.',
     startJourney: 'Show Me a Working Automation'
   },
+  miniCourse: {
+    heading: 'NEW: Understand Bill 96 & Law 25 in under an hour.',
+    subheading: 'Worried about compliance fines? This self-paced mini-course makes it simple.',
+    list: [
+      'Bilingual message templates (email, SMS, review requests)',
+      'Compliance checklists with official links',
+      'Real examples for Québec SMBs',
+      'Finish in under 60 minutes'
+    ],
+    cta: 'Explore the Compliance Kit'
+  },
+  fullCourse: {
+    heading: 'COMING SOON: AI-Powered Workflow Mastery',
+    subheading: 'Learn to automate lead capture, reminders, payments, and reviews yourself.',
+    list: [
+      'Step-by-step lessons with live demos',
+      'Bilingual templates included',
+      'Designed for Québec clinics, trades, and wellness businesses'
+    ],
+    cta: 'Join the Waitlist'
+  },
   proof: {
     heading: 'Built for',
     highlight: ' Québec SMBs',

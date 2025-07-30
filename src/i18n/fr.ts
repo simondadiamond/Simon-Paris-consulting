@@ -56,6 +56,27 @@ const fr: TranslationKeys = {
     whyParagraph: '',
     startJourney: 'Voir une automatisation en action'
   },
+  miniCourse: {
+    heading: 'NOUVEAU\u00a0: Comprenez les lois 25 et 96 en moins d\u2019une heure.',
+    subheading: 'Vous craignez les amendes? Ce mini-cours autonome vous simplifie la conformit\u00e9.',
+    list: [
+      'Mod\u00e8les de messages bilingues (courriels, SMS, demandes d\u2019avis)',
+      'Listes de v\u00e9rification avec liens vers les sources officielles',
+      'Exemples r\u00e9els pour PME qu\u00e9b\u00e9coises',
+      'Moins d\u2019une heure pour tout comprendre'
+    ],
+    cta: 'D\u00e9couvrir le mini-cours'
+  },
+  fullCourse: {
+    heading: 'Bient\u00f4t\u00a0: Ma\u00eetrise compl\u00e8te des automatisations',
+    subheading: 'Apprenez \u00e0 automatiser la capture de prospects, les rappels, les paiements et les avis clients.',
+    list: [
+      'Le\u00e7ons pas \u00e0 pas avec d\u00e9mos r\u00e9elles',
+      'Mod\u00e8les bilingues fournis',
+      'Con\u00e7u pour les cliniques, commerces et services du Qu\u00e9bec'
+    ],
+    cta: 'Rejoindre la liste d\u2019attente'
+  },
   proof: {
     heading: 'Pensé pour',
     highlight: ' les PME du Québec',
