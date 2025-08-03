@@ -132,6 +132,7 @@ const fr: TranslationKeys = {
     servicesList: ['Suivi des clients potentiels', 'Rappels de rendez-vous', 'Gestion des avis', 'Conformité Loi 96'],
     contact: 'Contact',
     location: 'Québec, Canada',
+    privacy: 'Politique de confidentialité',
     copyright: '© 2024 Simon Paris Consulting. Tous droits réservés.',
     curiosity: "Curieux des prochaines avancées IA pour PME ? Écrivez à Simon."
   }
