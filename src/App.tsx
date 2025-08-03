@@ -998,5 +998,5 @@ function App() {
     </div>
   );
 }
-
+export { Header, Footer };
 export default App;
