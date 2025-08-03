@@ -920,7 +920,7 @@ const FinalCTA = () => {
 
 // Footer Component
 const Footer = () => {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   return (
     <footer className="relative py-16" style={{ background: '#121C2D' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -970,9 +970,15 @@ const Footer = () => {
             <p className="text-gray-400 mb-4 md:mb-0">
               {t.footer.copyright}
             </p>
-            <p className="text-gray-400 text-sm">
-              {t.footer.curiosity}
-            </p>
+            <div className="flex items-center space-x-4 text-sm">
+              <a
+                href={lang === 'fr' ? '/fr/politique-confidentialite' : '/privacy'}
+                className="text-[#2ED3CF] hover:text-[#2280FF]"
+              >
+                {t.footer.privacy}
+              </a>
+              <p className="text-gray-400">{t.footer.curiosity}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -998,5 +1004,5 @@ function App() {
     </div>
   );
 }
-
+export { Header, Footer };
 export default App;

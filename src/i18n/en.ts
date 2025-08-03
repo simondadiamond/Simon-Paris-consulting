@@ -139,6 +139,7 @@ export const en = {
     servicesList: ['Lead Follow-up Automation', 'Appointment Reminders', 'Review Management', 'Bill 96 Compliance'],
     contact: 'Contact',
     location: 'Québec, Canada',
+    privacy: 'Privacy Policy',
     copyright: '© 2024 Simon Paris Consulting. All rights reserved.',
     curiosity: 'Curious about the next wave of AI for SMBs? Ask Simon.'
   }
