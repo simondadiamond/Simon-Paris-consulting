@@ -966,11 +966,11 @@ const FinalCTA = () => {
 const Footer = () => {
   const { t, lang } = useLanguage();
   return (
-    <footer className="relative py-16 bg-white text-[#666666]">
+    <footer className="relative py-16 bg-[#121C2D] text-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           <div>
-            <div className="text-2xl font-bold text-[#121C2D] mb-4">
+            <div className="text-2xl font-bold mb-4">
               {t.header.brand}
             </div>
             <p className="mb-6 leading-relaxed">
@@ -983,7 +983,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold text-[#121C2D] mb-4">{t.footer.services}</h4>
+            <h4 className="text-lg font-semibold mb-4">{t.footer.services}</h4>
             <ul className="space-y-2">
               {t.footer.servicesList.map(item => (
                 <li key={item}>{item}</li>
@@ -992,7 +992,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold text-[#121C2D] mb-4">{t.footer.contact}</h4>
+            <h4 className="text-lg font-semibold mb-4">{t.footer.contact}</h4>
             <div className="space-y-3">
               <a
                 href={`mailto:${t.header.email}`}
@@ -1009,7 +1009,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-gray-200">
+        <div className="pt-8 border-t border-gray-700">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="mb-4 md:mb-0">
               {t.footer.copyright}
