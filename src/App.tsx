@@ -10,14 +10,30 @@ import {
 // Header Component
 const Header = ({ langToggleHref, langToggleLabel }: { langToggleHref?: string; langToggleLabel?: string }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { t, lang, setLang } = useLanguage();
+
+  const isPrivacyPage =
+    typeof window !== 'undefined' &&
+    (window.location.pathname === '/privacy' ||
+      window.location.pathname === '/fr/politique-confidentialite');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const textClass = !isScrolled && isPrivacyPage ? 'text-[#121C2D]' : 'text-white';
 
   const LanguageToggle = () => {
     if (langToggleHref && langToggleLabel) {
       return (
         <a
           href={langToggleHref}
-          className="text-white underline decoration-transparent hover:decoration-[#2280FF]"
+          className={`${textClass} underline decoration-transparent hover:decoration-[#2280FF]`}
         >
           {langToggleLabel}
         </a>
@@ -25,7 +41,7 @@ const Header = ({ langToggleHref, langToggleLabel }: { langToggleHref?: string; 
     }
     return (
       <button
-        className="flex items-center text-sm text-white underline decoration-transparent hover:decoration-[#2280FF]"
+        className={`flex items-center text-sm ${textClass} underline decoration-transparent hover:decoration-[#2280FF]`}
         onClick={() => setLang(lang === 'en' ? 'fr' : 'en')}
       >
         <Globe className="w-4 h-4 mr-2" />
@@ -36,15 +52,19 @@ const Header = ({ langToggleHref, langToggleLabel }: { langToggleHref?: string; 
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#121C2D]">
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${
+          isScrolled ? 'bg-[#121C2D]' : 'bg-transparent'
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <div className="text-2xl font-bold text-white">{t.header.brand}</div>
+            <div className={`text-2xl font-bold ${textClass}`}>{t.header.brand}</div>
             <div className="hidden md:flex items-center space-x-8">
               <LanguageToggle />
               <a
                 href={`mailto:${t.header.email}`}
-                className="transition-colors duration-300 font-medium text-white hover:text-[#2280FF]"
+                className={`transition-colors duration-300 font-medium ${textClass} hover:text-[#2280FF]`}
               >
                 {t.header.email}
               </a>
@@ -54,17 +74,18 @@ const Header = ({ langToggleHref, langToggleLabel }: { langToggleHref?: string; 
             </div>
             <div className="flex md:hidden items-center space-x-4">
               <LanguageToggle />
-              <button
-                className="text-white"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              >
-                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                {isMobileMenuOpen ? (
+                  <X className={`w-6 h-6 ${textClass}`} />
+                ) : (
+                  <Menu className={`w-6 h-6 ${textClass}`} />
+                )}
               </button>
             </div>
           </div>
         </div>
       </header>
-
+      
       {/* Mobile Menu */}
       <div
         className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${

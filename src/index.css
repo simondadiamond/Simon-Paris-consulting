@@ -13,7 +13,7 @@
   --text-primary: #333333;
   --text-secondary: #4B5563;
   --text-muted: #6B7280;
-  --btn-gradient: linear-gradient(to right, #2ED3CF, #2280FF);
+  --btn-gradient: linear-gradient(to right, #2280FF, #2ED3CF);
 }
 
 * {
