@@ -59,7 +59,13 @@ const Header = ({ langToggleHref, langToggleLabel }: { langToggleHref?: string; 
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <div className={`text-2xl font-bold ${textClass}`}>{t.header.brand}</div>
+            <a
+              href={lang === 'fr' ? '/fr' : '/'}
+              onClick={() => localStorage.setItem('lang', lang)}
+              className={`text-2xl font-bold ${textClass}`}
+            >
+              {t.header.brand}
+            </a>
             <div className="hidden md:flex items-center space-x-8">
               <LanguageToggle />
               <a

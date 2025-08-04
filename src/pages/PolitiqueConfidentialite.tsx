@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Header, Footer } from '../App';
+import { useLanguage } from '../LanguageProvider';
 
 const PolitiqueConfidentialite = () => {
+  const { setLang } = useLanguage();
+
+  useEffect(() => {
+    setLang('fr');
+  }, [setLang]);
+
   return (
     <div className="min-h-screen bg-white">
       <Header langToggleHref="/privacy" langToggleLabel="EN" />
