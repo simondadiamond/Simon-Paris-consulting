@@ -29,24 +29,34 @@ const Header = ({ langToggleHref, langToggleLabel }: { langToggleHref?: string; 
   const textClass = !isScrolled && isPrivacyPage ? 'text-[#121C2D]' : 'text-white';
 
   const LanguageToggle = () => {
+    const targetLang = lang === 'en' ? 'fr' : 'en';
+    const href = targetLang === 'fr' ? '/fr' : '/';
     if (langToggleHref && langToggleLabel) {
       return (
         <a
           href={langToggleHref}
           className={`${textClass} underline decoration-transparent hover:decoration-[#2280FF]`}
+          onClick={() => {
+            setLang(targetLang);
+            localStorage.setItem('lang', targetLang);
+          }}
         >
           {langToggleLabel}
         </a>
       );
     }
     return (
-      <button
+      <a
+        href={href}
         className={`flex items-center text-sm ${textClass} underline decoration-transparent hover:decoration-[#2280FF]`}
-        onClick={() => setLang(lang === 'en' ? 'fr' : 'en')}
+        onClick={() => {
+          setLang(targetLang);
+          localStorage.setItem('lang', targetLang);
+        }}
       >
         <Globe className="w-4 h-4 mr-2" />
         <span>{t.header.languageToggle}</span>
-      </button>
+      </a>
     );
   };
 
