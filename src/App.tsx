@@ -29,24 +29,34 @@ const Header = ({ langToggleHref, langToggleLabel }: { langToggleHref?: string; 
   const textClass = !isScrolled && isPrivacyPage ? 'text-[#121C2D]' : 'text-white';
 
   const LanguageToggle = () => {
+    const targetLang = lang === 'en' ? 'fr' : 'en';
+    const href = targetLang === 'fr' ? '/fr' : '/';
     if (langToggleHref && langToggleLabel) {
       return (
         <a
           href={langToggleHref}
           className={`${textClass} underline decoration-transparent hover:decoration-[#2280FF]`}
+          onClick={() => {
+            setLang(targetLang);
+            localStorage.setItem('lang', targetLang);
+          }}
         >
           {langToggleLabel}
         </a>
       );
     }
     return (
-      <button
+      <a
+        href={href}
         className={`flex items-center text-sm ${textClass} underline decoration-transparent hover:decoration-[#2280FF]`}
-        onClick={() => setLang(lang === 'en' ? 'fr' : 'en')}
+        onClick={() => {
+          setLang(targetLang);
+          localStorage.setItem('lang', targetLang);
+        }}
       >
         <Globe className="w-4 h-4 mr-2" />
         <span>{t.header.languageToggle}</span>
-      </button>
+      </a>
     );
   };
 
@@ -158,13 +168,13 @@ const Hero = () => {
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 text-center">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="inline-flex items-center card-glass rounded-full px-4 py-2 mb-8">
-            <Sparkles className="w-4 h-4 mr-2 text-[#139E9B]" />
+            <Sparkles className="w-4 h-4 mr-2 text-teal-400" />
             <span className="text-sm font-medium text-white">{t.hero.tagline}</span>
           </div>
           
           <h1 className="text-hero text-white mb-6">
             {t.hero.heading}
-            <span className="text-[#139E9B]">{t.hero.highlight}</span>
+            <span className="text-teal-400">{t.hero.highlight}</span>
           </h1>
           
           <p className="text-lg text-gray-400 mb-4 max-w-2xl mx-auto">
@@ -179,16 +189,16 @@ const Hero = () => {
             <button className="btn-primary text-xl px-10 py-5 group">
               <Calendar className="w-6 h-6 mr-3" />
               {t.hero.bookDemo}
-              <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform group-hover:text-[#139E9B]" />
+              <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform group-hover:text-teal-400" />
             </button>
           </div>
 
           <p className="text-sm font-medium flex justify-center items-center text-[#2280FF] mb-8">
-            <CheckCircle className="w-4 h-4 mr-2 text-[#139E9B]" />
+            <CheckCircle className="w-4 h-4 mr-2 text-teal-400" />
             {t.trustBadge}
           </p>
 
-          <div className="w-16 h-1 bg-[#139E9B] rounded-full mx-auto" />
+          <div className="w-16 h-1 bg-teal-400 rounded-full mx-auto" />
         </div>
       </div>
     </section>
@@ -288,7 +298,7 @@ const ProblemSection = () => {
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-display text-gray-900 mb-6">
             {t.problems.heading}
-            <span className="text-[#139E9B]">{t.problems.highlight}</span>
+            <span className="text-teal-400">{t.problems.highlight}</span>
           </h2>
           <p className="text-subhead max-w-3xl mx-auto text-gray-600">
             {t.problems.subheading}
@@ -361,7 +371,7 @@ const HowItWorks = () => {
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-display text-gray-900 mb-6">
             {t.howItWorks.heading}
-            <span className="text-[#139E9B]">{t.howItWorks.highlight}</span>
+            <span className="text-teal-400">{t.howItWorks.highlight}</span>
           </h2>
           <p className="text-subhead max-w-3xl mx-auto text-gray-600">
             {t.howItWorks.subheading}
@@ -392,7 +402,7 @@ const HowItWorks = () => {
               
               {index < steps.length - 1 && (
                 <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
-                  <ArrowRight className="w-8 h-8 text-[#139E9B]" />
+                  <ArrowRight className="w-8 h-8 text-teal-400" />
                 </div>
               )}
             </div>
@@ -446,7 +456,7 @@ const Services = () => {
           </div>
           <h2 className="text-display text-gray-900 mb-6">
             {t.services.heading}
-            <span className="text-[#139E9B]">{t.services.highlight}</span>
+            <span className="text-teal-400">{t.services.highlight}</span>
           </h2>
           <p className="text-subhead max-w-3xl mx-auto text-gray-600">
             {t.services.subheading}
@@ -477,7 +487,7 @@ const Services = () => {
               <ul className="space-y-2">
                 {service.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-center text-sm text-gray-600">
-                    <CheckCircle className="w-4 h-4 mr-2 flex-shrink-0 text-[#139E9B]" />
+                    <CheckCircle className="w-4 h-4 mr-2 flex-shrink-0 text-teal-400" />
                     {feature}
                   </li>
                 ))}
@@ -577,7 +587,7 @@ const Courses = () => {
             <ul className="space-y-2 mb-6">
               {t.miniCourse.list.map((item: string, idx: number) => (
                 <li key={idx} className="flex items-center text-gray-600">
-                  <CheckCircle className="w-4 h-4 mr-2 text-[#139E9B]" />
+                  <CheckCircle className="w-4 h-4 mr-2 text-teal-400" />
                   {item}
                 </li>
               ))}
@@ -598,7 +608,7 @@ const Courses = () => {
             <ul className="space-y-2 mb-6">
               {t.fullCourse.list.map((item: string, idx: number) => (
                 <li key={idx} className="flex items-center text-gray-600">
-                  <CheckCircle className="w-4 h-4 mr-2 text-[#139E9B]" />
+                  <CheckCircle className="w-4 h-4 mr-2 text-teal-400" />
                   {item}
                 </li>
               ))}
@@ -642,7 +652,7 @@ const ProofSection = () => {
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-display text-gray-900 mb-6">
             {t.proof.heading}
-            <span className="text-[#139E9B]">{t.proof.highlight}</span>
+            <span className="text-teal-400">{t.proof.highlight}</span>
           </h2>
           <p className="text-subhead max-w-3xl mx-auto text-gray-600">
             {t.proof.subheading}
@@ -716,7 +726,7 @@ const FAQ = () => {
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-display text-gray-900 mb-6">
             {t.faq.heading}
-            <span className="text-[#139E9B]">{t.faq.highlight}</span>
+            <span className="text-teal-400">{t.faq.highlight}</span>
           </h2>
           <p className="text-subhead text-gray-600">
             {t.faq.subheading}
@@ -829,12 +839,12 @@ const FinalCTA = () => {
         <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8">
           <div className={`text-center mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <div className="inline-flex items-center card-glass rounded-full px-4 py-2 mb-6">
-                <Sparkles className="w-4 h-4 mr-2 text-[#139E9B]" />
+                <Sparkles className="w-4 h-4 mr-2 text-teal-400" />
                 <span className="text-sm font-medium text-gray-900">{t.finalCTA.tagline}</span>
               </div>
               <h2 className="text-display text-gray-900 mb-6">
                 {t.finalCTA.heading}
-                <span className="text-[#139E9B]">{t.finalCTA.highlight}</span>
+                <span className="text-teal-400">{t.finalCTA.highlight}</span>
               </h2>
               <p className="text-subhead text-gray-600">
                 {t.finalCTA.subheading}
@@ -922,7 +932,7 @@ const FinalCTA = () => {
                   >
                     <Calendar className="w-6 h-6 mr-3" />
                     {t.finalCTA.submit}
-                    <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 group-hover:text-[#139E9B] transition-transform" />
+                    <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 group-hover:text-teal-400 transition-transform" />
                   </button>
                 </div>
               </form>
@@ -931,9 +941,9 @@ const FinalCTA = () => {
                 <p className="text-gray-600 mb-4 text-lg">{t.finalCTA.or}</p>
                 <a
                   href={`mailto:${t.header.email}`}
-                  className="inline-flex items-center font-semibold text-lg group transition-colors duration-300 text-[#2280FF] hover:text-[#139E9B]"
+                  className="inline-flex items-center font-semibold text-lg group transition-colors duration-300 text-[#2280FF] hover:text-teal-400"
                 >
-                  <Send className="w-5 h-5 mr-2 group-hover:translate-x-1 group-hover:text-[#139E9B] transition-transform" />
+                  <Send className="w-5 h-5 mr-2 group-hover:translate-x-1 group-hover:text-teal-400 transition-transform" />
                   {t.header.email}
                 </a>
               </div>
@@ -956,11 +966,11 @@ const FinalCTA = () => {
 const Footer = () => {
   const { t, lang } = useLanguage();
   return (
-    <footer className="relative py-16 bg-white text-[#666666]">
+    <footer className="relative py-16 bg-[#121C2D] text-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           <div>
-            <div className="text-2xl font-bold text-[#121C2D] mb-4">
+            <div className="text-2xl font-bold mb-4">
               {t.header.brand}
             </div>
             <p className="mb-6 leading-relaxed">
@@ -973,7 +983,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold text-[#121C2D] mb-4">{t.footer.services}</h4>
+            <h4 className="text-lg font-semibold mb-4">{t.footer.services}</h4>
             <ul className="space-y-2">
               {t.footer.servicesList.map(item => (
                 <li key={item}>{item}</li>
@@ -982,7 +992,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold text-[#121C2D] mb-4">{t.footer.contact}</h4>
+            <h4 className="text-lg font-semibold mb-4">{t.footer.contact}</h4>
             <div className="space-y-3">
               <a
                 href={`mailto:${t.header.email}`}
@@ -999,7 +1009,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-gray-200">
+        <div className="pt-8 border-t border-gray-700">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="mb-4 md:mb-0">
               {t.footer.copyright}

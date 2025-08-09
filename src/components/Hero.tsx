@@ -77,7 +77,7 @@ const Services = () => {
           </div>
           <h2 className="text-display text-white mb-6">
             Automations that 
-            <span className="text-[#139E9B]"> Pay for Themselves</span>
+            <span className="text-teal-400"> Pay for Themselves</span>
           </h2>
           <p className="text-subhead max-w-3xl mx-auto text-gray-300">
             Transform your business operations with intelligent automation that works 24/7, 
@@ -94,8 +94,7 @@ const Services = () => {
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
-                   style={{ background: '#139E9B' }}>
+              <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 bg-teal-400">
                 <service.icon className="w-8 h-8 text-white" />
               </div>
               
@@ -129,7 +128,7 @@ const Services = () => {
               <div className="grid md:grid-cols-3 gap-8">
                 {benefits.map((benefit, index) => (
                   <div key={index} className="text-center group">
-                    <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 bg-[#2280FF]" style={{ background: '#139E9B' }}>
+                    <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 bg-teal-400">
                       <benefit.icon className="w-10 h-10 text-white" />
                     </div>
                     <h4 className="text-xl font-semibold text-white mb-3">

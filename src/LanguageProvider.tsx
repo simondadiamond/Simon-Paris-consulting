@@ -35,9 +35,17 @@ const detectLanguage = async (): Promise<Language> => {
 };
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [lang, setLang] = useState<Language>('en');
+  const pathLang =
+    typeof window !== 'undefined' && window.location.pathname.startsWith('/fr') ? 'fr' : 'en';
+  const [lang, setLang] = useState<Language>(pathLang);
 
   useEffect(() => {
+    const currentPathLang = window.location.pathname.startsWith('/fr') ? 'fr' : null;
+    if (currentPathLang) {
+      setLang(currentPathLang);
+      localStorage.setItem('lang', currentPathLang);
+      return;
+    }
     const stored = localStorage.getItem('lang') as Language | null;
     if (stored) {
       setLang(stored);
