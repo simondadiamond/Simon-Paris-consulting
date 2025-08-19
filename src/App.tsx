@@ -4,7 +4,7 @@ import {
   Globe, Menu, X,
   MessageSquare, CalendarX, Receipt, Shield,
   Zap, CalendarCheck, Star, CheckCircle,
-  Mail, MapPin
+  Mail, MapPin, ChevronDown, ChevronUp
 } from 'lucide-react';
 
 // Header Component
