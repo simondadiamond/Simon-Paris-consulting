@@ -8,13 +8,16 @@ const fr: TranslationKeys = {
     bookDemo: 'Réserver une démo'
   },
   hero: {
-    tagline: 'Pensé pour les PME du Québec',
-    heading: 'Dites adieu aux',
-    highlight: ' absences, suivis oubliés et factures impayées.',
-    sub1: 'J\u2019automatise vos rappels, suivis et demandes d\u2019avis\u2014en français, conforme aux lois du Québec, et sans effort.',
-    sub2: 'Conforme aux lois 25 et 96 \u2022 Français en priorité \u2022 Démo avant engagement',
-    bookDemo: 'Voir une automatisation en action',
-    quickQuestion: 'Une question rapide ?'
+    eyebrow: 'Pour les cliniques du Québec • Prêt Loi 25 + Loi 96',
+    h1_part1: 'Remplissez votre horaire.',
+    h1_accent: 'Restez 100 % conforme.',
+    subhead:
+      "Automatisations bilingues prêtes à l’emploi pour réponse instantanée aux demandes (Speed‑to‑Lead), relance des absents et moteur d’avis—conçues pour les cliniques du Québec. Démo avant d’acheter. Installation en quelques minutes.",
+    proof:
+      'Les cliniques constatent souvent 25–50 % moins d’absences et des suivis beaucoup plus rapides.',
+    primaryCta: 'Télécharger la liste de conformité',
+    secondaryCta: 'Voir les packs d’automatisation (149 $)',
+    microTrust: 'FR d’abord • Docs prêts pour audit • Sans contrat à long terme'
   },
   problems: {
     heading: 'Vous reconnaissez ces',

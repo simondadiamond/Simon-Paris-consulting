@@ -150,56 +150,58 @@ const Header = ({ langToggleHref, langToggleLabel }: { langToggleHref?: string; 
 
 // Hero Component
 const Hero = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const { t } = useLanguage();
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
+  const isFR = typeof window !== 'undefined' && window.location.pathname.startsWith('/fr');
+  const base = isFR ? '/fr' : '';
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background: '#121C2D' }}>
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{ background: '#121C2D' }}
+    >
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        <div
+          className="absolute bottom-20 right-10 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl animate-float"
+          style={{ animationDelay: '2s' }}
+        />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 text-center">
-        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="inline-flex items-center card-glass rounded-full px-4 py-2 mb-8">
-            <Sparkles className="w-4 h-4 mr-2 text-teal-400" />
-            <span className="text-sm font-medium text-white">{t.hero.tagline}</span>
-          </div>
-          
-          <h1 className="text-hero text-white mb-6">
-            {t.hero.heading}
-            <span className="text-teal-400">{t.hero.highlight}</span>
-          </h1>
-          
-          <p className="text-lg text-gray-400 mb-4 max-w-2xl mx-auto">
-            {t.hero.sub1}
-          </p>
-          
-          <p className="text-subhead max-w-3xl mx-auto mb-12 text-gray-300">
-            {t.hero.sub2}
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-            <button className="btn-primary text-xl px-10 py-5 group">
-              <Calendar className="w-6 h-6 mr-3" />
-              {t.hero.bookDemo}
-              <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform group-hover:text-teal-400" />
-            </button>
-          </div>
-
-          <p className="text-sm font-medium flex justify-center items-center text-[#2280FF] mb-8">
-            <CheckCircle className="w-4 h-4 mr-2 text-teal-400" />
-            {t.trustBadge}
-          </p>
-
-          <div className="w-16 h-1 bg-teal-400 rounded-full mx-auto" />
+        <div className="inline-flex items-center card-glass rounded-full px-4 py-2 mb-8">
+          <span className="text-sm font-medium text-white">{t.hero.eyebrow}</span>
         </div>
+
+        <h1 className="text-hero text-white mb-6 leading-tight tracking-tight">
+          <span>{t.hero.h1_part1} </span>
+          <span className="text-[#139E9B]">{t.hero.h1_accent}</span>
+        </h1>
+
+        <p className="text-subhead text-gray-300 max-w-3xl mx-auto mb-4">{t.hero.subhead}</p>
+        <p className="text-sm text-gray-400 mb-10">{t.hero.proof}</p>
+
+        <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+          <a
+            href={`${base}/checklist`}
+            className="btn-primary text-lg px-8 py-4"
+            data-event="cta_click"
+            data-cta="checklist"
+          >
+            {t.hero.primaryCta}
+          </a>
+          <a
+            href={`${base}/packs`}
+            className="btn-outline text-lg px-8 py-4"
+            data-event="cta_click"
+            data-cta="packs"
+          >
+            {t.hero.secondaryCta}
+          </a>
+        </div>
+
+        <div className="mt-6 text-[#8fa3b8] text-sm">{t.hero.microTrust}</div>
       </div>
     </section>
   );
