@@ -19,45 +19,46 @@ export const en = {
       secondaryCta: `See Automation Packs ($${PACK_PRICE})`
     },
   problems: {
-    title: 'Why clinics keep losing money every week…',
+    title: 'Why clinics lose money every week…',
     list: [
-      { title: 'Ghosted Leads', body: 'Leads wait and book elsewhere.' },
-      { title: 'Missed Appointments', body: 'Empty chairs at prime hours.' },
-      { title: 'Late Invoices', body: 'Cash flow gets squeezed.' },
-      { title: 'Legal Uncertainty', body: 'Messaging may breach Bill 96/Law 25.' }
+      { title: 'Ignored leads', body: 'Patients wait and book elsewhere.' },
+      { title: 'Missed appointments', body: 'Empty chairs at peak hours.' },
+      { title: 'Late invoices', body: 'Cash flow gets squeezed.' },
+      { title: 'Legal uncertainty', body: 'Messages may breach Law 25/Bill 96.' }
     ],
-    note: 'You can fix all of this with simple, bilingual automation.'
+    note: 'You can fix all of this with simple bilingual automation.'
   },
   growth: {
-    title: 'Your Clinic\u2019s Growth Engine: Simple, Bilingual, Compliant.',
+    title: 'Your clinic\u2019s growth engine: simple, bilingual, compliant.',
     gears: [
-      { title: 'Speed\u2011to\u2011Lead SMS', desc: 'instant reply, EN/FR' },
-      { title: 'No\u2011Show Chaser + Recall', desc: 'fewer empty chairs' },
-      { title: 'Review & Compliance Engine', desc: 'more 5\u2605, audit-friendly' }
+      { title: 'Speed\u2011to\u2011Lead SMS', desc: 'Reply before competitors.' },
+      { title: 'No\u2011Show Chaser + Reminders', desc: 'Fewer empty chairs every week.' },
+      { title: 'Review Engine + Compliance', desc: 'More 5\u2605 reviews, audit-ready docs.' }
     ],
-    cta: 'See Packs in Action'
+    cta: 'See the packs in action'
   },
   offers: {
-    heading: 'Three productized paths.',
+    heading: 'Choose your path',
     list: [
       {
         title: 'DIY Packs',
         price: `$${PACK_PRICE} each`,
-        desc: 'Plug\u2011and\u2011play automations. Install in minutes.',
-        cta: 'Browse Packs',
+        desc: 'Install-ready automations. Minutes to set up.',
+        cta: 'View Packs',
         href: '/packs'
       },
       {
-        title: 'Quick Audit',
+        title: '48\u2011Hour Audit',
         price: '$249',
-        desc: '48h diagnosis + 1 quick win installed.',
-        cta: 'Book 48h Audit',
-        href: '/audit'
+        desc: 'Diagnosis + 1 quick-win installed.',
+        cta: 'Book the 48h Audit',
+        href: '/audit',
+        badge: 'Most Popular'
       },
       {
         title: 'Complete System',
         price: '$1,499',
-        desc: 'All 3 packs installed + QA + handoff.',
+        desc: 'All 3 packs installed + QA + handover.',
         cta: 'Get the System',
         href: '/system'
       }
@@ -65,28 +66,28 @@ export const en = {
     note: 'Flat pricing. No hidden fees. French-first templates.'
   },
   roi: {
-    title: `${PACK_PRICE} $ vs ~400 $ in lost appointments each month`,
-    without: '3 missed appointments/month \u2248 $300\u2013$400 lost in revenue',
-    with: `$${PACK_PRICE} pack \u2192 faster responses, fewer no-shows`,
+    title: `Why $${PACK_PRICE} beats ~$600\u2013$900 lost each month`,
+    without: 'Typical clinic: missed leads, 3\u20134 no-shows, late invoices \u2248 $600\u2013$900 lost monthly.',
+    with: `Packs from $${PACK_PRICE} \u2192 faster responses, fewer no-shows, on-time invoices.`,
     note: 'Many clinics recoup the pack cost within the first week.',
     disclaimer:
-      'Estimates assume a typical appointment value of ~$100\u2013150. Results will vary by clinic.'
+      'Estimates assume ~$120\u2013$150 per appointment and typical lead loss for Qu\u00E9bec clinics. Results vary by clinic.'
   },
   proof: {
     title: 'Clinics that automate see results fast.',
     bullets: [
       '25\u201350% fewer no-shows',
-      '5\u00d7 more booked appointments from instant SMS',
-      '3\u00d7 more Google reviews in 30\u201360 days'
+      'Replies in under 5 minutes',
+      '3\u00D7 more Google reviews in 30\u201360 days'
     ]
   },
   faq: {
     title: 'FAQ',
     list: [
-      { question: 'How quickly can we launch?', answer: 'Most go live in 1\u20132 weeks after your demo.' },
-      { question: 'Is this really Bill 96/Law 25 compliant?', answer: 'Yes. French-first messaging, EN on request, and templates reviewed for clarity. Documentation available.' },
-      { question: 'Do I need to be technical?', answer: 'No. You see it working first; I handle setup and handoff.' },
-      { question: 'How much does it cost?', answer: `DIY packs $${PACK_PRICE} each \u2022 Audit $249 \u2022 Complete system $1,499.` }
+      { question: 'How fast can we launch?', answer: 'Most setups go live within 1\u20132 weeks.' },
+      { question: 'Is this really compliant?', answer: 'Yes. Templates and workflows are reviewed for Law 25 + Bill 96. Audit-ready docs included.' },
+      { question: 'Do I need to be technical?', answer: 'No. We set up and maintain everything.' },
+      { question: 'How much does it cost?', answer: 'From $199. Flat pricing. No long-term contract.' }
     ]
   },
   finalCTA: {
@@ -97,6 +98,7 @@ export const en = {
     secondary: 'See Packs',
     secondaryHref: '/packs'
   },
+  stickyCta: 'Get the Compliance Checklist',
   trustBadge: 'Built for Québec • Demo-first • Fully bilingual & Law 96\u2013compliant',
   partners: {
     title: 'Trusted & Supported By'

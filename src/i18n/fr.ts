@@ -21,24 +21,24 @@ const fr: TranslationKeys = {
   problems: {
     title: 'Pourquoi les cliniques perdent de l’argent chaque semaine…',
     list: [
-      { title: 'Leads ignorés', body: 'Les patients attendent et réservent ailleurs.' },
+      { title: 'Leads ignorés', body: 'Les patients réservent ailleurs.' },
       { title: 'Rendez-vous manqués', body: 'Des chaises vides aux heures de pointe.' },
-      { title: 'Factures en retard', body: 'La trésorerie se resserre.' },
-      { title: 'Incertitude légale', body: 'Vos messages peuvent enfreindre la Loi 25/Bill 96.' }
+      { title: 'Factures en retard', body: 'Moins de liquidités chaque mois.' },
+      { title: 'Incertitude légale', body: 'Risque de non-conformité (Loi 25/Loi 96).' }
     ],
-    note: 'Vous pouvez tout corriger avec une simple automatisation bilingue.'
+    note: 'Tout se corrige avec une automatisation bilingue simple.'
   },
   growth: {
     title: 'Le moteur de croissance de votre clinique : simple, bilingue, conforme.',
     gears: [
-      { title: 'SMS vitesse-à-lead', desc: 'réponse instantanée, FR/EN' },
-      { title: 'Poursuite d’absences + rappel', desc: 'moins de chaises vides' },
-      { title: 'Moteur d’avis et conformité', desc: 'plus de 5★, prêt pour audit' }
+      { title: 'SMS vitesse-à-lead', desc: 'Répondez avant vos concurrents.' },
+      { title: 'Relance d’absences + rappels', desc: 'Moins de chaises vides chaque semaine.' },
+      { title: 'Moteur d’avis + conformité', desc: 'Plus d’avis 5★, docs prêts pour audit.' }
     ],
     cta: 'Voir les packs en action'
   },
   offers: {
-    heading: 'Trois parcours productisés.',
+    heading: 'Trois parcours productisés',
     list: [
       {
         title: 'Packs DIY',
@@ -48,16 +48,17 @@ const fr: TranslationKeys = {
         href: '/packs'
       },
       {
-        title: 'Audit rapide',
+        title: 'Audit 48 h',
         price: '249 $',
-        desc: 'Diagnostic en 48 h + un gain rapide installé.',
-        cta: 'Réserver l’audit 48h',
-        href: '/audit'
+        desc: 'Diagnostic + un gain rapide installé.',
+        cta: 'Réserver l’audit 48 h',
+        href: '/audit',
+        badge: 'Le plus choisi'
       },
       {
         title: 'Système complet',
         price: '1 499 $',
-        desc: 'Les 3 packs installés + QA + transfert.',
+        desc: 'Les 3 packs + QA + transfert.',
         cta: 'Obtenir le système',
         href: '/system'
       }
@@ -65,28 +66,28 @@ const fr: TranslationKeys = {
     note: 'Prix fixes. Aucun frais caché. Modèles français d’abord.'
   },
   roi: {
-    title: `${PACK_PRICE} $ vs \u2248 400 $ de revenus manqu\u00e9s par mois`,
-    without: '3 rendez-vous manqu\u00e9s/mois \u2248 300 $\u2013400 $ de revenus perdus',
-    with: `Pack \u00e0 ${PACK_PRICE} $ \u2192 r\u00e9ponses plus rapides, moins d\u2019absences`,
-    note: 'Plusieurs cliniques rentabilisent le pack d\u00e8s la premi\u00e8re semaine.',
+    title: `Pourquoi ${PACK_PRICE} $ bat ~600\u2013900 $ perdus chaque mois`,
+    without: 'Clinique type : leads perdus, 3\u20134 no-shows, factures en retard \u2248 600\u2013900 $ par mois.',
+    with: `Packs d\u00e8s ${PACK_PRICE} $ \u2192 r\u00e9ponses plus rapides, moins d\u2019absences, factures \u00e0 temps.`,
+    note: 'Beaucoup de cliniques rentabilisent le pack d\u00e8s la premi\u00e8re semaine.',
     disclaimer:
-      'Estimations bas\u00e9es sur une valeur de rendez-vous typique de 100 $\u2013150 $. R\u00e9sultats variables.'
+      'Estimations bas\u00e9es sur ~120\u2013150 $ par rendez-vous et des pertes typiques de leads au Qu\u00e9bec. R\u00e9sultats variables.'
   },
   proof: {
     title: 'Les cliniques qui automatisent voient des résultats rapides.',
     bullets: [
       '25–50 % d’absences en moins',
-      '5× plus de rendez-vous réservés grâce aux SMS instantanés',
+      'Réponses en moins de 5 min',
       '3× plus d’avis Google en 30–60 jours'
     ]
   },
   faq: {
     title: 'FAQ',
     list: [
-      { question: 'En combien de temps pouvons-nous lancer?', answer: 'La plupart sont en ligne 1–2 semaines après votre démo.' },
-      { question: 'Est-ce vraiment conforme à la Loi 96/Loi 25?', answer: 'Oui. Messages en français d’abord, anglais sur demande, modèles vérifiés. Documentation fournie.' },
-      { question: 'Dois-je être technique?', answer: 'Non. Vous le voyez fonctionner d’abord; je m’occupe de l’installation et du transfert.' },
-      { question: 'Combien ça coûte?', answer: `Packs DIY ${PACK_PRICE} $ chacun • Audit 249 $ • Système complet 1 499 $.` }
+      { question: 'En combien de temps lançons-nous?', answer: 'La plupart des installations sont actives en 1–2 semaines.' },
+      { question: 'C’est vraiment conforme?', answer: 'Oui. Modèles et workflows revus pour Loi 25 + Loi 96. Docs prêts pour audit.' },
+      { question: 'Dois-je être technique?', answer: 'Non. On s’occupe de tout.' },
+      { question: 'Combien ça coûte?', answer: 'À partir de 199 $. Prix fixes. Sans contrat à long terme.' }
     ]
   },
   finalCTA: {
@@ -97,6 +98,7 @@ const fr: TranslationKeys = {
     secondary: 'Voir les packs',
     secondaryHref: '/packs'
   },
+  stickyCta: 'Télécharger la checklist conformité',
   trustBadge: 'Conçu pour le Québec • Démo en direct • Bilingue et conforme à la Loi 96',
   partners: {
     title: 'Partenaires de confiance'

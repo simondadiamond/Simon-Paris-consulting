@@ -3,7 +3,7 @@ import { useLanguage } from './LanguageProvider';
 import {
   Globe, Menu, X,
   MessageSquare, CalendarX, Receipt, Shield,
-  Zap, CalendarCheck, Star, CheckCircle,
+  Zap, CalendarCheck, Star,
   Mail, MapPin, ChevronDown, ChevronUp
 } from 'lucide-react';
 
@@ -317,14 +317,14 @@ const ProblemSection = () => {
                 {problem.title}
               </h3>
 
-              <p className="text-gray-600 leading-relaxed text-sm lg:text-base">
+              <p className="text-gray-700 leading-relaxed text-sm lg:text-base">
                 {problem.body}
               </p>
             </div>
           ))}
         </div>
 
-        <p className="text-center text-gray-600 mt-8">{t.problems.note}</p>
+        <p className="text-center text-gray-700 mt-8">{t.problems.note}</p>
       </div>
     </section>
   );
@@ -379,7 +379,7 @@ const GrowthEngine = () => {
               </div>
 
               <h3 className="text-xl font-semibold text-gray-900 mb-4">{gear.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{gear.desc}</p>
+              <p className="text-gray-700 leading-relaxed">{gear.desc}</p>
             </div>
           ))}
         </div>
@@ -424,16 +424,21 @@ const OfferCards = () => {
 
         <div className={`grid md:grid-cols-3 gap-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {offers.map((offer, index) => (
-            <div key={index} className="card-light p-8 flex flex-col">
+            <div key={index} className="card-light p-8 flex flex-col relative">
+              {offer.badge && (
+                <span className="absolute top-4 right-4 text-xs font-semibold bg-[#2280FF] text-white px-2 py-1 rounded-full">
+                  {offer.badge}
+                </span>
+              )}
               <h3 className="text-xl font-semibold text-gray-900 mb-2">{offer.title}</h3>
               <p className="text-2xl font-bold text-gray-900 mb-4">{offer.price}</p>
-              <p className="text-gray-600 mb-6 flex-1">{offer.desc}</p>
+              <p className="text-gray-700 mb-6 flex-1">{offer.desc}</p>
               <a href={offer.href} className="btn-primary mt-auto">{offer.cta}</a>
             </div>
           ))}
         </div>
 
-        <p className="text-gray-600 mt-6">{t.offers.note}</p>
+        <p className="text-gray-700 mt-6">{t.offers.note}</p>
       </div>
     </section>
   );
@@ -469,16 +474,16 @@ const ROIMath = () => {
         <div className={`grid md:grid-cols-2 gap-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="card-light p-8">
             <h3 className="text-xl font-semibold text-gray-900 mb-2">{lang === 'fr' ? 'Sans automatisation' : 'Without automation'}</h3>
-            <p className="text-gray-600">{t.roi.without}</p>
+            <p className="text-gray-700">{t.roi.without}</p>
           </div>
           <div className="card-light p-8">
             <h3 className="text-xl font-semibold text-gray-900 mb-2">{lang === 'fr' ? 'Avec automatisation' : 'With automation'}</h3>
-            <p className="text-gray-600">{t.roi.with}</p>
+            <p className="text-gray-700">{t.roi.with}</p>
           </div>
         </div>
 
-        <p className="text-gray-600 mt-8">{t.roi.note}</p>
-        <p className="text-gray-500 text-xs mt-2">{t.roi.disclaimer}</p>
+        <p className="text-gray-700 mt-8">{t.roi.note}</p>
+        <p className="text-gray-700 text-xs mt-2">{t.roi.disclaimer}</p>
       </div>
     </section>
   );
@@ -511,20 +516,13 @@ const ProofSection = () => {
           <h2 className="text-display text-gray-900 mb-6">{t.proof.title}</h2>
         </div>
 
-        <div className={`grid md:grid-cols-3 gap-8 mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          {[0, 1, 2].map(i => (
-            <div key={i} className="card-light h-40 flex items-center justify-center text-gray-400">Placeholder</div>
-          ))}
-        </div>
-
-        <ul className={`max-w-3xl mx-auto space-y-4 text-gray-600 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          {t.proof.bullets.map((bullet, index) => (
-            <li key={index} className="flex items-start">
-              <CheckCircle className="w-5 h-5 text-[#2280FF] mr-2 mt-1" />
-              <span>{bullet}</span>
-            </li>
-          ))}
-        </ul>
+        <p
+          className={`max-w-3xl mx-auto text-center text-gray-700 transition-all duration-1000 delay-200 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          {t.proof.bullets.join(' • ')}
+        </p>
       </div>
     </section>
   );
@@ -584,7 +582,7 @@ const FAQ = () => {
                 openFAQ === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
               }`}>
                 <div className="px-8 pb-6">
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed">
                     {faq.answer}
                   </p>
                 </div>
@@ -605,7 +603,7 @@ const FinalCTA = () => {
     <section className="relative py-16 bg-[#121C2D] text-center text-white">
       <div className="max-w-4xl mx-auto px-6">
         <h2 className="text-3xl font-bold mb-4">{t.finalCTA.title}</h2>
-        <p className="text-lg text-gray-300 mb-8">{t.finalCTA.sub}</p>
+        <p className="text-lg text-white/80 mb-8">{t.finalCTA.sub}</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a href={t.finalCTA.primaryHref} className="btn-primary px-8 py-4">
             {t.finalCTA.primary}
@@ -616,6 +614,27 @@ const FinalCTA = () => {
         </div>
       </div>
     </section>
+  );
+};
+
+const StickyCTA = () => {
+  const { t, lang } = useLanguage();
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 300);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  if (!visible) return null;
+  const base = lang === 'fr' ? '/fr' : '';
+  return (
+    <div className="sticky-cta">
+      <a href={`${base}/checklist`} className="btn-primary w-full text-lg py-4">
+        {t.stickyCta}
+      </a>
+    </div>
   );
 };
 
@@ -697,10 +716,11 @@ function App() {
         <ProblemSection />
         <GrowthEngine />
         <OfferCards />
-        <ROIMath />
-        <ProofSection />
+      <ROIMath />
+      <ProofSection />
       <FAQ />
       <FinalCTA />
+      <StickyCTA />
       <Footer />
     </div>
   );
