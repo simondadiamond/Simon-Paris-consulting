@@ -13,12 +13,11 @@ const fr: TranslationKeys = {
     h1_accent: 'Restez 100 % conforme.',
     subhead:
       "Automatisations bilingues prêtes à l’emploi pour réponse instantanée aux demandes (Speed‑to‑Lead), relance des absents et moteur d’avis—conçues pour les cliniques du Québec. Démo avant d’acheter. Installation en quelques minutes.",
-    proof:
-      'Les cliniques constatent souvent 25–50 % moins d’absences et des suivis beaucoup plus rapides.',
-    primaryCta: 'Télécharger la liste de conformité',
-    secondaryCta: 'Voir les packs d’automatisation (149 $)',
-    microTrust: 'FR d’abord • Docs prêts pour audit • Sans contrat à long terme'
-  },
+      proof:
+        'Les cliniques constatent souvent 25–50 % moins d’absences et des suivis beaucoup plus rapides.',
+      primaryCta: 'Télécharger la liste de conformité',
+      secondaryCta: 'Voir les packs d’automatisation (149 $)'
+    },
   problems: {
     heading: 'Vous reconnaissez ces',
     highlight: ' situations?',

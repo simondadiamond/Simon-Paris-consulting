@@ -11,12 +11,11 @@ export const en = {
     h1_accent: 'Stay 100% Compliant.',
     subhead:
       'Plug‑and‑play bilingual automations for Speed‑to‑Lead, No‑Show Chaser, and Review Engine—built for Québec clinics. Demo first. Install in minutes.',
-    proof:
-      'Clinics that automate often see 25–50% fewer no‑shows and much faster follow‑ups.',
-    primaryCta: 'Get Free Compliance Checklist',
-    secondaryCta: 'See Automation Packs ($149)',
-    microTrust: 'French‑first • Audit‑ready docs • No long‑term contract'
-  },
+      proof:
+        'Clinics that automate often see 25–50% fewer no‑shows and much faster follow‑ups.',
+      primaryCta: 'Get Free Compliance Checklist',
+      secondaryCta: 'See Automation Packs ($149)'
+    },
   problems: {
     heading: 'Does this sound',
     highlight: ' familiar?',

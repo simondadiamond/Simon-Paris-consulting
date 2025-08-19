@@ -201,7 +201,6 @@ const Hero = () => {
           </a>
         </div>
 
-        <div className="mt-6 text-[#8fa3b8] text-sm">{t.hero.microTrust}</div>
       </div>
     </section>
   );
