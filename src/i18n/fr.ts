@@ -19,28 +19,28 @@ const fr: TranslationKeys = {
     secondaryCta: `Voir les packs (${PACK_PRICE} $)`
   },
   problems: {
-    title: 'Pourquoi les cliniques <span class="text-teal-500 font-semibold">perdent de l’argent</span> chaque semaine…',
+    title: 'Pourquoi les cliniques <span class="accent">perdent de l’argent</span> chaque semaine…',
     list: [
-      { title: 'Leads <span class="text-teal-500 font-semibold">ignorés</span>', body: 'Les patients réservent ailleurs.' },
-      { title: 'Rendez‑vous <span class="text-teal-500 font-semibold">manqués</span>', body: 'Des chaises vides aux heures de pointe.' },
-      { title: 'Factures <span class="text-teal-500 font-semibold">en retard</span>', body: 'Moins de liquidités chaque mois.' },
-      { title: 'Incertitude <span class="text-teal-500 font-semibold">légale</span>', body: 'Risque de non‑conformité (Loi 25/Loi 96).' }
+      { title: 'Leads <span class="accent">ignorés</span>', body: 'Les patients réservent ailleurs.' },
+      { title: 'Rendez‑vous <span class="accent">manqués</span>', body: 'Des chaises vides aux heures de pointe.' },
+      { title: 'Factures <span class="accent">en retard</span>', body: 'Moins de liquidités chaque mois.' },
+      { title: 'Incertitude <span class="accent">légale</span>', body: 'Risque de non‑conformité (Loi 25/Loi 96).' }
     ],
     note: 'Tout se corrige avec une <span class="font-semibold">automatisation bilingue</span> simple.'
   },
   growth: {
-    title: 'Le <span class="text-teal-500 font-semibold">moteur de croissance</span> de votre clinique : simple, bilingue, conforme.',
+    title: 'Le <span class="accent">moteur de croissance</span> de votre clinique : simple, bilingue, conforme.',
     gears: [
       {
-        title: 'SMS <span class="text-teal-500 font-semibold">vitesse‑à‑lead</span>',
+        title: 'SMS <span class="accent">vitesse‑à‑lead</span>',
         bullets: ['Réponse en moins de 5 min', 'Priorité FR → EN', 'Intégration web, appels, réseaux sociaux']
       },
       {
-        title: 'Relance d’<span class="text-teal-500 font-semibold">absences</span> + <span class="text-teal-500 font-semibold">rappels</span>',
+        title: 'Relance d’<span class="accent">absences</span> + <span class="accent">rappels</span>',
         bullets: ['Rappels 24 h & 2 h', 'Lien simple pour replanifier', '25–50 % d’absences en moins']
       },
       {
-        title: 'Moteur d’<span class="text-teal-500 font-semibold">avis</span> + <span class="text-teal-500 font-semibold">conformité</span>',
+        title: 'Moteur d’<span class="accent">avis</span> + <span class="accent">conformité</span>',
         bullets: ['Demandes d’avis polies FR/EN', '3× plus d’avis en 30–60 jours', 'Docs prêts pour audit (Loi 25/96)']
       }
     ],
@@ -75,7 +75,7 @@ const fr: TranslationKeys = {
     note: 'Prix fixes. Aucun frais caché. Modèles français d’abord.'
   },
   roi: {
-    title: 'Pourquoi <span class="text-teal-500 font-semibold">149 $</span> bat <span class="text-teal-500 font-semibold">~600–900 $</span> perdus chaque mois',
+    title: 'Pourquoi <span class="accent">149 $</span> bat <span class="accent">~600–900 $</span> perdus chaque mois',
     without: 'Leads perdus, 3–4 no‑shows, factures en retard ≈ 600–900 $ / mois',
     with: 'Pack dès 149 $ → réponses plus rapides, moins d’absences, factures à temps',
     note: 'Beaucoup de cliniques rentabilisent le pack dès la première semaine.',
@@ -83,19 +83,17 @@ const fr: TranslationKeys = {
   },
   checklist: {
     eyebrow: 'Gratuit',
-    title: 'Checklist de <span class="text-teal-500 font-semibold">conformité</span> (Loi 25 + Loi 96)',
-    sub: 'Repérez en 3 minutes les risques courants dans vos messages et rappels.',
+    title: 'Êtes-vous vraiment prêt pour la <span class="accent">Loi 25</span>?',
+    sub: 'La plupart des cliniques croient que oui… jusqu’à ce qu’un patient manqué ou un audit révèle le contraire. Téléchargez la liste gratuite pour découvrir les zones à risque dans vos communications.',
     points: [
-      'FR d’abord : gabarits prêts',
-      'Consentement + retrait clairs',
-      'Horodatage des envois',
-      'Langage simple, non ambigu',
-      'Archivage des preuves (audit)',
-      'Révision bilingue des messages'
+      'Vos <span class="accent">formulaires de consentement</span> pour SMS et courriels sont-ils vraiment conformes?',
+      'Avez-vous une <span class="accent">preuve horodatée</span> de chaque message envoyé?',
+      'Vos rappels et suivis sont-ils 100 % <span class="accent">en français d’abord</span> (FR-first)?',
+      'Vos patients peuvent-ils se <span class="accent">désabonner</span> instantanément, sans plainte possible?'
     ],
-    cta: 'Télécharger la checklist',
+    cta: 'Télécharger la Liste',
     href: '/fr/checklist',
-    disclaimer: 'Aucun spam. Vous recevrez aussi des modèles FR/EN.'
+    disclaimer: 'Téléchargement gratuit. Accès immédiat après inscription. Nous vous enverrons aussi des conseils pratiques sur la conformité et l’automatisation (désabonnement en tout temps).'
   },
   proof: {
     title: 'Les cliniques qui automatisent voient des résultats rapides.',

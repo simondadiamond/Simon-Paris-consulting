@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .accent {
+    @apply text-[#139E9B] font-semibold;
+  }
+}
+
 :root {
   --primary-blue: #2280FF;
   --accent-teal: theme('colors.teal.400');

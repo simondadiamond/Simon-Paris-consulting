@@ -176,7 +176,7 @@ const Hero = () => {
 
         <h1 className="text-hero text-white mb-6 leading-tight tracking-tight">
           <span>{t.hero.h1_part1} </span>
-          <span className="text-[#139E9B]">{t.hero.h1_accent}</span>
+          <span className="accent">{t.hero.h1_accent}</span>
         </h1>
 
         <p className="text-subhead !text-white/90 max-w-3xl mx-auto mb-4">{t.hero.subhead}</p>
@@ -375,26 +375,29 @@ const GrowthEngine = () => {
           />
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8 items-stretch">
           {gears.map((gear, index) => (
             <div
               key={index}
-              className={`card-light p-6 md:p-8 text-center group transition-all duration-700 ${
+              className={`card-light p-6 md:p-8 flex flex-col items-center text-center group transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
+              } h-full`}
               style={{ transitionDelay: `${index * 200}ms` }}
             >
-              <div className="w-16 h-16 rounded-2xl bg-[#2280FF] flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-16 h-16 rounded-2xl bg-[#2280FF] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <gear.icon className="w-8 h-8 text-white" />
               </div>
 
               <h3
-                className="text-xl font-semibold text-gray-900 mb-4"
+                className="text-xl font-semibold text-gray-900 mb-4 text-center"
                 dangerouslySetInnerHTML={{ __html: gear.title }}
               />
-              <ul className="text-gray-700 space-y-1">
+              <ul className="text-gray-700 space-y-2 text-left w-full">
                 {gear.bullets.map((b: string, i: number) => (
-                  <li key={i}>{b}</li>
+                  <li key={i} className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-[#139E9B] mr-2 mt-1 flex-shrink-0" />
+                    <span>{b}</span>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -523,7 +526,7 @@ const Checklist = () => {
       <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8">
         <div className="card-light p-6 md:p-8 text-center">
           <div className="inline-flex items-center mb-4 text-sm font-medium text-gray-700">
-            <Shield className="w-5 h-5 text-teal-500 mr-2" />
+            <Shield className="w-5 h-5 text-[#139E9B] mr-2" />
             <span>{t.checklist.eyebrow}</span>
           </div>
           <h3
@@ -531,11 +534,11 @@ const Checklist = () => {
             dangerouslySetInnerHTML={{ __html: t.checklist.title }}
           />
           <p className="text-gray-700 mb-6">{t.checklist.sub}</p>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-left text-gray-700 mb-6">
+          <ul className="space-y-2 text-left text-gray-700 mb-6">
             {t.checklist.points.map((p: string, i: number) => (
               <li key={i} className="flex items-start">
-                <CheckCircle className="w-4 h-4 text-teal-500 mr-2 mt-1" />
-                <span>{p}</span>
+                <CheckCircle className="w-4 h-4 text-[#139E9B] mr-2 mt-1 flex-shrink-0" />
+                <span dangerouslySetInnerHTML={{ __html: p }} />
               </li>
             ))}
           </ul>

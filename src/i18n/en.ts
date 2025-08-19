@@ -19,28 +19,28 @@ export const en = {
       secondaryCta: `See Automation Packs ($${PACK_PRICE})`
     },
   problems: {
-    title: 'Why clinics <span class="text-teal-500 font-semibold">lose money</span> every week…',
+    title: 'Why clinics <span class="accent">lose money</span> every week…',
     list: [
-      { title: 'Ignored <span class="text-teal-500 font-semibold">leads</span>', body: 'Patients book elsewhere.' },
-      { title: 'Missed <span class="text-teal-500 font-semibold">appointments</span>', body: 'Empty chairs at peak hours.' },
-      { title: 'Late <span class="text-teal-500 font-semibold">invoices</span>', body: 'Cash flow gets squeezed.' },
-      { title: 'Legal <span class="text-teal-500 font-semibold">uncertainty</span>', body: 'Messages may breach Law 25/Bill 96.' }
+      { title: 'Ignored <span class="accent">leads</span>', body: 'Patients book elsewhere.' },
+      { title: 'Missed <span class="accent">appointments</span>', body: 'Empty chairs at peak hours.' },
+      { title: 'Late <span class="accent">invoices</span>', body: 'Cash flow gets squeezed.' },
+      { title: 'Legal <span class="accent">uncertainty</span>', body: 'Messages may breach Law 25/Bill 96.' }
     ],
     note: 'You can fix all of this with simple <span class="font-semibold">bilingual automation</span>.'
   },
   growth: {
-    title: 'The <span class="text-teal-500 font-semibold">growth engine</span> for your clinic: simple, bilingual, compliant.',
+    title: 'The <span class="accent">growth engine</span> for your clinic: simple, bilingual, compliant.',
     gears: [
       {
-        title: 'Speed‑to‑Lead <span class="text-teal-500 font-semibold">SMS</span>',
+        title: 'Speed‑to‑Lead <span class="accent">SMS</span>',
         bullets: ['Replies in under 5 min', 'FR-first, then EN', 'Integrates web, calls, social']
       },
       {
-        title: 'No‑Show <span class="text-teal-500 font-semibold">Chaser</span> + <span class="text-teal-500 font-semibold">Reminders</span>',
+        title: 'No‑Show <span class="accent">Chaser</span> + <span class="accent">Reminders</span>',
         bullets: ['24h & 2h reminders', 'Easy reschedule link', '25–50% fewer no-shows']
       },
       {
-        title: 'Review <span class="text-teal-500 font-semibold">Engine</span> + <span class="text-teal-500 font-semibold">Compliance</span>',
+        title: 'Review <span class="accent">Engine</span> + <span class="accent">Compliance</span>',
         bullets: ['Polite FR/EN review asks', '3× more reviews in 30–60 days', 'Audit-ready docs (Law 25/96)']
       }
     ],
@@ -75,7 +75,7 @@ export const en = {
     note: 'Flat pricing. No hidden fees. French-first templates.'
   },
   roi: {
-    title: 'Why <span class="text-teal-500 font-semibold">$149</span> beats <span class="text-teal-500 font-semibold">~$600–900</span> lost every month',
+    title: 'Why <span class="accent">$149</span> beats <span class="accent">~$600–900</span> lost every month',
     without: 'Lost leads, 3–4 no-shows, late invoices ≈ $600–900/mo',
     with: 'Pack from $149 → faster replies, fewer no‑shows, invoices on time',
     note: 'Many clinics recoup the pack in the first week.',
@@ -83,19 +83,17 @@ export const en = {
   },
   checklist: {
     eyebrow: 'Free',
-    title: 'Law 25 + Bill 96 <span class="text-teal-500 font-semibold">Compliance Checklist</span>',
-    sub: 'Spot common risks in 3 minutes across reminders and messages.',
+    title: 'Are you really <span class="accent">Law 25</span> ready?',
+    sub: 'Most clinics think they’re fine… until a no-show patient or audit proves otherwise. Download the free checklist to spot the hidden risks in your communication workflows.',
     points: [
-      'FR-first templates ready',
-      'Clear consent & opt-out',
-      'Timestamp every send',
-      'Plain, non-ambiguous language',
-      'Proof archive for audits',
-      'Bilingual message review'
+      'Is your SMS & email <span class="accent">consent wording</span> valid under Québec law?',
+      'Do you have <span class="accent">timestamped proof</span> for every message you send?',
+      'Are your reminders and follow-ups fully <span class="accent">FR-first</span>?',
+      'Can patients <span class="accent">opt-out</span> instantly, without risk of complaint?'
     ],
-    cta: 'Get the checklist',
+    cta: 'Download the Checklist',
     href: '/checklist',
-    disclaimer: 'No spam. Includes FR/EN templates.'
+    disclaimer: 'Free download. Instant access after signup. We’ll also send you practical updates on compliance & automation (unsubscribe anytime).'
   },
   proof: {
     title: 'Clinics that automate see results fast.',
