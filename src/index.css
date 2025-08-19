@@ -183,34 +183,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Premium Cards */
+/* Dark themed card */
 .card-dark {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  @apply bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-md transition-shadow;
 }
 
 .card-dark:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 64px rgba(0, 0, 0, 0.4);
-  border-color: rgba(34, 128, 255, 0.3);
+  @apply shadow-lg;
 }
 
 /* Light themed card for white sections */
 .card-light {
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  @apply bg-white rounded-2xl border border-gray-200/60 shadow-md transition-shadow;
 }
 
 .card-light:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 64px rgba(0, 0, 0, 0.1);
-  border-color: rgba(34, 128, 255, 0.3);
+  @apply shadow-lg;
 }
 
 .card-glass {
