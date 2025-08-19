@@ -1,4 +1,5 @@
 import type { TranslationKeys } from './en';
+import { PACK_PRICE } from '../config';
 
 const fr: TranslationKeys = {
   header: {
@@ -15,7 +16,7 @@ const fr: TranslationKeys = {
       'Automatisations bilingues prêtes à l’emploi pour vitesse‑à‑lead, relance d’absences et moteur d’avis — conçues pour les cliniques du Québec. Démo d’abord. Installation en minutes.',
     proof: 'Les cliniques qui automatisent voient souvent 25–50 % moins d’absences et des suivis beaucoup plus rapides.',
     primaryCta: 'Obtenir la checklist de conformité',
-    secondaryCta: 'Voir les packs (149 $)'
+    secondaryCta: `Voir les packs (${PACK_PRICE} $)`
   },
   problems: {
     title: 'Pourquoi les cliniques perdent de l’argent chaque semaine…',
@@ -41,7 +42,7 @@ const fr: TranslationKeys = {
     list: [
       {
         title: 'Packs DIY',
-        price: '149 $ chacun',
+        price: `${PACK_PRICE} $ chacun`,
         desc: 'Automatisations prêtes à l’emploi. Installation en minutes.',
         cta: 'Voir les packs',
         href: '/packs'
@@ -64,10 +65,12 @@ const fr: TranslationKeys = {
     note: 'Prix fixes. Aucun frais caché. Modèles français d’abord.'
   },
   roi: {
-    title: '149 $ vs 900 $+ perdus chaque mois',
-    without: '3 patients manqués/mois = 900 $+ perdus.',
-    with: 'Pack à 149 $ → réponses instantanées, moins d’absences.',
-    note: 'La plupart des cliniques rentabilisent le pack la première semaine.'
+    title: `${PACK_PRICE} $ vs \u2248 400 $ de revenus manqu\u00e9s par mois`,
+    without: '3 rendez-vous manqu\u00e9s/mois \u2248 300 $\u2013400 $ de revenus perdus',
+    with: `Pack \u00e0 ${PACK_PRICE} $ \u2192 r\u00e9ponses plus rapides, moins d\u2019absences`,
+    note: 'Plusieurs cliniques rentabilisent le pack d\u00e8s la premi\u00e8re semaine.',
+    disclaimer:
+      'Estimations bas\u00e9es sur une valeur de rendez-vous typique de 100 $\u2013150 $. R\u00e9sultats variables.'
   },
   proof: {
     title: 'Les cliniques qui automatisent voient des résultats rapides.',
@@ -83,7 +86,7 @@ const fr: TranslationKeys = {
       { question: 'En combien de temps pouvons-nous lancer?', answer: 'La plupart sont en ligne 1–2 semaines après votre démo.' },
       { question: 'Est-ce vraiment conforme à la Loi 96/Loi 25?', answer: 'Oui. Messages en français d’abord, anglais sur demande, modèles vérifiés. Documentation fournie.' },
       { question: 'Dois-je être technique?', answer: 'Non. Vous le voyez fonctionner d’abord; je m’occupe de l’installation et du transfert.' },
-      { question: 'Combien ça coûte?', answer: 'Packs DIY 149 $ chacun • Audit 249 $ • Système complet 1 499 $.' }
+      { question: 'Combien ça coûte?', answer: `Packs DIY ${PACK_PRICE} $ chacun • Audit 249 $ • Système complet 1 499 $.` }
     ]
   },
   finalCTA: {

@@ -478,6 +478,7 @@ const ROIMath = () => {
         </div>
 
         <p className="text-gray-600 mt-8">{t.roi.note}</p>
+        <p className="text-gray-500 text-xs mt-2">{t.roi.disclaimer}</p>
       </div>
     </section>
   );

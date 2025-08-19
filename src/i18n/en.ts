@@ -1,3 +1,5 @@
+import { PACK_PRICE } from '../config';
+
 export const en = {
   header: {
     brand: 'Simon Paris',
@@ -14,7 +16,7 @@ export const en = {
       proof:
         'Clinics that automate often see 25–50% fewer no‑shows and much faster follow‑ups.',
       primaryCta: 'Get Free Compliance Checklist',
-      secondaryCta: 'See Automation Packs ($149)'
+      secondaryCta: `See Automation Packs ($${PACK_PRICE})`
     },
   problems: {
     title: 'Why clinics keep losing money every week…',
@@ -40,7 +42,7 @@ export const en = {
     list: [
       {
         title: 'DIY Packs',
-        price: '$149 each',
+        price: `$${PACK_PRICE} each`,
         desc: 'Plug\u2011and\u2011play automations. Install in minutes.',
         cta: 'Browse Packs',
         href: '/packs'
@@ -63,10 +65,12 @@ export const en = {
     note: 'Flat pricing. No hidden fees. French-first templates.'
   },
   roi: {
-    title: '$149 vs. $900+ Lost Each Month',
-    without: '3 missed patients/month = $900+ lost.',
-    with: '$149 pack \u2192 instant replies, fewer no-shows.',
-    note: 'Most clinics recoup the pack cost in the first week.'
+    title: `${PACK_PRICE} $ vs ~400 $ in lost appointments each month`,
+    without: '3 missed appointments/month \u2248 $300\u2013$400 lost in revenue',
+    with: `$${PACK_PRICE} pack \u2192 faster responses, fewer no-shows`,
+    note: 'Many clinics recoup the pack cost within the first week.',
+    disclaimer:
+      'Estimates assume a typical appointment value of ~$100\u2013150. Results will vary by clinic.'
   },
   proof: {
     title: 'Clinics that automate see results fast.',
@@ -82,7 +86,7 @@ export const en = {
       { question: 'How quickly can we launch?', answer: 'Most go live in 1\u20132 weeks after your demo.' },
       { question: 'Is this really Bill 96/Law 25 compliant?', answer: 'Yes. French-first messaging, EN on request, and templates reviewed for clarity. Documentation available.' },
       { question: 'Do I need to be technical?', answer: 'No. You see it working first; I handle setup and handoff.' },
-      { question: 'How much does it cost?', answer: 'DIY packs $149 each \u2022 Audit $249 \u2022 Complete system $1,499.' }
+      { question: 'How much does it cost?', answer: `DIY packs $${PACK_PRICE} each \u2022 Audit $249 \u2022 Complete system $1,499.` }
     ]
   },
   finalCTA: {
