@@ -179,8 +179,8 @@ const Hero = () => {
           <span className="text-[#139E9B]">{t.hero.h1_accent}</span>
         </h1>
 
-        <p className="text-subhead text-white/90 max-w-3xl mx-auto mb-4">{t.hero.subhead}</p>
-        <p className="text-sm text-white/70 mb-10">{t.hero.proof}</p>
+        <p className="text-subhead !text-white/90 max-w-3xl mx-auto mb-4">{t.hero.subhead}</p>
+        <p className="text-sm !text-white/70 mb-10">{t.hero.proof}</p>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
           <a

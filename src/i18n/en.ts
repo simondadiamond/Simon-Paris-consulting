@@ -7,12 +7,12 @@ export const en = {
   },
   hero: {
     eyebrow: 'For Québec clinics • Law 25 + Bill 96 ready',
-    h1_part1: 'Fewer Empty Chairs.',
-    h1_accent: 'Faster Follow‑Ups. Fully Compliant.',
+    h1_part1: 'Fill Your Schedule.',
+    h1_accent: 'Stay 100% Compliant.',
     subhead:
-      'Quebec clinics lose thousands to missed appointments and slow replies. Our plug‑and‑play automations cut no‑shows by up to 50% and keep every message compliant—without adding staff time.',
+      'Plug‑and‑play bilingual automations for Speed‑to‑Lead, No‑Show Chaser, and Review Engine—built for Québec clinics. Demo first. Install in minutes.',
     proof:
-      'Most clinics see results in weeks: fewer no‑shows, faster booking, more 5‑star reviews.',
+      'Clinics that automate often see 25–50% fewer no‑shows and much faster follow‑ups.',
     primaryCta: 'Get Free Compliance Checklist',
     secondaryCta: 'See Automation Packs ($149)',
     microTrust: 'French‑first • Audit‑ready docs • No long‑term contract'
