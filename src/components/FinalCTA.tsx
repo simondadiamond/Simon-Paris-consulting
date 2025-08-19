@@ -164,7 +164,7 @@ const FinalCTA = () => {
       </section>
 
       {/* Sticky CTA for mobile */}
-      <div className="sticky-cta">
+      <div className="sticky-cta md:hidden">
         <button className="btn-primary w-full text-lg py-4">
           Book Free Demo
         </button>
