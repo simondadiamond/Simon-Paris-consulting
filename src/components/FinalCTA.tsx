@@ -57,7 +57,7 @@ const FinalCTA = () => {
             </div>
             <h2 className="text-display text-white mb-6">
               Ready to Stop Losing Business and 
-              <span style={{ color: '#139E9B' }}> Sleep Easy on Compliance</span>?
+              <span className="text-teal-400"> Sleep Easy on Compliance</span>?
             </h2>
             <p className="text-subhead text-gray-300">
               Get your free workflow audit and see exactly where you're losing money
@@ -152,7 +152,7 @@ const FinalCTA = () => {
                 <p className="text-gray-300 mb-4 text-lg">Or, send a quick question to:</p>
                 <a 
                   href="mailto:info@simonparis.ca"
-                  className="inline-flex items-center font-semibold text-lg group transition-colors duration-300 text-[#2280FF] hover:text-[#139E9B]"
+                  className="inline-flex items-center font-semibold text-lg group transition-colors duration-300 text-[#2280FF] hover:text-teal-400"
                 >
                   <Send className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" />
                   info@simonparis.ca
