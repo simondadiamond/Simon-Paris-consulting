@@ -6,14 +6,16 @@ export const en = {
     bookDemo: 'Book Demo'
   },
   hero: {
-    tagline: 'Built for Québec clinics, trades, and wellness businesses.',
-    heading: 'Stop losing clients to',
-    highlight: ' admin chaos',
-    sub1: 'Automate your reminders, follow-ups, and reviews—bilingually, legally, and without lifting a finger.',
-    sub2: 'Bill 96 + Law 25 safe. Demo before you decide.',
-    bookDemo: 'Show Me a Working Automation',
-    quickQuestion: 'Quick Question?'
-  },
+    eyebrow: 'For Québec clinics • Law 25 + Bill 96 ready',
+    h1_part1: 'Fill Your Schedule.',
+    h1_accent: 'Stay 100% Compliant.',
+    subhead:
+      'Plug‑and‑play bilingual automations for Speed‑to‑Lead, No‑Show Chaser, and Review Engine—built for Québec clinics. Demo first. Install in minutes.',
+      proof:
+        'Clinics that automate often see 25–50% fewer no‑shows and much faster follow‑ups.',
+      primaryCta: 'Get Free Compliance Checklist',
+      secondaryCta: 'See Automation Packs ($149)'
+    },
   problems: {
     heading: 'Does this sound',
     highlight: ' familiar?',
