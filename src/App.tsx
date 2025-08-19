@@ -28,9 +28,14 @@ const Header = ({ langToggleHref, langToggleLabel }: { langToggleHref?: string; 
 
   const textClass = !isScrolled && isPrivacyPage ? 'text-[#121C2D]' : 'text-white';
 
+  const isFR = typeof window !== 'undefined' && window.location.pathname.startsWith('/fr');
+  const twinPath = isFR
+    ? window.location.pathname.replace(/^\/fr/, '') || '/'
+    : '/fr' + (window.location.pathname === '/' ? '' : window.location.pathname);
+  const targetLang = isFR ? 'en' : 'fr';
+  const ariaLabel = isFR ? 'Passer en anglais' : 'Switch to French';
+
   const LanguageToggle = () => {
-    const targetLang = lang === 'en' ? 'fr' : 'en';
-    const href = targetLang === 'fr' ? '/fr' : '/';
     if (langToggleHref && langToggleLabel) {
       return (
         <a
@@ -40,6 +45,7 @@ const Header = ({ langToggleHref, langToggleLabel }: { langToggleHref?: string; 
             setLang(targetLang);
             localStorage.setItem('lang', targetLang);
           }}
+          aria-label={ariaLabel}
         >
           {langToggleLabel}
         </a>
@@ -47,12 +53,13 @@ const Header = ({ langToggleHref, langToggleLabel }: { langToggleHref?: string; 
     }
     return (
       <a
-        href={href}
+        href={twinPath}
         className={`flex items-center text-sm ${textClass} underline decoration-transparent hover:decoration-[#2280FF]`}
         onClick={() => {
           setLang(targetLang);
           localStorage.setItem('lang', targetLang);
         }}
+        aria-label={ariaLabel}
       >
         <Globe className="w-4 h-4 mr-2" />
         <span>{t.header.languageToggle}</span>
@@ -76,17 +83,24 @@ const Header = ({ langToggleHref, langToggleLabel }: { langToggleHref?: string; 
             >
               {t.header.brand}
             </a>
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-4">
               <LanguageToggle />
               <a
-                href={`mailto:${t.header.email}`}
-                className={`transition-colors duration-300 font-medium ${textClass} hover:text-[#2280FF]`}
+                href={lang === 'fr' ? '/fr/checklist' : '/checklist'}
+                className="btn-primary text-sm px-6 py-3"
+                data-event="cta_click"
+                data-cta="checklist"
               >
-                {t.header.email}
+                {t.header.primaryCta}
               </a>
-              <button className="btn-primary text-sm px-6 py-3">
-                {t.header.bookDemo}
-              </button>
+              <a
+                href={lang === 'fr' ? '/fr/packs' : '/packs'}
+                className="btn-outline text-sm px-6 py-3"
+                data-event="cta_click"
+                data-cta="packs"
+              >
+                {t.header.secondaryCta}
+              </a>
             </div>
             <div className="flex md:hidden items-center space-x-4">
               <LanguageToggle />
@@ -126,21 +140,35 @@ const Header = ({ langToggleHref, langToggleLabel }: { langToggleHref?: string; 
                 {langToggleLabel}
               </a>
             ) : (
-              <button
-                onClick={() => setLang(lang === 'en' ? 'fr' : 'en')}
+              <a
+                href={twinPath}
                 className="flex items-center justify-center text-[#121C2D] underline decoration-transparent hover:decoration-[#2280FF]"
+                onClick={() => {
+                  setLang(targetLang);
+                  localStorage.setItem('lang', targetLang);
+                }}
+                aria-label={ariaLabel}
               >
                 <Globe className="w-4 h-4 mr-2" />
                 <span>{t.header.languageToggle}</span>
-              </button>
+              </a>
             )}
             <a
-              href={`mailto:${t.header.email}`}
-              className="block text-[#121C2D] hover:text-[#2280FF] font-medium"
+              href={lang === 'fr' ? '/fr/checklist' : '/checklist'}
+              className="btn-primary w-full"
+              data-event="cta_click"
+              data-cta="checklist"
             >
-              {t.header.email}
+              {t.header.primaryCta}
             </a>
-            <button className="btn-primary w-full">{t.header.bookDemo}</button>
+            <a
+              href={lang === 'fr' ? '/fr/packs' : '/packs'}
+              className="btn-outline w-full"
+              data-event="cta_click"
+              data-cta="packs"
+            >
+              {t.header.secondaryCta}
+            </a>
           </div>
         </div>
       </div>

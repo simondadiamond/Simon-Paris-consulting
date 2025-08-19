@@ -5,7 +5,8 @@ const fr: TranslationKeys = {
     brand: 'Simon Paris',
     languageToggle: 'FR/EN',
     email: 'info@simonparis.ca',
-    bookDemo: 'Réserver une démo'
+    primaryCta: 'Télécharger la liste de conformité',
+    secondaryCta: 'Packs d’automatisation (149 $)'
   },
   hero: {
     tagline: 'Pensé pour les PME du Québec',

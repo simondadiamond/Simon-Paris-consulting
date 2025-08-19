@@ -3,7 +3,8 @@ export const en = {
     brand: 'Simon Paris',
     languageToggle: 'EN/FR',
     email: 'info@simonparis.ca',
-    bookDemo: 'Book Demo'
+    primaryCta: 'Download Compliance Checklist',
+    secondaryCta: 'Automation Packs ($149)'
   },
   hero: {
     tagline: 'Built for Québec clinics, trades, and wellness businesses.',
