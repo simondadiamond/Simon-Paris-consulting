@@ -9,12 +9,12 @@ const fr: TranslationKeys = {
   },
   hero: {
     eyebrow: 'Pour les cliniques du Québec • Prêt Loi 25 + Loi 96',
-    h1_part1: 'Remplissez votre horaire.',
-    h1_accent: 'Restez 100 % conforme.',
+    h1_part1: 'Moins de rendez‑vous manqués.',
+    h1_accent: 'Suivis instantanés. Conformité assurée.',
     subhead:
-      "Automatisations bilingues prêtes à l’emploi pour réponse instantanée aux demandes (Speed‑to‑Lead), relance des absents et moteur d’avis—conçues pour les cliniques du Québec. Démo avant d’acheter. Installation en quelques minutes.",
+      "Les cliniques du Québec perdent des milliers à cause des absences et des suivis lents. Nos automatisations prêtes à l’emploi réduisent les no‑shows jusqu’à 50 % et assurent la conformité—sans plus de travail pour votre équipe.",
     proof:
-      'Les cliniques constatent souvent 25–50 % moins d’absences et des suivis beaucoup plus rapides.',
+      'Des résultats en quelques semaines : moins d’absences, réservations plus rapides, plus d’avis 5 étoiles.',
     primaryCta: 'Télécharger la liste de conformité',
     secondaryCta: 'Voir les packs d’automatisation (149 $)',
     microTrust: 'FR d’abord • Docs prêts pour audit • Sans contrat à long terme'
