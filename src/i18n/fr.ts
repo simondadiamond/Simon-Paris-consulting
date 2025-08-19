@@ -66,12 +66,12 @@ const fr: TranslationKeys = {
     note: 'Prix fixes. Aucun frais caché. Modèles français d’abord.'
   },
   roi: {
-    title: `Pourquoi ${PACK_PRICE} $ bat ~600\u2013900 $ perdus chaque mois`,
-    without: 'Clinique type : leads perdus, 3\u20134 no-shows, factures en retard \u2248 600\u2013900 $ par mois.',
-    with: `Packs d\u00e8s ${PACK_PRICE} $ \u2192 r\u00e9ponses plus rapides, moins d\u2019absences, factures \u00e0 temps.`,
-    note: 'Beaucoup de cliniques rentabilisent le pack d\u00e8s la premi\u00e8re semaine.',
+    title: `${PACK_PRICE} $ vs \u2248 400 $ de revenus manqu\u00e9s par mois`,
+    without: '3 rendez-vous manqu\u00e9s/mois \u2248 300\u2013400 $ de revenus perdus',
+    with: `Pack \u00e0 ${PACK_PRICE} $ \u2192 r\u00e9ponses plus rapides, moins d\u2019absences`,
+    note: 'Plusieurs cliniques rentabilisent le pack d\u00e8s la premi\u00e8re semaine.',
     disclaimer:
-      'Estimations bas\u00e9es sur ~120\u2013150 $ par rendez-vous et des pertes typiques de leads au Qu\u00e9bec. R\u00e9sultats variables.'
+      'Estimations bas\u00e9es sur une valeur de rendez-vous typique de 100\u2013150 $. R\u00E9sultats variables.'
   },
   proof: {
     title: 'Les cliniques qui automatisent voient des résultats rapides.',
@@ -84,10 +84,30 @@ const fr: TranslationKeys = {
   faq: {
     title: 'FAQ',
     list: [
-      { question: 'En combien de temps lançons-nous?', answer: 'La plupart des installations sont actives en 1–2 semaines.' },
-      { question: 'C’est vraiment conforme?', answer: 'Oui. Modèles et workflows revus pour Loi 25 + Loi 96. Docs prêts pour audit.' },
-      { question: 'Dois-je être technique?', answer: 'Non. On s’occupe de tout.' },
-      { question: 'Combien ça coûte?', answer: 'À partir de 199 $. Prix fixes. Sans contrat à long terme.' }
+      {
+        question: 'En combien de temps pouvez-vous configurer mon automatisation?',
+        answer:
+          'La plupart des configurations sont termin\u00e9es en 1\u20132 semaines apr\u00e8s notre appel d\u00e9mo. Je m’occupe de toute la partie technique pendant que vous g\u00e9rez votre entreprise.'
+      },
+      {
+        question: 'C’est vraiment conforme?',
+        answer:
+          'Absolument. Chaque mod\u00e8le de message et flux d’automatisation est v\u00e9rifi\u00e9 pour la conformit\u00e9 \u00e0 la Loi 96. Je fournis une documentation montrant la conformit\u00e9 pour les audits.'
+      },
+      {
+        question: 'Et si je ne suis pas \u00e0 l’aise avec la technologie?',
+        answer:
+          'Parfait! C’est justement pour vous que c’est con\u00e7u. Vous n’avez pas besoin de comprendre la technologie — voyez simplement les r\u00e9sultats. Je m’occupe de toute l’installation et de la maintenance.'
+      },
+      {
+        question: 'Combien \u00e7a co\u00fbte?',
+        answer: `\u00c0 partir de ${PACK_PRICE} $. Prix fixes. Sans contrat \u00e0 long terme.`
+      },
+      {
+        question: 'Pouvez-vous nous aider avec l’adoption ou la strat\u00e9gie IA?',
+        answer:
+          'Absolument. Je suis toujours \u00e0 l’aff\u00fbt des derniers outils et tendances IA pour les PME. Si vous voulez discuter de la fa\u00e7on dont l’IA peut aider votre entreprise, mentionnez-le lors de la d\u00e9mo.'
+      }
     ]
   },
   finalCTA: {

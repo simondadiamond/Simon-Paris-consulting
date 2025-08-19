@@ -385,7 +385,7 @@ const GrowthEngine = () => {
         </div>
 
         <div className="text-center mt-12">
-          <a href="/packs" className="btn-primary px-10 py-4">{t.growth.cta}</a>
+          <a href="/packs" className="btn-outline text-lg px-10 py-4">{t.growth.cta}</a>
         </div>
       </div>
     </section>
@@ -608,7 +608,7 @@ const FinalCTA = () => {
           <a href={t.finalCTA.primaryHref} className="btn-primary px-8 py-4">
             {t.finalCTA.primary}
           </a>
-          <a href={t.finalCTA.secondaryHref} className="btn-secondary px-8 py-4">
+          <a href={t.finalCTA.secondaryHref} className="btn-outline text-lg px-8 py-4">
             {t.finalCTA.secondary}
           </a>
         </div>
@@ -630,7 +630,7 @@ const StickyCTA = () => {
   if (!visible) return null;
   const base = lang === 'fr' ? '/fr' : '';
   return (
-    <div className="sticky-cta">
+    <div className="sticky-cta md:hidden">
       <a href={`${base}/checklist`} className="btn-primary w-full text-lg py-4">
         {t.stickyCta}
       </a>

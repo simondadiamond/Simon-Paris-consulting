@@ -66,12 +66,12 @@ export const en = {
     note: 'Flat pricing. No hidden fees. French-first templates.'
   },
   roi: {
-    title: `Why $${PACK_PRICE} beats ~$600\u2013$900 lost each month`,
-    without: 'Typical clinic: missed leads, 3\u20134 no-shows, late invoices \u2248 $600\u2013$900 lost monthly.',
-    with: `Packs from $${PACK_PRICE} \u2192 faster responses, fewer no-shows, on-time invoices.`,
+    title: `$${PACK_PRICE} vs ~$400 in lost appointments each month`,
+    without: '3 missed appointments/month \u2248 $300\u2013$400 lost in revenue',
+    with: `$${PACK_PRICE} pack \u2192 faster responses, fewer no-shows`,
     note: 'Many clinics recoup the pack cost within the first week.',
     disclaimer:
-      'Estimates assume ~$120\u2013$150 per appointment and typical lead loss for Qu\u00E9bec clinics. Results vary by clinic.'
+      'Estimates assume a typical appointment value of ~$100\u2013150. Results will vary by clinic.'
   },
   proof: {
     title: 'Clinics that automate see results fast.',
@@ -84,10 +84,30 @@ export const en = {
   faq: {
     title: 'FAQ',
     list: [
-      { question: 'How fast can we launch?', answer: 'Most setups go live within 1\u20132 weeks.' },
-      { question: 'Is this really compliant?', answer: 'Yes. Templates and workflows are reviewed for Law 25 + Bill 96. Audit-ready docs included.' },
-      { question: 'Do I need to be technical?', answer: 'No. We set up and maintain everything.' },
-      { question: 'How much does it cost?', answer: 'From $199. Flat pricing. No long-term contract.' }
+      {
+        question: 'How quickly can you set up my automation?',
+        answer:
+          'Most setups are completed within 1\u20132 weeks after our demo call. I handle all the technical work while you focus on running your business.'
+      },
+      {
+        question: 'Is this really compliant?',
+        answer:
+          'Absolutely. Every message template and automation workflow is reviewed for Bill 96 compliance. I provide documentation showing compliance for audit purposes.'
+      },
+      {
+        question: "What if I'm not tech-savvy?",
+        answer:
+          "Perfect! That's exactly who this is built for. You don't need to understand the technology—just see the results. I handle all the technical setup and maintenance."
+      },
+      {
+        question: 'How much does it cost?',
+        answer: `From $${PACK_PRICE}. Flat pricing. No long-term contract.`
+      },
+      {
+        question: 'Can you help us with AI adoption or strategy?',
+        answer:
+          "Absolutely. I'm always researching the latest AI tools and trends for SMBs. If you want to talk about how AI could help your business, just mention it when you book a demo."
+      }
     ]
   },
   finalCTA: {
