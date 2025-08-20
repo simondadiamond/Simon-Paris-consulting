@@ -75,9 +75,9 @@ const fr: TranslationKeys = {
     note: 'Prix fixes. Aucun frais caché. Modèles français d’abord.'
   },
   roi: {
-    title: 'Pourquoi <span class="accent">149 $</span> bat <span class="accent">~600–900 $</span> perdus chaque mois',
+    title: 'Pourquoi <span class="accent">199 $</span> bat <span class="accent">~600–900 $</span> perdus chaque mois',
     without: 'Leads perdus, 3–4 no‑shows, factures en retard ≈ 600–900 $ / mois',
-    with: 'Pack dès 149 $ → réponses plus rapides, moins d’absences, factures à temps',
+    with: 'Pack dès 199 $ → réponses plus rapides, moins d’absences, factures à temps',
     note: 'Beaucoup de cliniques rentabilisent le pack dès la première semaine.',
     disclaimer: 'Estimations basées sur ~120–150 $ par rendez‑vous et des pertes typiques de leads au Québec. Résultats variables.'
   },
