@@ -27,6 +27,7 @@ const Header = ({ langToggleHref, langToggleLabel }: { langToggleHref?: string; 
   }, []);
 
   const textClass = !isScrolled && isPrivacyPage ? 'text-[#121C2D]' : 'text-white';
+  const base = lang === 'fr' ? '/fr' : '';
 
   const LanguageToggle = () => {
     const targetLang = lang === 'en' ? 'fr' : 'en';
@@ -84,9 +85,9 @@ const Header = ({ langToggleHref, langToggleLabel }: { langToggleHref?: string; 
               >
                 {t.header.email}
               </a>
-              <button className="btn-primary text-sm px-6 py-3">
-                {t.header.bookDemo}
-              </button>
+              <a href={`${base}/checklist`} className="btn-primary text-sm px-6 py-3">
+                {t.header.cta}
+              </a>
             </div>
             <div className="flex md:hidden items-center space-x-4">
               <LanguageToggle />
@@ -140,7 +141,9 @@ const Header = ({ langToggleHref, langToggleLabel }: { langToggleHref?: string; 
             >
               {t.header.email}
             </a>
-            <button className="btn-primary w-full">{t.header.bookDemo}</button>
+            <a href={`${base}/checklist`} className="btn-primary w-full">
+              {t.header.cta}
+            </a>
           </div>
         </div>
       </div>
@@ -182,7 +185,7 @@ const Hero = () => {
         <p className="text-subhead !text-white/90 max-w-3xl mx-auto mb-4">{t.hero.subhead}</p>
         <p className="text-sm !text-white/70 mb-10">{t.hero.proof}</p>
 
-        <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+        <div className="flex justify-center">
           <a
             href={`${base}/checklist`}
             className="btn-primary text-lg px-8 py-4"
@@ -190,14 +193,6 @@ const Hero = () => {
             data-cta="checklist"
           >
             {t.hero.primaryCta}
-          </a>
-          <a
-            href={`${base}/packs`}
-            className="btn-outline text-lg px-8 py-4"
-            data-event="cta_click"
-            data-cta="packs"
-          >
-            {t.hero.secondaryCta}
           </a>
         </div>
 
@@ -341,7 +336,8 @@ const ProblemSection = () => {
 const GrowthEngine = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const base = lang === 'fr' ? '/fr' : '';
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -405,7 +401,7 @@ const GrowthEngine = () => {
         </div>
 
         <div className="text-center mt-12">
-          <a href="/packs" className="btn-outline text-lg px-10 py-4">{t.growth.cta}</a>
+          <a href={`${base}/packs`} className="btn-outline text-lg px-10 py-4">{t.growth.cta}</a>
         </div>
       </div>
     </section>
@@ -416,7 +412,8 @@ const GrowthEngine = () => {
 const OfferCards = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const base = lang === 'fr' ? '/fr' : '';
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -459,7 +456,7 @@ const OfferCards = () => {
               />
               <p className="text-2xl font-bold text-gray-900 mb-4">{offer.price}</p>
               <p className="text-gray-700 mb-6 flex-1">{offer.desc}</p>
-              <a href={offer.href} className="btn-primary mt-auto">{offer.cta}</a>
+              <a href={`${base}${offer.href}`} className="btn-primary mt-auto">{offer.cta}</a>
             </div>
           ))}
         </div>
@@ -520,7 +517,8 @@ const ROIMath = () => {
 
 // Checklist Component
 const Checklist = () => {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const base = lang === 'fr' ? '/fr' : '';
   return (
     <section className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
       <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8">
@@ -542,7 +540,7 @@ const Checklist = () => {
               </li>
             ))}
           </ul>
-          <a href={t.checklist.href} className="btn-primary px-8 py-4">
+          <a href={`${base}${t.checklist.href}`} className="btn-primary px-8 py-4">
             {t.checklist.cta}
           </a>
         </div>
@@ -668,7 +666,8 @@ const FAQ = () => {
 
 // Final CTA Component
 const FinalCTA = () => {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const base = lang === 'fr' ? '/fr' : '';
 
   return (
     <section className="relative py-16 bg-[#121C2D] text-center text-white">
@@ -676,10 +675,10 @@ const FinalCTA = () => {
         <h2 className="text-3xl font-bold mb-4">{t.finalCTA.title}</h2>
         <p className="text-lg text-white/80 mb-8">{t.finalCTA.sub}</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href={t.finalCTA.primaryHref} className="btn-primary px-8 py-4">
+          <a href={`${base}${t.finalCTA.primaryHref}`} className="btn-primary px-8 py-4">
             {t.finalCTA.primary}
           </a>
-          <a href={t.finalCTA.secondaryHref} className="btn-outline text-lg px-8 py-4">
+          <a href={`${base}${t.finalCTA.secondaryHref}`} className="btn-outline text-lg px-8 py-4">
             {t.finalCTA.secondary}
           </a>
         </div>

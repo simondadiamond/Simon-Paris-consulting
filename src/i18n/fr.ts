@@ -6,7 +6,7 @@ const fr: TranslationKeys = {
     brand: 'Simon Paris',
     languageToggle: 'FR/EN',
     email: 'info@simonparis.ca',
-    bookDemo: 'Réserver une démo'
+    cta: 'Télécharger la checklist'
   },
   hero: {
     eyebrow: 'Pour les cliniques du Québec • Prêt Loi 25 + Loi 96',
@@ -15,8 +15,7 @@ const fr: TranslationKeys = {
     subhead:
       'Automatisations bilingues prêtes à l’emploi pour vitesse‑à‑lead, relance d’absences et moteur d’avis — conçues pour les cliniques du Québec. Démo d’abord. Installation en minutes.',
     proof: 'Les cliniques qui automatisent voient souvent 25–50 % moins d’absences et des suivis beaucoup plus rapides.',
-    primaryCta: 'Obtenir la checklist de conformité',
-    secondaryCta: `Voir les packs (${PACK_PRICE} $)`
+    primaryCta: 'Télécharger la checklist de conformité'
   },
   problems: {
     title: 'Pourquoi les cliniques <span class="accent">perdent de l’argent</span> chaque semaine…',
@@ -92,7 +91,7 @@ const fr: TranslationKeys = {
         'Vos patients peuvent-ils se désabonner instantanément, sans plainte possible?'
       ],
     cta: 'Télécharger la Liste',
-    href: '/fr/checklist'
+    href: '/checklist'
   },
   proof: {
     title: 'Les cliniques qui automatisent voient des résultats rapides.',
@@ -150,7 +149,7 @@ const fr: TranslationKeys = {
     secondary: 'Voir les packs',
     secondaryHref: '/packs'
   },
-  stickyCta: 'Télécharger la checklist conformité',
+  stickyCta: 'Télécharger la checklist',
   trustBadge: 'Conçu pour le Québec • Démo en direct • Bilingue et conforme à la Loi 96',
   partners: {
     title: 'Partenaires de confiance'
