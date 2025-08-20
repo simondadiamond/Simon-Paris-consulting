@@ -310,7 +310,7 @@ const ProblemSection = () => {
               className={`card-light p-6 md:p-8 text-center group transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
-              style={{ transitionDelay: `${index * 150}ms` }}
+              style={{ transitionDelay: isVisible ? '0ms' : `${index * 150}ms` }}
             >
               <div className="w-16 h-16 rounded-2xl bg-[#2280FF]/20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 <problem.icon className="w-8 h-8 text-[#2280FF]" />
@@ -382,7 +382,7 @@ const GrowthEngine = () => {
               className={`card-light p-6 md:p-8 flex flex-col items-center text-center group transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               } h-full`}
-              style={{ transitionDelay: `${index * 200}ms` }}
+              style={{ transitionDelay: isVisible ? '0ms' : `${index * 200}ms` }}
             >
               <div className="w-16 h-16 rounded-2xl bg-[#2280FF] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <gear.icon className="w-8 h-8 text-white" />
