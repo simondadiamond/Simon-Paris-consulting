@@ -27,6 +27,7 @@ const Header = ({ langToggleHref, langToggleLabel }: { langToggleHref?: string; 
   }, []);
 
   const textClass = !isScrolled && isPrivacyPage ? 'text-[#121C2D]' : 'text-white';
+  const base = lang === 'fr' ? '/fr' : '';
 
   const LanguageToggle = () => {
     const targetLang = lang === 'en' ? 'fr' : 'en';
@@ -84,9 +85,9 @@ const Header = ({ langToggleHref, langToggleLabel }: { langToggleHref?: string; 
               >
                 {t.header.email}
               </a>
-              <button className="btn-primary text-sm px-6 py-3">
-                {t.header.bookDemo}
-              </button>
+              <a href={`${base}/checklist`} className="btn-primary text-sm px-6 py-3">
+                {t.header.cta}
+              </a>
             </div>
             <div className="flex md:hidden items-center space-x-4">
               <LanguageToggle />
@@ -140,7 +141,9 @@ const Header = ({ langToggleHref, langToggleLabel }: { langToggleHref?: string; 
             >
               {t.header.email}
             </a>
-            <button className="btn-primary w-full">{t.header.bookDemo}</button>
+            <a href={`${base}/checklist`} className="btn-primary w-full">
+              {t.header.cta}
+            </a>
           </div>
         </div>
       </div>
@@ -182,7 +185,7 @@ const Hero = () => {
         <p className="text-subhead !text-white/90 max-w-3xl mx-auto mb-4">{t.hero.subhead}</p>
         <p className="text-sm !text-white/70 mb-10">{t.hero.proof}</p>
 
-        <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+        <div className="flex justify-center">
           <a
             href={`${base}/checklist`}
             className="btn-primary text-lg px-8 py-4"
@@ -190,14 +193,6 @@ const Hero = () => {
             data-cta="checklist"
           >
             {t.hero.primaryCta}
-          </a>
-          <a
-            href={`${base}/packs`}
-            className="btn-outline text-lg px-8 py-4"
-            data-event="cta_click"
-            data-cta="packs"
-          >
-            {t.hero.secondaryCta}
           </a>
         </div>
 
@@ -701,7 +696,7 @@ const StickyCTA = () => {
   if (!visible) return null;
   const base = lang === 'fr' ? '/fr' : '';
   return (
-    <div className="sticky-cta md:hidden">
+    <div className="sticky-cta">
       <a href={`${base}/checklist`} className="btn-primary w-full text-lg py-4">
         {t.stickyCta}
       </a>

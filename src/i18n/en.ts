@@ -5,7 +5,7 @@ export const en = {
     brand: 'Simon Paris',
     languageToggle: 'EN/FR',
     email: 'info@simonparis.ca',
-    bookDemo: 'Book Demo'
+    cta: 'Download Checklist'
   },
   hero: {
     eyebrow: 'For Québec clinics • Law 25 + Bill 96 ready',
@@ -15,8 +15,7 @@ export const en = {
       'Plug‑and‑play bilingual automations for Speed‑to‑Lead, No‑Show Chaser, and Review Engine—built for Québec clinics. Demo first. Install in minutes.',
       proof:
         'Clinics that automate often see 25–50% fewer no‑shows and much faster follow‑ups.',
-      primaryCta: 'Get Free Compliance Checklist',
-      secondaryCta: `See Automation Packs ($${PACK_PRICE})`
+      primaryCta: 'Download the Checklist'
     },
   problems: {
     title: 'Why clinics <span class="accent">lose money</span> every week…',
@@ -150,7 +149,7 @@ export const en = {
     secondary: 'See Packs',
     secondaryHref: '/packs'
   },
-  stickyCta: 'Get the Compliance Checklist',
+  stickyCta: 'Download the Checklist',
   trustBadge: 'Built for Québec • Demo-first • Fully bilingual & Law 96\u2013compliant',
   partners: {
     title: 'Trusted & Supported By'
