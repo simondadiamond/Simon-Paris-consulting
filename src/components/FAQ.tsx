@@ -92,7 +92,7 @@ const Services = () => {
               className={`card-dark p-6 group transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
-              style={{ transitionDelay: `${index * 150}ms` }}
+              style={{ transitionDelay: isVisible ? '0ms' : `${index * 150}ms` }}
             >
               <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 bg-teal-400">
                 <service.icon className="w-8 h-8 text-white" />
