@@ -1,223 +1,199 @@
 import React, { useMemo, useState, useEffect } from "react";
 
-/**
- * ROI Calculator (MVP v1)
- * - Framework: React + TS + Tailwind
- * - No external libs
- * - FR-first with simple i18n map
- * - Copy the styles to match your brand if you’re not already on Tailwind
- */
+export type ReplyBucket = ">24h" | "1-24h" | "15-60m" | "5-15m" | "0-5m";
 
-type ReplyBucket = ">24h" | "1-24h" | "15-60m" | "5-15m" | "0-5m";
+// conservative uplift map in percentage points
+const REPLY_UPLIFT_PP: Record<ReplyBucket, number> = {
+  ">24h": 6,
+  "1-24h": 4,
+  "15-60m": 2,
+  "5-15m": 1,
+  "0-5m": 0.5,
+};
 
-type Inputs = {
-  arpv: number;                   // average revenue per visit
-  gross_margin_pct: number;       // 35-85
+export type Strings = {
+  title: string;
+  sub: string;
+  inputs: {
+    arpv: string;
+    margin: string;
+    leads: string;
+    reply: string;
+    conv: string;
+    noshow: string;
+    appts: string;
+    reviewUplift: string;
+    adminHrs: string;
+    staffCost: string;
+    packPrice: string;
+  };
+  sections: {
+    customize: string;
+    advanced: string;
+    thisMonth: string;
+    year1: string;
+    expected: string;
+    net: string;
+    payback: string;
+    roi: string;
+    timeSaved: string;
+    lowUplift: string;
+  };
+  features: { speed: string; noshow: string; reviews: string };
+  cta: { buy: (price: number) => string; audit: string };
+  foot: string;
+};
+
+export const STR_EN: Strings = {
+  title: "Estimate your monthly savings",
+  sub: "Conservative assumptions with expected month & year‑1 view.",
+  inputs: {
+    arpv: "Avg revenue/visit ($)",
+    margin: "Gross margin (%)",
+    leads: "Leads / month",
+    reply: "Avg first response time",
+    conv: "Current lead→visit conv (%)",
+    noshow: "Current no-show (%)",
+    appts: "Appointments / month (optional)",
+    reviewUplift: "Traffic uplift from reviews (%)",
+    adminHrs: "Admin hours saved / month",
+    staffCost: "Staff hourly cost ($/h)",
+    packPrice: "Pack price ($)",
+  },
+  sections: {
+    customize: "Customize packs",
+    advanced: "Advanced",
+    thisMonth: "This month (expected)",
+    year1: "Year‑1 (expected)",
+    expected: "Recovered GP",
+    net: "Net after cost",
+    payback: "Breakeven (weeks)",
+    roi: "ROI",
+    timeSaved: "Time saved",
+    lowUplift: "Low expected uplift — audit recommended.",
+  },
+  features: {
+    speed: "Speed‑to‑Lead",
+    noshow: "No‑Show reduction",
+    reviews: "Reviews engine",
+  },
+  cta: {
+    buy: (p) => `Get my pack(s) $${p.toFixed(0)}`,
+    audit: "Get a free audit",
+  },
+  foot: "Estimates use conservative assumptions; results vary. No personal data is stored.",
+};
+
+export const STR_FR: Strings = {
+  title: "Calculez vos économies",
+  sub: "Hypothèses conservatrices — vue mensuelle et annuelle.",
+  inputs: {
+    arpv: "Valeur moyenne / rendez‑vous ($)",
+    margin: "Marge brute (%)",
+    leads: "Leads / mois",
+    reply: "Délai moyen de 1re réponse",
+    conv: "Taux conv. actuel leads→RDV (%)",
+    noshow: "No‑show actuel (%)",
+    appts: "RDV / mois (optionnel)",
+    reviewUplift: "Hausse trafic via avis (%)",
+    adminHrs: "Heures admin économisées / mois",
+    staffCost: "Coût horaire du personnel ($/h)",
+    packPrice: "Prix du pack ($)",
+  },
+  sections: {
+    customize: "Personnaliser les packs",
+    advanced: "Avancé",
+    thisMonth: "Ce mois‑ci (attendu)",
+    year1: "Année 1 (attendu)",
+    expected: "GP récupérée",
+    net: "Net après coût",
+    payback: "Remboursement (sem.)",
+    roi: "ROI",
+    timeSaved: "Temps économisé",
+    lowUplift: "Gain attendu faible — audit recommandé.",
+  },
+  features: {
+    speed: "Vitesse de réponse",
+    noshow: "Moins de no-show",
+    reviews: "Moteur d’avis",
+  },
+  cta: {
+    buy: (p) => `Obtenir mon pack ${p.toFixed(0)} $`,
+    audit: "Obtenir un audit gratuit",
+  },
+  foot: "Estimations conservatrices; résultats variables. Aucune donnée personnelle n’est stockée.",
+};
+
+export type Inputs = {
+  arpv: number;
+  gross_margin_pct: number;
   leads_per_month: number;
-  baseline_conv_pct: number;      // 0-100
-  reply_time_bucket: ReplyBucket; // maps to Δconv pp
-  no_show_pct: number;            // 0-100
-  appts_per_month?: number | null;
-  review_rate_pct: number;        // not used in calc, for transparency
-  reviews_traffic_uplift_pct: number; // 0-8
+  baseline_conv_pct: number;
+  reply_time_bucket: ReplyBucket;
+  no_show_pct: number;
+  appts_per_month: number | null;
+  reviews_traffic_uplift_pct: number;
   admin_hours_saved: number;
   staff_hourly_cost: number;
-  price: number;
-  locale: "fr" | "en";
+  selected: { speed: boolean; noshow: boolean; reviews: boolean };
 };
 
-type Breakdown = {
-  gp: number;   // gross profit contribution per line
-  rev: number;  // revenue basis for transparency/debug
+export type RoiCalculatorProps = {
+  defaults?: Partial<Inputs>;
+  packPrice?: number;
+  bundlePrice?: number;
+  strings?: Strings;
+  onCalculate?: (payload: {
+    inputs: Inputs;
+    outputs: CalculationOutputs;
+  }) => void;
 };
 
-type Outputs = {
-  speed_to_lead: Breakdown;
-  no_show: Breakdown;
-  reviews: Breakdown;
-  admin_time: { gp: number };
-  totals: {
-    gp_expected: number;
-    gp_pess: number;
-    gp_optimistic: number;
-    roi_expected: number;   // (gp - price)/price
-    payback_weeks: number;  // price / (gp/4.3)
-  };
-};
-
-// Brand tokens (adjust if needed)
-const BRAND = {
-  teal: "#1c9795",
-  blue: "#1e82fa",
-  navy: "#131c2d"
-};
-
-// Reply-time uplift map (Δconv percentage points, conservative)
-const REPLY_UPLIFT_PP: Record<ReplyBucket, number> = {
-  ">24h": 6.0,
-  "1-24h": 4.0,
-  "15-60m": 2.0,
-  "5-15m": 1.0,
-  "0-5m": 0.5
+export type CalculationOutputs = {
+  monthlyGP: number;
+  month1Net: number;
+  year1Net: number;
+  year1ROI: number;
+  paybackWeeks: number;
+  adminHours: number;
+  adminDollars: number;
+  totalPrice: number;
+  packs: number;
 };
 
 const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v));
-const round2 = (v: number) => Math.round(v * 100) / 100;
 
-function compute(inputs: Inputs): Outputs {
-  const margin = clamp(inputs.gross_margin_pct, 35, 85) / 100;
-  const leads = Math.max(0, inputs.leads_per_month);
-  const conv = clamp(inputs.baseline_conv_pct, 0, 100) / 100;
-  const apptsBase = inputs.appts_per_month ?? Math.round(leads * conv);
-  const arpv = Math.max(0, inputs.arpv);
+export function formatCurrency(n: number): string {
+  const num = isFinite(n) ? n : 0;
+  return `$${num.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+}
 
-  // A) Speed-to-Lead
-  const dConvPP = clamp(REPLY_UPLIFT_PP[inputs.reply_time_bucket], 0, 6) / 100;
-  const deltaApptsA = leads * dConvPP;
-  const revA = deltaApptsA * arpv;
-  const gpA = revA * margin;
+export function formatPercent(n: number): string {
+  const num = isFinite(n) ? n : 0;
+  return `${(num * 100).toFixed(1)}%`;
+}
 
-  // B) No-show reduction (25% relative cut)
-  const baseNoShowPct = clamp(inputs.no_show_pct, 0, 100);
-  const deltaNSpp = baseNoShowPct * 0.25; // relative 25%
-  const deltaApptsB = apptsBase * (deltaNSpp / 100);
-  const revB = deltaApptsB * arpv;
-  const gpB = revB * margin;
-
-  // C) Reviews small lift from traffic (cap 0-8%)
-  const reviewTraffic = clamp(inputs.reviews_traffic_uplift_pct ?? 0, 0, 8) / 100;
-  const revC = apptsBase * reviewTraffic * arpv;
-  const gpC = revC * margin;
-
-  // D) Admin time
-  const timeGp = Math.max(0, inputs.admin_hours_saved) * Math.max(0, inputs.staff_hourly_cost);
-
-  const gpExpected = gpA + gpB + gpC + timeGp;
-  const gpPess = gpExpected * 0.6;
-  const gpOpt = gpExpected * 1.4;
-
-  const roi = (gpExpected - inputs.price) / Math.max(1, inputs.price);
-  const paybackWeeks = inputs.price / Math.max(1, (gpExpected / 4.3));
-
+export function getHeadline(o: {
+  totalPrice: number;
+  monthlyGP: number;
+  adminHours: number;
+  paybackWeeks: number;
+}) {
   return {
-    speed_to_lead: { gp: gpA, rev: revA },
-    no_show: { gp: gpB, rev: revB },
-    reviews: { gp: gpC, rev: revC },
-    admin_time: { gp: timeGp },
-    totals: {
-      gp_expected: gpExpected,
-      gp_pess: gpPess,
-      gp_optimistic: gpOpt,
-      roi_expected: roi,
-      payback_weeks: paybackWeeks
-    }
+    price: formatCurrency(o.totalPrice),
+    monthlyGP: formatCurrency(o.monthlyGP),
+    adminHours: o.adminHours.toFixed(0),
+    paybackWeeks: o.paybackWeeks.toFixed(1),
   };
 }
 
-const STRINGS = {
-  fr: {
-    title: "Calculez vos économies mensuelles",
-    sub: "Estimation prudente • attendue • ambitieuse (marge & hypothèses conservatrices).",
-    inputs: {
-      arpv: "Valeur moyenne par rendez‑vous ($)",
-      margin: "Marge brute (%)",
-      leads: "Leads / mois",
-      reply: "Temps moyen de 1re réponse",
-      conv: "Taux conv. actuel leads→RDV (%)",
-      noshow: "Taux de no‑show actuel (%)",
-      appts: "RDV / mois (laisser vide pour auto)",
-      reviewRate: "% clients laissant un avis",
-      reviewUplift: "Hausse trafic due aux avis (%)",
-      adminHrs: "Heures admin économisées / mois",
-      staffCost: "Coût horaire du personnel ($/h)",
-      price: "Prix du pack ($)"
-    },
-    buckets: {
-      ">24h": "> 24 h",
-      "1-24h": "1–24 h",
-      "15-60m": "15–60 min",
-      "5-15m": "5–15 min",
-      "0-5m": "0–5 min"
-    },
-    breakdown: {
-      speed: "Vitesse de réponse",
-      noshow: "Moins de no‑show",
-      reviews: "Avis clients",
-      admin: "Temps admin"
-    },
-    results: {
-      monthly: "Économies mensuelles (GP)",
-      expected: "Attendu",
-      pess: "Prudent",
-      opt: "Ambitieux",
-      roi: "ROI (attendu)",
-      payback: "Remboursement (semaines)"
-    },
-    cta_buy: "Obtenir mon pack",
-    cta_audit: "Obtenir un audit gratuit",
-    foot: "Estimations basées sur hypothèses conservatrices; résultats variables. Aucune donnée personnelle n’est stockée."
-  },
-  en: {
-    title: "Estimate your monthly savings",
-    sub: "Conservative assumptions with low / expected / high bands.",
-    inputs: {
-      arpv: "Average revenue per visit ($)",
-      margin: "Gross margin (%)",
-      leads: "Leads / month",
-      reply: "Average first response time",
-      conv: "Current lead→visit conversion (%)",
-      noshow: "Current no‑show rate (%)",
-      appts: "Appointments / month (leave blank to auto)",
-      reviewRate: "% of clients leaving a review",
-      reviewUplift: "Traffic uplift from reviews (%)",
-      adminHrs: "Admin hours saved / month",
-      staffCost: "Staff hourly cost ($/h)",
-      price: "Pack price ($)"
-    },
-    buckets: {
-      ">24h": "> 24 h",
-      "1-24h": "1–24 h",
-      "15-60m": "15–60 min",
-      "5-15m": "5–15 min",
-      "0-5m": "0–5 min"
-    },
-    breakdown: {
-      speed: "Speed-to-lead",
-      noshow: "No-show reduction",
-      reviews: "Reviews",
-      admin: "Admin time"
-    },
-    results: {
-      monthly: "Monthly savings (GP)",
-      expected: "Expected",
-      pess: "Pessimistic",
-      opt: "Optimistic",
-      roi: "ROI (expected)",
-      payback: "Payback (weeks)"
-    },
-    cta_buy: "Get my pack",
-    cta_audit: "Get a free audit",
-    foot: "Estimates use conservative assumptions; results vary. No personal data is stored."
-  }
-};
-
-const Field = (props: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>) => (
-  <input
-    {...props}
-    className={`w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-[${BRAND.blue}]`}
-  />
-);
-
 export default function RoiCalculator({
   defaults,
-  onChange
-}: {
-  defaults?: Partial<Inputs>;
-  onChange?: (o: Outputs) => void;
-}) {
-  const [lang, setLang] = useState<"fr" | "en">(defaults?.locale ?? "fr");
-  const t = STRINGS[lang];
-
+  packPrice: packPriceProp = 199,
+  bundlePrice,
+  strings = STR_EN,
+  onCalculate,
+}: RoiCalculatorProps) {
   const [state, setState] = useState<Inputs>({
     arpv: defaults?.arpv ?? 130,
     gross_margin_pct: defaults?.gross_margin_pct ?? 60,
@@ -226,201 +202,332 @@ export default function RoiCalculator({
     reply_time_bucket: (defaults?.reply_time_bucket ?? "1-24h") as ReplyBucket,
     no_show_pct: defaults?.no_show_pct ?? 12,
     appts_per_month: defaults?.appts_per_month ?? null,
-    review_rate_pct: defaults?.review_rate_pct ?? 5,
     reviews_traffic_uplift_pct: defaults?.reviews_traffic_uplift_pct ?? 3,
     admin_hours_saved: defaults?.admin_hours_saved ?? 5,
     staff_hourly_cost: defaults?.staff_hourly_cost ?? 22,
-    price: defaults?.price ?? 199,
-    locale: lang
+    selected: {
+      speed: defaults?.selected?.speed ?? true,
+      noshow: defaults?.selected?.noshow ?? true,
+      reviews: defaults?.selected?.reviews ?? true,
+    },
   });
 
-  // keep locale in sync
-  if (state.locale !== lang) setState(s => ({ ...s, locale: lang }));
+  const [packPrice, setPackPrice] = useState(packPriceProp);
 
-  const outputs = useMemo(() => compute(state), [state]);
+  useEffect(() => setPackPrice(packPriceProp), [packPriceProp]);
+
+  const outputs: CalculationOutputs = useMemo(() => {
+    const margin = clamp(state.gross_margin_pct, 35, 85) / 100;
+    const leads = Math.max(0, state.leads_per_month);
+    const conv = clamp(state.baseline_conv_pct, 0, 100) / 100;
+    const apptsBase = state.appts_per_month ?? Math.round(leads * conv);
+    const arpv = Math.max(0, state.arpv);
+
+    const dConvPP = clamp(REPLY_UPLIFT_PP[state.reply_time_bucket], 0, 6) / 100;
+    const gpSpeed = state.selected.speed ? leads * dConvPP * arpv * margin : 0;
+
+    const baseNoShowPct = clamp(state.no_show_pct, 0, 100);
+    const deltaNSpp = baseNoShowPct * 0.25;
+    const gpNoshow = state.selected.noshow
+      ? apptsBase * (deltaNSpp / 100) * arpv * margin
+      : 0;
+
+    const reviewTraffic = clamp(state.reviews_traffic_uplift_pct ?? 0, 0, 8) / 100;
+    const gpReviews = state.selected.reviews
+      ? apptsBase * reviewTraffic * arpv * margin
+      : 0;
+
+    const adminHours = Math.max(0, state.admin_hours_saved);
+    const adminDollars = adminHours * Math.max(0, state.staff_hourly_cost);
+
+    const monthlyGP = gpSpeed + gpNoshow + gpReviews + adminDollars;
+    const packs = [state.selected.speed, state.selected.noshow, state.selected.reviews].filter(Boolean).length;
+    const effectivePackPrice = packPrice ?? 199;
+    const totalPrice = bundlePrice ?? effectivePackPrice * packs;
+
+    const month1Net = monthlyGP - totalPrice;
+    const year1Net = monthlyGP * 12 - totalPrice;
+    const year1ROI = year1Net / (totalPrice || 1);
+    const paybackWeeks = totalPrice / ((monthlyGP / 4.3) || 1);
+
+    return {
+      monthlyGP,
+      month1Net,
+      year1Net,
+      year1ROI,
+      paybackWeeks,
+      adminHours,
+      adminDollars,
+      totalPrice,
+      packs,
+    };
+  }, [state, packPrice, bundlePrice]);
 
   useEffect(() => {
-    onChange?.(outputs);
-  }, [outputs, onChange]);
+    onCalculate?.({ inputs: state, outputs });
+  }, [state, outputs, onCalculate]);
 
-  const total = outputs.totals.gp_expected;
-  const showAudit = total < state.price;
+  const [showPacks, setShowPacks] = useState(false);
+  const lowUplift = outputs.monthlyGP < outputs.totalPrice / 4.3;
+  const showAudit = outputs.monthlyGP < outputs.totalPrice;
 
   return (
-    <div className="w-full rounded-2xl border border-gray-100 bg-white p-5 shadow-md">
-      {/* Header */}
-      <div className="mb-4 flex items-center justify-between">
-        <div>
-          <h3 className="text-lg font-bold" style={{ color: BRAND.navy }}>
-            {t.title}
-          </h3>
-          <p className="text-xs text-gray-500">{t.sub}</p>
-        </div>
-        <div className="flex gap-2">
-          <button
-            aria-label="Français"
-            onClick={() => setLang("fr")}
-            className={`rounded-lg px-3 py-1 text-xs font-semibold ${lang === "fr" ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-700"}`}
-          >
-            FR
-          </button>
-          <button
-            aria-label="English"
-            onClick={() => setLang("en")}
-            className={`rounded-lg px-3 py-1 text-xs font-semibold ${lang === "en" ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-700"}`}
-          >
-            EN
-          </button>
-        </div>
-      </div>
+    <div className="w-full rounded-2xl border border-gray-100 bg-white p-5 shadow-md font-sans">
+      <h3 className="text-lg font-bold" style={{ color: "#131c2d" }}>
+        {strings.title}
+      </h3>
+      <p className="mb-4 text-xs text-gray-500">{strings.sub}</p>
 
-      {/* Inputs */}
       <div className="grid grid-cols-1 gap-3 md:grid-cols-4">
         <div>
-          <label className="mb-1 block text-xs text-gray-600">{t.inputs.arpv}</label>
-          <Field type="number" value={state.arpv}
-                 onChange={e => setState(s => ({ ...s, arpv: Number(e.target.value) }))} />
+          <label className="mb-1 block text-xs text-gray-600">{strings.inputs.arpv}</label>
+          <Field
+            type="number"
+            value={state.arpv}
+            onChange={(e) => setState((s) => ({ ...s, arpv: Number(e.target.value) }))}
+          />
         </div>
         <div>
-          <label className="mb-1 block text-xs text-gray-600">{t.inputs.margin}</label>
-          <Field type="number" value={state.gross_margin_pct}
-                 onChange={e => setState(s => ({ ...s, gross_margin_pct: Number(e.target.value) }))} />
+          <label className="mb-1 block text-xs text-gray-600">{strings.inputs.margin}</label>
+          <Field
+            type="number"
+            value={state.gross_margin_pct}
+            onChange={(e) =>
+              setState((s) => ({ ...s, gross_margin_pct: Number(e.target.value) }))
+            }
+          />
         </div>
         <div>
-          <label className="mb-1 block text-xs text-gray-600">{t.inputs.leads}</label>
-          <Field type="number" value={state.leads_per_month}
-                 onChange={e => setState(s => ({ ...s, leads_per_month: Number(e.target.value) }))} />
+          <label className="mb-1 block text-xs text-gray-600">{strings.inputs.leads}</label>
+          <Field
+            type="number"
+            value={state.leads_per_month}
+            onChange={(e) =>
+              setState((s) => ({ ...s, leads_per_month: Number(e.target.value) }))
+            }
+          />
         </div>
         <div>
-          <label className="mb-1 block text-xs text-gray-600">{t.inputs.reply}</label>
+          <label className="mb-1 block text-xs text-gray-600">{strings.inputs.reply}</label>
           <select
             value={state.reply_time_bucket}
-            onChange={e => setState(s => ({ ...s, reply_time_bucket: e.target.value as ReplyBucket }))}
+            onChange={(e) =>
+              setState((s) => ({ ...s, reply_time_bucket: e.target.value as ReplyBucket }))
+            }
             className="w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2"
           >
-            {Object.keys(STRINGS.fr.buckets).map((k) => (
+            {Object.keys(REPLY_UPLIFT_PP).map((k) => (
               <option key={k} value={k}>
-                {STRINGS[lang].buckets[k as ReplyBucket]}
+                {k}
               </option>
             ))}
           </select>
         </div>
       </div>
 
-      {/* Advanced */}
+      <div className="mt-2">
+        <button
+          type="button"
+          className="text-xs text-[#1e82fa] underline"
+          onClick={() => setShowPacks((v) => !v)}
+        >
+          {strings.sections.customize}
+        </button>
+        {showPacks && (
+          <div className="mt-2 flex gap-4">
+            <label className="flex items-center gap-1 text-xs text-gray-700">
+              <input
+                type="checkbox"
+                checked={state.selected.speed}
+                onChange={(e) =>
+                  setState((s) => ({
+                    ...s,
+                    selected: { ...s.selected, speed: e.target.checked },
+                  }))
+                }
+              />
+              {strings.features.speed}
+            </label>
+            <label className="flex items-center gap-1 text-xs text-gray-700">
+              <input
+                type="checkbox"
+                checked={state.selected.noshow}
+                onChange={(e) =>
+                  setState((s) => ({
+                    ...s,
+                    selected: { ...s.selected, noshow: e.target.checked },
+                  }))
+                }
+              />
+              {strings.features.noshow}
+            </label>
+            <label className="flex items-center gap-1 text-xs text-gray-700">
+              <input
+                type="checkbox"
+                checked={state.selected.reviews}
+                onChange={(e) =>
+                  setState((s) => ({
+                    ...s,
+                    selected: { ...s.selected, reviews: e.target.checked },
+                  }))
+                }
+              />
+              {strings.features.reviews}
+            </label>
+          </div>
+        )}
+      </div>
+
       <details className="mt-3">
-        <summary className="cursor-pointer text-sm font-semibold" style={{ color: BRAND.teal }}>
-          Avancé / Advanced
+        <summary
+          className="cursor-pointer text-sm font-semibold"
+          style={{ color: "#1c9795" }}
+        >
+          {strings.sections.advanced}
         </summary>
         <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-3">
           <div>
-            <label className="mb-1 block text-xs text-gray-600">{t.inputs.conv}</label>
-            <Field type="number" value={state.baseline_conv_pct}
-                   onChange={e => setState(s => ({ ...s, baseline_conv_pct: Number(e.target.value) }))} />
+            <label className="mb-1 block text-xs text-gray-600">{strings.inputs.conv}</label>
+            <Field
+              type="number"
+              value={state.baseline_conv_pct}
+              onChange={(e) =>
+                setState((s) => ({ ...s, baseline_conv_pct: Number(e.target.value) }))
+              }
+            />
           </div>
           <div>
-            <label className="mb-1 block text-xs text-gray-600">{t.inputs.noshow}</label>
-            <Field type="number" value={state.no_show_pct}
-                   onChange={e => setState(s => ({ ...s, no_show_pct: Number(e.target.value) }))} />
+            <label className="mb-1 block text-xs text-gray-600">{strings.inputs.noshow}</label>
+            <Field
+              type="number"
+              value={state.no_show_pct}
+              onChange={(e) =>
+                setState((s) => ({ ...s, no_show_pct: Number(e.target.value) }))
+              }
+            />
           </div>
           <div>
-            <label className="mb-1 block text-xs text-gray-600">{t.inputs.appts}</label>
-            <Field type="number" value={state.appts_per_month ?? ""}
-                   onChange={e => setState(s => ({ ...s, appts_per_month: e.target.value === "" ? null : Number(e.target.value) }))} />
+            <label className="mb-1 block text-xs text-gray-600">{strings.inputs.appts}</label>
+            <Field
+              type="number"
+              value={state.appts_per_month ?? ""}
+              onChange={(e) =>
+                setState((s) => ({
+                  ...s,
+                  appts_per_month: e.target.value === "" ? null : Number(e.target.value),
+                }))
+              }
+            />
           </div>
           <div>
-            <label className="mb-1 block text-xs text-gray-600">{t.inputs.reviewRate}</label>
-            <Field type="number" value={state.review_rate_pct}
-                   onChange={e => setState(s => ({ ...s, review_rate_pct: Number(e.target.value) }))} />
+            <label className="mb-1 block text-xs text-gray-600">{strings.inputs.reviewUplift}</label>
+            <Field
+              type="number"
+              value={state.reviews_traffic_uplift_pct}
+              onChange={(e) =>
+                setState((s) => ({
+                  ...s,
+                  reviews_traffic_uplift_pct: Number(e.target.value),
+                }))
+              }
+            />
           </div>
           <div>
-            <label className="mb-1 block text-xs text-gray-600">{t.inputs.reviewUplift}</label>
-            <Field type="number" value={state.reviews_traffic_uplift_pct}
-                   onChange={e => setState(s => ({ ...s, reviews_traffic_uplift_pct: Number(e.target.value) }))} />
+            <label className="mb-1 block text-xs text-gray-600">{strings.inputs.adminHrs}</label>
+            <Field
+              type="number"
+              value={state.admin_hours_saved}
+              onChange={(e) =>
+                setState((s) => ({ ...s, admin_hours_saved: Number(e.target.value) }))
+              }
+            />
           </div>
           <div>
-            <label className="mb-1 block text-xs text-gray-600">{t.inputs.adminHrs}</label>
-            <Field type="number" value={state.admin_hours_saved}
-                   onChange={e => setState(s => ({ ...s, admin_hours_saved: Number(e.target.value) }))} />
+            <label className="mb-1 block text-xs text-gray-600">{strings.inputs.staffCost}</label>
+            <Field
+              type="number"
+              value={state.staff_hourly_cost}
+              onChange={(e) =>
+                setState((s) => ({ ...s, staff_hourly_cost: Number(e.target.value) }))
+              }
+            />
           </div>
           <div>
-            <label className="mb-1 block text-xs text-gray-600">{t.inputs.staffCost}</label>
-            <Field type="number" value={state.staff_hourly_cost}
-                   onChange={e => setState(s => ({ ...s, staff_hourly_cost: Number(e.target.value) }))} />
-          </div>
-          <div>
-            <label className="mb-1 block text-xs text-gray-600">{t.inputs.price}</label>
-            <Field type="number" value={state.price}
-                   onChange={e => setState(s => ({ ...s, price: Number(e.target.value) }))} />
+            <label className="mb-1 block text-xs text-gray-600">{strings.inputs.packPrice}</label>
+            <Field
+              type="number"
+              value={packPrice}
+              disabled={packPriceProp !== undefined}
+              onChange={(e) => setPackPrice(Number(e.target.value))}
+            />
           </div>
         </div>
       </details>
 
-      {/* Results */}
-      <div className="mt-5 grid grid-cols-1 gap-3 md:grid-cols-4">
-        <Card title={t.breakdown.speed} value={outputs.speed_to_lead.gp} color={BRAND.teal} />
-        <Card title={t.breakdown.noshow} value={outputs.no_show.gp} color={BRAND.teal} />
-        <Card title={t.breakdown.reviews} value={outputs.reviews.gp} color={BRAND.teal} />
-        <Card title={t.breakdown.admin} value={outputs.admin_time.gp} color={BRAND.teal} />
-      </div>
-
       <div className="mt-5 rounded-2xl bg-gray-50 p-4">
-        <div className="flex flex-wrap items-end gap-6">
-          <div>
-            <div className="text-xs text-gray-500">{t.results.monthly}</div>
-            <div className="mt-1 flex items-baseline gap-3">
-              <Pill label={t.results.pess} value={outputs.totals.gp_pess} />
-              <Pill label={t.results.expected} value={outputs.totals.gp_expected} emphasized />
-              <Pill label={t.results.opt} value={outputs.totals.gp_optimistic} />
-            </div>
-          </div>
-          <div className="ml-auto text-right">
-            <div className="text-xs text-gray-500">{t.results.roi}: {round2(outputs.totals.roi_expected * 100)}%</div>
-            <div className="text-xs text-gray-500">{t.results.payback}: {round2(outputs.totals.payback_weeks)}</div>
-            <button
-              className={`mt-2 rounded-xl px-4 py-2 text-sm font-bold text-white`}
-              style={{ backgroundColor: showAudit ? BRAND.teal : BRAND.blue }}
-              onClick={() => {
-                // hook analytics here if needed
-                // window.dispatchEvent(new CustomEvent("roi_calc_cta_click", { detail: { inputs: state, outputs } }));
-              }}
-            >
-              {showAudit ? t.cta_audit : t.cta_buy} {showAudit ? "" : `${state.price.toFixed(0)} $`}
-            </button>
-          </div>
+        <div className="mb-2 flex items-center gap-2 text-xs text-gray-500">
+          <span className="rounded-full bg-gray-100 px-2 py-0.5 font-semibold text-gray-700">
+            {outputs.packs} × {formatCurrency(packPrice)}
+          </span>
+          <span>= {formatCurrency(outputs.totalPrice)}</span>
         </div>
-        <p className="mt-2 text-[11px] text-gray-400">{t.foot}</p>
+
+        <div className="text-xs text-gray-500">
+          <div className="font-semibold text-gray-700">{strings.sections.thisMonth}</div>
+          <div className="mt-1 grid grid-cols-2 gap-2">
+            <Stat label={strings.sections.expected} value={formatCurrency(outputs.monthlyGP)} />
+            <Stat label={strings.sections.net} value={formatCurrency(outputs.month1Net)} />
+            <Stat label={strings.sections.payback} value={outputs.paybackWeeks.toFixed(1)} />
+            <Stat
+              label={strings.sections.timeSaved}
+              value={`${outputs.adminHours.toFixed(0)} h/mo (≈ ${formatCurrency(outputs.adminDollars)}/mo)`}
+            />
+          </div>
+
+          <div className="mt-4 font-semibold text-gray-700">{strings.sections.year1}</div>
+          <div className="mt-1 grid grid-cols-2 gap-2">
+            <Stat label={strings.sections.net} value={formatCurrency(outputs.year1Net)} />
+            <Stat label={strings.sections.roi} value={formatPercent(outputs.year1ROI)} />
+          </div>
+
+          <div className="mt-4 text-right">
+            <button
+              className="rounded-xl px-4 py-2 text-sm font-bold text-white"
+              style={{ backgroundColor: showAudit ? "#1c9795" : "#1e82fa" }}
+            >
+              {showAudit ? strings.cta.audit : strings.cta.buy(outputs.totalPrice)}
+            </button>
+            {lowUplift && (
+              <div className="mt-1 text-xs text-gray-500">{strings.sections.lowUplift}</div>
+            )}
+          </div>
+          <p className="mt-2 text-[11px] text-gray-400">{strings.foot}</p>
+        </div>
       </div>
     </div>
   );
 }
 
-function Card({ title, value, color }: { title: string; value: number; color: string }) {
+function Field(
+  props: React.DetailedHTMLProps<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  >
+) {
   return (
-    <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
-      <div className="text-xs text-gray-500">{title}</div>
-      <div className="mt-1 text-lg font-extrabold" style={{ color }}>
-        {formatCurrency(value)}
-      </div>
+    <input
+      {...props}
+      className={`w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1e82fa] ${props.className ?? ""}`}
+    />
+  );
+}
+
+function Stat({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <div className="text-[11px] text-gray-500">{label}</div>
+      <div className="text-sm font-semibold text-gray-800">{value}</div>
     </div>
   );
 }
 
-function Pill({ label, value, emphasized }: { label: string; value: number; emphasized?: boolean }) {
-  return (
-    <div
-      className={`rounded-full px-3 py-1 text-sm ${emphasized ? "font-extrabold" : "font-semibold"}`}
-      style={{ backgroundColor: emphasized ? "rgba(30,130,250,0.10)" : "rgba(19,28,45,0.06)", color: emphasized ? "#1e82fa" : "#131c2d" }}
-      aria-label={`${label} ${formatCurrency(value)}`}
-    >
-      {label}: {formatCurrency(value)}
-    </div>
-  );
-}
-
-function formatCurrency(v: number) {
-  const n = isFinite(v) ? v : 0;
-  return `$${n.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
-}
-
-export type { Outputs };

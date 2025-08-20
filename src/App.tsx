@@ -6,7 +6,7 @@ import {
   Zap, CalendarCheck, Star,
   Mail, MapPin, ChevronDown, ChevronUp
 } from 'lucide-react';
-import RoiCalculator, { Outputs as RoiOutputs } from './components/RoiCalculator';
+import RoiCalculator, { STR_EN, STR_FR, formatCurrency } from './components/RoiCalculator';
 import { PACK_PRICE } from './config';
 
 // Header Component
@@ -490,7 +490,6 @@ const ROIMath = () => {
     return () => observer.disconnect();
   }, []);
 
-  const formatCurrency = (v: number) => `$${Math.round(v).toLocaleString()}`;
   const expectedDisplay = expected !== null ? formatCurrency(expected) : t.roi.defaultRange;
 
   return (
@@ -518,8 +517,9 @@ const ROIMath = () => {
           </div>
           <div className={`mt-8 md:mt-0 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <RoiCalculator
+              packPrice={PACK_PRICE}
+              strings={lang === 'fr' ? STR_FR : STR_EN}
               defaults={{
-                locale: lang,
                 arpv: 130,
                 gross_margin_pct: 60,
                 leads_per_month: 40,
@@ -529,9 +529,9 @@ const ROIMath = () => {
                 reviews_traffic_uplift_pct: 3,
                 admin_hours_saved: 5,
                 staff_hourly_cost: 22,
-                price: PACK_PRICE
+                selected: { speed: true, noshow: true, reviews: true }
               }}
-              onChange={(o: RoiOutputs) => setExpected(o.totals.gp_expected)}
+              onCalculate={({ outputs }) => setExpected(outputs.monthlyGP)}
             />
           </div>
         </div>
