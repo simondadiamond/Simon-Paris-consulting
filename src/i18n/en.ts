@@ -20,30 +20,30 @@ export const en = {
     },
   problems: {
     title: 'Why clinics <span class="accent">lose money</span> every week…',
-    list: [
-      { title: 'Ignored <span class="accent">leads</span>', body: 'Patients book elsewhere.' },
-      { title: 'Missed <span class="accent">appointments</span>', body: 'Empty chairs at peak hours.' },
-      { title: 'Late <span class="accent">invoices</span>', body: 'Cash flow gets squeezed.' },
-      { title: 'Legal <span class="accent">uncertainty</span>', body: 'Messages may breach Law 25/Bill 96.' }
-    ],
+      list: [
+        { title: 'Ignored leads', body: 'Patients book elsewhere.' },
+        { title: 'Missed appointments', body: 'Empty chairs at peak hours.' },
+        { title: 'Late invoices', body: 'Cash flow gets squeezed.' },
+        { title: 'Legal uncertainty', body: 'Messages may breach Law 25/Bill 96.' }
+      ],
     note: 'You can fix all of this with simple <span class="font-semibold">bilingual automation</span>.'
   },
   growth: {
     title: 'The <span class="accent">growth engine</span> for your clinic: simple, bilingual, compliant.',
     gears: [
-      {
-        title: 'Speed‑to‑Lead <span class="accent">SMS</span>',
-        bullets: ['Replies in under 5 min', 'FR-first, then EN', 'Integrates web, calls, social']
-      },
-      {
-        title: 'No‑Show <span class="accent">Chaser</span> + <span class="accent">Reminders</span>',
-        bullets: ['24h & 2h reminders', 'Easy reschedule link', '25–50% fewer no-shows']
-      },
-      {
-        title: 'Review <span class="accent">Engine</span> + <span class="accent">Compliance</span>',
-        bullets: ['Polite FR/EN review asks', '3× more reviews in 30–60 days', 'Audit-ready docs (Law 25/96)']
-      }
-    ],
+        {
+          title: 'Speed‑to‑Lead SMS',
+          bullets: ['Replies in under 5 min', 'FR-first, then EN', 'Integrates web, calls, social']
+        },
+        {
+          title: 'No‑Show Chaser + Reminders',
+          bullets: ['24h & 2h reminders', 'Easy reschedule link', '25–50% fewer no-shows']
+        },
+        {
+          title: 'Review Engine + Compliance',
+          bullets: ['Polite FR/EN review asks', '3× more reviews in 30–60 days', 'Audit-ready docs (Law 25/96)']
+        }
+      ],
     cta: 'See the packs in action'
   },
   offers: {
@@ -85,12 +85,12 @@ export const en = {
     eyebrow: 'Free',
     title: 'Are you really <span class="accent">Law 25</span> ready?',
     sub: 'Most clinics think they’re fine… until a no-show patient or audit proves otherwise. Download the free checklist to spot the hidden risks in your communication workflows.',
-    points: [
-      'Is your SMS & email <span class="accent">consent wording</span> valid under Québec law?',
-      'Do you have <span class="accent">timestamped proof</span> for every message you send?',
-      'Are your reminders and follow-ups fully <span class="accent">FR-first</span>?',
-      'Can patients <span class="accent">opt-out</span> instantly, without risk of complaint?'
-    ],
+      points: [
+        'Is your SMS & email consent wording valid under Québec law?',
+        'Do you have timestamped proof for every message you send?',
+        'Are your reminders and follow-ups fully FR-first?',
+        'Can patients opt-out instantly, without risk of complaint?'
+      ],
     cta: 'Download the Checklist',
     href: '/checklist',
     disclaimer: 'Free download. Instant access after signup. We’ll also send you practical updates on compliance & automation (unsubscribe anytime).'

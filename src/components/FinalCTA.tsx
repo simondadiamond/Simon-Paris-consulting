@@ -150,9 +150,9 @@ const FinalCTA = () => {
               
               <div className="mt-8 pt-8 border-t border-gray-600 text-center">
                 <p className="text-gray-300 mb-4 text-lg">Or, send a quick question to:</p>
-                <a 
+                <a
                   href="mailto:info@simonparis.ca"
-                  className="inline-flex items-center font-semibold text-lg group transition-colors duration-300 text-[#2280FF] hover:text-teal-400"
+                  className="inline-flex items-center font-semibold text-lg group transition-colors duration-300 text-[#2280FF]"
                 >
                   <Send className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" />
                   info@simonparis.ca

@@ -65,9 +65,9 @@ const Header = () => {
         }`}>
           <div className="p-6 pt-20">
             <div className="space-y-6">
-              <a 
+              <a
                 href="mailto:info@simonparis.ca"
-                className="block text-white hover:text-teal-400 font-medium"
+                className="block text-white font-medium"
               >
                 info@simonparis.ca
               </a>
