@@ -75,7 +75,7 @@ const fr: TranslationKeys = {
     note: 'Prix fixes. Aucun frais caché. Modèles français d’abord.'
   },
   roi: {
-    title: 'Pourquoi <span class="accent">199 $</span> bat <span class="accent">~600–900 $</span> perdus chaque mois',
+    title: '<span class="accent">199 $</span> pour protéger <span class="accent">600–900 $</span> chaque mois',
     without: 'Leads perdus, 3–4 no‑shows, factures en retard ≈ 600–900 $ / mois',
     with: 'Pack dès 199 $ → réponses plus rapides, moins d’absences, factures à temps',
     note: 'Beaucoup de cliniques rentabilisent le pack dès la première semaine.',
@@ -92,8 +92,7 @@ const fr: TranslationKeys = {
       'Vos patients peuvent-ils se <span class="accent">désabonner</span> instantanément, sans plainte possible?'
     ],
     cta: 'Télécharger la Liste',
-    href: '/fr/checklist',
-    disclaimer: 'Téléchargement gratuit. Accès immédiat après inscription. Nous vous enverrons aussi des conseils pratiques sur la conformité et l’automatisation (désabonnement en tout temps).'
+    href: '/fr/checklist'
   },
   proof: {
     title: 'Les cliniques qui automatisent voient des résultats rapides.',
