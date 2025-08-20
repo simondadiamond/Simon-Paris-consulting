@@ -502,16 +502,6 @@ const ROIMath = () => {
               <span className="accent">{expectedDisplay}</span>
               {t.roi.titleSuffix}
             </h2>
-            <div className={`grid md:grid-cols-2 gap-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <div className="card-light p-6 md:p-8">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{lang === 'fr' ? 'Sans automatisation' : 'Without automation'}</h3>
-                <p className="text-gray-700">{t.roi.without}</p>
-              </div>
-              <div className="card-light p-6 md:p-8">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{lang === 'fr' ? 'Avec automatisation' : 'With automation'}</h3>
-                <p className="text-gray-700">{t.roi.with}</p>
-              </div>
-            </div>
             <p className="text-gray-700 mt-8">{t.roi.note}</p>
             <p className="text-gray-700 text-xs mt-2">{t.roi.disclaimer}</p>
           </div>
@@ -531,7 +521,7 @@ const ROIMath = () => {
                 staff_hourly_cost: 22,
                 selected: { speed: true, noshow: true, reviews: true }
               }}
-              onCalculate={({ outputs }) => setExpected(outputs.monthlyGP)}
+              onCalculate={(o) => setExpected(o.monthlyGP)}
             />
           </div>
         </div>
