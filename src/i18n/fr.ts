@@ -20,30 +20,30 @@ const fr: TranslationKeys = {
   },
   problems: {
     title: 'Pourquoi les cliniques <span class="accent">perdent de l’argent</span> chaque semaine…',
-    list: [
-      { title: 'Leads <span class="accent">ignorés</span>', body: 'Les patients réservent ailleurs.' },
-      { title: 'Rendez‑vous <span class="accent">manqués</span>', body: 'Des chaises vides aux heures de pointe.' },
-      { title: 'Factures <span class="accent">en retard</span>', body: 'Moins de liquidités chaque mois.' },
-      { title: 'Incertitude <span class="accent">légale</span>', body: 'Risque de non‑conformité (Loi 25/Loi 96).' }
-    ],
+      list: [
+        { title: 'Leads ignorés', body: 'Les patients réservent ailleurs.' },
+        { title: 'Rendez‑vous manqués', body: 'Des chaises vides aux heures de pointe.' },
+        { title: 'Factures en retard', body: 'Moins de liquidités chaque mois.' },
+        { title: 'Incertitude légale', body: 'Risque de non‑conformité (Loi 25/Loi 96).' }
+      ],
     note: 'Tout se corrige avec une <span class="font-semibold">automatisation bilingue</span> simple.'
   },
   growth: {
     title: 'Le <span class="accent">moteur de croissance</span> de votre clinique : simple, bilingue, conforme.',
     gears: [
-      {
-        title: 'SMS <span class="accent">vitesse‑à‑lead</span>',
-        bullets: ['Réponse en moins de 5 min', 'Priorité FR → EN', 'Intégration web, appels, réseaux sociaux']
-      },
-      {
-        title: 'Relance d’<span class="accent">absences</span> + <span class="accent">rappels</span>',
-        bullets: ['Rappels 24 h & 2 h', 'Lien simple pour replanifier', '25–50 % d’absences en moins']
-      },
-      {
-        title: 'Moteur d’<span class="accent">avis</span> + <span class="accent">conformité</span>',
-        bullets: ['Demandes d’avis polies FR/EN', '3× plus d’avis en 30–60 jours', 'Docs prêts pour audit (Loi 25/96)']
-      }
-    ],
+        {
+          title: 'SMS vitesse‑à‑lead',
+          bullets: ['Réponse en moins de 5 min', 'Priorité FR → EN', 'Intégration web, appels, réseaux sociaux']
+        },
+        {
+          title: 'Relance d’absences + rappels',
+          bullets: ['Rappels 24 h & 2 h', 'Lien simple pour replanifier', '25–50 % d’absences en moins']
+        },
+        {
+          title: 'Moteur d’avis + conformité',
+          bullets: ['Demandes d’avis polies FR/EN', '3× plus d’avis en 30–60 jours', 'Docs prêts pour audit (Loi 25/96)']
+        }
+      ],
     cta: 'Voir les packs en action'
   },
   offers: {
@@ -85,12 +85,12 @@ const fr: TranslationKeys = {
     eyebrow: 'Gratuit',
     title: 'Êtes-vous vraiment prêt pour la <span class="accent">Loi 25</span>?',
     sub: 'La plupart des cliniques croient que oui… jusqu’à ce qu’un patient manqué ou un audit révèle le contraire. Téléchargez la liste gratuite pour découvrir les zones à risque dans vos communications.',
-    points: [
-      'Vos <span class="accent">formulaires de consentement</span> pour SMS et courriels sont-ils vraiment conformes?',
-      'Avez-vous une <span class="accent">preuve horodatée</span> de chaque message envoyé?',
-      'Vos rappels et suivis sont-ils 100 % <span class="accent">en français d’abord</span> (FR-first)?',
-      'Vos patients peuvent-ils se <span class="accent">désabonner</span> instantanément, sans plainte possible?'
-    ],
+      points: [
+        'Vos formulaires de consentement pour SMS et courriels sont-ils vraiment conformes?',
+        'Avez-vous une preuve horodatée de chaque message envoyé?',
+        'Vos rappels et suivis sont-ils 100 % en français d’abord (FR-first)?',
+        'Vos patients peuvent-ils se désabonner instantanément, sans plainte possible?'
+      ],
     cta: 'Télécharger la Liste',
     href: '/fr/checklist',
     disclaimer: 'Téléchargement gratuit. Accès immédiat après inscription. Nous vous enverrons aussi des conseils pratiques sur la conformité et l’automatisation (désabonnement en tout temps).'
