@@ -91,7 +91,7 @@ const fr: TranslationKeys = {
         'Vos patients peuvent-ils se désabonner instantanément, sans plainte possible?'
       ],
     cta: 'Télécharger la Liste',
-    href: '/fr/checklist'
+    href: '/checklist'
   },
   proof: {
     title: 'Les cliniques qui automatisent voient des résultats rapides.',
