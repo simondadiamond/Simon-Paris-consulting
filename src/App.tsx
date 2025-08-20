@@ -545,7 +545,6 @@ const Checklist = () => {
           <a href={t.checklist.href} className="btn-primary px-8 py-4">
             {t.checklist.cta}
           </a>
-          <p className="text-xs text-gray-500 mt-4">{t.checklist.disclaimer}</p>
         </div>
       </div>
     </section>

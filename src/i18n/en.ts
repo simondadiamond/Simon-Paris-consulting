@@ -75,7 +75,7 @@ export const en = {
     note: 'Flat pricing. No hidden fees. French-first templates.'
   },
   roi: {
-    title: 'Why <span class="accent">$199</span> beats <span class="accent">~$600–900</span> lost every month',
+    title: '<span class="accent">$199 today</span> saves clinics <span class="accent">~$600–900</span> every month',
     without: 'Lost leads, 3–4 no-shows, late invoices ≈ $600–900/mo',
     with: 'Pack from $199 → faster replies, fewer no‑shows, invoices on time',
     note: 'Many clinics recoup the pack in the first week.',
@@ -92,8 +92,7 @@ export const en = {
         'Can patients opt-out instantly, without risk of complaint?'
       ],
     cta: 'Download the Checklist',
-    href: '/checklist',
-    disclaimer: 'Free download. Instant access after signup. We’ll also send you practical updates on compliance & automation (unsubscribe anytime).'
+    href: '/checklist'
   },
   proof: {
     title: 'Clinics that automate see results fast.',
