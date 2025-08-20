@@ -700,7 +700,7 @@ const StickyCTA = () => {
   if (!visible) return null;
   const base = lang === 'fr' ? '/fr' : '';
   return (
-    <div className="sticky-cta">
+    <div className="sticky-cta md:hidden">
       <a href={`${base}/checklist`} className="btn-primary w-full text-lg py-4">
         {t.stickyCta}
       </a>
