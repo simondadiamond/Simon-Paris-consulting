@@ -1,1 +1,1 @@
-export const PACK_PRICE = 199;
+export const PACK_PRICE = 149;

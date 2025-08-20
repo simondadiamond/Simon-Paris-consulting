@@ -19,21 +19,30 @@ export const en = {
       secondaryCta: `See Automation Packs ($${PACK_PRICE})`
     },
   problems: {
-    title: 'Why clinics lose money every week…',
+    title: 'Why clinics <span class="accent">lose money</span> every week…',
     list: [
-      { title: 'Ignored leads', body: 'Patients wait and book elsewhere.' },
-      { title: 'Missed appointments', body: 'Empty chairs at peak hours.' },
-      { title: 'Late invoices', body: 'Cash flow gets squeezed.' },
-      { title: 'Legal uncertainty', body: 'Messages may breach Law 25/Bill 96.' }
+      { title: 'Ignored <span class="accent">leads</span>', body: 'Patients book elsewhere.' },
+      { title: 'Missed <span class="accent">appointments</span>', body: 'Empty chairs at peak hours.' },
+      { title: 'Late <span class="accent">invoices</span>', body: 'Cash flow gets squeezed.' },
+      { title: 'Legal <span class="accent">uncertainty</span>', body: 'Messages may breach Law 25/Bill 96.' }
     ],
-    note: 'You can fix all of this with simple bilingual automation.'
+    note: 'You can fix all of this with simple <span class="font-semibold">bilingual automation</span>.'
   },
   growth: {
-    title: 'Your clinic\u2019s growth engine: simple, bilingual, compliant.',
+    title: 'The <span class="accent">growth engine</span> for your clinic: simple, bilingual, compliant.',
     gears: [
-      { title: 'Speed\u2011to\u2011Lead SMS', desc: 'Reply before competitors.' },
-      { title: 'No\u2011Show Chaser + Reminders', desc: 'Fewer empty chairs every week.' },
-      { title: 'Review Engine + Compliance', desc: 'More 5\u2605 reviews, audit-ready docs.' }
+      {
+        title: 'Speed‑to‑Lead <span class="accent">SMS</span>',
+        bullets: ['Replies in under 5 min', 'FR-first, then EN', 'Integrates web, calls, social']
+      },
+      {
+        title: 'No‑Show <span class="accent">Chaser</span> + <span class="accent">Reminders</span>',
+        bullets: ['24h & 2h reminders', 'Easy reschedule link', '25–50% fewer no-shows']
+      },
+      {
+        title: 'Review <span class="accent">Engine</span> + <span class="accent">Compliance</span>',
+        bullets: ['Polite FR/EN review asks', '3× more reviews in 30–60 days', 'Audit-ready docs (Law 25/96)']
+      }
     ],
     cta: 'See the packs in action'
   },
@@ -66,12 +75,25 @@ export const en = {
     note: 'Flat pricing. No hidden fees. French-first templates.'
   },
   roi: {
-    title: `$${PACK_PRICE} vs ~$400 in lost appointments each month`,
-    without: '3 missed appointments/month \u2248 $300\u2013$400 lost in revenue',
-    with: `$${PACK_PRICE} pack \u2192 faster responses, fewer no-shows`,
-    note: 'Many clinics recoup the pack cost within the first week.',
-    disclaimer:
-      'Estimates assume a typical appointment value of ~$100\u2013150. Results will vary by clinic.'
+    title: 'Why <span class="accent">$149</span> beats <span class="accent">~$600–900</span> lost every month',
+    without: 'Lost leads, 3–4 no-shows, late invoices ≈ $600–900/mo',
+    with: 'Pack from $149 → faster replies, fewer no‑shows, invoices on time',
+    note: 'Many clinics recoup the pack in the first week.',
+    disclaimer: 'Estimates based on ~$120–150 per appointment and typical lead leakage in Québec. Results vary.'
+  },
+  checklist: {
+    eyebrow: 'Free',
+    title: 'Are you really <span class="accent">Law 25</span> ready?',
+    sub: 'Most clinics think they’re fine… until a no-show patient or audit proves otherwise. Download the free checklist to spot the hidden risks in your communication workflows.',
+    points: [
+      'Is your SMS & email <span class="accent">consent wording</span> valid under Québec law?',
+      'Do you have <span class="accent">timestamped proof</span> for every message you send?',
+      'Are your reminders and follow-ups fully <span class="accent">FR-first</span>?',
+      'Can patients <span class="accent">opt-out</span> instantly, without risk of complaint?'
+    ],
+    cta: 'Download the Checklist',
+    href: '/checklist',
+    disclaimer: 'Free download. Instant access after signup. We’ll also send you practical updates on compliance & automation (unsubscribe anytime).'
   },
   proof: {
     title: 'Clinics that automate see results fast.',
@@ -86,27 +108,38 @@ export const en = {
     list: [
       {
         question: 'How quickly can you set up my automation?',
-        answer:
-          'Most setups are completed within 1\u20132 weeks after our demo call. I handle all the technical work while you focus on running your business.'
+        answer: {
+          intro: 'Faster than you think.',
+          bullets: ['Live within 1–2 weeks', 'Hands-on support included']
+        }
       },
       {
         question: 'Is this really compliant?',
-        answer:
-          'Absolutely. Every message template and automation workflow is reviewed for Bill 96 compliance. I provide documentation showing compliance for audit purposes.'
+        answer: {
+          intro: 'Yes, and documented.',
+          bullets: ['Bill 25/96-checked templates', 'Audit-ready proof provided']
+        }
       },
       {
         question: "What if I'm not tech-savvy?",
-        answer:
-          "Perfect! That's exactly who this is built for. You don't need to understand the technology—just see the results. I handle all the technical setup and maintenance."
+        answer: {
+          intro: 'Built for non-tech folks.',
+          bullets: ['We set everything up', 'Human support in English & French']
+        }
       },
       {
         question: 'How much does it cost?',
-        answer: `From $${PACK_PRICE}. Flat pricing. No long-term contract.`
+        answer: {
+          intro: `From $${PACK_PRICE}.`,
+          bullets: ['Flat pricing, no contract', 'ROI within days for many']
+        }
       },
       {
         question: 'Can you help us with AI adoption or strategy?',
-        answer:
-          "Absolutely. I'm always researching the latest AI tools and trends for SMBs. If you want to talk about how AI could help your business, just mention it when you book a demo."
+        answer: {
+          intro: 'Absolutely.',
+          bullets: ['Always testing new AI tools', 'Ask during the demo']
+        }
       }
     ]
   },

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from './LanguageProvider';
 import {
   Globe, Menu, X,
-  MessageSquare, CalendarX, Receipt, Shield,
+  MessageSquare, CalendarX, Receipt, Shield, CheckCircle,
   Zap, CalendarCheck, Star,
   Mail, MapPin, ChevronDown, ChevronUp
 } from 'lucide-react';
@@ -176,7 +176,7 @@ const Hero = () => {
 
         <h1 className="text-hero text-white mb-6 leading-tight tracking-tight">
           <span>{t.hero.h1_part1} </span>
-          <span className="text-[#139E9B]">{t.hero.h1_accent}</span>
+          <span className="accent">{t.hero.h1_accent}</span>
         </h1>
 
         <p className="text-subhead !text-white/90 max-w-3xl mx-auto mb-4">{t.hero.subhead}</p>
@@ -297,14 +297,17 @@ const ProblemSection = () => {
     <section id="automations" ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-display text-gray-900 mb-6">{t.problems.title}</h2>
+          <h2
+            className="text-display text-gray-900 mb-6"
+            dangerouslySetInnerHTML={{ __html: t.problems.title }}
+          />
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {problems.map((problem, index) => (
             <div
               key={index}
-              className={`card-light p-6 text-center group transition-all duration-700 ${
+              className={`card-light p-6 md:p-8 text-center group transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
@@ -313,9 +316,10 @@ const ProblemSection = () => {
                 <problem.icon className="w-8 h-8 text-[#2280FF]" />
               </div>
 
-              <h3 className="text-lg lg:text-xl font-semibold text-gray-900 mb-3">
-                {problem.title}
-              </h3>
+              <h3
+                className="text-lg lg:text-xl font-semibold text-gray-900 mb-3"
+                dangerouslySetInnerHTML={{ __html: problem.title }}
+              />
 
               <p className="text-gray-700 leading-relaxed text-sm lg:text-base">
                 {problem.body}
@@ -324,7 +328,10 @@ const ProblemSection = () => {
           ))}
         </div>
 
-        <p className="text-center text-gray-700 mt-8">{t.problems.note}</p>
+        <p
+          className="text-center text-gray-700 mt-8"
+          dangerouslySetInnerHTML={{ __html: t.problems.note }}
+        />
       </div>
     </section>
   );
@@ -362,24 +369,37 @@ const GrowthEngine = () => {
     <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#F9FAFB' }}>
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-display text-gray-900 mb-6">{t.growth.title}</h2>
+          <h2
+            className="text-display text-gray-900 mb-6"
+            dangerouslySetInnerHTML={{ __html: t.growth.title }}
+          />
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8 items-stretch">
           {gears.map((gear, index) => (
             <div
               key={index}
-              className={`card-light p-8 text-center group transition-all duration-700 ${
+              className={`card-light p-6 md:p-8 flex flex-col items-center text-center group transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
+              } h-full`}
               style={{ transitionDelay: `${index * 200}ms` }}
             >
-              <div className="w-16 h-16 rounded-2xl bg-[#2280FF] flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-16 h-16 rounded-2xl bg-[#2280FF] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <gear.icon className="w-8 h-8 text-white" />
               </div>
 
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">{gear.title}</h3>
-              <p className="text-gray-700 leading-relaxed">{gear.desc}</p>
+              <h3
+                className="text-xl font-semibold text-gray-900 mb-4 text-center"
+                dangerouslySetInnerHTML={{ __html: gear.title }}
+              />
+              <ul className="text-gray-700 space-y-2 text-left w-full">
+                {gear.bullets.map((b: string, i: number) => (
+                  <li key={i} className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-[#139E9B] mr-2 mt-1 flex-shrink-0" />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
@@ -420,17 +440,23 @@ const OfferCards = () => {
   return (
     <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
-        <h2 className={`text-display text-gray-900 mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>{t.offers.heading}</h2>
+        <h2
+          className={`text-display text-gray-900 mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          dangerouslySetInnerHTML={{ __html: t.offers.heading }}
+        />
 
         <div className={`grid md:grid-cols-3 gap-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {offers.map((offer, index) => (
-            <div key={index} className="card-light p-8 flex flex-col relative">
+            <div key={index} className="card-light p-6 md:p-8 flex flex-col relative">
               {offer.badge && (
                 <span className="absolute top-4 right-4 text-xs font-semibold bg-[#2280FF] text-white px-2 py-1 rounded-full">
                   {offer.badge}
                 </span>
               )}
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">{offer.title}</h3>
+              <h3
+                className="text-xl font-semibold text-gray-900 mb-2"
+                dangerouslySetInnerHTML={{ __html: offer.title }}
+              />
               <p className="text-2xl font-bold text-gray-900 mb-4">{offer.price}</p>
               <p className="text-gray-700 mb-6 flex-1">{offer.desc}</p>
               <a href={offer.href} className="btn-primary mt-auto">{offer.cta}</a>
@@ -468,15 +494,18 @@ const ROIMath = () => {
     <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#F9FAFB' }}>
       <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center">
         <div className={`mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-display text-gray-900 mb-6">{t.roi.title}</h2>
+          <h2
+            className="text-display text-gray-900 mb-6"
+            dangerouslySetInnerHTML={{ __html: t.roi.title }}
+          />
         </div>
 
         <div className={`grid md:grid-cols-2 gap-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="card-light p-8">
+          <div className="card-light p-6 md:p-8">
             <h3 className="text-xl font-semibold text-gray-900 mb-2">{lang === 'fr' ? 'Sans automatisation' : 'Without automation'}</h3>
             <p className="text-gray-700">{t.roi.without}</p>
           </div>
-          <div className="card-light p-8">
+          <div className="card-light p-6 md:p-8">
             <h3 className="text-xl font-semibold text-gray-900 mb-2">{lang === 'fr' ? 'Avec automatisation' : 'With automation'}</h3>
             <p className="text-gray-700">{t.roi.with}</p>
           </div>
@@ -484,6 +513,40 @@ const ROIMath = () => {
 
         <p className="text-gray-700 mt-8">{t.roi.note}</p>
         <p className="text-gray-700 text-xs mt-2">{t.roi.disclaimer}</p>
+      </div>
+    </section>
+  );
+};
+
+// Checklist Component
+const Checklist = () => {
+  const { t } = useLanguage();
+  return (
+    <section className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+      <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8">
+        <div className="card-light p-6 md:p-8 text-center">
+          <div className="inline-flex items-center mb-4 text-sm font-medium text-gray-700">
+            <Shield className="w-5 h-5 text-[#139E9B] mr-2" />
+            <span>{t.checklist.eyebrow}</span>
+          </div>
+          <h3
+            className="text-headline text-gray-900 mb-4"
+            dangerouslySetInnerHTML={{ __html: t.checklist.title }}
+          />
+          <p className="text-gray-700 mb-6">{t.checklist.sub}</p>
+          <ul className="space-y-2 text-left text-gray-700 mb-6">
+            {t.checklist.points.map((p: string, i: number) => (
+              <li key={i} className="flex items-start">
+                <CheckCircle className="w-4 h-4 text-[#139E9B] mr-2 mt-1 flex-shrink-0" />
+                <span dangerouslySetInnerHTML={{ __html: p }} />
+              </li>
+            ))}
+          </ul>
+          <a href={t.checklist.href} className="btn-primary px-8 py-4">
+            {t.checklist.cta}
+          </a>
+          <p className="text-xs text-gray-500 mt-4">{t.checklist.disclaimer}</p>
+        </div>
       </div>
     </section>
   );
@@ -558,33 +621,42 @@ const FAQ = () => {
     <section ref={sectionRef} className="relative py-12 lg:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
       <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-display text-gray-900 mb-6">{t.faq.title}</h2>
+          <h2
+            className="text-display text-gray-900 mb-6"
+            dangerouslySetInnerHTML={{ __html: t.faq.title }}
+          />
         </div>
         
         <div className={`space-y-4 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {faqs.map((faq, index) => (
             <div key={index} className="card-light overflow-hidden">
               <button
-                className="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-white/5 transition-colors"
+                className="w-full px-6 md:px-8 py-6 text-left flex justify-between items-center hover:bg-white/5 transition-colors"
                 onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
               >
-                <span className="text-lg font-semibold text-gray-900 pr-8">
-                  {faq.question}
-                </span>
+                <span
+                  className="text-lg font-semibold text-gray-900 pr-8"
+                  dangerouslySetInnerHTML={{ __html: faq.question }}
+                />
                 {openFAQ === index ? (
                   <ChevronUp className="w-6 h-6 text-[#2280FF] flex-shrink-0" />
                 ) : (
                   <ChevronDown className="w-6 h-6 text-[#2280FF] flex-shrink-0" />
                 )}
               </button>
-              
-              <div className={`transition-all duration-300 overflow-hidden ${
-                openFAQ === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-              }`}>
-                <div className="px-8 pb-6">
-                  <p className="text-gray-700 leading-relaxed">
-                    {faq.answer}
-                  </p>
+
+              <div
+                className={`transition-all duration-300 overflow-hidden ${
+                  openFAQ === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                }`}
+              >
+                <div className="px-6 md:px-8 pb-6">
+                  <p className="text-gray-700 mb-2">{faq.answer.intro}</p>
+                  <ul className="list-disc list-inside text-gray-700 space-y-1">
+                    {faq.answer.bullets.map((b: string, i: number) => (
+                      <li key={i}>{b}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </div>
@@ -717,6 +789,7 @@ function App() {
         <GrowthEngine />
         <OfferCards />
       <ROIMath />
+      <Checklist />
       <ProofSection />
       <FAQ />
       <FinalCTA />

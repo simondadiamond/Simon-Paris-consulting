@@ -19,21 +19,30 @@ const fr: TranslationKeys = {
     secondaryCta: `Voir les packs (${PACK_PRICE} $)`
   },
   problems: {
-    title: 'Pourquoi les cliniques perdent de l’argent chaque semaine…',
+    title: 'Pourquoi les cliniques <span class="accent">perdent de l’argent</span> chaque semaine…',
     list: [
-      { title: 'Leads ignorés', body: 'Les patients réservent ailleurs.' },
-      { title: 'Rendez-vous manqués', body: 'Des chaises vides aux heures de pointe.' },
-      { title: 'Factures en retard', body: 'Moins de liquidités chaque mois.' },
-      { title: 'Incertitude légale', body: 'Risque de non-conformité (Loi 25/Loi 96).' }
+      { title: 'Leads <span class="accent">ignorés</span>', body: 'Les patients réservent ailleurs.' },
+      { title: 'Rendez‑vous <span class="accent">manqués</span>', body: 'Des chaises vides aux heures de pointe.' },
+      { title: 'Factures <span class="accent">en retard</span>', body: 'Moins de liquidités chaque mois.' },
+      { title: 'Incertitude <span class="accent">légale</span>', body: 'Risque de non‑conformité (Loi 25/Loi 96).' }
     ],
-    note: 'Tout se corrige avec une automatisation bilingue simple.'
+    note: 'Tout se corrige avec une <span class="font-semibold">automatisation bilingue</span> simple.'
   },
   growth: {
-    title: 'Le moteur de croissance de votre clinique : simple, bilingue, conforme.',
+    title: 'Le <span class="accent">moteur de croissance</span> de votre clinique : simple, bilingue, conforme.',
     gears: [
-      { title: 'SMS vitesse-à-lead', desc: 'Répondez avant vos concurrents.' },
-      { title: 'Relance d’absences + rappels', desc: 'Moins de chaises vides chaque semaine.' },
-      { title: 'Moteur d’avis + conformité', desc: 'Plus d’avis 5★, docs prêts pour audit.' }
+      {
+        title: 'SMS <span class="accent">vitesse‑à‑lead</span>',
+        bullets: ['Réponse en moins de 5 min', 'Priorité FR → EN', 'Intégration web, appels, réseaux sociaux']
+      },
+      {
+        title: 'Relance d’<span class="accent">absences</span> + <span class="accent">rappels</span>',
+        bullets: ['Rappels 24 h & 2 h', 'Lien simple pour replanifier', '25–50 % d’absences en moins']
+      },
+      {
+        title: 'Moteur d’<span class="accent">avis</span> + <span class="accent">conformité</span>',
+        bullets: ['Demandes d’avis polies FR/EN', '3× plus d’avis en 30–60 jours', 'Docs prêts pour audit (Loi 25/96)']
+      }
     ],
     cta: 'Voir les packs en action'
   },
@@ -66,12 +75,25 @@ const fr: TranslationKeys = {
     note: 'Prix fixes. Aucun frais caché. Modèles français d’abord.'
   },
   roi: {
-    title: `${PACK_PRICE} $ vs \u2248 400 $ de revenus manqu\u00e9s par mois`,
-    without: '3 rendez-vous manqu\u00e9s/mois \u2248 300\u2013400 $ de revenus perdus',
-    with: `Pack \u00e0 ${PACK_PRICE} $ \u2192 r\u00e9ponses plus rapides, moins d\u2019absences`,
-    note: 'Plusieurs cliniques rentabilisent le pack d\u00e8s la premi\u00e8re semaine.',
-    disclaimer:
-      'Estimations bas\u00e9es sur une valeur de rendez-vous typique de 100\u2013150 $. R\u00E9sultats variables.'
+    title: 'Pourquoi <span class="accent">149 $</span> bat <span class="accent">~600–900 $</span> perdus chaque mois',
+    without: 'Leads perdus, 3–4 no‑shows, factures en retard ≈ 600–900 $ / mois',
+    with: 'Pack dès 149 $ → réponses plus rapides, moins d’absences, factures à temps',
+    note: 'Beaucoup de cliniques rentabilisent le pack dès la première semaine.',
+    disclaimer: 'Estimations basées sur ~120–150 $ par rendez‑vous et des pertes typiques de leads au Québec. Résultats variables.'
+  },
+  checklist: {
+    eyebrow: 'Gratuit',
+    title: 'Êtes-vous vraiment prêt pour la <span class="accent">Loi 25</span>?',
+    sub: 'La plupart des cliniques croient que oui… jusqu’à ce qu’un patient manqué ou un audit révèle le contraire. Téléchargez la liste gratuite pour découvrir les zones à risque dans vos communications.',
+    points: [
+      'Vos <span class="accent">formulaires de consentement</span> pour SMS et courriels sont-ils vraiment conformes?',
+      'Avez-vous une <span class="accent">preuve horodatée</span> de chaque message envoyé?',
+      'Vos rappels et suivis sont-ils 100 % <span class="accent">en français d’abord</span> (FR-first)?',
+      'Vos patients peuvent-ils se <span class="accent">désabonner</span> instantanément, sans plainte possible?'
+    ],
+    cta: 'Télécharger la Liste',
+    href: '/fr/checklist',
+    disclaimer: 'Téléchargement gratuit. Accès immédiat après inscription. Nous vous enverrons aussi des conseils pratiques sur la conformité et l’automatisation (désabonnement en tout temps).'
   },
   proof: {
     title: 'Les cliniques qui automatisent voient des résultats rapides.',
@@ -86,27 +108,38 @@ const fr: TranslationKeys = {
     list: [
       {
         question: 'En combien de temps pouvez-vous configurer mon automatisation?',
-        answer:
-          'La plupart des configurations sont termin\u00e9es en 1\u20132 semaines apr\u00e8s notre appel d\u00e9mo. Je m’occupe de toute la partie technique pendant que vous g\u00e9rez votre entreprise.'
+        answer: {
+          intro: 'Rapide, sans tracas.',
+          bullets: ['Configuration en 1–2 semaines', 'Support complet pendant l’installation']
+        }
       },
       {
         question: 'C’est vraiment conforme?',
-        answer:
-          'Absolument. Chaque mod\u00e8le de message et flux d’automatisation est v\u00e9rifi\u00e9 pour la conformit\u00e9 \u00e0 la Loi 96. Je fournis une documentation montrant la conformit\u00e9 pour les audits.'
+        answer: {
+          intro: 'Oui, documenté.',
+          bullets: ['Modèles vérifiés Loi 25/96', 'Preuves prêtes pour audit']
+        }
       },
       {
-        question: 'Et si je ne suis pas \u00e0 l’aise avec la technologie?',
-        answer:
-          'Parfait! C’est justement pour vous que c’est con\u00e7u. Vous n’avez pas besoin de comprendre la technologie — voyez simplement les r\u00e9sultats. Je m’occupe de toute l’installation et de la maintenance.'
+        question: 'Et si je ne suis pas à l’aise avec la technologie?',
+        answer: {
+          intro: 'Pensé pour les non‑tech.',
+          bullets: ['Installation gérée pour vous', 'Accompagnement humain en français']
+        }
       },
       {
-        question: 'Combien \u00e7a co\u00fbte?',
-        answer: `\u00c0 partir de ${PACK_PRICE} $. Prix fixes. Sans contrat \u00e0 long terme.`
+        question: 'Combien ça coûte?',
+        answer: {
+          intro: `À partir de ${PACK_PRICE} $.`,
+          bullets: ['Prix fixes, aucun contrat', 'Retour rapide sur investissement']
+        }
       },
       {
-        question: 'Pouvez-vous nous aider avec l’adoption ou la strat\u00e9gie IA?',
-        answer:
-          'Absolument. Je suis toujours \u00e0 l’aff\u00fbt des derniers outils et tendances IA pour les PME. Si vous voulez discuter de la fa\u00e7on dont l’IA peut aider votre entreprise, mentionnez-le lors de la d\u00e9mo.'
+        question: 'Pouvez-vous nous aider avec l’adoption ou la stratégie IA?',
+        answer: {
+          intro: 'Bien sûr.',
+          bullets: ['Veille constante des outils IA', 'Conseils lors de la démo']
+        }
       }
     ]
   },
