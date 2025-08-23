@@ -6,13 +6,14 @@ import {
   ChevronUp,
   CheckCircle,
   ShieldCheck,
+  Shield,
   Clock,
   Languages,
   Star,
-  XCircle,
   Mail,
   Zap,
   CalendarCheck,
+  CalendarX,
   Lock
 } from 'lucide-react';
 
@@ -34,13 +35,13 @@ const content = {
       bullets: ['Réponse < 3 min', 'Français d’abord', 'Équipe alertée'],
       footnote: 'Généralement 30–60 s; délai réglable 0–3 min pour plus de réalisme.'
     },
-    whyTitle: 'Pourquoi les cliniques perdent des patients',
+    whyTitle: 'Le coût des demandes manquées',
     whyCopy:
-      '<strong>Chaque demande non traitée est un rendez-vous perdu.</strong> Les patients comparent plusieurs cliniques et choisissent celle qui répond en premier. Un suivi lent crée des trous d’horaire et du stress. <strong>Une réponse français d’abord, envoyée en quelques minutes, saisit l’intention, clarifie la suite et pousse à réserver — même hors heures.</strong>',
+      '<strong>Chaque demande non traitée est un rendez-vous perdu.</strong> Les patients comparent plusieurs cliniques et la première réponse claire l’emporte souvent. Un suivi lent crée des trous d’horaire et du stress. Une réponse français d’abord, envoyée en quelques minutes, saisit l’intention, précise la suite et pousse à réserver — même hors heures.',
     pain: [
       { pain: 'Si\u00e8ges vides', outcome: 'Plus de cr\u00e9neaux remplis' },
-      { pain: 'Suivi lent', outcome: 'R\u00e9ponses instantan\u00e9es, m\u00eame apr\u00e8s heures' },
-      { pain: 'Stress de conformit\u00e9', outcome: 'Messages FR-d\u2019abord, tra\u00e7ables et conformes' }
+      { pain: 'Suivi lent', outcome: 'R\u00e9ponses instantan\u00e9es, m\u00eame hors heures' },
+      { pain: 'Stress de conformit\u00e9', outcome: 'Fran\u00e7ais d’abord, tra\u00e7able, conforme' }
     ],
     howTitle: 'Comment \u00e7a marche',
     howCopy:
@@ -52,24 +53,25 @@ const content = {
     ],
     proofTitle: 'Résultats attendus',
     proofCopy:
-      '<strong>Des réponses plus rapides convertissent davantage.</strong> Les cliniques constatent moins d’absences et plus de créneaux remplis quand chaque demande reçoit une prochaine étape claire immédiatement.',
+      '<strong>Des réponses plus rapides convertissent davantage.</strong> Les cliniques constatent moins d’absences et plus de créneaux remplis lorsqu’une prochaine étape claire est envoyée immédiatement.',
     stats: [
       '25–50 % d’absences en moins',
       'Réponses en moins de 5 min doublent les conversions',
       '3× plus d’avis Google'
     ],
     case: {
-      clinic: 'Clinique Exemple, QC',
+      title: 'Scénario clinique illustratif',
       before: 'Avant : 8 demandes/semaine sans réponse; trous d’horaire l’après-midi.',
-      after: 'Après (30 jours) : 0 perdues; +35 % de créneaux remplis; moins de « téléphone arabe ».',
+      after: 'Après (30 jours) : 0 perdues; +35 % de créneaux remplis; moins de rappels.',
       impact: 'Impact : ~X $/semaine récupérés.',
-      quote: '« On a cessé de perdre des patients du jour au lendemain. » — Clinique Exemple, QC'
+      disclaimer: 'Projection illustrative basée sur des tests/repères; résultats variables.',
+      quote: '« On a cessé de perdre des patients du jour au lendemain. »'
     },
     founders: {
       badge: 'Offre Fondateurs',
       copy:
-        '<strong>Profitez du tarif précurseur.</strong> Nous intégrons sept cliniques par mois au tarif « Done-With-You » de 99 $. Cela comprend l’installation, la formation et un court témoignage public. Les places se renouvellent chaque mois selon le principe du premier arrivé, premier servi.',
-      primary: 'Réserver l’offre Fondateurs (99 $)',
+        '99 $ en DWY (valeur régulière 400 $+). Nous ouvrons quelques places pour les premiers utilisateurs à une fraction du prix régulier. En échange, nous demandons un court témoignage public ou une étude de cas une fois le système en place. L’offre se termine après 5 à 10 témoignages et ne sera pas répétée. Premier arrivé, premier servi.',
+      primary: 'Réserver ma place Fondateur (99 $)',
       secondary: 'Réserver une démo'
     },
     faqIntro: 'Vous avez demandé, nous avons répondu.',
@@ -80,17 +82,17 @@ const content = {
       { q: 'Offrez-vous du support continu?', a: 'En option (forfait séparé).' },
       { q: 'Et hors des heures d’ouverture?', a: 'Les réponses partent quand même, avec mention claire des heures de rappel.' },
       { q: 'Où sont stockées les données?', a: 'Stockage sécurisé; détails dans notre Politique de confidentialité.' },
-      { q: 'Peut-on choisir le délai de réponse ?', a: 'Oui, les réponses se font généralement en 30–60 s et vous pouvez régler un délai de 0–3 min.' }
+      { q: 'Peut-on choisir le délai de réponse ?', a: 'Oui, les réponses se font généralement en 30–60 s et vous pouvez régler un délai de 0 à 3 min.' }
     ],
     final: {
-      title: 'Prêt à vous lancer?',
+      title: 'Prêt à ne plus manquer de patients ?',
       copy:
-        '<strong>Voyez-le en 15 minutes.</strong> Aucun chantier — on travaille avec vos outils actuels.',
+        '<strong>Voyez-le en action en 15 minutes.</strong> Aucun chantier — on travaille avec vos outils actuels.',
       primary: 'Réserver une démo',
-      secondary: 'Offre Fondateurs 99 $'
+      secondary: 'Réserver ma place Fondateur (99 $)'
     },
-    consent: 'En soumettant, vous consentez \u00e0 recevoir des communications li\u00e9es \u00e0 votre demande.',
-    footer: { privacy: 'Confidentialit\u00e9', terms: 'Conditions', contact: 'Contact' }
+    consent: 'En soumettant, vous consentez à recevoir des communications liées à votre demande.',
+    footer: { privacy: 'Confidentialité', terms: 'Conditions', contact: 'Contact' }
   },
   en: {
     navDemo: 'Book Demo',
@@ -101,13 +103,13 @@ const content = {
       bullets: ['Replies < 3 min', 'French-first', 'Team alerted'],
       footnote: 'Typically 30–60s; adjustable delay 0–3 min for realism.'
     },
-    whyTitle: 'Why clinics miss patients',
+    whyTitle: 'The cost of missed inquiries',
     whyCopy:
-      '<strong>Every missed inquiry is lost revenue.</strong> Patients compare multiple clinics and go with the first reply. Slow follow‑up means empty chairs tomorrow and stressed staff. <strong>A French‑first reply within minutes captures intent while it’s high, sets expectations for next steps, and nudges to book—even after hours.</strong>',
+      '<strong>Every missed inquiry is lost revenue.</strong> Patients compare multiple clinics and the first clear reply usually wins. Slow follow‑up means empty chairs tomorrow and stressed staff. A French‑first reply within minutes captures intent while it’s high, sets expectations for next steps, and nudges patients to book — even after hours.',
     pain: [
       { pain: 'Empty chairs', outcome: 'More filled slots' },
       { pain: 'Slow follow-up', outcome: 'Instant replies, even after hours' },
-      { pain: 'Compliance stress', outcome: 'French-first, trackable, compliant messages' }
+      { pain: 'Compliance stress', outcome: 'French-first, trackable, compliant' }
     ],
     howTitle: 'How it works',
     howCopy:
@@ -126,16 +128,17 @@ const content = {
       '3× more Google reviews'
     ],
     case: {
-      clinic: 'Example Clinic, QC',
+      title: 'Illustrative clinic scenario',
       before: 'Before: 8 unreturned inquiries/week; calendar gaps most afternoons.',
-      after: 'After (30 days): 0 lost inquiries; +35% booked slots; staff reports lower phone tag.',
+      after: 'After (30 days): 0 lost inquiries; +35% booked slots; fewer staff callbacks.',
       impact: 'Business impact: ~$X/week recovered from previously missed appointments.',
-      quote: '“We stopped losing patients overnight.” — Example Clinic, QC'
+      disclaimer: 'Illustrative projection based on early tests/benchmarks; results vary.',
+      quote: '“We stopped losing patients overnight.”'
     },
     founders: {
       badge: 'Founders Offer',
       copy:
-        '<strong>Lock in early-adopter pricing.</strong> We onboard seven clinics each month at a Done-With-You rate of $99. This includes setup, training, and a brief public testimonial. Spots reset monthly and are first-come, first-served.',
+        '$99 Done‑With‑You (normally $400+ value). We’re opening a handful of early‑adopter spots at a fraction of the regular price. In exchange, we ask for a short public review or case study once you’re live. This offer closes after we collect 5–10 testimonials and won’t be repeated. First come, first served.',
       primary: 'Claim Founders Spot ($99)',
       secondary: 'Book a demo'
     },
@@ -150,11 +153,11 @@ const content = {
       { q: 'Can we choose the reply delay?', a: 'Yes, typical replies are 30\u201360s, and you can set a 0\u20133 minute delay.' }
     ],
     final: {
-      title: 'Ready to get started?',
+      title: 'Ready to stop missing patients?',
       copy:
-        '<strong>See it live in 15 minutes.</strong> No rebuild \u2014 we work with your existing systems.',
+        '<strong>See it working in 15 minutes.</strong> No rebuild required — we work with your existing systems.',
       primary: 'Book a demo',
-      secondary: 'Founders $99'
+      secondary: 'Claim Founders Spot ($99)'
     },
     consent: 'By submitting, you consent to receive communications related to your inquiry.',
     footer: { privacy: 'Privacy', terms: 'Terms', contact: 'Contact' }
@@ -164,15 +167,15 @@ const content = {
 const LandingFAQ: React.FC<{ title: string; intro: string; items: { q: string; a: string }[] }> = ({ title, intro, items }) => {
   const [open, setOpen] = useState<number | null>(null);
   return (
-    <section className="py-20 bg-white">
+    <section className="py-16 bg-white">
       <div className="max-w-4xl mx-auto px-6">
         <h2 className="text-3xl font-bold text-center mb-4">{title}</h2>
-        <p className="text-center text-gray-700 mb-10">{intro}</p>
-        <div className="space-y-4">
+        <p className="text-center text-gray-700 mb-8">{intro}</p>
+        <div className="space-y-3">
           {items.map((qa, i) => (
             <div key={i} className="card-light overflow-hidden">
               <button
-                className="w-full flex justify-between items-center px-6 py-6 text-left hover:bg-white/5 transition-colors"
+                className="w-full flex justify-between items-center px-6 py-3 md:py-4 text-left hover:bg-white/5 transition-colors"
                 onClick={() => setOpen(open === i ? null : i)}
               >
                 <span className="text-lg font-semibold text-gray-900">{qa.q}</span>
@@ -183,7 +186,7 @@ const LandingFAQ: React.FC<{ title: string; intro: string; items: { q: string; a
                 )}
               </button>
               <div
-                className={`px-6 pb-6 transition-all duration-300 ${
+                className={`px-6 pb-4 transition-all duration-300 ${
                   open === i ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
                 }`}
               >
@@ -204,6 +207,7 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
   const bulletIcons = [Clock, Languages, Mail];
   const howIcons = [Mail, Zap, CalendarCheck];
   const statIcons = [CheckCircle, Clock, Star];
+  const painIcons = [CalendarX, Clock, Shield];
 
   return (
     <div className="font-sans">
@@ -252,7 +256,14 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
               <p className="mt-2 text-xs opacity-70">{t.hero.footnote}</p>
             </div>
             <div className="mt-10 md:mt-0">
-              <div className="w-full h-64 rounded-xl bg-gradient-to-br from-teal-400 to-blue-500" />
+              <video
+                src="https://www.w3schools.com/html/mov_bbb.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full aspect-video rounded-xl bg-gray-200"
+              />
             </div>
           </div>
         </section>
@@ -264,18 +275,17 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
             <h2 className="text-3xl font-bold mb-6">{t.whyTitle}</h2>
             <p className="mb-10 text-gray-700" dangerouslySetInnerHTML={{ __html: t.whyCopy }} />
             <div className="grid md:grid-cols-3 gap-6">
-              {t.pain.map((item, i) => (
-                <div key={i} className="card-light p-6">
-                  <div className="flex items-center mb-2">
-                    <XCircle className="w-5 h-5 text-red-500 mr-2" />
-                    <span className="font-semibold">{item.pain}</span>
+              {t.pain.map((item, i) => {
+                const Icon = painIcons[i];
+                return (
+                  <div key={i} className="card-light p-6 flex items-start space-x-3">
+                    <Icon className="w-6 h-6 text-[#2280FF] flex-shrink-0" />
+                    <p>
+                      {item.pain} → <strong>{item.outcome}</strong>
+                    </p>
                   </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-[#139E9B] mr-2" />
-                    <span className="text-[#139E9B] font-medium">{item.outcome}</span>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
@@ -312,26 +322,22 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
               <div className="space-y-2 text-sm">
                 <p>
                   {lang === 'fr'
-                    ? `Heures d'ouverture: "Bien reçu — je termine quelque chose, je vous rappelle dans ~${leadResponseConfig.response_delay_minutes} minutes."`
-                    : `During business hours: "Got your message — just wrapping up, I'll call you in ~${leadResponseConfig.response_delay_minutes} minutes."`}
+                    ? `Heures d’ouverture : « Bien reçu — je termine quelque chose, je vous rappelle dans ~${leadResponseConfig.response_delay_minutes} minutes. »`
+                    : `During business hours: “Got your message — just wrapping up, I’ll call you in ~${leadResponseConfig.response_delay_minutes} minutes.”`}
                 </p>
                 <p>
                   {lang === 'fr' ? (
                     <>
-                      Hors heures: "Merci pour votre message — nous vous rappelons demain 8h30–9h. Vous préférez réserver maintenant?"
+                      Hors heures : « Merci pour votre message — nous vous rappelons demain 8\u00a0h\u00a030–9\u00a0h. Vous préférez réserver maintenant\u00a0? »
                       {leadResponseConfig.has_online_booking && (
-                        <a href="#" className="text-[#2280FF] underline ml-1">
-                          Lien de réservation
-                        </a>
+                        <a href="#" className="text-[#2280FF] underline ml-1">Lien de réservation</a>
                       )}
                     </>
                   ) : (
                     <>
-                      After hours: "Thanks for your message — we'll call tomorrow 8:30–9:00. Prefer to book now?"
+                      After hours: “Thanks for your message — we’ll call tomorrow 8:30–9:00. Prefer to book now?”
                       {leadResponseConfig.has_online_booking && (
-                        <a href="#" className="text-[#2280FF] underline ml-1">
-                          Booking link
-                        </a>
+                        <a href="#" className="text-[#2280FF] underline ml-1">Booking link</a>
                       )}
                     </>
                   )}
@@ -357,10 +363,11 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
               })}
             </div>
             <div className="card-light p-8">
-              <h3 className="font-semibold mb-3">{t.case.clinic}</h3>
+              <h3 className="font-semibold mb-3">{t.case.title}</h3>
               <p className="text-sm mb-1">{t.case.before}</p>
               <p className="text-sm mb-1">{t.case.after}</p>
-              <p className="text-sm mb-4">{t.case.impact}</p>
+              <p className="text-sm mb-1">{t.case.impact}</p>
+              <p className="text-xs text-gray-500 mb-4">{t.case.disclaimer}</p>
               <p className="text-sm italic text-gray-600">{t.case.quote}</p>
             </div>
           </div>
