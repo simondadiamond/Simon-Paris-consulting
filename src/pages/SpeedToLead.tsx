@@ -140,8 +140,16 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
         ctaLabel={t.navDemo}
       />
 
-      <main className="pt-24">
-          <section className="text-center py-20 bg-[#131c2d] text-white">
+      <main>
+        <section className="relative min-h-screen flex flex-col items-center justify-center bg-[#121c2d] text-white pt-24 overflow-hidden">
+          <div className="absolute inset-0">
+            <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-float" />
+            <div
+              className="absolute bottom-20 right-10 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl animate-float"
+              style={{ animationDelay: '2s' }}
+            />
+          </div>
+          <div className="relative z-10 text-center">
             <h1 className="text-4xl font-bold mb-4">{t.hero.headline}</h1>
             <p className="max-w-2xl mx-auto mb-6">{t.hero.sub}</p>
             <a
@@ -151,14 +159,32 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
             >
               {t.hero.cta}
             </a>
-          <div className="mt-8 flex justify-center space-x-4 opacity-75">
-            <div className="w-24 h-12 bg-white/10" />
-            <div className="w-24 h-12 bg-white/10" />
-            <div className="w-24 h-12 bg-white/10" />
+          </div>
+          <div className="relative z-10 mt-8 flex justify-center space-x-6 opacity-75">
+            <img
+              src="https://github.com/simondadiamond/workflowleaf-assets/blob/1ae5d2c4fc3b285cdd60ed5b3c986f0e14a3c4b7/partner-bar/Microsoft%20Startups.png?raw=true"
+              alt="Microsoft for Startups"
+              className="h-12 w-auto"
+            />
+            <img
+              src="https://github.com/simondadiamond/workflowleaf-assets/blob/07e0a1d79616959fc3294b71c06da22e0078914d/partner-bar/hatch.png?raw=true"
+              alt="DigitalOcean Hatch"
+              className="h-12 w-auto"
+            />
+            <img
+              src="https://github.com/simondadiamond/workflowleaf-assets/blob/1ae5d2c4fc3b285cdd60ed5b3c986f0e14a3c4b7/partner-bar/Stripe%20Logo.svg?raw=true"
+              alt="Stripe"
+              className="h-12 w-auto"
+            />
+            <img
+              src="https://github.com/simondadiamond/workflowleaf-assets/blob/1ae5d2c4fc3b285cdd60ed5b3c986f0e14a3c4b7/partner-bar/Airtable.png?raw=true"
+              alt="Airtable"
+              className="h-12 w-auto"
+            />
           </div>
         </section>
 
-        <section className="bg-white text-[#131c2d] py-12">
+        <section className="bg-white text-[#121c2d] py-12">
           <div className="max-w-3xl mx-auto grid md:grid-cols-3 gap-6 text-center">
             {t.proof.map((p, i) => (
               <div key={i}>
@@ -173,13 +199,13 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
             {t.pain.map((item, i) => (
               <div key={i}>
                 <p className="font-bold mb-2">{item.pain}</p>
-                <p className="text-[#1c9795]">{item.outcome}</p>
+                <p className="text-[#139E9B]">{item.outcome}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="bg-[#131c2d] text-white py-16">
+        <section className="bg-[#121c2d] text-white py-16">
           <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-center">
             {t.how.map((step, i) => (
               <div key={i}>
@@ -193,7 +219,7 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
           <p className="italic">{t.case}</p>
         </section>
 
-        <section className="bg-white text-[#131c2d] py-16">
+        <section className="bg-white text-[#121c2d] py-16">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-2xl font-bold mb-4">{t.founders.title}</h2>
             <ul className="mb-6 space-y-2">
@@ -204,7 +230,7 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
               <a
                 href="https://buy.stripe.com/FOUNDERS99"
                 data-action="founders"
-                className="btn-secondary"
+                className="btn-outline"
               >
                 {t.founders.cta}
               </a>
@@ -223,7 +249,7 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
           </div>
         </section>
 
-        <section id="demo" className="bg-[#131c2d] text-white py-20 text-center">
+        <section id="demo" className="bg-[#121c2d] text-white py-20 text-center">
           <h2 className="text-3xl font-bold mb-6">{t.final.headline}</h2>
             <div className="flex justify-center space-x-4 mb-8">
               <a
@@ -236,7 +262,7 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
               <a
                 href="https://buy.stripe.com/FOUNDERS99"
                 data-action="founders"
-                className="btn-secondary"
+                className="btn-outline"
               >
                 {t.final.secondary}
               </a>
@@ -250,21 +276,21 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
               type="text"
               name="name"
               placeholder={lang === 'fr' ? 'Nom' : 'Name'}
-              className="w-full p-2 text-[#131c2d] rounded"
+              className="w-full p-2 text-[#121c2d] rounded"
               required
             />
             <input
               type="email"
               name="email"
               placeholder={lang === 'fr' ? 'Courriel' : 'Email'}
-              className="w-full p-2 text-[#131c2d] rounded"
+              className="w-full p-2 text-[#121c2d] rounded"
               required
             />
             <input
               type="text"
               name="clinic"
               placeholder={lang === 'fr' ? 'Type de clinique' : 'Clinic type'}
-              className="w-full p-2 text-[#131c2d] rounded"
+              className="w-full p-2 text-[#121c2d] rounded"
               required
             />
             <label className="flex items-start text-sm">
