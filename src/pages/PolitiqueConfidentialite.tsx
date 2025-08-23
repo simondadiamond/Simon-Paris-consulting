@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Header, Footer } from '../App';
+import { Header, Footer } from '../components/Layout';
 import { useLanguage } from '../LanguageProvider';
 
 const PolitiqueConfidentialite = () => {
@@ -11,7 +11,7 @@ const PolitiqueConfidentialite = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header langToggleHref="/privacy" langToggleLabel="EN" />
+      <Header langToggle={{ fr: '/fr/politique-confidentialite', en: '/privacy' }} />
       <main className="max-w-[800px] mx-auto pt-40 p-4 md:p-8">
         <h1 className="text-3xl md:text-4xl font-bold text-[#121C2D] mb-6">Politique de confidentialité (Loi 25 &amp; LCAPC)</h1>
         <p className="mb-6 text-[0.9rem] md:text-base text-[#121C2D] leading-relaxed">
@@ -80,7 +80,7 @@ const PolitiqueConfidentialite = () => {
         <h2 className="text-xl md:text-2xl font-semibold text-[#121C2D] mb-4 mt-8">8. Modifications</h2>
         <p className="text-[0.9rem] md:text-base text-[#121C2D] leading-relaxed">Dernière mise à jour : 5 août 2025. Nous vous informerons par courriel en cas de changement important.</p>
       </main>
-      <Footer />
+      <Footer langToggle={{ fr: '/fr/politique-confidentialite', en: '/privacy' }} />
     </div>
   );
 };
