@@ -13,6 +13,14 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         fr: resolve(__dirname, 'fr/index.html'),
+        frLanding: resolve(
+          __dirname,
+          'fr/ne-manquez-aucun-patient/index.html'
+        ),
+        enLanding: resolve(
+          __dirname,
+          'never-miss-a-patient/index.html'
+        ),
       },
     },
   },

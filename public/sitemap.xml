@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://simonparis.ca/never-miss-a-patient</loc>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://simonparis.ca/never-miss-a-patient" />
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://simonparis.ca/fr/ne-manquez-aucun-patient" />
+  </url>
+  <url>
+    <loc>https://simonparis.ca/fr/ne-manquez-aucun-patient</loc>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://simonparis.ca/never-miss-a-patient" />
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://simonparis.ca/fr/ne-manquez-aucun-patient" />
+  </url>
+</urlset>
