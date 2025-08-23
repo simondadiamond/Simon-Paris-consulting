@@ -1,6 +1,18 @@
 import React, { useState } from 'react';
 import { Header, Footer } from '../components/Layout';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import {
+  ChevronDown,
+  ChevronUp,
+  CheckCircle,
+  ShieldCheck,
+  Clock,
+  Languages,
+  Star,
+  XCircle,
+  Mail,
+  Zap,
+  CalendarCheck
+} from 'lucide-react';
 
 type Lang = 'fr' | 'en';
 
@@ -11,11 +23,16 @@ const content = {
       headline: 'Ne manquez plus jamais un patient.',
       sub: 'Répondez à chaque demande en moins de 5 minutes — en français d’abord, conforme à la Loi 25 et à la Loi 96.',
       cta: 'Réserver une démo de 15 min',
+      bullets: [
+        'Réponse < 5 min',
+        'Français d’abord',
+        'Conforme Loi 25 & Loi 96'
+      ]
     },
-    proof: [
-      'Réponse < 5 min = plus de rendez-vous',
-      'Français d’abord (Loi 96)',
-      'Conformité Loi 25 (consentement & confidentialité)',
+    values: [
+      '25–50 % d’absences en moins',
+      'Réponses en moins de 5 min',
+      '3× plus d’avis Google'
     ],
     pain: [
       { pain: 'Sièges vides', outcome: 'Plus de créneaux remplis' },
@@ -71,11 +88,12 @@ const content = {
       headline: 'Never miss a patient again.',
       sub: 'Reply to every inquiry in under 5 minutes — French‑first and compliant with Law 25 & Bill 96.',
       cta: 'Book a 15-minute demo',
+      bullets: ['<5-minute reply', 'French-first', 'Law 25 & Bill 96 ready']
     },
-    proof: [
-      '<5-minute reply = more bookings',
-      'French-first (Bill 96)',
-      'Law 25 compliant (consent & privacy)',
+    values: [
+      '25–50% fewer no-shows',
+      'Replies in under 5 minutes',
+      '3× more Google reviews'
     ],
     pain: [
       { pain: 'Empty chairs', outcome: 'More filled slots' },
@@ -166,18 +184,23 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
   const t = content[lang];
   const frHref = '/fr/ne-manquez-aucun-patient';
   const enHref = '/never-miss-a-patient';
+  const bulletIcons = [Clock, Languages, ShieldCheck];
+  const valueIcons = [CheckCircle, Clock, Star];
+  const howIcons = [Mail, Zap, CalendarCheck];
 
   return (
     <div className="font-sans">
       <Header
-        langToggleHref={lang === 'fr' ? enHref : frHref}
-        langToggleLabel={lang === 'fr' ? 'EN' : 'FR'}
+        langToggle={{ fr: frHref, en: enHref }}
         ctaHref="#demo"
         ctaLabel={t.navDemo}
       />
 
       <main>
-        <section className="relative min-h-screen flex flex-col items-center justify-center bg-[#121c2d] text-white pt-24 overflow-hidden">
+        <section
+          className="relative flex items-center bg-[#121c2d] text-white pt-24 overflow-hidden"
+          style={{ minHeight: '80vh' }}
+        >
           <div className="absolute inset-0">
             <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-float" />
             <div
@@ -185,83 +208,96 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
               style={{ animationDelay: '2s' }}
             />
           </div>
-          <div className="relative z-10 text-center">
-            <h1 className="text-4xl font-bold mb-4">{t.hero.headline}</h1>
-            <p className="max-w-2xl mx-auto mb-6">{t.hero.sub}</p>
-            <a
-              href="#demo"
-              data-action="demo"
-              className="btn-primary text-lg px-8 py-4"
-            >
-              {t.hero.cta}
-            </a>
-          </div>
-          <div className="relative z-10 mt-8 flex justify-center space-x-6 opacity-75">
-            <img
-              src="https://github.com/simondadiamond/workflowleaf-assets/blob/1ae5d2c4fc3b285cdd60ed5b3c986f0e14a3c4b7/partner-bar/Microsoft%20Startups.png?raw=true"
-              alt="Microsoft for Startups"
-              className="h-12 w-auto"
-            />
-            <img
-              src="https://github.com/simondadiamond/workflowleaf-assets/blob/07e0a1d79616959fc3294b71c06da22e0078914d/partner-bar/hatch.png?raw=true"
-              alt="DigitalOcean Hatch"
-              className="h-12 w-auto"
-            />
-            <img
-              src="https://github.com/simondadiamond/workflowleaf-assets/blob/1ae5d2c4fc3b285cdd60ed5b3c986f0e14a3c4b7/partner-bar/Stripe%20Logo.svg?raw=true"
-              alt="Stripe"
-              className="h-12 w-auto"
-            />
-            <img
-              src="https://github.com/simondadiamond/workflowleaf-assets/blob/1ae5d2c4fc3b285cdd60ed5b3c986f0e14a3c4b7/partner-bar/Airtable.png?raw=true"
-              alt="Airtable"
-              className="h-12 w-auto"
-            />
-          </div>
-        </section>
-
-        <section className="py-20 bg-[#F9FAFB]">
-          <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
-            {t.proof.map((p, i) => (
-              <div key={i} className="card-light p-6 text-center">
-                <p className="font-semibold">{p}</p>
+          <div className="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-4xl font-bold mb-4">{t.hero.headline}</h1>
+              <p className="mb-6 max-w-md">{t.hero.sub}</p>
+              <a href="#demo" data-action="demo" className="btn-primary text-lg px-8 py-4">
+                {t.hero.cta}
+              </a>
+              <ul className="mt-6 space-y-2">
+                {t.hero.bullets.map((b, i) => {
+                  const Icon = bulletIcons[i];
+                  return (
+                    <li key={i} className="flex items-center text-sm">
+                      <Icon className="w-4 h-4 text-[#2280FF]" />
+                      <span className="ml-2">{b}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+              <div className="flex items-center space-x-3 mt-6">
+                <span className="flex items-center bg-white/10 rounded-full px-3 py-1 text-xs font-medium">
+                  <ShieldCheck className="w-4 h-4 mr-1" />
+                  {lang === 'fr' ? 'Loi 96' : 'Bill 96'}
+                </span>
+                <span className="flex items-center bg-white/10 rounded-full px-3 py-1 text-xs font-medium">
+                  <ShieldCheck className="w-4 h-4 mr-1" />
+                  {lang === 'fr' ? 'Loi 25' : 'Law 25'}
+                </span>
               </div>
-            ))}
+            </div>
+            <div className="hidden md:block">
+              <div className="w-full h-64 rounded-xl bg-gradient-to-br from-teal-400 to-blue-500" />
+            </div>
           </div>
         </section>
 
-        <section className="py-20 bg-white">
-          <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
+        <section className="py-16 bg-[#F9FAFB]">
+          <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6">
+            {t.values.map((v, i) => {
+              const Icon = valueIcons[i];
+              return (
+                <div key={i} className="card-light p-6 flex items-center space-x-3">
+                  <Icon className="w-5 h-5 text-[#2280FF]" />
+                  <p className="font-medium">{v}</p>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="py-16 bg-white">
+          <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6">
             {t.pain.map((item, i) => (
-              <div key={i} className="card-light p-6 text-center">
-                <p className="font-bold mb-2">{item.pain}</p>
-                <p className="text-[#139E9B]">{item.outcome}</p>
+              <div key={i} className="card-light p-6">
+                <div className="flex items-center mb-2">
+                  <XCircle className="w-5 h-5 text-red-500 mr-2" />
+                  <span className="font-semibold">{item.pain}</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle className="w-5 h-5 text-[#139E9B] mr-2" />
+                  <span className="text-[#139E9B] font-medium">{item.outcome}</span>
+                </div>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="py-20 bg-[#121C2D] text-white">
-          <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
-            {t.how.map((step, i) => (
-              <div key={i} className="card-dark relative p-6">
-                <span className="step-number">{i + 1}</span>
-                <p className="font-bold">{step}</p>
-              </div>
-            ))}
+        <section className="py-16 bg-[#121C2D] text-white">
+          <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6">
+            {t.how.map((step, i) => {
+              const Icon = howIcons[i];
+              return (
+                <div key={i} className="card-dark p-6">
+                  <div className="w-10 h-10 mb-4 rounded-full bg-white/10 flex items-center justify-center">
+                    <Icon className="w-5 h-5 text-[#2280FF]" />
+                  </div>
+                  <p className="font-semibold">{step}</p>
+                </div>
+              );
+            })}
           </div>
         </section>
 
-        <section className="py-20 bg-[#F9FAFB]">
-          <div className="max-w-3xl mx-auto card-light p-8 text-center italic">
-            {t.case}
-          </div>
+        <section className="py-16 bg-[#F9FAFB]">
+          <div className="max-w-3xl mx-auto card-light p-8 text-center italic">{t.case}</div>
         </section>
 
-        <section className="py-20 bg-white">
-          <div className="max-w-3xl mx-auto card-light p-8 text-center">
+        <section className="py-16 bg-white">
+          <div className="max-w-3xl mx-auto card-light p-8">
             <h2 className="text-2xl font-bold mb-4">{t.founders.title}</h2>
-            <ul className="mb-6 space-y-2 text-left list-disc list-inside">
+            <ul className="mb-6 space-y-2 list-disc list-inside">
               {t.founders.bullets.map((b, i) => (
                 <li key={i}>{b}</li>
               ))}
@@ -280,22 +316,18 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
 
         <section id="demo" className="bg-[#121c2d] text-white py-20 text-center">
           <h2 className="text-3xl font-bold mb-6">{t.final.headline}</h2>
-            <div className="flex justify-center space-x-4 mb-8">
-              <a
-                href="#demo"
-                data-action="demo"
-                className="btn-primary"
-              >
-                {t.final.primary}
-              </a>
-              <a
-                href="https://buy.stripe.com/FOUNDERS99"
-                data-action="founders"
-                className="btn-outline"
-              >
-                {t.final.secondary}
-              </a>
-            </div>
+          <div className="flex justify-center space-x-4 mb-8">
+            <a href="#demo" data-action="demo" className="btn-primary">
+              {t.final.primary}
+            </a>
+            <a
+              href="https://buy.stripe.com/FOUNDERS99"
+              data-action="founders"
+              className="btn-outline"
+            >
+              {t.final.secondary}
+            </a>
+          </div>
           <form
             action="/api/lead"
             method="POST"
@@ -332,7 +364,16 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
           </form>
         </section>
       </main>
-      <Footer />
+
+      <a
+        href="#demo"
+        data-action="demo"
+        className="fixed bottom-4 right-4 z-50 btn-primary md:hidden"
+      >
+        {t.hero.cta}
+      </a>
+
+      <Footer langToggle={{ fr: frHref, en: enHref }} />
     </div>
   );
 };

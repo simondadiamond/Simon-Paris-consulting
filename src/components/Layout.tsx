@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../LanguageProvider';
-import { Globe, Menu, X, Mail, MapPin } from 'lucide-react';
+import { Menu, X, Mail, MapPin } from 'lucide-react';
 
 export const Header: React.FC<{
-  langToggleHref?: string;
-  langToggleLabel?: string;
+  langToggle?: { fr: string; en: string };
   ctaHref?: string;
   ctaLabel?: string;
-}> = ({ langToggleHref, langToggleLabel, ctaHref, ctaLabel }) => {
+}> = ({ langToggle, ctaHref, ctaLabel }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { t, lang, setLang } = useLanguage();
@@ -29,34 +28,32 @@ export const Header: React.FC<{
   const base = lang === 'fr' ? '/fr' : '';
 
   const LanguageToggle = () => {
-    const targetLang = lang === 'en' ? 'fr' : 'en';
-    const href = targetLang === 'fr' ? '/fr' : '/';
-    if (langToggleHref && langToggleLabel) {
-      return (
+    const frHref = langToggle?.fr ?? '/fr';
+    const enHref = langToggle?.en ?? '/';
+    return (
+      <div className={`flex items-center text-sm ${textClass} space-x-1`}>
         <a
-          href={langToggleHref}
-          className={`${textClass} underline decoration-transparent hover:decoration-[#2280FF]`}
+          href={frHref}
+          className={`${lang === 'fr' ? 'font-semibold text-[#2280FF]' : 'opacity-70'} hover:opacity-100`}
           onClick={() => {
-            setLang(targetLang);
-            localStorage.setItem('lang', targetLang);
+            setLang('fr');
+            localStorage.setItem('lang', 'fr');
           }}
         >
-          {langToggleLabel}
+          FR
         </a>
-      );
-    }
-    return (
-      <a
-        href={href}
-        className={`flex items-center text-sm ${textClass} underline decoration-transparent hover:decoration-[#2280FF]`}
-        onClick={() => {
-          setLang(targetLang);
-          localStorage.setItem('lang', targetLang);
-        }}
-      >
-        <Globe className="w-4 h-4 mr-2" />
-        <span>{t.header.languageToggle}</span>
-      </a>
+        <span>|</span>
+        <a
+          href={enHref}
+          className={`${lang === 'en' ? 'font-semibold text-[#2280FF]' : 'opacity-70'} hover:opacity-100`}
+          onClick={() => {
+            setLang('en');
+            localStorage.setItem('lang', 'en');
+          }}
+        >
+          EN
+        </a>
+      </div>
     );
   };
 
@@ -118,27 +115,29 @@ export const Header: React.FC<{
           }`}
         >
           <div className="p-6 pt-20 space-y-6 text-center">
-            {langToggleHref && langToggleLabel ? (
+            <div className="flex items-center justify-center space-x-1 text-[#121C2D]">
               <a
-                href={langToggleHref}
-                className="block text-[#121C2D] underline decoration-transparent hover:decoration-[#2280FF]"
+                href={langToggle?.fr ?? '/fr'}
+                className={`${lang === 'fr' ? 'font-semibold text-[#2280FF]' : 'opacity-70'} hover:opacity-100`}
                 onClick={() => {
-                  const targetLang = lang === 'en' ? 'fr' : 'en';
-                  setLang(targetLang);
-                  localStorage.setItem('lang', targetLang);
+                  setLang('fr');
+                  localStorage.setItem('lang', 'fr');
                 }}
               >
-                {langToggleLabel}
+                FR
               </a>
-            ) : (
-              <button
-                onClick={() => setLang(lang === 'en' ? 'fr' : 'en')}
-                className="flex items-center justify-center text-[#121C2D] underline decoration-transparent hover:decoration-[#2280FF]"
+              <span>|</span>
+              <a
+                href={langToggle?.en ?? '/'}
+                className={`${lang === 'en' ? 'font-semibold text-[#2280FF]' : 'opacity-70'} hover:opacity-100`}
+                onClick={() => {
+                  setLang('en');
+                  localStorage.setItem('lang', 'en');
+                }}
               >
-                <Globe className="w-4 h-4 mr-2" />
-                <span>{t.header.languageToggle}</span>
-              </button>
-            )}
+                EN
+              </a>
+            </div>
             <a
               href={`mailto:${t.header.email}`}
               className="block text-[#121C2D] hover:text-[#2280FF] font-medium"
@@ -155,8 +154,37 @@ export const Header: React.FC<{
   );
 };
 
-export const Footer: React.FC = () => {
-  const { t, lang } = useLanguage();
+export const Footer: React.FC<{ langToggle?: { fr: string; en: string } }> = ({
+  langToggle
+}) => {
+  const { t, lang, setLang } = useLanguage();
+
+  const LanguageToggle = () => (
+    <div className="flex items-center space-x-1 text-sm">
+      <a
+        href={langToggle?.fr ?? '/fr'}
+        className={`${lang === 'fr' ? 'font-semibold text-[#2280FF]' : 'opacity-70'} hover:opacity-100`}
+        onClick={() => {
+          setLang('fr');
+          localStorage.setItem('lang', 'fr');
+        }}
+      >
+        FR
+      </a>
+      <span>|</span>
+      <a
+        href={langToggle?.en ?? '/'}
+        className={`${lang === 'en' ? 'font-semibold text-[#2280FF]' : 'opacity-70'} hover:opacity-100`}
+        onClick={() => {
+          setLang('en');
+          localStorage.setItem('lang', 'en');
+        }}
+      >
+        EN
+      </a>
+    </div>
+  );
+
   return (
     <footer className="relative py-16 bg-[#121C2D] text-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -164,10 +192,7 @@ export const Footer: React.FC = () => {
           <div>
             <div className="text-2xl font-bold mb-4">{t.header.brand}</div>
             <p className="mb-6 leading-relaxed">{t.footer.blurb}</p>
-            <div className="flex items-center">
-              <Globe className="w-4 h-4 mr-2" />
-              <span>{t.footer.language}</span>
-            </div>
+            <LanguageToggle />
           </div>
 
           <div>
