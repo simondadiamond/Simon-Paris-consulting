@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Header, Footer } from '../components/Layout';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
 type Lang = 'fr' | 'en';
 
@@ -126,6 +127,41 @@ const content = {
   },
 } as const;
 
+const LandingFAQ: React.FC<{ items: { q: string; a: string }[] }> = ({ items }) => {
+  const [open, setOpen] = useState<number | null>(null);
+  return (
+    <section className="py-20 bg-white">
+      <div className="max-w-4xl mx-auto px-6">
+        <h2 className="text-3xl font-bold text-center mb-10">FAQ</h2>
+        <div className="space-y-4">
+          {items.map((qa, i) => (
+            <div key={i} className="card-light overflow-hidden">
+              <button
+                className="w-full flex justify-between items-center px-6 py-6 text-left hover:bg-white/5 transition-colors"
+                onClick={() => setOpen(open === i ? null : i)}
+              >
+                <span className="text-lg font-semibold text-gray-900">{qa.q}</span>
+                {open === i ? (
+                  <ChevronUp className="w-6 h-6 text-[#2280FF]" />
+                ) : (
+                  <ChevronDown className="w-6 h-6 text-[#2280FF]" />
+                )}
+              </button>
+              <div
+                className={`px-6 pb-6 transition-all duration-300 ${
+                  open === i ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+                }`}
+              >
+                <p className="text-gray-700">{qa.a}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
   const t = content[lang];
   const frHref = '/fr/ne-manquez-aucun-patient';
@@ -184,20 +220,20 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
           </div>
         </section>
 
-        <section className="bg-white text-[#121c2d] py-12">
-          <div className="max-w-3xl mx-auto grid md:grid-cols-3 gap-6 text-center">
+        <section className="py-20 bg-[#F9FAFB]">
+          <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
             {t.proof.map((p, i) => (
-              <div key={i}>
+              <div key={i} className="card-light p-6 text-center">
                 <p className="font-semibold">{p}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="py-16 max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 text-center">
+        <section className="py-20 bg-white">
+          <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
             {t.pain.map((item, i) => (
-              <div key={i}>
+              <div key={i} className="card-light p-6 text-center">
                 <p className="font-bold mb-2">{item.pain}</p>
                 <p className="text-[#139E9B]">{item.outcome}</p>
               </div>
@@ -205,49 +241,42 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
           </div>
         </section>
 
-        <section className="bg-[#121c2d] text-white py-16">
-          <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+        <section className="py-20 bg-[#121C2D] text-white">
+          <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
             {t.how.map((step, i) => (
-              <div key={i}>
-                <p className="font-bold mb-2">{step}</p>
+              <div key={i} className="card-dark relative p-6">
+                <span className="step-number">{i + 1}</span>
+                <p className="font-bold">{step}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="py-16 max-w-3xl mx-auto text-center">
-          <p className="italic">{t.case}</p>
+        <section className="py-20 bg-[#F9FAFB]">
+          <div className="max-w-3xl mx-auto card-light p-8 text-center italic">
+            {t.case}
+          </div>
         </section>
 
-        <section className="bg-white text-[#121c2d] py-16">
-          <div className="max-w-3xl mx-auto text-center">
+        <section className="py-20 bg-white">
+          <div className="max-w-3xl mx-auto card-light p-8 text-center">
             <h2 className="text-2xl font-bold mb-4">{t.founders.title}</h2>
-            <ul className="mb-6 space-y-2">
+            <ul className="mb-6 space-y-2 text-left list-disc list-inside">
               {t.founders.bullets.map((b, i) => (
                 <li key={i}>{b}</li>
               ))}
             </ul>
-              <a
-                href="https://buy.stripe.com/FOUNDERS99"
-                data-action="founders"
-                className="btn-outline"
-              >
-                {t.founders.cta}
-              </a>
+            <a
+              href="https://buy.stripe.com/FOUNDERS99"
+              data-action="founders"
+              className="btn-outline"
+            >
+              {t.founders.cta}
+            </a>
           </div>
         </section>
 
-        <section className="py-16 max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold text-center mb-8">FAQ</h2>
-          <div className="space-y-6">
-            {t.faq.map((qa, i) => (
-              <div key={i}>
-                <p className="font-semibold">{qa.q}</p>
-                <p>{qa.a}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <LandingFAQ items={t.faq} />
 
         <section id="demo" className="bg-[#121c2d] text-white py-20 text-center">
           <h2 className="text-3xl font-bold mb-6">{t.final.headline}</h2>
