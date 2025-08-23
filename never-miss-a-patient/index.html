@@ -1,172 +1,32 @@
 <!doctype html>
 <html lang="en-CA">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Never miss a patient again | Speed-to-Lead</title>
-  <meta name="description" content="Reply to every inquiry in under 5 minutes — French-first and compliant with Law 25 & Bill 96." />
-  <link rel="canonical" href="https://simonparis.ca/never-miss-a-patient" />
-  <link rel="alternate" hreflang="en-CA" href="https://simonparis.ca/never-miss-a-patient" />
-  <link rel="alternate" hreflang="fr-CA" href="https://simonparis.ca/fr/ne-manquez-aucun-patient" />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="en_CA" />
-  <meta property="og:title" content="Never miss a patient again." />
-  <meta property="og:description" content="Reply to every inquiry in under 5 minutes — French-first and compliant with Law 25 & Bill 96." />
-  <meta property="og:url" content="https://simonparis.ca/never-miss-a-patient" />
-  <meta property="og:site_name" content="Simon Paris Consulting" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <script>
-    tailwind={config:{theme:{extend:{colors:{dark:'#131c2d',teal:'#1c9795',blue:'#1e82fa'},fontFamily:{sans:['Inter','sans-serif']}}}}}
-  </script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    (function(){
-      const current='en';
-      const saved=localStorage.getItem('lang');
-      if(!saved){
-        const nav=(navigator.language||'en').toLowerCase();
-        const pref=nav.startsWith('fr')?'fr':'en';
-        localStorage.setItem('lang',pref);
-        if(pref!==current){
-          const target=pref==='fr'?'/fr/ne-manquez-aucun-patient':'/never-miss-a-patient';
-          window.location.replace(target);
-        }
-      }else if(saved!==current){
-        const target=saved==='fr'?'/fr/ne-manquez-aucun-patient':'/never-miss-a-patient';
-        window.location.replace(target);
-      }
-    })();
-    function setLang(l){localStorage.setItem('lang',l);}
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebPage",
-    "name":"Never miss a patient again",
-    "inLanguage":"en-CA",
-    "url":"https://simonparis.ca/never-miss-a-patient",
-    "isPartOf":{"@type":"Organization","name":"Simon Paris Consulting","url":"https://simonparis.ca/"}
-  }
-  </script>
-</head>
-<body class="bg-dark text-white">
-<header class="fixed top-0 left-0 w-full bg-dark z-50">
-  <div class="max-w-5xl mx-auto flex justify-between items-center p-4">
-    <a href="/never-miss-a-patient" class="font-bold">Simon Paris</a>
-    <nav class="text-sm">
-      <a href="/fr/ne-manquez-aucun-patient" onclick="setLang('fr')" class="underline mr-2">FR</a>|
-      <a href="/never-miss-a-patient" onclick="setLang('en')" class="underline ml-2">EN</a>
-    </nav>
-    <a href="#demo" data-action="demo" class="hidden md:inline-block bg-blue text-white font-bold rounded px-4 py-2">Book a demo</a>
-  </div>
-</header>
-<a href="#demo" data-action="demo" class="fixed bottom-4 right-4 bg-blue text-white font-bold rounded px-4 py-3 shadow-lg">Book a demo</a>
-<main class="pt-24">
-  <section class="text-center py-20">
-    <h1 class="text-4xl font-bold mb-4">Never miss a patient again.</h1>
-    <p class="max-w-2xl mx-auto mb-6">Reply to every inquiry in under 5 minutes — French-first and compliant with Law 25 & Bill 96.</p>
-    <a href="#demo" data-action="demo" class="bg-blue text-white font-bold rounded px-8 py-4">Book a 15-minute demo</a>
-    <div class="mt-8 flex justify-center space-x-4 opacity-75">
-      <div class="w-24 h-12 bg-white/10"></div>
-      <div class="w-24 h-12 bg-white/10"></div>
-      <div class="w-24 h-12 bg-white/10"></div>
-    </div>
-  </section>
-
-  <section class="bg-white text-dark py-12">
-    <div class="max-w-3xl mx-auto grid md:grid-cols-3 gap-6 text-center">
-      <div><p class="font-semibold">&lt;5-minute reply = more bookings</p></div>
-      <div><p class="font-semibold">French-first (Bill 96)</p></div>
-      <div><p class="font-semibold">Law 25 compliant (consent & privacy)</p></div>
-    </div>
-  </section>
-
-  <section class="py-16 max-w-5xl mx-auto">
-    <div class="grid md:grid-cols-3 gap-8 text-center">
-      <div>
-        <p class="font-bold mb-2">Empty chairs</p>
-        <p class="text-teal">More filled slots</p>
-      </div>
-      <div>
-        <p class="font-bold mb-2">Slow follow-up</p>
-        <p class="text-teal">Instant replies, even after hours</p>
-      </div>
-      <div>
-        <p class="font-bold mb-2">Compliance stress</p>
-        <p class="text-teal">French-first, trackable, compliant messages</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-dark py-16">
-    <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-center">
-      <div>
-        <p class="font-bold mb-2">1. A patient contacts you (site, Cliniko, GoRendezvous, etc.) → you get an email</p>
-      </div>
-      <div>
-        <p class="font-bold mb-2">2. We detect that email and reply in French within seconds</p>
-      </div>
-      <div>
-        <p class="font-bold mb-2">3. Patient is nudged to book or call; your team is alerted</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-16 max-w-3xl mx-auto text-center">
-    <p class="italic">“Before: 8 unreturned inquiries/week. After: 0 lost; +35% bookings in 30 days.”</p>
-  </section>
-
-  <section class="bg-white text-dark py-16">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-2xl font-bold mb-4">Founders Offer — 7 spots — $99 DWY</h2>
-      <ul class="mb-6 space-y-2">
-        <li>Live within 48 hours</li>
-        <li>Short public review / case study required</li>
-        <li>Scope: Speed-to-Lead only (no ongoing support)</li>
-      </ul>
-      <a href="https://buy.stripe.com/FOUNDERS99" data-action="founders" class="bg-teal text-white font-bold rounded px-6 py-3">Claim Founders Spot ($99)</a>
-    </div>
-  </section>
-
-  <section class="py-16 max-w-5xl mx-auto">
-    <h2 class="text-2xl font-bold text-center mb-8">FAQ</h2>
-    <div class="space-y-6">
-      <div><p class="font-semibold">Will this work with our system?</p><p>Yes. If your inquiries trigger an email, it’s compatible. If not, we set up a simple compliant form.</p></div>
-      <div><p class="font-semibold">Is this compliant with Law 25 & Bill 96?</p><p>Yes: French-first with clear consent & privacy.</p></div>
-      <div><p class="font-semibold">How fast can we go live?</p><p>48 hours for standard setup.</p></div>
-      <div><p class="font-semibold">Do you offer ongoing support?</p><p>Optional (separate plan).</p></div>
-      <div><p class="font-semibold">What about after hours?</p><p>Replies still go out with a clear callback window.</p></div>
-      <div><p class="font-semibold">Where is data stored?</p><p>Secure storage; see our Privacy Policy.</p></div>
-    </div>
-  </section>
-
-  <section class="bg-dark py-20 text-center">
-    <h2 class="text-3xl font-bold mb-6">Ready to stop missing patients?</h2>
-    <div class="flex justify-center space-x-4 mb-8">
-      <a href="#demo" data-action="demo" class="bg-blue text-white font-bold rounded px-6 py-3">Book a demo</a>
-      <a href="https://buy.stripe.com/FOUNDERS99" data-action="founders" class="bg-teal text-white font-bold rounded px-6 py-3">Founders $99</a>
-    </div>
-    <form action="/api/lead" method="POST" class="max-w-md mx-auto text-left space-y-4">
-      <input type="text" name="name" placeholder="Name" class="w-full p-2 text-dark rounded" required />
-      <input type="email" name="email" placeholder="Email" class="w-full p-2 text-dark rounded" required />
-      <input type="text" name="clinic" placeholder="Clinic type" class="w-full p-2 text-dark rounded" required />
-      <label class="flex items-start text-sm"><input type="checkbox" required class="mr-2 mt-1" /><span>By submitting, you consent to receive communications related to your inquiry.</span></label>
-      <button type="submit" class="bg-blue text-white font-bold rounded px-6 py-3 w-full">Send</button>
-    </form>
-  </section>
-</main>
-<footer class="bg-black text-white py-8 text-center text-sm">
-  <div class="mb-4">
-    <a href="/privacy" class="underline mr-4">Privacy</a>
-    <a href="/terms" class="underline mr-4">Terms</a>
-    <a href="mailto:info@example.com" class="underline">Contact</a>
-  </div>
-  <div class="mb-4">
-    Language: <a href="/fr/ne-manquez-aucun-patient" onclick="setLang('fr')" class="underline mr-2">FR</a>|<a href="/never-miss-a-patient" onclick="setLang('en')" class="underline ml-2">EN</a>
-  </div>
-  <p class="opacity-75">© 2024 Simon Paris Consulting</p>
-</footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Never miss a patient again | Speed-to-Lead</title>
+    <meta name="description" content="Reply to every inquiry in under 5 minutes — French-first and compliant with Law 25 & Bill 96." />
+    <link rel="canonical" href="https://simonparis.ca/never-miss-a-patient" />
+    <link rel="alternate" hreflang="en-CA" href="https://simonparis.ca/never-miss-a-patient" />
+    <link rel="alternate" hreflang="fr-CA" href="https://simonparis.ca/fr/ne-manquez-aucun-patient" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_CA" />
+    <meta property="og:title" content="Never miss a patient again." />
+    <meta property="og:description" content="Reply to every inquiry in under 5 minutes — French-first and compliant with Law 25 & Bill 96." />
+    <meta property="og:url" content="https://simonparis.ca/never-miss-a-patient" />
+    <meta property="og:site_name" content="Simon Paris Consulting" />
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"WebPage",
+      "name":"Never miss a patient again",
+      "inLanguage":"en-CA",
+      "url":"https://simonparis.ca/never-miss-a-patient",
+      "isPartOf":{"@type":"Organization","name":"Simon Paris Consulting","url":"https://simonparis.ca/"}
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="../src/main.tsx"></script>
+  </body>
 </html>
