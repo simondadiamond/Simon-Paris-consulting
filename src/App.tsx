@@ -471,7 +471,7 @@ const OfferCards = () => {
 const ROIMath = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
@@ -491,25 +491,12 @@ const ROIMath = () => {
     <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#F9FAFB' }}>
       <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center">
         <div className={`mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2
-            className="text-display text-gray-900 mb-6"
-            dangerouslySetInnerHTML={{ __html: t.roi.title }}
-          />
+          <h2 className="text-display text-gray-900 font-bold mb-4">
+            {t.roi.title}
+          </h2>
+          <p className="text-gray-700">{t.roi.sub}</p>
+          <p className="text-gray-700 text-xs mt-4">{t.roi.footnote}</p>
         </div>
-
-        <div className={`grid md:grid-cols-2 gap-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="card-light p-6 md:p-8">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">{lang === 'fr' ? 'Sans automatisation' : 'Without automation'}</h3>
-            <p className="text-gray-700">{t.roi.without}</p>
-          </div>
-          <div className="card-light p-6 md:p-8">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">{lang === 'fr' ? 'Avec automatisation' : 'With automation'}</h3>
-            <p className="text-gray-700">{t.roi.with}</p>
-          </div>
-        </div>
-
-        <p className="text-gray-700 mt-8">{t.roi.note}</p>
-        <p className="text-gray-700 text-xs mt-2">{t.roi.disclaimer}</p>
       </div>
     </section>
   );

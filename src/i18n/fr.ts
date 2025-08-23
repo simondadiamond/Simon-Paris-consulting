@@ -74,11 +74,9 @@ const fr: TranslationKeys = {
     note: 'Prix fixes. Aucun frais caché. Modèles français d’abord.'
   },
   roi: {
-    title: '<span class="accent">199 $</span> pour protéger <span class="accent">600–900 $</span> chaque mois',
-    without: 'Leads perdus, 3–4 no‑shows, factures en retard ≈ 600–900 $ / mois',
-    with: 'Pack dès 199 $ → réponses plus rapides, moins d’absences, factures à temps',
-    note: 'Beaucoup de cliniques rentabilisent le pack dès la première semaine.',
-    disclaimer: 'Estimations basées sur ~120–150 $ par rendez‑vous et des pertes typiques de leads au Québec. Résultats variables.'
+    title: `💡 « Chaque module commence à seulement ${PACK_PRICE} $ — la plupart des cliniques en ajoutent 2 ou 3 pour de vrais résultats. »`,
+    sub: 'Les cliniques récupèrent généralement 600 à 900 $/mois en rendez-vous sauvés, moins d’absences et moins de tâches administratives — tout en réduisant le stress de l’équipe.',
+    footnote: 'Estimations basées sur ~120 à 150 $ par rendez-vous et les pertes de clients typiques au Québec. Les résultats peuvent varier.'
   },
   checklist: {
     eyebrow: 'Gratuit',
