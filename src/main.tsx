@@ -8,7 +8,7 @@ import { LanguageProvider } from './LanguageProvider';
 import './index.css';
 
 // Normalize path to handle optional trailing slashes
-const path = window.location.pathname.replace(/\/+$/, '') || '/';
+const path = decodeURI(window.location.pathname).replace(/\/+$/, '') || '/';
 let Component = App;
 if (path === '/privacy') {
   Component = PrivacyPolicy;
