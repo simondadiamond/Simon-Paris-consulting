@@ -74,7 +74,9 @@ const fr: TranslationKeys = {
     note: 'Prix fixes. Aucun frais caché. Modèles français d’abord.'
   },
   roi: {
-    title: '<span class="accent">199 $</span> pour protéger <span class="accent">600–900 $</span> chaque mois',
+    titlePrefix: '<span class="accent">199 $</span> pour protéger <span class="accent">',
+    titleSuffix: '</span> chaque mois',
+    defaultRange: '600–900 $',
     without: 'Leads perdus, 3–4 no‑shows, factures en retard ≈ 600–900 $ / mois',
     with: 'Pack dès 199 $ → réponses plus rapides, moins d’absences, factures à temps',
     note: 'Beaucoup de cliniques rentabilisent le pack dès la première semaine.',
