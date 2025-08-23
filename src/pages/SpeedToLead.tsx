@@ -1,4 +1,5 @@
 import React from 'react';
+import { Header, Footer } from '../components/Layout';
 
 type Lang = 'fr' | 'en';
 
@@ -132,55 +133,24 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
 
   return (
     <div className="font-sans">
-      <header className="fixed top-0 left-0 right-0 bg-[#131c2d] text-white z-50">
-        <div className="max-w-5xl mx-auto flex justify-between items-center p-4">
-          <a href={lang === 'fr' ? frHref : enHref} className="font-bold">Simon Paris</a>
-          <nav className="text-sm">
-            <a
-              href={frHref}
-              onClick={() => localStorage.setItem('lang', 'fr')}
-              className="underline mr-2"
-            >
-              FR
-            </a>
-            |
-            <a
-              href={enHref}
-              onClick={() => localStorage.setItem('lang', 'en')}
-              className="underline ml-2"
-            >
-              EN
-            </a>
-          </nav>
-          <a
-            href="#demo"
-            data-action="demo"
-            className="hidden md:inline-block bg-[#1e82fa] text-white font-bold rounded px-4 py-2"
-          >
-            {t.navDemo}
-          </a>
-        </div>
-      </header>
-
-      <a
-        href="#demo"
-        data-action="demo"
-        className="md:hidden fixed bottom-4 right-4 bg-[#1e82fa] text-white font-bold rounded px-4 py-3 shadow-lg"
-      >
-        {t.navDemo}
-      </a>
+      <Header
+        langToggleHref={lang === 'fr' ? enHref : frHref}
+        langToggleLabel={lang === 'fr' ? 'EN' : 'FR'}
+        ctaHref="#demo"
+        ctaLabel={t.navDemo}
+      />
 
       <main className="pt-24">
-        <section className="text-center py-20 bg-[#131c2d] text-white">
-          <h1 className="text-4xl font-bold mb-4">{t.hero.headline}</h1>
-          <p className="max-w-2xl mx-auto mb-6">{t.hero.sub}</p>
-          <a
-            href="#demo"
-            data-action="demo"
-            className="bg-[#1e82fa] text-white font-bold rounded px-8 py-4"
-          >
-            {t.hero.cta}
-          </a>
+          <section className="text-center py-20 bg-[#131c2d] text-white">
+            <h1 className="text-4xl font-bold mb-4">{t.hero.headline}</h1>
+            <p className="max-w-2xl mx-auto mb-6">{t.hero.sub}</p>
+            <a
+              href="#demo"
+              data-action="demo"
+              className="btn-primary text-lg px-8 py-4"
+            >
+              {t.hero.cta}
+            </a>
           <div className="mt-8 flex justify-center space-x-4 opacity-75">
             <div className="w-24 h-12 bg-white/10" />
             <div className="w-24 h-12 bg-white/10" />
@@ -231,13 +201,13 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
                 <li key={i}>{b}</li>
               ))}
             </ul>
-            <a
-              href="https://buy.stripe.com/FOUNDERS99"
-              data-action="founders"
-              className="bg-[#1c9795] text-white font-bold rounded px-6 py-3"
-            >
-              {t.founders.cta}
-            </a>
+              <a
+                href="https://buy.stripe.com/FOUNDERS99"
+                data-action="founders"
+                className="btn-secondary"
+              >
+                {t.founders.cta}
+              </a>
           </div>
         </section>
 
@@ -255,22 +225,22 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
 
         <section id="demo" className="bg-[#131c2d] text-white py-20 text-center">
           <h2 className="text-3xl font-bold mb-6">{t.final.headline}</h2>
-          <div className="flex justify-center space-x-4 mb-8">
-            <a
-              href="#demo"
-              data-action="demo"
-              className="bg-[#1e82fa] text-white font-bold rounded px-6 py-3"
-            >
-              {t.final.primary}
-            </a>
-            <a
-              href="https://buy.stripe.com/FOUNDERS99"
-              data-action="founders"
-              className="bg-[#1c9795] text-white font-bold rounded px-6 py-3"
-            >
-              {t.final.secondary}
-            </a>
-          </div>
+            <div className="flex justify-center space-x-4 mb-8">
+              <a
+                href="#demo"
+                data-action="demo"
+                className="btn-primary"
+              >
+                {t.final.primary}
+              </a>
+              <a
+                href="https://buy.stripe.com/FOUNDERS99"
+                data-action="founders"
+                className="btn-secondary"
+              >
+                {t.final.secondary}
+              </a>
+            </div>
           <form
             action="/api/lead"
             method="POST"
@@ -301,51 +271,13 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
               <input type="checkbox" required className="mr-2 mt-1" />
               <span>{t.consent}</span>
             </label>
-            <button
-              type="submit"
-              className="bg-[#1e82fa] text-white font-bold rounded px-6 py-3 w-full"
-            >
+            <button type="submit" className="btn-primary w-full">
               {lang === 'fr' ? 'Envoyer' : 'Send'}
             </button>
           </form>
         </section>
       </main>
-
-      <footer className="bg-black text-white py-8 text-center text-sm">
-        <div className="mb-4">
-          <a
-            href={lang === 'fr' ? '/fr/politique-confidentialite' : '/privacy'}
-            className="underline mr-4"
-          >
-            {t.footer.privacy}
-          </a>
-          <a href="/terms" className="underline mr-4">
-            {t.footer.terms}
-          </a>
-          <a href="mailto:info@example.com" className="underline">
-            {t.footer.contact}
-          </a>
-        </div>
-        <div className="mb-4">
-          {lang === 'fr' ? 'Langue : ' : 'Language: '}
-          <a
-            href={frHref}
-            onClick={() => localStorage.setItem('lang', 'fr')}
-            className="underline mr-2"
-          >
-            FR
-          </a>
-          |
-          <a
-            href={enHref}
-            onClick={() => localStorage.setItem('lang', 'en')}
-            className="underline ml-2"
-          >
-            EN
-          </a>
-        </div>
-        <p className="opacity-75">© 2024 Simon Paris Consulting</p>
-      </footer>
+      <Footer />
     </div>
   );
 };
