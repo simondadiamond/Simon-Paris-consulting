@@ -27,33 +27,22 @@ export const Header: React.FC<{
   const textClass = !isScrolled && isPrivacyPage ? 'text-[#121C2D]' : 'text-white';
   const base = lang === 'fr' ? '/fr' : '';
 
-  const LanguageToggle = () => {
-    const frHref = langToggle?.fr ?? '/fr';
-    const enHref = langToggle?.en ?? '/';
+  const LanguageToggle = ({ className }: { className?: string }) => {
+    const otherLang = lang === 'fr' ? 'en' : 'fr';
+    const target = lang === 'fr' ? langToggle?.en ?? '/' : langToggle?.fr ?? '/fr';
+    const color = className ?? textClass;
     return (
-      <div className={`flex items-center text-sm ${textClass} space-x-1`}>
-        <a
-          href={frHref}
-          className={`${lang === 'fr' ? 'font-semibold text-[#2280FF]' : 'opacity-70'} hover:opacity-100`}
-          onClick={() => {
-            setLang('fr');
-            localStorage.setItem('lang', 'fr');
-          }}
-        >
-          FR
-        </a>
-        <span>|</span>
-        <a
-          href={enHref}
-          className={`${lang === 'en' ? 'font-semibold text-[#2280FF]' : 'opacity-70'} hover:opacity-100`}
-          onClick={() => {
-            setLang('en');
-            localStorage.setItem('lang', 'en');
-          }}
-        >
-          EN
-        </a>
-      </div>
+      <button
+        aria-label="Switch language"
+        onClick={() => {
+          setLang(otherLang as 'fr' | 'en');
+          localStorage.setItem('lang', otherLang);
+          window.location.href = target;
+        }}
+        className={`px-3 py-1 rounded-full border ${color} border-current hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2280FF]`}
+      >
+        {otherLang.toUpperCase()}
+      </button>
     );
   };
 
@@ -115,29 +104,7 @@ export const Header: React.FC<{
           }`}
         >
           <div className="p-6 pt-20 space-y-6 text-center">
-            <div className="flex items-center justify-center space-x-1 text-[#121C2D]">
-              <a
-                href={langToggle?.fr ?? '/fr'}
-                className={`${lang === 'fr' ? 'font-semibold text-[#2280FF]' : 'opacity-70'} hover:opacity-100`}
-                onClick={() => {
-                  setLang('fr');
-                  localStorage.setItem('lang', 'fr');
-                }}
-              >
-                FR
-              </a>
-              <span>|</span>
-              <a
-                href={langToggle?.en ?? '/'}
-                className={`${lang === 'en' ? 'font-semibold text-[#2280FF]' : 'opacity-70'} hover:opacity-100`}
-                onClick={() => {
-                  setLang('en');
-                  localStorage.setItem('lang', 'en');
-                }}
-              >
-                EN
-              </a>
-            </div>
+            <LanguageToggle className="text-[#121C2D]" />
             <a
               href={`mailto:${t.header.email}`}
               className="block text-[#121C2D] hover:text-[#2280FF] font-medium"
@@ -159,31 +126,23 @@ export const Footer: React.FC<{ langToggle?: { fr: string; en: string } }> = ({
 }) => {
   const { t, lang, setLang } = useLanguage();
 
-  const LanguageToggle = () => (
-    <div className="flex items-center space-x-1 text-sm">
-      <a
-        href={langToggle?.fr ?? '/fr'}
-        className={`${lang === 'fr' ? 'font-semibold text-[#2280FF]' : 'opacity-70'} hover:opacity-100`}
+  const LanguageToggle = () => {
+    const otherLang = lang === 'fr' ? 'en' : 'fr';
+    const target = lang === 'fr' ? langToggle?.en ?? '/' : langToggle?.fr ?? '/fr';
+    return (
+      <button
+        aria-label="Switch language"
         onClick={() => {
-          setLang('fr');
-          localStorage.setItem('lang', 'fr');
+          setLang(otherLang as 'fr' | 'en');
+          localStorage.setItem('lang', otherLang);
+          window.location.href = target;
         }}
+        className="px-3 py-1 rounded-full border border-white text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2280FF]"
       >
-        FR
-      </a>
-      <span>|</span>
-      <a
-        href={langToggle?.en ?? '/'}
-        className={`${lang === 'en' ? 'font-semibold text-[#2280FF]' : 'opacity-70'} hover:opacity-100`}
-        onClick={() => {
-          setLang('en');
-          localStorage.setItem('lang', 'en');
-        }}
-      >
-        EN
-      </a>
-    </div>
-  );
+        {otherLang.toUpperCase()}
+      </button>
+    );
+  };
 
   return (
     <footer className="relative py-16 bg-[#121C2D] text-white">
