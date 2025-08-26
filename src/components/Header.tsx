@@ -72,9 +72,23 @@ const Header = ({ langToggleHref, langToggleLabel }: HeaderProps) => {
             <a
               href={lang === 'fr' ? '/fr' : '/'}
               onClick={() => localStorage.setItem('lang', lang)}
-              className="flex items-center"
+              className="flex items-center space-x-2"
             >
-              <img src="/icon.svg" alt={t.header.brand} className="h-8 w-auto" />
+              <span className="sr-only">{t.header.brand}</span>
+              <span
+                className="h-8 w-8 bg-teal-400"
+                style={{
+                  maskImage: 'url(/icon.svg)',
+                  maskRepeat: 'no-repeat',
+                  maskPosition: 'center',
+                  maskSize: 'contain',
+                  WebkitMaskImage: 'url(/icon.svg)',
+                  WebkitMaskRepeat: 'no-repeat',
+                  WebkitMaskPosition: 'center',
+                  WebkitMaskSize: 'contain',
+                }}
+              />
+              <span className="text-teal-400 font-semibold">workflowLeaf</span>
             </a>
             <div className="hidden md:flex items-center space-x-8">
               <LanguageToggle />
