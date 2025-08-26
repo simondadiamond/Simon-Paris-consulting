@@ -7,7 +7,8 @@ import { LandingEN, LandingFR } from './pages/SpeedToLead';
 import { LanguageProvider } from './LanguageProvider';
 import './index.css';
 
-const path = window.location.pathname;
+// Normalize path to handle optional trailing slashes
+const path = decodeURI(window.location.pathname).replace(/\/+$/, '') || '/';
 let Component = App;
 if (path === '/privacy') {
   Component = PrivacyPolicy;
