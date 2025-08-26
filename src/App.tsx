@@ -7,6 +7,8 @@ import {
   Zap, CalendarCheck, Star,
   Mail, MapPin, ChevronDown, ChevronUp
 } from 'lucide-react';
+import RoiCalculator, { STR_EN, STR_FR, formatCurrency } from './components/RoiCalculator';
+import { PACK_PRICE } from './config';
 
 // Hero Component
 const Hero = () => {
@@ -329,6 +331,7 @@ const ROIMath = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const { t, lang } = useLanguage();
+  const [expected, setExpected] = useState<number | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
@@ -344,29 +347,41 @@ const ROIMath = () => {
     return () => observer.disconnect();
   }, []);
 
+  const expectedDisplay = expected !== null ? formatCurrency(expected) : t.roi.defaultRange;
+
   return (
     <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#F9FAFB' }}>
-      <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center">
-        <div className={`mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2
-            className="text-display text-gray-900 mb-6"
-            dangerouslySetInnerHTML={{ __html: t.roi.title }}
-          />
-        </div>
-
-        <div className={`grid md:grid-cols-2 gap-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="card-light p-6 md:p-8">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">{lang === 'fr' ? 'Sans automatisation' : 'Without automation'}</h3>
-            <p className="text-gray-700">{t.roi.without}</p>
+      <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8">
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className={`text-center md:text-left transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <h2 className="text-display text-gray-900 mb-6">
+              <span dangerouslySetInnerHTML={{ __html: t.roi.titlePrefix }} />
+              <span className="accent">{expectedDisplay}</span>
+              {t.roi.titleSuffix}
+            </h2>
+            <p className="text-gray-700 mt-8">{t.roi.note}</p>
+            <p className="text-gray-700 text-xs mt-2">{t.roi.disclaimer}</p>
           </div>
-          <div className="card-light p-6 md:p-8">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">{lang === 'fr' ? 'Avec automatisation' : 'With automation'}</h3>
-            <p className="text-gray-700">{t.roi.with}</p>
+          <div className={`mt-8 md:mt-0 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <RoiCalculator
+              packPrice={PACK_PRICE}
+              strings={lang === 'fr' ? STR_FR : STR_EN}
+              defaults={{
+                arpv: 130,
+                gross_margin_pct: 60,
+                leads_per_month: 40,
+                baseline_conv_pct: 30,
+                reply_time_bucket: '1-24h',
+                no_show_pct: 12,
+                reviews_traffic_uplift_pct: 3,
+                admin_hours_saved: 5,
+                staff_hourly_cost: 22,
+                selected: { speed: true, noshow: true, reviews: true }
+              }}
+              onCalculate={(o) => setExpected(o.monthlyGP)}
+            />
           </div>
         </div>
-
-        <p className="text-gray-700 mt-8">{t.roi.note}</p>
-        <p className="text-gray-700 text-xs mt-2">{t.roi.disclaimer}</p>
       </div>
     </section>
   );
