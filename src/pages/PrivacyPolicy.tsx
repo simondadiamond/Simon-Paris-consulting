@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Header, Footer } from '../App';
+import { Header, Footer } from '../components/Layout';
 import { useLanguage } from '../LanguageProvider';
 
 const PrivacyPolicy = () => {
@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header langToggleHref="/fr/politique-confidentialite" langToggleLabel="FR" />
+      <Header langToggle={{ fr: '/fr/politique-confidentialite', en: '/privacy' }} />
       <main className="max-w-[800px] mx-auto pt-40 p-4 md:p-8">
         <h1 className="text-3xl md:text-4xl font-bold text-[#121C2D] mb-6">Privacy Policy (Law 25 &amp; CASL Compliance)</h1>
         <p className="mb-6 text-[0.9rem] md:text-base text-[#121C2D] leading-relaxed">
@@ -80,7 +80,7 @@ const PrivacyPolicy = () => {
         <h2 className="text-xl md:text-2xl font-semibold text-[#121C2D] mb-4 mt-8">8. Changes to this Policy</h2>
         <p className="text-[0.9rem] md:text-base text-[#121C2D] leading-relaxed">Last updated: August 5, 2025. We will email you if there’s a material change.</p>
       </main>
-      <Footer />
+      <Footer langToggle={{ fr: '/fr/politique-confidentialite', en: '/privacy' }} />
     </div>
   );
 };
