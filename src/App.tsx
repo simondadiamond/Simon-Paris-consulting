@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from './LanguageProvider';
-import {
-  MessageSquare, CalendarX, Receipt, Shield, CheckCircle,
-  Zap, CalendarCheck, Star,
-  ChevronDown, ChevronUp
-} from 'lucide-react';
+import Header from './components/Header';
+import { Globe, MessageSquare, CalendarX, Receipt, Shield, CheckCircle, Zap, CalendarCheck, Star, ChevronDown, ChevronUp } from 'lucide-react';
 import { Header, Footer } from './components/Layout';
 import PartnerBar from './components/PartnerBar';
+
 
 // Hero Component
 const Hero = () => {

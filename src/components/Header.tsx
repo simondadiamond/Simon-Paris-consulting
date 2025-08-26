@@ -1,9 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Globe, Menu, X } from 'lucide-react';
+import { useLanguage } from '../LanguageProvider';
 
-const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+type HeaderProps = {
+  langToggleHref?: string;
+  langToggleLabel?: string;
+};
+
+const Header = ({ langToggleHref, langToggleLabel }: HeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { t, lang, setLang } = useLanguage();
+
+  const isPrivacyPage =
+    typeof window !== 'undefined' &&
+    (window.location.pathname === '/privacy' ||
+      window.location.pathname === '/fr/politique-confidentialite');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,72 +25,125 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const textClass = !isScrolled && isPrivacyPage ? 'text-[#121C2D]' : 'text-white';
+  const base = lang === 'fr' ? '/fr' : '';
+
+  const LanguageToggle = () => {
+    const targetLang = lang === 'en' ? 'fr' : 'en';
+    const href = targetLang === 'fr' ? '/fr' : '/';
+    if (langToggleHref && langToggleLabel) {
+      return (
+        <a
+          href={langToggleHref}
+          className={`${textClass} underline decoration-transparent hover:decoration-[#2280FF]`}
+          onClick={() => {
+            setLang(targetLang);
+            localStorage.setItem('lang', targetLang);
+          }}
+        >
+          {langToggleLabel}
+        </a>
+      );
+    }
+    return (
+      <a
+        href={href}
+        className={`flex items-center text-sm ${textClass} underline decoration-transparent hover:decoration-[#2280FF]`}
+        onClick={() => {
+          setLang(targetLang);
+          localStorage.setItem('lang', targetLang);
+        }}
+      >
+        <Globe className="w-4 h-4 mr-2" />
+        <span>{t.header.languageToggle}</span>
+      </a>
+    );
+  };
+
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled 
-          ? 'bg-gray-900/90 backdrop-blur-xl'
-          : 'bg-transparent'
-      }`}>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${
+          isScrolled ? 'bg-[#121C2D]' : 'bg-transparent'
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <div className="flex items-center">
-              <div className="text-2xl font-bold text-white">
-                Simon Paris
-              </div>
-            </div>
-            
+            <a
+              href={lang === 'fr' ? '/fr' : '/'}
+              onClick={() => localStorage.setItem('lang', lang)}
+              className="flex items-center space-x-2"
+            >
+              <span className="sr-only">{t.header.brand}</span>
+              <span
+                className="h-8 w-8 bg-teal-400"
+                style={{
+                  maskImage: 'url(/icon.svg)',
+                  maskRepeat: 'no-repeat',
+                  maskPosition: 'center',
+                  maskSize: 'contain',
+                  WebkitMaskImage: 'url(/icon.svg)',
+                  WebkitMaskRepeat: 'no-repeat',
+                  WebkitMaskPosition: 'center',
+                  WebkitMaskSize: 'contain',
+                }}
+              />
+              <span className="text-teal-400 font-semibold text-xl">WorkflowLeaf</span>
+            </a>
             <div className="hidden md:flex items-center space-x-8">
-              <div className="flex items-center text-sm text-gray-300">
-                <Globe className="w-4 h-4 mr-2" />
-                <span>EN/FR</span>
-              </div>
-              <a 
-                href="mailto:info@simonparis.ca"
-                className="transition-colors duration-300 font-medium text-white hover:text-[#2280FF]"
-              >
-                info@simonparis.ca
+              <LanguageToggle />
+              <a href={`${base}/checklist`} className="btn-primary text-sm px-6 py-3">
+                {t.header.cta}
               </a>
-              <button className="btn-primary text-sm px-6 py-3">
-                Book Demo
+            </div>
+            <div className="flex md:hidden items-center space-x-4">
+              <LanguageToggle />
+              <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                {isMobileMenuOpen ? (
+                  <X className={`w-6 h-6 ${textClass}`} />
+                ) : (
+                  <Menu className={`w-6 h-6 ${textClass}`} />
+                )}
               </button>
             </div>
-
-            <button 
-              className="md:hidden text-white"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Menu */}
-      <div className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${
-        isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-      }`}>
-        <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" 
-             onClick={() => setIsMobileMenuOpen(false)} />
-        <div className={`absolute top-0 right-0 h-full w-80 bg-gray-900 shadow-2xl transform transition-transform duration-300 ${
-          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}>
-          <div className="p-6 pt-20">
-            <div className="space-y-6">
+      <div
+        className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${
+          isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+        }`}
+      >
+        <div
+          className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+        <div
+          className={`absolute top-0 right-0 h-full w-64 bg-white shadow-2xl transform transition-transform duration-300 ${
+            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          <div className="p-6 pt-20 space-y-6 text-center">
+            {langToggleHref && langToggleLabel ? (
               <a
-                href="mailto:info@simonparis.ca"
-                className="block text-white font-medium"
+                href={langToggleHref}
+                className="block text-[#121C2D] underline decoration-transparent hover:decoration-[#2280FF]"
               >
-                info@simonparis.ca
+                {langToggleLabel}
               </a>
-              <div className="flex items-center text-gray-300">
+            ) : (
+              <button
+                onClick={() => setLang(lang === 'en' ? 'fr' : 'en')}
+                className="flex items-center justify-center text-[#121C2D] underline decoration-transparent hover:decoration-[#2280FF]"
+              >
                 <Globe className="w-4 h-4 mr-2" />
-                <span>EN/FR</span>
-              </div>
-              <button className="btn-primary w-full">
-                Book Demo
+                <span>{t.header.languageToggle}</span>
               </button>
-            </div>
+            )}
+            <a href={`${base}/checklist`} className="btn-primary w-full">
+              {t.header.cta}
+            </a>
           </div>
         </div>
       </div>
@@ -87,3 +152,4 @@ const Header = () => {
 };
 
 export default Header;
+
