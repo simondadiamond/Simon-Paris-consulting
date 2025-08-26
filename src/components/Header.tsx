@@ -23,8 +23,13 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
-              <div className="text-2xl font-bold text-white">
-                Simon Paris
+              <img
+                src="/logo.svg"
+                alt="WorkflowLeaf logo"
+                className="h-8 w-auto mr-2"
+              />
+              <div className="text-2xl font-bold text-white font-inter">
+                WorkflowLeaf
               </div>
             </div>
             
@@ -33,12 +38,6 @@ const Header = () => {
                 <Globe className="w-4 h-4 mr-2" />
                 <span>EN/FR</span>
               </div>
-              <a 
-                href="mailto:info@simonparis.ca"
-                className="transition-colors duration-300 font-medium text-white hover:text-[#2280FF]"
-              >
-                info@simonparis.ca
-              </a>
               <button className="btn-primary text-sm px-6 py-3">
                 Book Demo
               </button>
@@ -65,12 +64,6 @@ const Header = () => {
         }`}>
           <div className="p-6 pt-20">
             <div className="space-y-6">
-              <a
-                href="mailto:info@simonparis.ca"
-                className="block text-white font-medium"
-              >
-                info@simonparis.ca
-              </a>
               <div className="flex items-center text-gray-300">
                 <Globe className="w-4 h-4 mr-2" />
                 <span>EN/FR</span>
