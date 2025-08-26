@@ -74,7 +74,7 @@ const fr: TranslationKeys = {
     note: 'Prix fixes. Aucun frais caché. Modèles français d’abord.'
   },
   roi: {
-    title: `💡 « Chaque module commence à seulement ${PACK_PRICE} $ — la plupart des cliniques en ajoutent 2 ou 3 pour de vrais résultats. »`,
+    title: `Chaque module commence à seulement ${PACK_PRICE} $ — la plupart des cliniques en ajoutent 2 ou 3 pour de vrais résultats.`,
     sub: 'Les cliniques récupèrent généralement 600 à 900 $/mois en rendez-vous sauvés, moins d’absences et moins de tâches administratives — tout en réduisant le stress de l’équipe.',
     footnote: 'Estimations basées sur ~120 à 150 $ par rendez-vous et les pertes de clients typiques au Québec. Les résultats peuvent varier.'
   },
