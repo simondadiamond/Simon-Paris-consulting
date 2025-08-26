@@ -88,7 +88,7 @@ const Header = ({ langToggleHref, langToggleLabel }: HeaderProps) => {
                   WebkitMaskSize: 'contain',
                 }}
               />
-              <span className="text-teal-400 font-semibold text-xl">workflowLeaf</span>
+              <span className="text-teal-400 font-semibold text-xl">WorkflowLeaf</span>
             </a>
             <div className="hidden md:flex items-center space-x-8">
               <LanguageToggle />
