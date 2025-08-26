@@ -1,12 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from './LanguageProvider';
+
 import {
+
+
+Globe,
+
   MessageSquare, CalendarX, Receipt, Shield, CheckCircle,
   Zap, CalendarCheck, Star,
   ChevronDown, ChevronUp
 } from 'lucide-react';
+
 import { Header, Footer } from './components/Layout';
 import PartnerBar from './components/PartnerBar';
+
+
 
 // Hero Component
 const Hero = () => {
@@ -24,8 +32,8 @@ const Hero = () => {
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-float" />
         <div
-          className="absolute bottom-20 right-10 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: '2s' }}
+          classNme="absolute bottom-20 right-10 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl animate-float"
+          style={{ animatonDelay: '2s' }}
         />
       </div>
 
@@ -527,4 +535,5 @@ function App() {
     </div>
   );
 }
+
 export default App;

@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react';
-import { Header, Footer } from '../components/Layout';
+
+
+import Header from '../components/Header';
+import { Footer } from '../App';
+
 import { useLanguage } from '../LanguageProvider';
 
 const PrivacyPolicy = () => {
