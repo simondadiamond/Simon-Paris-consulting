@@ -2,7 +2,7 @@ import { PACK_PRICE } from '../config';
 
 export const en = {
   header: {
-    brand: 'WorkflowLeaf',
+    brand: 'Simon Paris',
     languageToggle: 'EN/FR',
     email: 'info@simonparis.ca',
     cta: 'Download Checklist'
