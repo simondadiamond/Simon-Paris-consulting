@@ -10,7 +10,7 @@ const Loi25Checklist: React.FC = () => {
         'Évitez les amendes coûteuses grâce à une liste de vérification claire.',
         'Gagnez du temps grâce à des actions prêtes à appliquer immédiatement.',
       ]}
-      imageSrc="https://lh3.googleusercontent.com/aida-public/AB6AXuBEhtKecyFcExEW7tPdHHPhRyttcqxBIYtE6viQ9uYtSl0f6YjUYjrn4U-3H8ltPS8C5HxGMj987DgDTv5F7CAnEYTKidkOWY4XmuKiY7gYFGEDoRBq5IQXmBHdMOGMSnCenxaKqWFyifcQZZq-ae0Fzl-X8-UkO5krlwNKYJ1SmU56KH30Oj77qf1JAw8x2e9SK2WPfEZFxyq6QNwy5usrRnb2pjdTBHAR6P1zeWr1r9LyAuAKlg46JGdFkUJUPbGtbNM7u1lhWEw"
+      imageSrc="https://lh3.googleusercontent.com/aida-public/AB6AXuDBvThyq2HHeUHfEJ6lHaZM8dDc87KlBDib-FfJs11lqjxqaS7e7qh7nYk15ZDb2bmjCoMWaigvUHezQ19ShmjSPXWHmBq_9ibtrnoVfuqmU_bAR4GjL6ZonoRJBDHvREjB6NdLyW-RaGuCyGOwNvHC5GT0LBi9lFVH0fK3P6WA2CWYaM2M9jKttHs6Go1XMOOr9unF_pB2k2UzCUMM5bXpPRTsd4QR5BDKuvlwdrdzki8lpIefEH9s2D8W-aj6mRzpHft3DI7tmJE"
       ctaText="Télécharger le guide gratuit"
       consent="J’accepte de recevoir aussi des communications par courriel concernant la conformité et l’automatisation (Loi 25). Je peux me désabonner en tout temps."
       person={{
