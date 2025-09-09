@@ -1,5 +1,6 @@
 import React from 'react';
 import LeadMagnet from '../components/LeadMagnet';
+import { useLanguage } from '../LanguageProvider';
 
 const heroImg =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuBEhtKecyFcExEW7tPdHHPhRyttcqxBIYtE6viQ9uYtSl0f6YjUYjrn4U-' +
@@ -11,25 +12,25 @@ const avatarImg =
   'bAR4GjL6ZonoRJBDHvREjB6NdLyW-RaGuCyGOwNvHC5GT0LBi9lFVH0fK3P6WA2CWYaM2M9jKttHs6Go1XMOOr9unF_pB2k2UzCUMM5bXpPRTsd4QR5BDKuvlwdrdzki8lpIefEH9s2D8W-' +
   'aj6mRzpHft3DI7tmJE';
 
-const Loi25Checklist: React.FC = () => {
+const Law25Checklist: React.FC = () => {
+  const { t } = useLanguage();
+  const c = t.law25Checklist;
   return (
     <LeadMagnet
-      title="Le guide essentiel pour rester conforme à la Loi 25 — sans perdre de temps."
-      bullets={[
-        'Découvrez les 3 obligations clés que chaque PME québécoise doit respecter dès maintenant.',
-        'Évitez les amendes coûteuses grâce à une liste de vérification claire.',
-        'Gagnez du temps grâce à des actions prêtes à appliquer immédiatement.',
-      ]}
+      title={c.title}
+      bullets={c.bullets}
       imageSrc={heroImg}
-      ctaText="Télécharger le guide gratuit"
-      consent="J’accepte de recevoir aussi des communications par courriel concernant la conformité et l’automatisation (Loi 25). Je peux me désabonner en tout temps."
+      ctaText={c.cta}
+      consent={c.consent}
+      form={c.form}
+      recommended={c.recommended}
       person={{
         name: 'Simon Paris',
-        title: 'Conseiller en automatisation – Québec',
+        title: c.personTitle,
         imageSrc: avatarImg,
       }}
     />
   );
 };
 
-export default Loi25Checklist;
+export default Law25Checklist;

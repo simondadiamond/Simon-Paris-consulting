@@ -5,7 +5,7 @@ import App from './App.tsx';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import PolitiqueConfidentialite from './pages/PolitiqueConfidentialite';
 import { LandingEN, LandingFR } from './pages/SpeedToLead';
-import Loi25Checklist from './pages/Loi25Checklist';
+import Law25Checklist from './pages/Law25Checklist';
 import { LanguageProvider } from './LanguageProvider';
 import './index.css';
 
@@ -20,8 +20,11 @@ if (path === '/privacy') {
   Component = LandingEN;
 } else if (path === '/fr/ne-manquez-aucun-patient') {
   Component = LandingFR;
-} else if (path === '/fr/ressources/liste-conformite-loi25-96') {
-  Component = Loi25Checklist;
+} else if (
+  path === '/fr/ressources/liste-conformite-loi25-96' ||
+  path === '/en/resources/compliance-checklist-law25-96'
+) {
+  Component = Law25Checklist;
 }
 
 createRoot(document.getElementById('root')!).render(

@@ -12,6 +12,13 @@ interface LeadMagnetProps {
     title: string;
     imageSrc: string;
   };
+  form: {
+    nameLabel: string;
+    namePlaceholder: string;
+    emailLabel: string;
+    emailPlaceholder: string;
+  };
+  recommended: string;
 }
 
 const LeadMagnet: React.FC<LeadMagnetProps> = ({
@@ -22,6 +29,8 @@ const LeadMagnet: React.FC<LeadMagnetProps> = ({
   consent,
   ctaText,
   person,
+  form,
+  recommended,
 }) => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4 lg:p-8">
@@ -69,27 +78,27 @@ const LeadMagnet: React.FC<LeadMagnetProps> = ({
                 <div className="space-y-4">
                   <div>
                     <label htmlFor="name" className="sr-only">
-                      Nom complet
+                      {form.nameLabel}
                     </label>
                     <input
                       id="name"
                       name="name"
                       type="text"
                       required
-                      placeholder="Nom complet"
+                      placeholder={form.namePlaceholder}
                       className="block w-full px-4 py-3 border border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-400"
                     />
                   </div>
                   <div>
                     <label htmlFor="email" className="sr-only">
-                      Adresse e-mail
+                      {form.emailLabel}
                     </label>
                     <input
                       id="email"
                       name="email"
                       type="email"
                       required
-                      placeholder="Adresse e-mail"
+                      placeholder={form.emailPlaceholder}
                       className="block w-full px-4 py-3 border border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-400"
                     />
                   </div>
@@ -111,7 +120,7 @@ const LeadMagnet: React.FC<LeadMagnetProps> = ({
                 </button>
               </form>
               <p className="mt-5 text-center text-sm font-medium text-gray-500">
-                ✔ Recommandé par des PME du Québec.
+                {recommended}
               </p>
               <div className="mt-8 pt-6 border-t border-gray-200 flex items-center">
                 <img
