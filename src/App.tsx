@@ -134,7 +134,8 @@ const ProblemSection = () => {
   const GrowthEngine = () => {
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);
-    const { t } = useLanguage();
+    const { t, lang } = useLanguage();
+    const base = lang === 'fr' ? '/fr' : '';
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -465,6 +466,7 @@ const FAQ = () => {
 const FinalCTA = () => {
   const { t, lang } = useLanguage();
   const checklistHref = CHECKLIST_PATH[lang];
+  const base = lang === 'fr' ? '/fr' : '';
 
   return (
     <section className="relative py-16 bg-[#121C2D] text-center text-white">
