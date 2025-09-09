@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLanguage } from '../LanguageProvider';
 
 interface LeadMagnetProps {
   title: string;
@@ -32,6 +33,11 @@ const LeadMagnet: React.FC<LeadMagnetProps> = ({
   form,
   recommended,
 }) => {
+  const { lang } = useLanguage();
+  const altLink =
+    lang === 'fr'
+      ? '/en/resources/compliance-checklist-law25-96'
+      : '/fr/ressources/liste-conformite-loi25-96';
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4 lg:p-8">
       <div className="w-full max-w-5xl mx-auto">
@@ -40,6 +46,29 @@ const LeadMagnet: React.FC<LeadMagnetProps> = ({
             <img src={imageSrc} alt="" className="w-full h-full object-cover" />
           </div>
           <div className="p-8 md:p-12">
+            <div className="text-right text-xs text-gray-500 mb-2">
+              {lang === 'fr' ? (
+                <>
+                  FR |{' '}
+                  <a
+                    href={altLink}
+                    className="underline hover:text-teal-400"
+                  >
+                    EN
+                  </a>
+                </>
+              ) : (
+                <>
+                  <a
+                    href={altLink}
+                    className="underline hover:text-teal-400"
+                  >
+                    FR
+                  </a>{' '}
+                  | EN
+                </>
+              )}
+            </div>
             <div className="lg:hidden mb-6">
               <img
                 src={imageSrc}
