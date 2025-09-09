@@ -41,34 +41,16 @@ const LeadMagnet: React.FC<LeadMagnetProps> = ({
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4 lg:p-8">
       <div className="w-full max-w-5xl mx-auto">
-        <div className="bg-white lg:grid lg:grid-cols-2 shadow-2xl rounded-2xl overflow-hidden">
+        <div className="bg-white lg:grid lg:grid-cols-2 shadow-2xl rounded-2xl overflow-hidden relative">
+          <div className="absolute top-2 right-2 text-xs text-gray-500">
+            <a href={altLink} className="underline hover:text-teal-400">
+              {lang === 'fr' ? 'EN' : 'FR'}
+            </a>
+          </div>
           <div className="hidden lg:block relative">
             <img src={imageSrc} alt="" className="w-full h-full object-cover" />
           </div>
           <div className="p-8 md:p-12">
-            <div className="text-right text-xs text-gray-500 mb-2">
-              {lang === 'fr' ? (
-                <>
-                  FR |{' '}
-                  <a
-                    href={altLink}
-                    className="underline hover:text-teal-400"
-                  >
-                    EN
-                  </a>
-                </>
-              ) : (
-                <>
-                  <a
-                    href={altLink}
-                    className="underline hover:text-teal-400"
-                  >
-                    FR
-                  </a>{' '}
-                  | EN
-                </>
-              )}
-            </div>
             <div className="lg:hidden mb-6">
               <img
                 src={imageSrc}
