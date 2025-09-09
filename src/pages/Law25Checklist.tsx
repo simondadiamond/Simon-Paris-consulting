@@ -8,9 +8,7 @@ const heroImg =
   'JAw8x2e9SK2WPfEZFxyq6QNwy5usrRnb2pjdTBHAR6P1zeWr1r9LyAuAKlg46JGdFkUJUPbGtbNM7u1lhWEw';
 
 const avatarImg =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuDBvThyq2HHeUHfEJ6lHaZM8dDc87KlBDib-FfJs11lqjxqaS7e7qh7nYk15ZDb2bmjCoMWaigvUHezQ19ShmjSPXWHmBq_9ibtrnoVfuqmU_' +
-  'bAR4GjL6ZonoRJBDHvREjB6NdLyW-RaGuCyGOwNvHC5GT0LBi9lFVH0fK3P6WA2CWYaM2M9jKttHs6Go1XMOOr9unF_pB2k2UzCUMM5bXpPRTsd4QR5BDKuvlwdrdzki8lpIefEH9s2D8W-' +
-  'aj6mRzpHft3DI7tmJE';
+  'https://raw.githubusercontent.com/simondadiamond/Simon-Paris-consulting/eae08774e1af7cdb40b14cfb3dfe16b961b0a763/public/simon-xs.jpg';
 
 const Law25Checklist: React.FC = () => {
   const { t } = useLanguage();
