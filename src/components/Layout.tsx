@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../LanguageProvider';
+import { CHECKLIST_PATH } from '../paths';
 import { Menu, X, Mail, MapPin } from 'lucide-react';
 
 export const Header: React.FC<{
@@ -10,6 +11,7 @@ export const Header: React.FC<{
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { t, lang, setLang } = useLanguage();
+  const checklistHref = CHECKLIST_PATH[lang];
 
   const isPrivacyPage =
     typeof window !== 'undefined' &&
@@ -25,7 +27,6 @@ export const Header: React.FC<{
   }, []);
 
   const textClass = !isScrolled && isPrivacyPage ? 'text-[#121C2D]' : 'text-white';
-  const base = lang === 'fr' ? '/fr' : '';
 
   const LanguageToggle = ({ className }: { className?: string }) => {
     const otherLang = lang === 'fr' ? 'en' : 'fr';
@@ -70,7 +71,7 @@ export const Header: React.FC<{
               >
                 {t.header.email}
               </a>
-              <a href={ctaHref ?? `${base}/checklist`} className="btn-primary text-sm px-6 py-3">
+              <a href={ctaHref ?? checklistHref} className="btn-primary text-sm px-6 py-3">
                 {ctaLabel ?? t.header.cta}
               </a>
             </div>
@@ -111,7 +112,7 @@ export const Header: React.FC<{
             >
               {t.header.email}
             </a>
-            <a href={ctaHref ?? `${base}/checklist`} className="btn-primary w-full">
+            <a href={ctaHref ?? checklistHref} className="btn-primary w-full">
               {ctaLabel ?? t.header.cta}
             </a>
           </div>

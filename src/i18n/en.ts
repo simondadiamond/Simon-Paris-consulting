@@ -90,8 +90,7 @@ export const en = {
         'Are your reminders and follow-ups fully FR-first?',
         'Can patients opt-out instantly, without risk of complaint?'
       ],
-    cta: 'Download the Checklist',
-    href: '/checklist'
+    cta: 'Download the Checklist'
   },
   proof: {
     title: 'Clinics that automate see results fast.',
@@ -145,7 +144,6 @@ export const en = {
     title: 'Start Free. Stay Compliant. Grow Faster.',
     sub: 'Download the checklist now — upgrade to packs when ready.',
     primary: 'Download Checklist',
-    primaryHref: '/checklist',
     secondary: 'See Packs',
     secondaryHref: '/packs'
   },

@@ -90,8 +90,7 @@ const fr: TranslationKeys = {
         'Vos rappels et suivis sont-ils 100 % en français d’abord (FR-first)?',
         'Vos patients peuvent-ils se désabonner instantanément, sans plainte possible?'
       ],
-    cta: 'Télécharger la Liste',
-    href: '/checklist'
+    cta: 'Télécharger la Liste'
   },
   proof: {
     title: 'Les cliniques qui automatisent voient des résultats rapides.',
@@ -145,7 +144,6 @@ const fr: TranslationKeys = {
     title: 'Commencez gratuitement. Restez conforme. Croissez plus vite.',
     sub: 'Téléchargez la checklist maintenant — passez aux packs quand vous serez prêt.',
     primary: 'Télécharger la checklist',
-    primaryHref: '/checklist',
     secondary: 'Voir les packs',
     secondaryHref: '/packs'
   },
