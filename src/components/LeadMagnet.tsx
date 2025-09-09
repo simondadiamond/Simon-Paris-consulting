@@ -77,7 +77,7 @@ const LeadMagnet: React.FC<LeadMagnetProps> = ({
                       type="text"
                       required
                       placeholder="Nom complet"
-                      className="block w-full px-4 py-3 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-400"
+                      className="block w-full px-4 py-3 border border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-400"
                     />
                   </div>
                   <div>
@@ -90,7 +90,7 @@ const LeadMagnet: React.FC<LeadMagnetProps> = ({
                       type="email"
                       required
                       placeholder="Adresse e-mail"
-                      className="block w-full px-4 py-3 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-400"
+                      className="block w-full px-4 py-3 border border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-400"
                     />
                   </div>
                 </div>
