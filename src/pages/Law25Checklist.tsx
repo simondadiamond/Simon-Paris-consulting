@@ -16,6 +16,7 @@ const Law25Checklist: React.FC = () => {
   return (
     <LeadMagnet
       title={c.title}
+      subtitle={c.subtitle}
       bullets={c.bullets}
       imageSrc={heroImg}
       ctaText={c.cta}

@@ -150,13 +150,16 @@ export const en = {
   stickyCta: 'Download the Checklist',
   trustBadge: 'Built for Québec • Demo-first • Fully bilingual & Law 96\u2013compliant',
   law25Checklist: {
-    title: 'The essential guide to staying compliant with Law 25 — without wasting time.',
+    title: '👉 Practical Guide: 12 Key Obligations of Québec’s Law 25 for SMBs',
+    subtitle:
+      'Stay compliant, avoid costly fines, and protect client trust — without wasting time.',
     bullets: [
-      'Discover the 3 key obligations every Québec SME must meet right now.',
-      'Avoid costly fines with a clear, bilingual checklist.',
-      'Save time with actions you can apply immediately.',
+      '✅ Clear breakdown of 12 legal obligations for SMBs.',
+      '✅ Simple checklist format (ready to apply today).',
+      '✅ Save time with step-by-step actions.',
+      '✅ Build client confidence with compliance in place.',
     ],
-    cta: 'Download the free guide',
+    cta: '➡️ Download the Free Guide',
     consent:
       'I agree to receive email communications about compliance and automation (Law 25). I can unsubscribe at any time.',
     form: {
@@ -165,7 +168,8 @@ export const en = {
       emailLabel: 'Email address',
       emailPlaceholder: 'Email address',
     },
-    recommended: '✔ Recommended by Québec SMEs.',
+    recommended:
+      '✔ Already used by Québec SMEs to stay compliant with confidence.',
     personTitle: 'Automation Advisor – Quebec',
   },
   partners: {

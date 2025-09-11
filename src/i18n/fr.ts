@@ -150,22 +150,26 @@ const fr: TranslationKeys = {
   stickyCta: 'Télécharger la checklist',
   trustBadge: 'Conçu pour le Québec • Démo en direct • Bilingue et conforme à la Loi 96',
   law25Checklist: {
-    title: 'Le guide essentiel pour rester conforme à la Loi 25 — sans perdre de temps.',
+    title: '👉 Guide pratique : les 12 obligations clés de la Loi 25 pour les PME québécoises',
+    subtitle:
+      'Restez conforme à la Loi 25 sans perdre de temps — évitez les amendes coûteuses et protégez la confiance de vos clients.',
     bullets: [
-      'Découvrez les 3 obligations clés que chaque PME québécoise doit respecter dès maintenant.',
-      'Évitez les amendes coûteuses grâce à une liste de vérification claire.',
-      'Gagnez du temps grâce à des actions prêtes à appliquer immédiatement.',
+      '✅ Comprenez vos 12 obligations légales en langage simple.',
+      '✅ Accédez à une liste de vérification claire et prête à l’emploi.',
+      '✅ Gagnez du temps avec des actions concrètes, adaptées aux PME.',
+      '✅ Inspirez confiance à vos clients et partenaires.',
     ],
-    cta: 'Télécharger le guide gratuit',
+    cta: '➡️ Télécharger le guide gratuit',
     consent:
       'J’accepte de recevoir aussi des communications par courriel concernant la conformité et l’automatisation (Loi 25). Je peux me désabonner en tout temps.',
     form: {
       nameLabel: 'Nom complet',
       namePlaceholder: 'Nom complet',
-      emailLabel: 'Adresse e-mail',
-      emailPlaceholder: 'Adresse e-mail',
+      emailLabel: 'Adresse courriel',
+      emailPlaceholder: 'Adresse courriel',
     },
-    recommended: '✔ Recommandé par des PME du Québec.',
+    recommended:
+      '✔ Déjà utilisé par des PME du Québec pour se mettre en conformité.',
     personTitle: 'Conseiller en automatisation – Québec',
   },
   partners: {
