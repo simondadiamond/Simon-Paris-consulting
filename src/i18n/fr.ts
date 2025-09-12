@@ -150,27 +150,27 @@ const fr: TranslationKeys = {
   stickyCta: 'Télécharger la checklist',
   trustBadge: 'Conçu pour le Québec • Démo en direct • Bilingue et conforme à la Loi 96',
   law25Checklist: {
-    title: '👉 Guide pratique : les 12 obligations clés de la Loi 25 pour les PME québécoises',
+    title: 'Loi\u00a025 & 96\u00a0: restez conforme, \u00e9vitez les amendes.',
     subtitle:
-      'Restez conforme à la Loi 25 sans perdre de temps — évitez les amendes coûteuses et protégez la confiance de vos clients.',
+      'Checklist gratuite pour gagner du temps et prot\u00e9ger la r\u00e9putation de votre PME.',
     bullets: [
-      '✅ Comprenez vos 12 obligations légales en langage simple.',
-      '✅ Accédez à une liste de vérification claire et prête à l’emploi.',
-      '✅ Gagnez du temps avec des actions concrètes, adaptées aux PME.',
-      '✅ Inspirez confiance à vos clients et partenaires.',
+      'Les 12 obligations r\u00e9sum\u00e9es pour les PME.',
+      'Mod\u00e8le bilingue pr\u00eat \u00e0 appliquer aujourd\u2019hui.',
+      'Actions rapides pour \u00e9viter les amendes.',
     ],
-    cta: '➡️ Télécharger le guide gratuit',
+    cta: 'Recevoir ma checklist maintenant',
+    microcopy: 'Aucune carte. Pas de spam. D\u00e9sabonnement facile.',
     consent:
-      'J’accepte de recevoir aussi des communications par courriel concernant la conformité et l’automatisation (Loi 25). Je peux me désabonner en tout temps.',
+      'Oui, je veux aussi recevoir les mises \u00e0 jour Loi\u00a025 et des astuces d\u2019automatisation (1\u20132\u00d7/mois).',
     form: {
       nameLabel: 'Nom complet',
       namePlaceholder: 'Nom complet',
       emailLabel: 'Adresse courriel',
       emailPlaceholder: 'Adresse courriel',
     },
-    recommended:
-      '✔ Déjà utilisé par des PME du Québec pour se mettre en conformité.',
-    personTitle: 'Conseiller en automatisation – Québec',
+    personTitle: 'Conseiller en automatisation & conformit\u00e9 pour PME qu\u00e9b\u00e9coises.',
+    updated: 'Mis \u00e0 jour\u00a0: mars 2025.',
+    proof: 'D\u00e9j\u00e0 utilis\u00e9 par des cliniques, salons et entrepreneurs qu\u00e9b\u00e9cois.',
   },
   partners: {
     title: 'Partenaires de confiance'

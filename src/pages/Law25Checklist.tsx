@@ -21,8 +21,10 @@ const Law25Checklist: React.FC = () => {
       imageSrc={heroImg}
       ctaText={c.cta}
       consent={c.consent}
+      microcopy={c.microcopy}
       form={c.form}
-      recommended={c.recommended}
+      updated={c.updated}
+      proof={c.proof}
       person={{
         name: 'Simon Paris',
         title: c.personTitle,

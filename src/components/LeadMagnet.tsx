@@ -8,6 +8,7 @@ interface LeadMagnetProps {
   imageSrc: string;
   consent: React.ReactNode;
   ctaText: string;
+  microcopy: string;
   person: {
     name: string;
     title: string;
@@ -19,7 +20,8 @@ interface LeadMagnetProps {
     emailLabel: string;
     emailPlaceholder: string;
   };
-  recommended: string;
+  updated: string;
+  proof: string;
 }
 
 const LeadMagnet: React.FC<LeadMagnetProps> = ({
@@ -29,9 +31,11 @@ const LeadMagnet: React.FC<LeadMagnetProps> = ({
   imageSrc,
   consent,
   ctaText,
+  microcopy,
   person,
   form,
-  recommended,
+  updated,
+  proof,
 }) => {
   const { lang } = useLanguage();
   const altLink =
@@ -130,9 +134,7 @@ const LeadMagnet: React.FC<LeadMagnetProps> = ({
                   {ctaText}
                 </button>
               </form>
-              <p className="mt-5 text-center text-sm font-medium text-gray-500">
-                {recommended}
-              </p>
+              <p className="mt-2 text-center text-xs text-gray-500">{microcopy}</p>
               <div className="mt-8 pt-6 border-t border-gray-200 flex items-center">
                 <img
                   src={person.imageSrc}
@@ -142,8 +144,10 @@ const LeadMagnet: React.FC<LeadMagnetProps> = ({
                 <div className="ml-4">
                   <p className="font-bold text-[#121C2D]">{person.name}</p>
                   <p className="text-sm text-gray-500">{person.title}</p>
+                  <p className="text-xs text-gray-400">{updated}</p>
                 </div>
               </div>
+              <p className="mt-4 text-center text-sm text-gray-500">{proof}</p>
             </div>
           </div>
         </div>
