@@ -90,8 +90,7 @@ export const en = {
         'Are your reminders and follow-ups fully FR-first?',
         'Can patients opt-out instantly, without risk of complaint?'
       ],
-    cta: 'Download the Checklist',
-    href: '/checklist'
+    cta: 'Download the Checklist'
   },
   proof: {
     title: 'Clinics that automate see results fast.',
@@ -145,12 +144,34 @@ export const en = {
     title: 'Start Free. Stay Compliant. Grow Faster.',
     sub: 'Download the checklist now — upgrade to packs when ready.',
     primary: 'Download Checklist',
-    primaryHref: '/checklist',
     secondary: 'See Packs',
     secondaryHref: '/packs'
   },
   stickyCta: 'Download the Checklist',
   trustBadge: 'Built for Québec • Demo-first • Fully bilingual & Law 96\u2013compliant',
+  law25Checklist: {
+    title: 'Law\u00a025 & 96: stay compliant, avoid fines.',
+    subtitle:
+      'Free checklist that saves time and protects your reputation.',
+    bullets: [
+      '12 obligations explained for SMBs.',
+      'Bilingual checklist ready to use.',
+      'Quick actions to dodge penalties.',
+    ],
+    cta: 'Get my checklist now',
+    microcopy: 'No credit card. No spam. Unsubscribe anytime.',
+    consent:
+      'Yes, I also want to receive Loi\u00a025 updates and automation tips (1\u20132\u00d7 per month).',
+    form: {
+      nameLabel: 'Full name',
+      namePlaceholder: 'Full name',
+      emailLabel: 'Email address',
+      emailPlaceholder: 'Email address',
+    },
+    personTitle: 'Automation & compliance advisor for Qu\u00e9bec SMBs.',
+    updated: 'Updated: March 2025.',
+    proof: 'Already used by clinics, salons, and entrepreneurs in Qu\u00e9bec.',
+  },
   partners: {
     title: 'Trusted & Supported By'
   },

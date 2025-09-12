@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from './LanguageProvider';
+import { CHECKLIST_PATH } from './paths';
 import {
   MessageSquare, CalendarX, Receipt, Shield, CheckCircle,
   Zap, CalendarCheck, Star,
@@ -10,9 +11,8 @@ import PartnerBar from './components/PartnerBar';
 
 // Hero Component
 const Hero = () => {
-  const { t } = useLanguage();
-  const isFR = typeof window !== 'undefined' && window.location.pathname.startsWith('/fr');
-  const base = isFR ? '/fr' : '';
+  const { t, lang } = useLanguage();
+  const checklistHref = CHECKLIST_PATH[lang];
 
   return (
     <section
@@ -44,7 +44,7 @@ const Hero = () => {
 
         <div className="flex justify-center">
           <a
-            href={`${base}/checklist`}
+            href={checklistHref}
             className="btn-primary text-lg px-8 py-4"
             data-event="cta_click"
             data-cta="checklist"
@@ -131,11 +131,11 @@ const ProblemSection = () => {
 };
 
 // Growth Engine Component
-const GrowthEngine = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-  const { t, lang } = useLanguage();
-  const base = lang === 'fr' ? '/fr' : '';
+  const GrowthEngine = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef<HTMLElement>(null);
+    const { t, lang } = useLanguage();
+    const base = lang === 'fr' ? '/fr' : '';
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -207,11 +207,11 @@ const GrowthEngine = () => {
 };
 
 // Offer Cards Component
-const OfferCards = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-  const { t, lang } = useLanguage();
-  const base = lang === 'fr' ? '/fr' : '';
+  const OfferCards = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef<HTMLElement>(null);
+    const { t, lang } = useLanguage();
+    const base = lang === 'fr' ? '/fr' : '';
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -316,7 +316,7 @@ const ROIMath = () => {
 // Checklist Component
 const Checklist = () => {
   const { t, lang } = useLanguage();
-  const base = lang === 'fr' ? '/fr' : '';
+  const checklistHref = CHECKLIST_PATH[lang];
   return (
     <section className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
       <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8">
@@ -338,7 +338,7 @@ const Checklist = () => {
               </li>
             ))}
           </ul>
-          <a href={`${base}${t.checklist.href}`} className="btn-primary px-8 py-4">
+          <a href={checklistHref} className="btn-primary px-8 py-4">
             {t.checklist.cta}
           </a>
         </div>
@@ -465,6 +465,7 @@ const FAQ = () => {
 // Final CTA Component
 const FinalCTA = () => {
   const { t, lang } = useLanguage();
+  const checklistHref = CHECKLIST_PATH[lang];
   const base = lang === 'fr' ? '/fr' : '';
 
   return (
@@ -473,7 +474,7 @@ const FinalCTA = () => {
         <h2 className="text-3xl font-bold mb-4">{t.finalCTA.title}</h2>
         <p className="text-lg text-white/80 mb-8">{t.finalCTA.sub}</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href={`${base}${t.finalCTA.primaryHref}`} className="btn-primary px-8 py-4">
+          <a href={checklistHref} className="btn-primary px-8 py-4">
             {t.finalCTA.primary}
           </a>
           <a href={`${base}${t.finalCTA.secondaryHref}`} className="btn-outline text-lg px-8 py-4">
@@ -488,6 +489,7 @@ const FinalCTA = () => {
 const StickyCTA = () => {
   const { t, lang } = useLanguage();
   const [visible, setVisible] = useState(false);
+  const checklistHref = CHECKLIST_PATH[lang];
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 300);
@@ -496,10 +498,9 @@ const StickyCTA = () => {
   }, []);
 
   if (!visible) return null;
-  const base = lang === 'fr' ? '/fr' : '';
   return (
     <div className="sticky-cta md:hidden">
-      <a href={`${base}/checklist`} className="btn-primary w-full text-lg py-4">
+      <a href={checklistHref} className="btn-primary w-full text-lg py-4">
         {t.stickyCta}
       </a>
     </div>

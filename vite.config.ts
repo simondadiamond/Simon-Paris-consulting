@@ -21,6 +21,14 @@ export default defineConfig({
           __dirname,
           'never-miss-a-patient/index.html'
         ),
+        frLoi25Checklist: resolve(
+          __dirname,
+          'fr/ressources/liste-conformite-loi25-96/index.html'
+        ),
+        enLaw25Checklist: resolve(
+          __dirname,
+          'en/resources/compliance-checklist-law25-96/index.html'
+        ),
       },
     },
   },
