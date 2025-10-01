@@ -65,10 +65,10 @@ const NewsletterPage: React.FC<NewsletterPageProps> = ({ lang }) => {
   }, [lang]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-[#0E1624] text-white">
       <Header langToggle={{ fr: CANONICAL.fr, en: CANONICAL.en }} ctaHref={lang === 'fr' ? '/fr#hero' : '/#hero'} />
-      <main className="flex-1 pt-32 pb-24 px-4">
-        <div className="max-w-3xl mx-auto">
+      <main className="flex-1 pt-32 pb-24 px-4 md:px-6">
+        <div className="mx-auto">
           <SignupForm lang={lang} />
         </div>
       </main>
