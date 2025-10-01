@@ -1,16 +1,16 @@
-// src/components/SignupForm.tsx
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 
 const SignupForm: React.FC = () => {
   useEffect(() => {
-    const scriptMain = document.createElement('script');
-    scriptMain.src = 'https://sibforms.com/forms/end-form/build/main.js';
+    // Load Brevo main.js and reCAPTCHA after mount
+    const scriptMain = document.createElement("script");
+    scriptMain.src = "https://sibforms.com/forms/end-form/build/main.js";
     scriptMain.defer = true;
     document.body.appendChild(scriptMain);
 
-    const scriptRecaptcha = document.createElement('script');
+    const scriptRecaptcha = document.createElement("script");
     scriptRecaptcha.src =
-      'https://www.google.com/recaptcha/api.js?render=6Lf0RtYrAAAAAMnsVvJx3DTeKDVGi2ZQElXygdM-&hl=fr';
+      "https://www.google.com/recaptcha/api.js?render=6Lf0RtYrAAAAAMnsVvJx3DTeKDVGi2ZQElXygdM-&hl=fr";
     scriptRecaptcha.async = true;
     scriptRecaptcha.defer = true;
     document.body.appendChild(scriptRecaptcha);
@@ -22,35 +22,32 @@ const SignupForm: React.FC = () => {
   }, []);
 
   return (
-    <section className="mx-auto max-w-[540px] rounded-xl bg-[#f9fafb] p-8 shadow-xl sm:p-12">
+    <section className="mx-auto max-w-[600px] rounded-2xl bg-[#f9fafb] p-8 shadow-xl">
       <div
         dangerouslySetInnerHTML={{
           __html: `
-<!-- Begin Brevo Form -->
-<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
-<div id="sib-container" class="sib-container--large sib-container--vertical">
-  <form id="sib-form" method="POST" action="https://c454d84b.sibforms.com/serve/MUIFAJJ6cYYdQJxsLvYxPCYFLJwem50hEcNaFaSvR-FjQdyGrm7qIF3Dc0f-ieM0neAXJu1oTl62xcFWJek9bFIaJrEbCbuZ87-ZGM8Si4azraP-sB4WZCgUV0x_L0RS6TT7-jCI8MwJ8t33lS8eelWzbmhcnthg5qN5t0I4SrjZ11JSP66cX63DNlKYtfJMhOIQvVpzXtWg-xcO"
-    data-type="subscription">
-    <h1>The Automated SMB</h1>
-    <p><strong>L’infolettre pragmatique pour moderniser votre PME</strong></p>
-    <p>Chaque semaine : gagnez du temps, évitez les erreurs coûteuses et découvrez des outils IA prêts pour les PME québécoises.</p>
+            <form id="sib-form" method="POST" 
+              action="https://c454d84b.sibforms.com/serve/MUIFAJJ6cYYdQJxsLvYxPCYFLJwem50hEcNaFaSvR-FjQdyGrm7qIF3Dc0f-ieM0neAXJu1oTl62xcFWJek9bFIaJrEbCbuZ87-ZGM8Si4azraP-sB4WZCgUV0x_L0RS6TT7-jCI8MwJ8t33lS8eelWzbmhcnthg5qN5t0I4SrjZ11JSP66cX63DNlKYtfJMhOIQvVpzXtWg-xcO" 
+              data-type="subscription" novalidate="true">
 
-    <label for="EMAIL">Entrez votre adresse courriel :</label>
-    <input type="email" id="EMAIL" name="EMAIL" required placeholder="nom@entreprise.com" class="input" />
+              <h1>The Automated SMB</h1>
+              <p><strong>L’infolettre pragmatique pour moderniser votre PME</strong></p>
+              <p>Chaque semaine : gagnez du temps, évitez les erreurs coûteuses et découvrez des outils IA prêts pour les PME québécoises.</p>
 
-    <div>
-      <input type="checkbox" id="OPT_IN" name="OPT_IN" value="1" required class="input_replaced" />
-      <label for="OPT_IN">Oui, je veux recevoir l’Hebdo IA Québec et rester conforme à la Loi 25.</label>
-    </div>
+              <label for="EMAIL">Entrez votre adresse courriel :</label>
+              <input type="email" id="EMAIL" name="EMAIL" required placeholder="nom@entreprise.com" class="input">
 
-    <button type="submit" class="sib-form-block__button sib-form-block__button-with-loader">
-      Je m’abonne gratuitement
-    </button>
+              <div>
+                <input type="checkbox" id="OPT_IN" name="OPT_IN" value="1" required class="input_replaced">
+                <label for="OPT_IN">Oui, je veux recevoir l’Hebdo IA Québec et rester conforme à la Loi 25.</label>
+              </div>
 
-    <input type="hidden" name="locale" value="fr" />
-  </form>
-</div>
-<!-- End Brevo Form -->
+              <button type="submit" class="sib-form-block__button sib-form-block__button-with-loader">
+                Je m’abonne gratuitement
+              </button>
+
+              <input type="hidden" name="locale" value="fr">
+            </form>
           `,
         }}
       />
