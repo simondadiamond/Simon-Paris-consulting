@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Lock } from 'lucide-react';
 import { translations, type Language } from '../i18n';
 
@@ -24,13 +24,12 @@ interface SignupFormProps {
 export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
   const copy = translations[lang].newsletter;
   const [sourceUrl, setSourceUrl] = useState('');
-
-  const trustContent = useMemo(() => {
-    const privacyLabel = lang === 'fr' ? 'Politique de confidentialité' : 'Privacy Policy';
-    const sanitized = copy.trust.replace(/^🔒\s*/, '');
-    const [before, after = ''] = sanitized.split(privacyLabel);
-    return { before, after, privacyLabel };
-  }, [copy.trust, lang]);
+  const bodyLines = copy.bodyLines ?? [];
+  const trustCopy = copy.trust ?? {
+    prefix: '',
+    linkLabel: '',
+    suffix: ''
+  };
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -69,7 +68,13 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
           <header className="mb-12 space-y-4 md:space-y-5">
             <h1 className="text-3xl font-semibold text-[#121C2D] md:text-4xl">{copy.title}</h1>
             <p className="text-lg font-semibold text-[#139E9C] md:text-xl">{copy.subtitle}</p>
-            <p className="text-base leading-relaxed text-[#4B5563] whitespace-pre-line">{copy.body}</p>
+            <div className="space-y-2">
+              {bodyLines.map(line => (
+                <p key={line} className="text-base leading-relaxed text-[#4B5563]">
+                  {line}
+                </p>
+              ))}
+            </div>
           </header>
 
           <form
@@ -77,7 +82,7 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
             data-type="subscription"
             method="POST"
             action={POST_URL}
-            className="space-y-8"
+            className="space-y-9"
           >
             <div className="space-y-2">
               <label htmlFor="EMAIL" className="text-sm font-semibold text-[#1F2937]">
@@ -143,14 +148,14 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
           <div className="mt-10 flex items-start gap-3 text-sm text-[#4B5563]">
             <Lock className="mt-0.5 h-4 w-4 text-[#139E9C]" aria-hidden="true" />
             <p>
-              {trustContent.before}
+              {trustCopy.prefix}
               <a
                 href={lang === 'fr' ? '/fr/politique-confidentialite' : '/privacy'}
                 className="font-semibold text-[#139E9C] transition-colors hover:text-[#0F807E]"
               >
-                {trustContent.privacyLabel}
+                {trustCopy.linkLabel}
               </a>
-              {trustContent.after}
+              {trustCopy.suffix}
             </p>
           </div>
         </div>

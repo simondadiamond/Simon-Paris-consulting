@@ -5,7 +5,7 @@ export const en = {
     brand: 'Simon Paris',
     languageToggle: 'EN/FR',
     email: 'info@simonparis.ca',
-    cta: 'Join newsletter'
+    cta: 'Join Newsletter'
   },
   hero: {
     eyebrow: 'For Québec clinics • Law 25 + Bill 96 ready',
@@ -13,10 +13,10 @@ export const en = {
     h1_accent: 'Stay 100% Compliant.',
     subhead:
       'Plug‑and‑play bilingual automations for Speed‑to‑Lead, No‑Show Chaser, and Review Engine—built for Québec clinics. Demo first. Install in minutes.',
-      proof:
-        'Clinics that automate often see 25–50% fewer no‑shows and much faster follow‑ups.',
-      primaryCta: 'Join newsletter'
-    },
+    proof:
+      'Clinics that automate often see 25–50% fewer no‑shows and much faster follow‑ups.',
+    primaryCta: 'Join Newsletter'
+  },
   problems: {
     title: 'Why clinics <span class="accent">lose money</span> every week…',
       list: [
@@ -90,7 +90,7 @@ export const en = {
       'Are your reminders and follow-ups fully FR-first?',
       'Can patients opt-out instantly, without risk of complaint?'
     ],
-    cta: 'Join newsletter',
+    cta: 'Join Newsletter',
     href: '/en/newsletter'
   },
   proof: {
@@ -144,12 +144,12 @@ export const en = {
   finalCTA: {
     title: 'Stay compliant. Stay ahead.',
     sub: 'Join the weekly newsletter for proven automation tactics built for Québec SMBs.',
-    primary: 'Join newsletter',
+    primary: 'Join Newsletter',
     primaryHref: '/en/newsletter',
     secondary: 'See Packs',
     secondaryHref: '/packs'
   },
-  stickyCta: 'Join newsletter',
+  stickyCta: 'Join Newsletter',
   trustBadge: 'Built for Québec • Demo-first • Fully bilingual & Law 96\u2013compliant',
   partners: {
     title: 'Trusted & Supported By'
@@ -164,13 +164,20 @@ export const en = {
     },
     title: 'The Automated SMB – The pragmatic newsletter for modernizing your SMB',
     subtitle: 'Every week: save time and discover practical AI tools for SMBs.',
-    body:
-      'Actionable tactics to streamline operations and cut compliance risk every week.\nBuilt for Québec SMB leaders who need trusted, bilingual guidance.',
+    bodyLines: [
+      'Clear, actionable tactics designed for Québec SMB leaders.',
+      'Stay compliant with Law 25 and cut costs without the jargon.'
+    ],
     emailLabel: 'Email address',
     emailPlaceholder: 'name@business.com',
-    consent: 'Yes, I want to receive The Automated SMB and stay compliant with Law 25.',
+    consent:
+      'I consent to receive communications from The Automated SMB and understand I can unsubscribe at any time.',
     submit: 'Get the weekly newsletter',
-    trust: '🔒 Your data is protected. See our Privacy Policy.',
+    trust: {
+      prefix: 'Your data is protected. See our ',
+      linkLabel: 'Privacy Policy',
+      suffix: '.'
+    },
     success: {
       title: "Thanks! You're on the list.",
       body: 'Watch your inbox for the welcome email within the next few minutes.'

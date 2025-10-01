@@ -164,13 +164,20 @@ const fr: TranslationKeys = {
     },
     title: 'The Automated SMB – L’infolettre pragmatique pour moderniser votre PME',
     subtitle: 'Chaque semaine : gagnez du temps et découvrez des outils IA concrets pour PME.',
-    body:
-      'Tactiques hebdomadaires pour gagner du temps et réduire vos coûts, sans jargon.\nPensées pour les dirigeants de PME québécoises qui veulent rester conformes à la Loi 25.',
+    bodyLines: [
+      'Des conseils clairs et applicables dès maintenant.',
+      'Pensés pour les dirigeants de PME québécoises qui veulent rester conformes à la Loi 25.'
+    ],
     emailLabel: 'Adresse courriel',
     emailPlaceholder: 'nom@entreprise.com',
-    consent: 'Oui, je veux recevoir l’Hebdo IA Québec et rester conforme à la Loi 25.',
+    consent:
+      'Je consens à recevoir les communications de The Automated SMB et je comprends que je peux me désabonner en tout temps.',
     submit: 'Recevoir l’infolettre chaque semaine',
-    trust: '🔒 Vos données sont protégées. Consultez notre Politique de confidentialité.',
+    trust: {
+      prefix: 'Vos données sont protégées. Consultez notre ',
+      linkLabel: 'Politique de confidentialité',
+      suffix: '.'
+    },
     success: {
       title: 'Merci! Votre inscription est prise en compte.',
       body: 'Surveillez votre boîte de réception : un courriel de bienvenue arrive sous peu.'
