@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 type SignupFormLang = "en" | "fr";
 
@@ -6,6 +6,7 @@ interface SignupFormProps {
   lang: SignupFormLang;
 }
 
+const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
   return (
     <section className="flex justify-center py-12 px-4">
       <div className="w-full max-w-lg rounded-2xl bg-[#f9fafb] p-8 shadow-xl">
