@@ -135,7 +135,7 @@ const GrowthEngine = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const { t, lang } = useLanguage();
-  const newsletterHref = lang === 'fr' ? '/fr/newsletter' : '/en/newsletter';
+  const base = lang === 'fr' ? '/fr' : '';
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -211,7 +211,7 @@ const OfferCards = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const { t, lang } = useLanguage();
-  const newsletterHref = lang === 'fr' ? '/fr/newsletter' : '/en/newsletter';
+  const base = lang === 'fr' ? '/fr' : '';
 
   useEffect(() => {
     const observer = new IntersectionObserver(
