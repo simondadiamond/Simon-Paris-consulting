@@ -1,195 +1,254 @@
-import React, { useEffect, useState } from 'react';
-import { Lock } from 'lucide-react';
-import { translations, type Language } from '../i18n';
+import React from 'react';
 
-const POST_URL =
-  'https://c454d84b.sibforms.com/serve/MUIFAH7NOSykJlqeKP4c-jXRt7b-0MCgSB0R8BROAkZEQAbRZUO09B2nZUBGX-BfJqMMUURc1KBYeqGz7QduVv9MMy4fEEABw-5k98uGvJ18IAljU5oid79WFyl5-fBS2v5Ng8XlZEx7u7IZ9Dp6gCdZaTRY9trZH1U_GfpFHWxUpo0yvGpQR3DlmKDky65MJJvyhZoT0t1GbEkE';
-const RECAPTCHA_SITE_KEY = '6Lf0RtYrAAAAAMnsVvJx3DTeKDVGi2ZQElXygdM-';
-const BREVO_LIST_ID = '195342';
-
-const ensureHeadLink = (selector: string, create: () => HTMLLinkElement) => {
-  let link = document.head.querySelector<HTMLLinkElement>(selector);
-  if (!link) {
-    link = create();
-    document.head.appendChild(link);
-  }
-  return link;
-};
-
-export type SignupFormLang = Extract<Language, 'fr' | 'en'>;
+type SignupFormLang = 'en' | 'fr';
 
 interface SignupFormProps {
   lang: SignupFormLang;
 }
 
-export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
-  const copy = translations[lang].newsletter;
-  const [sourceUrl, setSourceUrl] = useState('');
-  const bodyLines = copy.bodyLines ?? [];
-  const trustCopy = copy.trust ?? {
-    prefix: '',
-    linkLabel: '',
-    suffix: ''
+const copy = {
+  fr: {
+    title: 'The Automated SMB',
+    subtitle: 'L’infolettre pragmatique pour moderniser votre PME',
+    body:
+      'Chaque semaine : gagnez du temps, évitez les erreurs coûteuses et découvrez des outils IA prêts pour les PME québécoises.',
+    emailLabel: 'Entrez votre adresse courriel pour recevoir l’infolettre :',
+    emailPlaceholder: 'nom@entreprise.com',
+    consent: 'Oui, je veux recevoir l’Hebdo IA Québec et rester conforme à la Loi 25.',
+    specification: 'Vous pouvez vous désabonner en tout temps.',
+    submit: 'Je m’abonne gratuitement',
+    success: 'Merci! Votre inscription à The Automated SMB est confirmée.',
+    error: 'Une erreur est survenue. Veuillez réessayer dans quelques instants.',
+    script: {
+      requiredCode: 'Please choose a country code',
+      locale: 'fr' as const,
+      emailInvalid:
+        'Adresse courriel invalide. Veuillez vérifier le format (ex. nom@entreprise.com ).',
+      required: 'Ce champ ne peut pas être laissé vide. ',
+      genericInvalid:
+        'Adresse courriel invalide. Veuillez vérifier le format (ex. nom@entreprise.com ).'
+    }
+  },
+  en: {
+    title: 'The Automated SMB',
+    subtitle: 'The pragmatic newsletter to modernize your SMB',
+    body: 'Every week: save time, avoid costly mistakes, and discover AI tools ready for Québec SMBs.',
+    emailLabel: 'Enter your email address to receive the newsletter:',
+    emailPlaceholder: 'name@business.com',
+    consent: 'Yes, I want to receive the Québec AI Weekly and stay compliant with Law 25.',
+    specification: 'You can unsubscribe at any time.',
+    submit: 'Get the newsletter for free',
+    success: 'Thanks! Your subscription to The Automated SMB is confirmed.',
+    error: 'Something went wrong. Please try again in a moment.',
+    script: {
+      requiredCode: 'Please choose a country code',
+      locale: 'en' as const,
+      emailInvalid: 'Invalid email address. Please check the format (e.g. name@business.com).',
+      required: 'This field cannot be left blank.',
+      genericInvalid: 'Invalid email address. Please check the format (e.g. name@business.com).'
+    }
+  }
+} as const satisfies Record<SignupFormLang, {
+  title: string;
+  subtitle: string;
+  body: string;
+  emailLabel: string;
+  emailPlaceholder: string;
+  consent: string;
+  specification: string;
+  submit: string;
+  success: string;
+  error: string;
+  script: {
+    requiredCode: string;
+    locale: SignupFormLang;
+    emailInvalid: string;
+    required: string;
+    genericInvalid: string;
   };
+}>;
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    setSourceUrl(window.location.href);
-  }, [lang]);
-
-  useEffect(() => {
-    if (typeof document === 'undefined') return;
-
-    ensureHeadLink("link[data-brevo='styles']", () => {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = 'https://sibforms.com/forms/end-form/build/sib-styles.css';
-      link.dataset.brevo = 'styles';
-      return link;
-    });
-  }, []);
-
-  useEffect(() => {
-    if (!import.meta.env.DEV) return;
-    if (typeof window === 'undefined' || typeof document === 'undefined') return;
-
-    console.assert(!!document.querySelector('#sib-form'), 'sib-form not found');
-    console.assert(
-      typeof (window as unknown as { grecaptcha?: unknown }).grecaptcha !== 'undefined' || true,
-      'recaptcha not yet loaded'
-    );
-    console.assert(!!document.querySelector('#success-message'), 'success container missing');
-    console.assert(!!document.querySelector('#error-message'), 'error container missing');
-  }, []);
+const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
+  const content = copy[lang];
 
   return (
     <>
-      <section className="w-full font-inter">
-        <div className="mx-auto w-full max-w-[540px] rounded-[12px] bg-white p-8 shadow-[0_32px_80px_rgba(18,28,45,0.12)] ring-1 ring-black/5 sm:p-12">
-          <header className="mb-10 space-y-3 md:mb-12 md:space-y-4">
-            <h1 className="text-3xl font-semibold text-[#121C2D] md:text-4xl">{copy.title}</h1>
-            <p className="text-lg font-semibold text-[#139E9C] md:text-xl">{copy.subtitle}</p>
-            <div className="space-y-1.5">
-              {bodyLines.map(line => (
-                <p key={line} className="text-sm leading-relaxed text-[#4B5563] md:text-base">
-                  {line}
-                </p>
-              ))}
-            </div>
-          </header>
-
-          <form
-            id="sib-form"
-            data-type="subscription"
-            method="POST"
-            action={POST_URL}
-            className="space-y-8 sib-form"
-          >
-            <div className="form__entry entry_block space-y-2">
-              <div className="form__label-row">
-                <label
-                  htmlFor="EMAIL"
-                  className="entry__label text-sm font-semibold text-[#1F2937]"
-                >
-                  {copy.emailLabel}
-                </label>
-              </div>
-              <div className="form__input-wrapper">
-                <input
-                  id="EMAIL"
-                  name="EMAIL"
-                  type="email"
-                  required
-                  placeholder={copy.emailPlaceholder}
-                  autoComplete="email"
-                  className="input w-full rounded-[12px] border border-[#D1D5DB] bg-white px-5 py-3 text-base text-[#121C2D] shadow-sm transition focus:border-[#139E9C] focus:outline-none focus:ring-4 focus:ring-[#139E9C]/20"
-                />
-              </div>
-            </div>
-
-            <div className="form__entry flex items-start gap-3">
-              <label
-                htmlFor="OPT_IN"
-                className="entry__choice flex items-center gap-2"
-              >
-                <input
-                  id="OPT_IN"
-                  name="OPT_IN"
-                  type="checkbox"
-                  value="1"
-                  required
-                  className="input_replaced"
-                />
-                <span className="checkbox checkbox_tick_positive"></span>
-                <span className="text-sm leading-relaxed text-[#4B5563]">
-                  {copy.consent}
-                </span>
-              </label>
-            </div>
-
+      <section className="mx-auto max-w-[540px] rounded-xl bg-white p-8 shadow-lg shadow-[0_32px_80px_rgba(18,28,45,0.12)] sm:p-12">
+        <div className="sib-form text-center">
+          <div id="sib-form-container" className="sib-form-container space-y-6">
             <div
               id="error-message"
-              aria-live="assertive"
-              style={{ display: 'none' }}
-              className="sib-form-message-panel sib-form-message-panel--error rounded-[8px] border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+              className="sib-form-message-panel mx-auto w-full max-w-[540px] rounded-md border border-[#ff4949] bg-[#ffeded] text-left text-base text-[#661d1d]"
+              style={{ fontSize: '16px', display: 'none' }}
             >
-              <div className="sib-form-message-panel__text space-y-1">
-                <p className="font-semibold">{copy.error.title}</p>
-                <p className="leading-relaxed">{copy.error.body}</p>
+              <div className="sib-form-message-panel__text sib-form-message-panel__text--center flex items-start gap-3 p-4">
+                <svg viewBox="0 0 512 512" className="sib-icon sib-notification__icon h-6 w-6 text-[#661d1d]" aria-hidden="true">
+                  <path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z" />
+                </svg>
+                <span className="sib-form-message-panel__inner-text">{content.error}</span>
               </div>
             </div>
 
             <div
               id="success-message"
-              aria-live="polite"
-              style={{ display: 'none' }}
-              className="sib-form-message-panel sib-form-message-panel--success rounded-[8px] border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700"
+              className="sib-form-message-panel mx-auto w-full max-w-[540px] rounded-md border border-[#13ce66] bg-[#e7faf0] text-left text-base text-[#085229]"
+              style={{ fontSize: '16px', display: 'none' }}
             >
-              <div className="sib-form-message-panel__text space-y-1">
-                <p className="font-semibold">{copy.success.title}</p>
-                <p className="leading-relaxed">{copy.success.body}</p>
+              <div className="sib-form-message-panel__text sib-form-message-panel__text--center flex items-start gap-3 p-4">
+                <svg viewBox="0 0 512 512" className="sib-icon sib-notification__icon h-6 w-6 text-[#085229]" aria-hidden="true">
+                  <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z" />
+                </svg>
+                <span className="sib-form-message-panel__inner-text">{content.success}</span>
               </div>
             </div>
 
-            <input
-              type="text"
-              name="email_address_check"
-              value=""
-              className="input--hidden"
-              tabIndex={-1}
-              aria-hidden="true"
-            />
-            <input type="hidden" name="LANGUAGE" value={lang} />
-            <input type="hidden" name="locale" value={lang} />
-            <input type="hidden" name="SOURCE_URL" value={sourceUrl} />
-            <input type="hidden" name="listid[]" value={BREVO_LIST_ID} />
-
-            <div className="g-recaptcha-v3" data-sitekey={RECAPTCHA_SITE_KEY} style={{ display: 'none' }} />
-
-            <button type="submit" className="btn-primary sib-form-block__button w-full">
-              {copy.submit}
-            </button>
-          </form>
-
-          <div className="mt-10 flex items-start gap-3 text-sm text-[#4B5563]">
-            <Lock className="mt-0.5 h-4 w-4 text-[#139E9C]" aria-hidden="true" />
-            <p>
-              {trustCopy.prefix}
-              <a
-                href={lang === 'fr' ? '/fr/politique-confidentialite' : '/privacy'}
-                className="font-semibold text-[#139E9C] transition-colors hover:text-[#0F807E]"
+            <div
+              id="sib-container"
+              className="sib-container--large sib-container--vertical mx-auto max-w-[540px] rounded-2xl border border-[#c3bebe] bg-[#f9fafb] p-6 text-left"
+            >
+              <form
+                id="sib-form"
+                method="POST"
+                action="https://c454d84b.sibforms.com/serve/MUIFAJJ6cYYdQJxsLvYxPCYFLJwem50hEcNaFaSvR-FjQdyGrm7qIF3Dc0f-ieM0neAXJu1oTl62xcFWJek9bFIaJrEbCbuZ87-ZGM8Si4azraP-sB4WZCgUV0x_L0RS6TT7-jCI8MwJ8t33lS8eelWzbmhcnthg5qN5t0I4SrjZ11JSP66cX63DNlKYtfJMhOIQvVpzXtWg-xcO"
+                data-type="subscription"
+                className="space-y-6"
               >
-                {trustCopy.linkLabel}
-              </a>
-              {trustCopy.suffix}
-            </p>
+                <div className="sib-form-block space-y-3 text-center">
+                  <h1 className="text-3xl font-semibold text-[#121c2d]">{content.title}</h1>
+                </div>
+
+                <div className="sib-form-block text-center text-lg font-semibold text-[#139e9b]">
+                  <div className="sib-text-form-block">
+                    <p>
+                      <strong>{content.subtitle}</strong>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="sib-form-block text-left text-base text-[#121c2d]">
+                  <div className="sib-text-form-block">
+                    <p>{content.body}</p>
+                  </div>
+                </div>
+
+                <div className="sib-input sib-form-block">
+                  <div className="form__entry entry_block space-y-2">
+                    <div className="form__label-row">
+                      <label
+                        className="entry__label text-base font-semibold text-[#121c2d]"
+                        htmlFor="EMAIL"
+                        data-required="*"
+                      >
+                        {content.emailLabel}
+                      </label>
+                    </div>
+                    <div className="entry__field">
+                      <input
+                        className="input w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-base text-[#121c2d] placeholder-gray-400 focus:border-[#139E9C] focus:outline-none focus:ring-4 focus:ring-[#139E9C]/20"
+                        type="text"
+                        id="EMAIL"
+                        name="EMAIL"
+                        autoComplete="off"
+                        placeholder={content.emailPlaceholder}
+                        data-required="true"
+                        required
+                      />
+                    </div>
+                    <label className="entry__error entry__error--primary mt-2 block rounded-md border border-[#ff4949] bg-[#ffeded] px-3 py-2 text-sm text-[#661d1d]"></label>
+                  </div>
+                </div>
+
+                <div className="sib-optin sib-form-block" data-required="true">
+                  <div className="form__entry entry_mcq space-y-2">
+                    <div className="form__label-row">
+                      <label
+                        className="entry__label text-base font-semibold text-[#121c2d]"
+                        htmlFor="OPT_IN"
+                        data-required="*"
+                      >
+                        Opt-in
+                      </label>
+                      <div className="entry__choice">
+                        <label className="flex items-start gap-3 text-left">
+                          <input type="checkbox" className="input_replaced mt-1" value="1" id="OPT_IN" name="OPT_IN" required />
+                          <span className="checkbox checkbox_tick_positive mt-1"></span>
+                          <span className="text-xs text-[#121c2d]">
+                            <p>{content.consent}</p>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                    <label className="entry__error entry__error--primary mt-2 block rounded-md border border-[#ff4949] bg-[#ffeded] px-3 py-2 text-sm text-[#661d1d]"></label>
+                    <label className="entry__specification block text-xs text-[#111827]">{content.specification}</label>
+                  </div>
+                </div>
+
+                <div className="sib-form-block text-left text-[1px] text-[#121c2d]">
+                  <div className="sib-text-form-block">
+                    <p>
+                      <br />
+                    </p>
+                  </div>
+                </div>
+
+                <div className="sib-form-block text-center">
+                  <button
+                    className="sib-form-block__button sib-form-block__button-with-loader w-full rounded-lg bg-gradient-to-r from-[#139E9C] to-[#2280FF] py-3 font-semibold text-white transition hover:opacity-90"
+                    form="sib-form"
+                    type="submit"
+                  >
+                    <svg
+                      className="icon clickable__icon progress-indicator__icon sib-hide-loader-icon mr-2 inline h-4 w-4 align-middle"
+                      viewBox="0 0 512 512"
+                      aria-hidden="true"
+                    >
+                      <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
+                    </svg>
+                    {content.submit}
+                  </button>
+                </div>
+
+                <div className="sib-form-block">
+                  <div className="g-recaptcha-v3" data-sitekey="6Lf0RtYrAAAAAMnsVvJx3DTeKDVGi2ZQElXygdM-" style={{ display: 'none' }}></div>
+                </div>
+
+                <input type="text" name="email_address_check" value="" className="input--hidden" />
+                <input type="hidden" name="locale" value={lang} />
+              </form>
+            </div>
           </div>
         </div>
       </section>
 
+      <script>
+        {`
+  window.REQUIRED_CODE_ERROR_MESSAGE = '${content.script.requiredCode}';
+  window.LOCALE = '${content.script.locale}';
+  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = '${content.script.emailInvalid}';
+
+  window.REQUIRED_ERROR_MESSAGE = '${content.script.required}';
+
+  window.GENERIC_INVALID_MESSAGE = '${content.script.genericInvalid}';
+
+
+
+
+  window.translation = {
+    common: {
+      selectedList: '{quantity} list selected',
+      selectedLists: '{quantity} lists selected',
+      selectedOption: '{quantity} selected',
+      selectedOptions: '{quantity} selected',
+    }
+  };
+
+  var AUTOHIDE = Boolean(0);
+`}
+      </script>
+
       <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
-      <script
-        src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}&hl=${lang}`}
+
+      <script src={`https://www.google.com/recaptcha/api.js?render=6Lf0RtYrAAAAAMnsVvJx3DTeKDVGi2ZQElXygdM-&hl=${lang}`}
         async
         defer
       ></script>
