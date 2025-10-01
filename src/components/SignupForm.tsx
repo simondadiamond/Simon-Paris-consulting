@@ -6,23 +6,6 @@ interface SignupFormProps {
   lang: SignupFormLang;
 }
 
-const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
-  useEffect(() => {
-    // Ensure Brevo script loads
-    const existing = document.querySelector("script[src*='sibforms']");
-    if (existing) existing.remove();
-
-    const script = document.createElement("script");
-    script.src = "https://sibforms.com/forms/end-form/build/main.js";
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
-
-    return () => {
-      script.remove();
-    };
-  }, [lang]);
-
   return (
     <section className="flex justify-center py-12 px-4">
       <div className="w-full max-w-lg rounded-2xl bg-[#f9fafb] p-8 shadow-xl">
