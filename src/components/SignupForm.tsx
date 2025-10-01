@@ -5,6 +5,7 @@ import { translations, type Language } from '../i18n';
 const POST_URL =
   'https://c454d84b.sibforms.com/serve/MUIFAH7NOSykJlqeKP4c-jXRt7b-0MCgSB0R8BROAkZEQAbRZUO09B2nZUBGX-BfJqMMUURc1KBYeqGz7QduVv9MMy4fEEABw-5k98uGvJ18IAljU5oid79WFyl5-fBS2v5Ng8XlZEx7u7IZ9Dp6gCdZaTRY9trZH1U_GfpFHWxUpo0yvGpQR3DlmKDky65MJJvyhZoT0t1GbEkE';
 const RECAPTCHA_SITE_KEY = '6Lf0RtYrAAAAAMnsVvJx3DTeKDVGi2ZQElXygdM-';
+const BREVO_LIST_ID = '195342';
 
 const ensureHeadLink = (selector: string, create: () => HTMLLinkElement) => {
   let link = document.head.querySelector<HTMLLinkElement>(selector);
@@ -82,33 +83,43 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
             data-type="subscription"
             method="POST"
             action={POST_URL}
-            className="space-y-8"
+            className="space-y-8 sib-form"
           >
-            <div className="space-y-2">
-              <label htmlFor="EMAIL" className="text-sm font-semibold text-[#1F2937]">
-                {copy.emailLabel}
-              </label>
-              <input
-                id="EMAIL"
-                name="EMAIL"
-                type="email"
-                required
-                placeholder={copy.emailPlaceholder}
-                autoComplete="email"
-                className="w-full rounded-[12px] border border-[#D1D5DB] bg-white px-5 py-3 text-base text-[#121C2D] shadow-sm transition focus:border-[#139E9C] focus:outline-none focus:ring-4 focus:ring-[#139E9C]/20"
-              />
+            <div className="form__entry entry_block space-y-2">
+              <div className="form__label-row">
+                <label
+                  htmlFor="EMAIL"
+                  className="entry__label text-sm font-semibold text-[#1F2937]"
+                >
+                  {copy.emailLabel}
+                </label>
+              </div>
+              <div className="form__input-wrapper">
+                <input
+                  id="EMAIL"
+                  name="EMAIL"
+                  type="email"
+                  required
+                  placeholder={copy.emailPlaceholder}
+                  autoComplete="email"
+                  className="input w-full rounded-[12px] border border-[#D1D5DB] bg-white px-5 py-3 text-base text-[#121C2D] shadow-sm transition focus:border-[#139E9C] focus:outline-none focus:ring-4 focus:ring-[#139E9C]/20"
+                />
+              </div>
             </div>
 
-            <div className="flex items-start gap-3">
+            <div className="form__entry flex items-start gap-3">
               <input
                 id="OPT_IN"
                 name="OPT_IN"
                 type="checkbox"
                 value="1"
                 required
-                className="mt-1 h-5 w-5 rounded border-[#D1D5DB] text-[#139E9C] focus:ring-[#139E9C]"
+                className="input_replaced mt-1 h-5 w-5 rounded border-[#D1D5DB] text-[#139E9C] focus:ring-[#139E9C]"
               />
-              <label htmlFor="OPT_IN" className="text-sm leading-relaxed text-[#4B5563]">
+              <label
+                htmlFor="OPT_IN"
+                className="entry__label text-sm leading-relaxed text-[#4B5563]"
+              >
                 {copy.consent}
               </label>
             </div>
@@ -117,30 +128,42 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
               id="error-message"
               aria-live="assertive"
               style={{ display: 'none' }}
-              className="rounded-[8px] border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+              className="sib-form-message-panel sib-form-message-panel--error rounded-[8px] border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
             >
-              <p className="font-semibold">{copy.error.title}</p>
-              <p className="mt-1 leading-relaxed">{copy.error.body}</p>
+              <div className="sib-form-message-panel__text space-y-1">
+                <p className="font-semibold">{copy.error.title}</p>
+                <p className="leading-relaxed">{copy.error.body}</p>
+              </div>
             </div>
 
             <div
               id="success-message"
               aria-live="polite"
               style={{ display: 'none' }}
-              className="rounded-[8px] border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700"
+              className="sib-form-message-panel sib-form-message-panel--success rounded-[8px] border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700"
             >
-              <p className="font-semibold">{copy.success.title}</p>
-              <p className="mt-1 leading-relaxed">{copy.success.body}</p>
+              <div className="sib-form-message-panel__text space-y-1">
+                <p className="font-semibold">{copy.success.title}</p>
+                <p className="leading-relaxed">{copy.success.body}</p>
+              </div>
             </div>
 
-            <input type="text" name="email_address_check" value="" className="input--hidden" />
+            <input
+              type="text"
+              name="email_address_check"
+              value=""
+              className="input--hidden"
+              tabIndex={-1}
+              aria-hidden="true"
+            />
             <input type="hidden" name="LANGUAGE" value={lang} />
             <input type="hidden" name="locale" value={lang} />
             <input type="hidden" name="SOURCE_URL" value={sourceUrl} />
+            <input type="hidden" name="listid[]" value={BREVO_LIST_ID} />
 
             <div className="g-recaptcha-v3" data-sitekey={RECAPTCHA_SITE_KEY} style={{ display: 'none' }} />
 
-            <button type="submit" className="btn-primary w-full">
+            <button type="submit" className="btn-primary sib-form-block__button w-full">
               {copy.submit}
             </button>
           </form>
