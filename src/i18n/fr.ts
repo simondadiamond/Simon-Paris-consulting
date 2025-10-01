@@ -154,6 +154,50 @@ const fr: TranslationKeys = {
   partners: {
     title: 'Partenaires de confiance'
   },
+  newsletter: {
+    meta: {
+      title: 'Infolettre PME Québec | The Automated SMB',
+      description:
+        'Infolettre hebdo pour les PME québécoises : gagnez du temps, réduisez vos coûts et restez conforme à la Loi 25.',
+      canonical: '/fr/newsletter',
+      alternate: '/en/newsletter'
+    },
+    signup: {
+      heading: 'Infolettre PME Québec — The Automated SMB',
+      subheading: 'Votre rendez-vous hebdo avec l’automatisation et l’IA',
+      body:
+        'Chaque semaine, recevez des conseils concrets pour gagner du temps, réduire vos coûts et rester conforme à la Loi 25. Des tactiques simples, pensées pour les PME québécoises — applicables dès maintenant.',
+      emailLabel: 'Adresse courriel',
+      emailPlaceholder: 'prenom@entreprise.com',
+      consentLabel:
+        'Je consens à recevoir les communications de The Automated SMB et je comprends que je peux me désabonner en tout temps.',
+      submit: 'Recevoir l’infolettre chaque semaine',
+      successTitle: 'Merci! Votre inscription est prise en compte.',
+      successBody: 'Surveillez votre boîte de réception : un courriel de bienvenue arrive sous peu.',
+      errorTitle: 'Une vérification est nécessaire',
+      errorBody: 'Vérifiez vos informations et réessayez, ou écrivez-nous à hello@simonparis.ca.',
+      trustLine: {
+        prefix: 'Vos données sont protégées. Consultez notre ',
+        linkLabel: 'Politique de confidentialité',
+        suffix: '.'
+      }
+    },
+    confirmation: {
+      metaTitle: 'Confirmation infolettre | The Automated SMB',
+      heading: 'Vous y êtes presque',
+      subheading: 'Confirmez votre rendez-vous hebdo',
+      intro:
+        'Ouvrez le courriel de confirmation que nous venons d’envoyer. Cliquez sur le bouton pour activer l’envoi de votre infolettre hebdo.',
+      checklist: [
+        'Repérez le courriel de The Automated SMB dans votre boîte de réception ou vos indésirables.',
+        'Cliquez sur le bouton de confirmation pour finaliser votre inscription.',
+        'Ajoutez-nous à vos expéditeurs sûrs pour ne rien manquer.'
+      ],
+      ctaLabel: 'Retour à l’accueil',
+      ctaHref: '/fr',
+      support: 'Besoin d’aide? Écrivez à hello@simonparis.ca.'
+    }
+  },
   footer: {
     blurb: 'Automatisation bilingue pour les PME du Québec. Conçu pour aujourd’hui, prêt pour l’IA de demain.',
     language: 'Pour tout le Québec • FR/EN',

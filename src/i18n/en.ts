@@ -154,6 +154,50 @@ export const en = {
   partners: {
     title: 'Trusted & Supported By'
   },
+  newsletter: {
+    meta: {
+      title: 'Québec SMB AI Newsletter | The Automated SMB',
+      description:
+        'Weekly newsletter for Québec SMBs: save time, cut costs, and stay compliant with Law 25.',
+      canonical: '/en/newsletter',
+      alternate: '/fr/newsletter'
+    },
+    signup: {
+      heading: 'Québec SMB AI Newsletter — The Automated SMB',
+      subheading: 'Your weekly briefing on automation and AI',
+      body:
+        'Every week, get clear, actionable insights to save time, cut costs, and stay compliant with Law 25. No jargon — just practical tactics designed for Québec SMBs.',
+      emailLabel: 'Email address',
+      emailPlaceholder: 'you@company.com',
+      consentLabel:
+        'I consent to receive communications from The Automated SMB and understand I can unsubscribe at any time.',
+      submit: 'Get the weekly newsletter',
+      successTitle: "Thanks! You're on the list.",
+      successBody: 'Watch your inbox for the welcome email within the next few minutes.',
+      errorTitle: 'Something needs your attention',
+      errorBody: 'Check your details and try again, or email hello@simonparis.ca for support.',
+      trustLine: {
+        prefix: 'Your data is protected. See our ',
+        linkLabel: 'Privacy Policy',
+        suffix: '.'
+      }
+    },
+    confirmation: {
+      metaTitle: 'Newsletter Confirmation | The Automated SMB',
+      heading: "You're almost subscribed",
+      subheading: 'Confirm your weekly briefing',
+      intro:
+        'Open the confirmation email we just sent. Click the validation button so we can start sending your weekly briefing.',
+      checklist: [
+        'Look for an email from The Automated SMB in your inbox or promotions tab.',
+        'Click the confirmation button to activate your subscription.',
+        'Add us to your safe senders list so the briefing never gets lost.'
+      ],
+      ctaLabel: 'Back to the homepage',
+      ctaHref: '/',
+      support: 'Need help? Email hello@simonparis.ca.'
+    }
+  },
   footer: {
     blurb: "Bilingual automation for Québec SMBs. Built for today's needs, ready for tomorrow's AI.",
     language: 'Serving all of Québec • EN/FR',

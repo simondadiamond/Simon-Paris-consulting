@@ -6,6 +6,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import PolitiqueConfidentialite from './pages/PolitiqueConfidentialite';
 import { LandingEN, LandingFR } from './pages/SpeedToLead';
 import { NewsletterEN, NewsletterFR } from './pages/NewsletterPage';
+import NewsletterConfirmation from './pages/NewsletterConfirmation';
 import { LanguageProvider } from './LanguageProvider';
 import './index.css';
 
@@ -24,6 +25,8 @@ if (path === '/privacy') {
   Component = NewsletterFR;
 } else if (path === '/en/newsletter') {
   Component = NewsletterEN;
+} else if (path === '/newsletter/confirmation') {
+  Component = NewsletterConfirmation;
 }
 
 createRoot(document.getElementById('root')!).render(

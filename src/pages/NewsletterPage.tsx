@@ -2,21 +2,7 @@ import React, { useEffect } from 'react';
 import SignupForm from '../components/SignupForm';
 import { Header, Footer } from '../components/Layout';
 import { useLanguage } from '../LanguageProvider';
-
-const TITLES = {
-  fr: 'Infolettre PME Québec | The Automated SMB',
-  en: 'Québec SMB AI Newsletter | The Automated SMB'
-};
-
-const DESCRIPTIONS = {
-  fr: 'Infolettre hebdo pour les PME québécoises : gagnez du temps, réduisez vos coûts et restez conforme à la Loi 25.',
-  en: 'Weekly newsletter for Québec SMBs: save time, cut costs, and stay compliant with Law 25.'
-};
-
-const CANONICAL = {
-  fr: '/fr/newsletter',
-  en: '/en/newsletter'
-};
+import { translations, type Language } from '../i18n';
 
 const ensureHeadLink = (selector: string, init: () => HTMLLinkElement) => {
   let link = document.head.querySelector<HTMLLinkElement>(selector);
@@ -28,11 +14,12 @@ const ensureHeadLink = (selector: string, init: () => HTMLLinkElement) => {
 };
 
 interface NewsletterPageProps {
-  lang: 'fr' | 'en';
+  lang: Extract<Language, 'fr' | 'en'>;
 }
 
 const NewsletterPage: React.FC<NewsletterPageProps> = ({ lang }) => {
   const { setLang } = useLanguage();
+  const copy = translations[lang].newsletter;
 
   useEffect(() => {
     setLang(lang);
@@ -40,10 +27,9 @@ const NewsletterPage: React.FC<NewsletterPageProps> = ({ lang }) => {
 
   useEffect(() => {
     if (typeof window === 'undefined' || typeof document === 'undefined') return;
-    document.title = TITLES[lang];
 
-    const canonicalHref = `${window.location.origin}${CANONICAL[lang]}`;
-    const alternateHref = `${window.location.origin}${CANONICAL[lang === 'fr' ? 'en' : 'fr']}`;
+    localStorage.setItem('newsletter_lang', lang);
+    document.title = copy.meta.title;
 
     let metaDescription = document.head.querySelector<HTMLMetaElement>("meta[name='description']");
     if (!metaDescription) {
@@ -51,7 +37,11 @@ const NewsletterPage: React.FC<NewsletterPageProps> = ({ lang }) => {
       metaDescription.name = 'description';
       document.head.appendChild(metaDescription);
     }
-    metaDescription.content = DESCRIPTIONS[lang];
+    metaDescription.content = copy.meta.description;
+
+    const frHref = `${window.location.origin}${translations.fr.newsletter.meta.canonical}`;
+    const enHref = `${window.location.origin}${translations.en.newsletter.meta.canonical}`;
+    const canonicalHref = lang === 'fr' ? frHref : enHref;
 
     const canonical = ensureHeadLink("link[rel='canonical']", () => {
       const link = document.createElement('link');
@@ -66,7 +56,7 @@ const NewsletterPage: React.FC<NewsletterPageProps> = ({ lang }) => {
       link.hreflang = 'fr';
       return link;
     });
-    frAlt.href = lang === 'fr' ? canonicalHref : alternateHref;
+    frAlt.href = frHref;
 
     const enAlt = ensureHeadLink("link[rel='alternate'][hreflang='en']", () => {
       const link = document.createElement('link');
@@ -74,13 +64,13 @@ const NewsletterPage: React.FC<NewsletterPageProps> = ({ lang }) => {
       link.hreflang = 'en';
       return link;
     });
-    enAlt.href = lang === 'en' ? canonicalHref : alternateHref;
-  }, [lang]);
+    enAlt.href = enHref;
+  }, [lang, copy.meta.description, copy.meta.title]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F4F6FA] text-[var(--text-primary)]">
+    <div className="flex min-h-screen flex-col bg-[#F4F6FA] text-[var(--text-primary)]">
       <Header
-        langToggle={{ fr: CANONICAL.fr, en: CANONICAL.en }}
+        langToggle={{ fr: translations.fr.newsletter.meta.canonical, en: translations.en.newsletter.meta.canonical }}
         ctaHref={lang === 'fr' ? '/fr#hero' : '/#hero'}
         forceDarkBackground
       />
@@ -89,7 +79,7 @@ const NewsletterPage: React.FC<NewsletterPageProps> = ({ lang }) => {
           <SignupForm lang={lang} />
         </div>
       </main>
-      <Footer langToggle={{ fr: CANONICAL.fr, en: CANONICAL.en }} />
+      <Footer langToggle={{ fr: translations.fr.newsletter.meta.canonical, en: translations.en.newsletter.meta.canonical }} />
     </div>
   );
 };
