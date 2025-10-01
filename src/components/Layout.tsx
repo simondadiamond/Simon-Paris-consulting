@@ -6,7 +6,8 @@ export const Header: React.FC<{
   langToggle?: { fr: string; en: string };
   ctaHref?: string;
   ctaLabel?: string;
-}> = ({ langToggle, ctaHref, ctaLabel }) => {
+  forceDarkBackground?: boolean;
+}> = ({ langToggle, ctaHref, ctaLabel, forceDarkBackground }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { t, lang, setLang } = useLanguage();
@@ -24,7 +25,13 @@ export const Header: React.FC<{
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const textClass = !isScrolled && isPrivacyPage ? 'text-[#121C2D]' : 'text-white';
+  const resolvedTextClass = forceDarkBackground
+    ? 'text-white'
+    : !isScrolled && isPrivacyPage
+    ? 'text-[#121C2D]'
+    : 'text-white';
+  const textClass = resolvedTextClass;
+  const navLinkHoverClass = forceDarkBackground ? 'hover:text-white' : 'hover:text-[#2280FF]';
   const base = lang === 'fr' ? '/fr' : '';
 
   const LanguageToggle = ({ className }: { className?: string }) => {
@@ -46,19 +53,23 @@ export const Header: React.FC<{
     );
   };
 
+  const headerBackgroundClass = forceDarkBackground
+    ? 'bg-[#121C2D]'
+    : isScrolled
+    ? 'bg-[#121C2D]'
+    : 'bg-transparent';
+
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${
-          isScrolled ? 'bg-[#121C2D]' : 'bg-transparent'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${headerBackgroundClass}`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <a
               href={lang === 'fr' ? '/fr' : '/'}
               onClick={() => localStorage.setItem('lang', lang)}
-              className={`text-2xl font-bold ${textClass}`}
+              className={`text-2xl font-bold ${resolvedTextClass}`}
             >
               {t.header.brand}
             </a>
@@ -66,7 +77,7 @@ export const Header: React.FC<{
               <LanguageToggle />
               <a
                 href={`mailto:${t.header.email}`}
-                className={`transition-colors duration-300 font-medium ${textClass} hover:text-[#2280FF]`}
+                className={`transition-colors duration-300 font-medium ${resolvedTextClass} ${navLinkHoverClass}`}
               >
                 {t.header.email}
               </a>
@@ -78,9 +89,9 @@ export const Header: React.FC<{
               <LanguageToggle />
               <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
                 {isMobileMenuOpen ? (
-                  <X className={`w-6 h-6 ${textClass}`} />
+                  <X className={`w-6 h-6 ${resolvedTextClass}`} />
                 ) : (
-                  <Menu className={`w-6 h-6 ${textClass}`} />
+                  <Menu className={`w-6 h-6 ${resolvedTextClass}`} />
                 )}
               </button>
             </div>

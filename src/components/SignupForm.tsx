@@ -6,12 +6,12 @@ const RECAPTCHA_SITE_KEY = '6Lf0RtYrAAAAAMnsVvJx3DTeKDVGi2ZQElXygdM-';
 
 const copy = {
   fr: {
-    heading: 'Infolettre PME Québec — The Automated SMB',
-    subheading: "Votre rendez-vous hebdo avec l’automatisation et l’IA",
+    heading: 'The Automated SMB',
+    subheading: 'L’infolettre hebdo pragmatique pour moderniser votre PME',
     body:
-      'Chaque semaine, recevez des conseils concrets pour gagner du temps, réduire vos coûts et rester conforme à la Loi 25. Des tactiques simples, pensées pour les PME québécoises — applicables dès maintenant.',
-    emailLabel: 'Adresse courriel professionnelle',
-    emailPlaceholder: 'prenom.nom@entreprise.com',
+      'Chaque semaine, recevez des tactiques concrètes pour gagner du temps, réduire vos coûts et rester conforme à la Loi 25. Des conseils clairs, applicables dès maintenant.',
+    emailLabel: 'Adresse courriel',
+    emailPlaceholder: 'prenom@entreprise.com',
     consentLabel:
       'Je consens à recevoir les communications de The Automated SMB et je comprends que je peux me désabonner en tout temps.',
     submit: 'Recevoir l’infolettre chaque semaine',
@@ -24,7 +24,7 @@ const copy = {
         Vos données sont protégées. Consultez notre{' '}
         <a
           href="/privacy"
-          className="font-semibold text-[#2280FF] hover:text-[#139E9B] transition-colors"
+          className="font-semibold text-[#139E9B] transition-colors hover:text-[#2280FF]"
         >
           Politique de confidentialité
         </a>
@@ -33,12 +33,12 @@ const copy = {
     )
   },
   en: {
-    heading: 'Québec SMB AI Newsletter — The Automated SMB',
-    subheading: 'Your weekly briefing on automation and AI',
+    heading: 'The Automated SMB',
+    subheading: 'Your weekly playbook to modernize your SMB',
     body:
-      'Every week, get clear, actionable insights to save time, cut costs, and stay compliant with Law 25. No jargon — just practical tactics designed for Québec SMBs.',
-    emailLabel: 'Business email address',
-    emailPlaceholder: 'firstname.lastname@company.com',
+      'Every week, get actionable tactics to save time, cut costs, and stay compliant with Law 25. Clear insights, ready to use immediately.',
+    emailLabel: 'Email address',
+    emailPlaceholder: 'you@company.com',
     consentLabel:
       'I consent to receive communications from The Automated SMB and understand I can unsubscribe at any time.',
     submit: 'Get the weekly newsletter',
@@ -51,7 +51,7 @@ const copy = {
         Your data is protected. See our{' '}
         <a
           href="/privacy"
-          className="font-semibold text-[#2280FF] hover:text-[#139E9B] transition-colors"
+          className="font-semibold text-[#139E9B] transition-colors hover:text-[#2280FF]"
         >
           Privacy Policy
         </a>
@@ -144,10 +144,10 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
 
   return (
     <section className="w-full">
-      <div className="mx-auto max-w-[600px] rounded-[12px] border border-[#E5E7EB] bg-white p-8 shadow-[0_18px_40px_rgba(18,28,45,0.08)] sm:p-10">
-        <header className="mb-10 space-y-4">
+      <div className="mx-auto w-full max-w-[600px] rounded-[10px] bg-white p-8 shadow-[0_32px_80px_rgba(18,28,45,0.12)] ring-1 ring-black/5 sm:p-12">
+        <header className="mb-8 space-y-4">
           <h1 className="text-3xl font-semibold text-[#121C2D] md:text-4xl">{t.heading}</h1>
-          <p className="text-lg font-semibold text-[#1F2937] md:text-xl">{t.subheading}</p>
+          <p className="text-lg font-medium text-[#1F2937] md:text-xl">{t.subheading}</p>
           <p className="text-base leading-relaxed text-[#4B5563]">{t.body}</p>
         </header>
 
@@ -162,17 +162,17 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
               type="email"
               required
               placeholder={t.emailPlaceholder}
-              className="w-full rounded-xl border border-[#D1D5DB] bg-white px-5 py-4 text-base text-[#111827] shadow-sm transition focus:border-[#2280FF] focus:outline-none focus:ring-4 focus:ring-[#2280FF]/20"
+              className="w-full rounded-[10px] border border-[#D1D5DB] bg-white px-5 py-3 text-base text-[#121C2D] shadow-sm transition focus:border-[#139E9B] focus:outline-none focus:ring-4 focus:ring-[#139E9B]/20"
             />
           </div>
 
-          <div className="flex items-start gap-3 rounded-xl bg-[#F3F4F6] p-4">
+          <div className="flex items-start gap-3">
             <input
               id={consentFieldId}
               name="OPT_IN"
               type="checkbox"
               required
-              className="mt-1 h-5 w-5 rounded border-[#D1D5DB] text-[#2280FF] focus:ring-[#2280FF]"
+              className="mt-1 h-5 w-5 rounded border-[#D1D5DB] text-[#139E9B] focus:ring-[#139E9B]"
             />
             <label htmlFor={consentFieldId} className="text-sm leading-relaxed text-[#4B5563]">
               {t.consentLabel}
@@ -182,7 +182,7 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
           <div
             aria-live="assertive"
             id="error-message"
-            className="hidden rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+            className="hidden rounded-[8px] border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
           >
             <p className="font-semibold">{t.errorTitle}</p>
             <p className="mt-1 leading-relaxed">{t.errorBody}</p>
@@ -190,7 +190,7 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
           <div
             aria-live="polite"
             id="success-message"
-            className="hidden rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700"
+            className="hidden rounded-[8px] border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700"
           >
             <p className="font-semibold">{t.successTitle}</p>
             <p className="mt-1 leading-relaxed">{t.successBody}</p>
@@ -203,12 +203,16 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
 
           <div className="g-recaptcha-v3" data-sitekey={RECAPTCHA_SITE_KEY} style={{ display: 'none' }} />
 
-          <button type="submit" className="btn-primary w-full normal-case px-8 py-4 text-base font-semibold">
+          <button
+            type="submit"
+            className="btn-primary w-full text-base font-semibold"
+            style={{ textTransform: 'none' }}
+          >
             {t.submit}
           </button>
         </form>
 
-        <p className="mt-6 text-sm text-[#6B7280]">{t.trustLine}</p>
+        <p className="mt-8 text-sm text-[#6B7280]">{t.trustLine}</p>
       </div>
     </section>
   );

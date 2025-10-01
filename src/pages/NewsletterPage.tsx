@@ -8,6 +8,11 @@ const TITLES = {
   en: 'Québec SMB AI Newsletter | The Automated SMB'
 };
 
+const DESCRIPTIONS = {
+  fr: 'Infolettre hebdo pour les PME québécoises : gagnez du temps, réduisez vos coûts et restez conforme à la Loi 25.',
+  en: 'Weekly newsletter for Québec SMBs: save time, cut costs, and stay compliant with Law 25.'
+};
+
 const CANONICAL = {
   fr: '/fr/newsletter',
   en: '/en/newsletter'
@@ -40,6 +45,14 @@ const NewsletterPage: React.FC<NewsletterPageProps> = ({ lang }) => {
     const canonicalHref = `${window.location.origin}${CANONICAL[lang]}`;
     const alternateHref = `${window.location.origin}${CANONICAL[lang === 'fr' ? 'en' : 'fr']}`;
 
+    let metaDescription = document.head.querySelector<HTMLMetaElement>("meta[name='description']");
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta');
+      metaDescription.name = 'description';
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.content = DESCRIPTIONS[lang];
+
     const canonical = ensureHeadLink("link[rel='canonical']", () => {
       const link = document.createElement('link');
       link.rel = 'canonical';
@@ -66,7 +79,11 @@ const NewsletterPage: React.FC<NewsletterPageProps> = ({ lang }) => {
 
   return (
     <div className="min-h-screen flex flex-col bg-[var(--off-white)] text-[var(--text-primary)]">
-      <Header langToggle={{ fr: CANONICAL.fr, en: CANONICAL.en }} ctaHref={lang === 'fr' ? '/fr#hero' : '/#hero'} />
+      <Header
+        langToggle={{ fr: CANONICAL.fr, en: CANONICAL.en }}
+        ctaHref={lang === 'fr' ? '/fr#hero' : '/#hero'}
+        forceDarkBackground
+      />
       <main className="flex-1 px-4 pb-24 pt-32 md:px-6">
         <div className="mx-auto flex max-w-7xl justify-center">
           <SignupForm lang={lang} />
