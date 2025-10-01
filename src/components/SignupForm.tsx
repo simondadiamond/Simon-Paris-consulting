@@ -108,19 +108,22 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
             </div>
 
             <div className="form__entry flex items-start gap-3">
-              <input
-                id="OPT_IN"
-                name="OPT_IN"
-                type="checkbox"
-                value="1"
-                required
-                className="input_replaced mt-1 h-5 w-5 rounded border-[#D1D5DB] text-[#139E9C] focus:ring-[#139E9C]"
-              />
               <label
                 htmlFor="OPT_IN"
-                className="entry__label text-sm leading-relaxed text-[#4B5563]"
+                className="entry__choice flex items-center gap-2"
               >
-                {copy.consent}
+                <input
+                  id="OPT_IN"
+                  name="OPT_IN"
+                  type="checkbox"
+                  value="1"
+                  required
+                  className="input_replaced"
+                />
+                <span className="checkbox checkbox_tick_positive"></span>
+                <span className="text-sm leading-relaxed text-[#4B5563]">
+                  {copy.consent}
+                </span>
               </label>
             </div>
 
