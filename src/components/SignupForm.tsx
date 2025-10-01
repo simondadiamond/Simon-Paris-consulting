@@ -6,36 +6,58 @@ const RECAPTCHA_SITE_KEY = '6Lf0RtYrAAAAAMnsVvJx3DTeKDVGi2ZQElXygdM-';
 
 const copy = {
   fr: {
-    heading: 'Infolettre PME Québec',
-    subheading: 'Automatisation et IA pour dirigeants pressés',
+    heading: 'Infolettre PME Québec — The Automated SMB',
+    subheading: "Votre rendez-vous hebdo avec l’automatisation et l’IA",
     body:
-      'Deux fois par mois, recevez des tactiques applicables pour gagner du temps, éviter des erreurs coûteuses et rester conforme à la Loi 25 — sans blabla.',
+      'Chaque semaine, recevez des conseils concrets pour gagner du temps, réduire vos coûts et rester conforme à la Loi 25. Des tactiques simples, pensées pour les PME québécoises — applicables dès maintenant.',
     emailLabel: 'Adresse courriel professionnelle',
     emailPlaceholder: 'prenom.nom@entreprise.com',
     consentLabel:
-      "Je consens à recevoir les communications de The Automated SMB et comprends que je pourrai me désabonner en tout temps.",
-    consentNote: 'Vos données sont traitées au Québec et conformes à la Loi 25 et à la LCAP.',
-    submit: "Recevoir l'infolettre",
+      'Je consens à recevoir les communications de The Automated SMB et je comprends que je peux me désabonner en tout temps.',
+    submit: 'Recevoir l’infolettre chaque semaine',
     successTitle: 'Merci! Votre inscription est confirmée.',
     successBody: 'Vérifiez votre boîte de réception pour le courriel de bienvenue.',
     errorTitle: "Oups! Une erreur est survenue.",
-    errorBody: 'Veuillez réessayer ou nous écrire à hello@simonparis.ca.'
+    errorBody: 'Veuillez réessayer ou nous écrire à hello@simonparis.ca.',
+    trustLine: (
+      <>
+        Vos données sont protégées. Consultez notre{' '}
+        <a
+          href="/privacy"
+          className="font-semibold text-[#2280FF] hover:text-[#139E9B] transition-colors"
+        >
+          Politique de confidentialité
+        </a>
+        .
+      </>
+    )
   },
   en: {
-    heading: 'Québec SMB AI Newsletter',
-    subheading: 'Automation guidance for owners who move fast',
+    heading: 'Québec SMB AI Newsletter — The Automated SMB',
+    subheading: 'Your weekly briefing on automation and AI',
     body:
-      'Every two weeks, receive concise playbooks that save hours, prevent costly mistakes, and keep your team compliant with Law 25 — no fluff.',
+      'Every week, get clear, actionable insights to save time, cut costs, and stay compliant with Law 25. No jargon — just practical tactics designed for Québec SMBs.',
     emailLabel: 'Business email address',
     emailPlaceholder: 'firstname.lastname@company.com',
     consentLabel:
       'I consent to receive communications from The Automated SMB and understand I can unsubscribe at any time.',
-    consentNote: "Your data is handled in Québec and compliant with Law 25 and Canada's Anti-Spam Legislation.",
-    submit: 'Join the newsletter',
+    submit: 'Get the weekly newsletter',
     successTitle: "Thanks! You're on the list.",
     successBody: 'Look for the welcome email in your inbox within a few minutes.',
     errorTitle: 'Oops! Something went wrong.',
-    errorBody: 'Please try again or email hello@simonparis.ca.'
+    errorBody: 'Please try again or email hello@simonparis.ca.',
+    trustLine: (
+      <>
+        Your data is protected. See our{' '}
+        <a
+          href="/privacy"
+          className="font-semibold text-[#2280FF] hover:text-[#139E9B] transition-colors"
+        >
+          Privacy Policy
+        </a>
+        .
+      </>
+    )
   }
 } as const;
 
@@ -121,19 +143,17 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
   const localeValue = useMemo(() => lang, [lang]);
 
   return (
-    <section className="relative">
-      <div className="absolute inset-0 -z-10 rounded-[32px] bg-gradient-to-br from-slate-100 via-white to-slate-100" />
-      <div className="relative mx-auto max-w-[600px] rounded-[32px] border border-slate-200 bg-white/90 p-10 shadow-[0_25px_55px_rgba(18,28,45,0.12)] backdrop-blur">
-        <header className="mb-10 space-y-4 text-center md:text-left">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">The Automated SMB</p>
-          <h1 className="text-3xl font-semibold text-slate-900 md:text-4xl">{t.heading}</h1>
-          <p className="text-lg font-medium text-slate-600">{t.subheading}</p>
-          <p className="text-base leading-relaxed text-slate-600">{t.body}</p>
+    <section className="w-full">
+      <div className="mx-auto max-w-[600px] rounded-[12px] border border-[#E5E7EB] bg-white p-8 shadow-[0_18px_40px_rgba(18,28,45,0.08)] sm:p-10">
+        <header className="mb-10 space-y-4">
+          <h1 className="text-3xl font-semibold text-[#121C2D] md:text-4xl">{t.heading}</h1>
+          <p className="text-lg font-semibold text-[#1F2937] md:text-xl">{t.subheading}</p>
+          <p className="text-base leading-relaxed text-[#4B5563]">{t.body}</p>
         </header>
 
         <form method="POST" action={POST_URL} className="space-y-6" noValidate>
           <div className="space-y-2">
-            <label htmlFor={emailFieldId} className="text-sm font-semibold text-slate-700">
+            <label htmlFor={emailFieldId} className="text-sm font-semibold text-[#1F2937]">
               {t.emailLabel}
             </label>
             <input
@@ -142,47 +162,53 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
               type="email"
               required
               placeholder={t.emailPlaceholder}
-              className="w-full rounded-2xl border border-slate-300 bg-white px-5 py-4 text-base text-slate-900 shadow-sm transition focus:border-[#2280FF] focus:outline-none focus:ring-4 focus:ring-[#2280FF]/20"
+              className="w-full rounded-xl border border-[#D1D5DB] bg-white px-5 py-4 text-base text-[#111827] shadow-sm transition focus:border-[#2280FF] focus:outline-none focus:ring-4 focus:ring-[#2280FF]/20"
             />
           </div>
 
-          <div className="flex items-start gap-3 rounded-2xl bg-slate-50/80 p-4">
+          <div className="flex items-start gap-3 rounded-xl bg-[#F3F4F6] p-4">
             <input
               id={consentFieldId}
               name="OPT_IN"
               type="checkbox"
               required
-              className="mt-1 h-5 w-5 rounded border-slate-300 text-[#2280FF] focus:ring-[#2280FF]"
+              className="mt-1 h-5 w-5 rounded border-[#D1D5DB] text-[#2280FF] focus:ring-[#2280FF]"
             />
-            <label htmlFor={consentFieldId} className="text-sm leading-relaxed text-slate-600">
+            <label htmlFor={consentFieldId} className="text-sm leading-relaxed text-[#4B5563]">
               {t.consentLabel}
             </label>
           </div>
 
-          <p className="text-xs text-slate-500">{t.consentNote}</p>
-
           <div
             aria-live="assertive"
             id="error-message"
-            className="hidden rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
-          />
+            className="hidden rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+          >
+            <p className="font-semibold">{t.errorTitle}</p>
+            <p className="mt-1 leading-relaxed">{t.errorBody}</p>
+          </div>
           <div
             aria-live="polite"
             id="success-message"
-            className="hidden rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700"
-          />
+            className="hidden rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700"
+          >
+            <p className="font-semibold">{t.successTitle}</p>
+            <p className="mt-1 leading-relaxed">{t.successBody}</p>
+          </div>
 
           <input type="text" name="email_address_check" className="input--hidden" defaultValue="" tabIndex={-1} autoComplete="off" />
           <input type="hidden" name="LANGUAGE" value={lang} />
           <input type="hidden" name="locale" value={localeValue} />
           {sourceUrl && <input type="hidden" name="SOURCE_URL" value={sourceUrl} />}
 
-          <div className="g-recaptcha-v3" data-sitekey={RECAPTCHA_SITE_KEY} />
+          <div className="g-recaptcha-v3" data-sitekey={RECAPTCHA_SITE_KEY} style={{ display: 'none' }} />
 
-          <button type="submit" className="btn-primary w-full justify-center px-8 py-4 text-base font-semibold">
+          <button type="submit" className="btn-primary w-full normal-case px-8 py-4 text-base font-semibold">
             {t.submit}
           </button>
         </form>
+
+        <p className="mt-6 text-sm text-[#6B7280]">{t.trustLine}</p>
       </div>
     </section>
   );
