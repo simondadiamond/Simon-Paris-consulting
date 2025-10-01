@@ -15,22 +15,26 @@ const LanguageContext = createContext<LangContext>({
 });
 
 const detectLanguage = async (): Promise<Language> => {
-  const navLang = navigator.language || (navigator.languages && navigator.languages[0]);
-  if (navLang) {
-    const lower = navLang.toLowerCase();
-    if (lower.startsWith('fr')) return 'fr';
-    if (lower.startsWith('en')) return 'en';
-  }
-  try {
-    const res = await fetch('https://ipapi.co/json/');
-    if (res.ok) {
-      const data = await res.json();
-      if (data && data.region_code === 'QC') {
-        return 'fr';
-      }
+  if (typeof navigator !== 'undefined') {
+    const navLang = navigator.language || (navigator.languages && navigator.languages[0]);
+    if (navLang) {
+      const lower = navLang.toLowerCase();
+      if (lower.startsWith('fr')) return 'fr';
+      if (lower.startsWith('en')) return 'en';
     }
-  } catch {
-    // ignore network errors
+  }
+  if (typeof fetch === 'function') {
+    try {
+      const res = await fetch('https://ipapi.co/json/');
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.region_code === 'QC') {
+          return 'fr';
+        }
+      }
+    } catch {
+      // ignore network errors
+    }
   }
   return 'en';
 };
@@ -41,13 +45,17 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const [lang, setLang] = useState<Language>(pathLang);
 
   useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
     const currentPathLang = window.location.pathname.startsWith('/fr') ? 'fr' : null;
     if (currentPathLang) {
       setLang(currentPathLang);
-      localStorage.setItem('lang', currentPathLang);
+      window.localStorage.setItem('lang', currentPathLang);
       return;
     }
-    const stored = localStorage.getItem('lang') as Language | null;
+    const stored = window.localStorage.getItem('lang') as Language | null;
     if (stored) {
       setLang(stored);
       return;
@@ -56,7 +64,10 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('lang', lang);
+    if (typeof window === 'undefined') {
+      return;
+    }
+    window.localStorage.setItem('lang', lang);
   }, [lang]);
 
   return (

@@ -6,7 +6,7 @@ const fr: TranslationKeys = {
     brand: 'Simon Paris',
     languageToggle: 'FR/EN',
     email: 'info@simonparis.ca',
-    cta: 'Télécharger la checklist'
+    cta: 'Joindre l’infolettre'
   },
   hero: {
     eyebrow: 'Pour les cliniques du Québec • Prêt Loi 25 + Loi 96',
@@ -15,7 +15,7 @@ const fr: TranslationKeys = {
     subhead:
       'Automatisations bilingues prêtes à l’emploi pour vitesse‑à‑lead, relance d’absences et moteur d’avis — conçues pour les cliniques du Québec. Démo d’abord. Installation en minutes.',
     proof: 'Les cliniques qui automatisent voient souvent 25–50 % moins d’absences et des suivis beaucoup plus rapides.',
-    primaryCta: 'Télécharger la checklist de conformité'
+    primaryCta: 'Joindre l’infolettre'
   },
   problems: {
     title: 'Pourquoi les cliniques <span class="accent">perdent de l’argent</span> chaque semaine…',
@@ -81,17 +81,17 @@ const fr: TranslationKeys = {
     disclaimer: 'Estimations basées sur ~120–150 $ par rendez‑vous et des pertes typiques de leads au Québec. Résultats variables.'
   },
   checklist: {
-    eyebrow: 'Gratuit',
+    eyebrow: 'Hebdo IA',
     title: 'Êtes-vous vraiment prêt pour la <span class="accent">Loi 25</span>?',
-    sub: 'La plupart des cliniques croient que oui… jusqu’à ce qu’un patient manqué ou un audit révèle le contraire. Téléchargez la liste gratuite pour découvrir les zones à risque dans vos communications.',
-      points: [
-        'Vos formulaires de consentement pour SMS et courriels sont-ils vraiment conformes?',
-        'Avez-vous une preuve horodatée de chaque message envoyé?',
-        'Vos rappels et suivis sont-ils 100 % en français d’abord (FR-first)?',
-        'Vos patients peuvent-ils se désabonner instantanément, sans plainte possible?'
-      ],
-    cta: 'Télécharger la Liste',
-    href: '/checklist'
+    sub: 'La plupart des cliniques croient que oui… jusqu’à ce qu’un absent ou un audit révèle le contraire. Joignez l’infolettre hebdo pour repérer les failles avant qu’elles ne coûtent cher.',
+    points: [
+      'Vos formulaires de consentement pour SMS et courriels sont-ils vraiment conformes?',
+      'Avez-vous une preuve horodatée de chaque message envoyé?',
+      'Vos rappels et suivis sont-ils 100 % en français d’abord (FR-first)?',
+      'Vos patients peuvent-ils se désabonner instantanément, sans plainte possible?'
+    ],
+    cta: 'Joindre l’infolettre',
+    href: '/fr/newsletter'
   },
   proof: {
     title: 'Les cliniques qui automatisent voient des résultats rapides.',
@@ -142,17 +142,61 @@ const fr: TranslationKeys = {
     ]
   },
   finalCTA: {
-    title: 'Commencez gratuitement. Restez conforme. Croissez plus vite.',
-    sub: 'Téléchargez la checklist maintenant — passez aux packs quand vous serez prêt.',
-    primary: 'Télécharger la checklist',
-    primaryHref: '/checklist',
+    title: 'Restez conforme. Restez en avance.',
+    sub: 'Rejoignez l’infolettre hebdo pour des tactiques d’automatisation pensées pour les PME québécoises.',
+    primary: 'Joindre l’infolettre',
+    primaryHref: '/fr/newsletter',
     secondary: 'Voir les packs',
     secondaryHref: '/packs'
   },
-  stickyCta: 'Télécharger la checklist',
+  stickyCta: 'Joindre l’infolettre',
   trustBadge: 'Conçu pour le Québec • Démo en direct • Bilingue et conforme à la Loi 96',
   partners: {
     title: 'Partenaires de confiance'
+  },
+  newsletter: {
+    meta: {
+      title: 'Infolettre PME Québec | The Automated SMB',
+      description:
+        'Infolettre hebdo pour les PME québécoises : gagnez du temps, réduisez vos coûts et restez conforme à la Loi 25.',
+      canonical: '/fr/newsletter',
+      alternate: '/en/newsletter'
+    },
+    title: 'The Automated SMB',
+    subtitle: 'L’infolettre pragmatique pour moderniser votre PME',
+    bodyLines: [
+      'Chaque semaine : gagnez du temps et évitez les erreurs coûteuses.',
+      'Des conseils clairs, pensés pour les PME québécoises et conformes à la Loi 25.'
+    ],
+    emailLabel: 'Adresse courriel',
+    emailPlaceholder: 'nom@entreprise.com',
+    consent:
+      'Je consens à recevoir les communications de The Automated SMB et je comprends que je peux me désabonner en tout temps.',
+    submit: 'Recevoir l’infolettre chaque semaine',
+    trust: {
+      prefix: 'Vos données sont protégées. Consultez notre ',
+      linkLabel: 'Politique de confidentialité',
+      suffix: '.'
+    },
+    success: {
+      title: 'Merci! Votre inscription est prise en compte.',
+      body: 'Surveillez votre boîte de réception : un courriel de bienvenue arrive sous peu.'
+    },
+    error: {
+      title: 'Une vérification est nécessaire',
+      body: 'Vérifiez vos informations et réessayez, ou écrivez-nous à hello@simonparis.ca.'
+    },
+    confirmation: {
+      metaTitle: 'Confirmation infolettre | The Automated SMB',
+      title: 'Inscription confirmée',
+      body:
+        'Merci! Votre inscription à l’infolettre est confirmée. Vous recevrez chaque semaine des conseils pratiques pour moderniser votre PME.',
+      extra: '👉 Ajoutez-nous à vos expéditeurs sûrs pour ne rien manquer.',
+      backHome: {
+        label: 'Retour à l’accueil',
+        href: '/fr'
+      }
+    }
   },
   footer: {
     blurb: 'Automatisation bilingue pour les PME du Québec. Conçu pour aujourd’hui, prêt pour l’IA de demain.',

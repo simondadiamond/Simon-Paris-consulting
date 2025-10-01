@@ -36,7 +36,7 @@ html {
 }
 
 body {
-  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   line-height: 1.6;
   color: var(--text-primary);
@@ -44,6 +44,25 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+input,
+textarea,
+select {
+  font-family: 'Inter', sans-serif;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-family: 'Inter', sans-serif;
+  color: #9CA3AF;
+}
+
+.input--hidden {
+  position: absolute !important;
+  left: -5000px;
+  opacity: 0;
+  pointer-events: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -189,6 +208,23 @@ h1, h2, h3, h4, h5, h6 {
   background: #2280FF;
   color: white;
   transform: translateY(-1px);
+}
+
+.grecaptcha-badge {
+  position: fixed !important;
+  bottom: 40px !important;
+  right: 40px !important;
+  z-index: 50 !important;
+  box-shadow: 0 12px 32px rgba(18, 28, 45, 0.25) !important;
+  border-radius: 9999px !important;
+  overflow: hidden !important;
+}
+
+@media (max-width: 640px) {
+  .grecaptcha-badge {
+    bottom: 16px !important;
+    right: 16px !important;
+  }
 }
 
 /* Premium Cards */

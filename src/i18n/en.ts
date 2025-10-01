@@ -5,7 +5,7 @@ export const en = {
     brand: 'Simon Paris',
     languageToggle: 'EN/FR',
     email: 'info@simonparis.ca',
-    cta: 'Download Checklist'
+    cta: 'Join Newsletter'
   },
   hero: {
     eyebrow: 'For Québec clinics • Law 25 + Bill 96 ready',
@@ -13,10 +13,10 @@ export const en = {
     h1_accent: 'Stay 100% Compliant.',
     subhead:
       'Plug‑and‑play bilingual automations for Speed‑to‑Lead, No‑Show Chaser, and Review Engine—built for Québec clinics. Demo first. Install in minutes.',
-      proof:
-        'Clinics that automate often see 25–50% fewer no‑shows and much faster follow‑ups.',
-      primaryCta: 'Download the Checklist'
-    },
+    proof:
+      'Clinics that automate often see 25–50% fewer no‑shows and much faster follow‑ups.',
+    primaryCta: 'Join Newsletter'
+  },
   problems: {
     title: 'Why clinics <span class="accent">lose money</span> every week…',
       list: [
@@ -81,17 +81,17 @@ export const en = {
     disclaimer: 'Estimates based on ~$120–150 per appointment and typical lead leakage in Québec. Results vary.'
   },
   checklist: {
-    eyebrow: 'Free',
+    eyebrow: 'Weekly Briefing',
     title: 'Are you really <span class="accent">Law 25</span> ready?',
-    sub: 'Most clinics think they’re fine… until a no-show patient or audit proves otherwise. Download the free checklist to spot the hidden risks in your communication workflows.',
-      points: [
-        'Is your SMS & email consent wording valid under Québec law?',
-        'Do you have timestamped proof for every message you send?',
-        'Are your reminders and follow-ups fully FR-first?',
-        'Can patients opt-out instantly, without risk of complaint?'
-      ],
-    cta: 'Download the Checklist',
-    href: '/checklist'
+    sub: 'Most clinics think they’re fine… until a no-show patient or audit proves otherwise. Join the weekly briefing to spot the hidden risks before they become costly.',
+    points: [
+      'Is your SMS & email consent wording valid under Québec law?',
+      'Do you have timestamped proof for every message you send?',
+      'Are your reminders and follow-ups fully FR-first?',
+      'Can patients opt-out instantly, without risk of complaint?'
+    ],
+    cta: 'Join Newsletter',
+    href: '/en/newsletter'
   },
   proof: {
     title: 'Clinics that automate see results fast.',
@@ -142,17 +142,61 @@ export const en = {
     ]
   },
   finalCTA: {
-    title: 'Start Free. Stay Compliant. Grow Faster.',
-    sub: 'Download the checklist now — upgrade to packs when ready.',
-    primary: 'Download Checklist',
-    primaryHref: '/checklist',
+    title: 'Stay compliant. Stay ahead.',
+    sub: 'Join the weekly newsletter for proven automation tactics built for Québec SMBs.',
+    primary: 'Join Newsletter',
+    primaryHref: '/en/newsletter',
     secondary: 'See Packs',
     secondaryHref: '/packs'
   },
-  stickyCta: 'Download the Checklist',
+  stickyCta: 'Join Newsletter',
   trustBadge: 'Built for Québec • Demo-first • Fully bilingual & Law 96\u2013compliant',
   partners: {
     title: 'Trusted & Supported By'
+  },
+  newsletter: {
+    meta: {
+      title: 'Québec SMB AI Newsletter | The Automated SMB',
+      description:
+        'Weekly newsletter for Québec SMBs: save time, cut costs, and stay compliant with Law 25.',
+      canonical: '/en/newsletter',
+      alternate: '/fr/newsletter'
+    },
+    title: 'The Automated SMB',
+    subtitle: 'The pragmatic newsletter to modernize your SMB',
+    bodyLines: [
+      'Every week: save time and cut costly mistakes.',
+      'Clear, practical tips for Québec SMBs that stay compliant with Law 25.'
+    ],
+    emailLabel: 'Email address',
+    emailPlaceholder: 'name@business.com',
+    consent:
+      'I consent to receive communications from The Automated SMB and understand I can unsubscribe at any time.',
+    submit: 'Get the weekly newsletter',
+    trust: {
+      prefix: 'Your data is protected. See our ',
+      linkLabel: 'Privacy Policy',
+      suffix: '.'
+    },
+    success: {
+      title: "Thanks! You're on the list.",
+      body: 'Watch your inbox for the welcome email within the next few minutes.'
+    },
+    error: {
+      title: 'Something needs your attention',
+      body: 'Check your details and try again, or email hello@simonparis.ca for support.'
+    },
+    confirmation: {
+      metaTitle: 'Newsletter confirmation | The Automated SMB',
+      title: 'Subscription confirmed',
+      body:
+        'Thank you! Your subscription is confirmed. You’ll now receive weekly practical insights to modernize your SMB.',
+      extra: '👉 Add us to your safe senders list so you never miss an issue.',
+      backHome: {
+        label: 'Back to homepage',
+        href: '/en'
+      }
+    }
   },
   footer: {
     blurb: "Bilingual automation for Québec SMBs. Built for today's needs, ready for tomorrow's AI.",

@@ -6,7 +6,8 @@ export const Header: React.FC<{
   langToggle?: { fr: string; en: string };
   ctaHref?: string;
   ctaLabel?: string;
-}> = ({ langToggle, ctaHref, ctaLabel }) => {
+  forceDarkBackground?: boolean;
+}> = ({ langToggle, ctaHref, ctaLabel, forceDarkBackground }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { t, lang, setLang } = useLanguage();
@@ -24,8 +25,15 @@ export const Header: React.FC<{
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const textClass = !isScrolled && isPrivacyPage ? 'text-[#121C2D]' : 'text-white';
-  const base = lang === 'fr' ? '/fr' : '';
+  const resolvedTextClass = forceDarkBackground
+    ? 'text-white'
+    : !isScrolled && isPrivacyPage
+    ? 'text-[#121C2D]'
+    : 'text-white';
+  const textClass = resolvedTextClass;
+  const newsletterHref = lang === 'fr' ? '/fr/newsletter' : '/en/newsletter';
+  const resolvedCtaHref = ctaHref ?? newsletterHref;
+  const resolvedCtaLabel = ctaLabel ?? t.header.cta;
 
   const LanguageToggle = ({ className }: { className?: string }) => {
     const otherLang = lang === 'fr' ? 'en' : 'fr';
@@ -46,41 +54,39 @@ export const Header: React.FC<{
     );
   };
 
+  const headerBackgroundClass = forceDarkBackground
+    ? 'bg-[#121C2D]'
+    : isScrolled
+    ? 'bg-[#121C2D]'
+    : 'bg-transparent';
+
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${
-          isScrolled ? 'bg-[#121C2D]' : 'bg-transparent'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${headerBackgroundClass}`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <a
               href={lang === 'fr' ? '/fr' : '/'}
               onClick={() => localStorage.setItem('lang', lang)}
-              className={`text-2xl font-bold ${textClass}`}
+              className={`text-2xl font-bold ${resolvedTextClass}`}
             >
               {t.header.brand}
             </a>
             <div className="hidden md:flex items-center space-x-8">
               <LanguageToggle />
-              <a
-                href={`mailto:${t.header.email}`}
-                className={`transition-colors duration-300 font-medium ${textClass} hover:text-[#2280FF]`}
-              >
-                {t.header.email}
-              </a>
-              <a href={ctaHref ?? `${base}/checklist`} className="btn-primary text-sm px-6 py-3">
-                {ctaLabel ?? t.header.cta}
+              <a href={resolvedCtaHref} className="btn-primary text-sm px-6 py-3">
+                {resolvedCtaLabel}
               </a>
             </div>
             <div className="flex md:hidden items-center space-x-4">
               <LanguageToggle />
               <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
                 {isMobileMenuOpen ? (
-                  <X className={`w-6 h-6 ${textClass}`} />
+                  <X className={`w-6 h-6 ${resolvedTextClass}`} />
                 ) : (
-                  <Menu className={`w-6 h-6 ${textClass}`} />
+                  <Menu className={`w-6 h-6 ${resolvedTextClass}`} />
                 )}
               </button>
             </div>
@@ -105,14 +111,8 @@ export const Header: React.FC<{
         >
           <div className="p-6 pt-20 space-y-6 text-center">
             <LanguageToggle className="text-[#121C2D]" />
-            <a
-              href={`mailto:${t.header.email}`}
-              className="block text-[#121C2D] hover:text-[#2280FF] font-medium"
-            >
-              {t.header.email}
-            </a>
-            <a href={ctaHref ?? `${base}/checklist`} className="btn-primary w-full">
-              {ctaLabel ?? t.header.cta}
+            <a href={resolvedCtaHref} className="btn-primary w-full">
+              {resolvedCtaLabel}
             </a>
           </div>
         </div>
