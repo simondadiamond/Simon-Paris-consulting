@@ -1,135 +1,279 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
-type SignupFormLang = "en" | "fr";
+type SignupFormLang = "fr" | "en";
+interface Props { lang: SignupFormLang; }
 
-interface SignupFormProps {
-  lang: SignupFormLang;
+/** Brevo assets */
+const SIB_STYLES_HREF = "https://sibforms.com/forms/end-form/build/sib-styles.css";
+const BREVO_MAIN_SRC   = "https://sibforms.com/forms/end-form/build/main.js";
+const RECAPTCHA_SRC    = "https://www.google.com/recaptcha/api.js?render=6Lf0RtYrAAAAAMnsVvJx3DTeKDVGi2ZQElXygdM-";
+
+/** Utility: ensure a single <link rel="stylesheet"> for a given href */
+function ensureHeadLink(href: string) {
+  let el = document.head.querySelector<HTMLLinkElement>(`link[data-href="${href}"]`);
+  if (!el) {
+    el = document.createElement("link");
+    el.rel = "stylesheet";
+    el.href = href;
+    el.setAttribute("data-href", href);
+    document.head.appendChild(el);
+  }
+  return el;
 }
 
-const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
-  useEffect(() => {
-    // Ensure Brevo’s script is present (already in index.html ideally)
-    if (!document.querySelector("script[src*='sibforms']")) {
-      const script = document.createElement("script");
-      script.src = "https://sibforms.com/forms/end-form/build/main.js";
-      script.async = true;
-      script.defer = true;
-      document.body.appendChild(script);
-    }
+/** Utility: (re)load a script after the form is in the DOM */
+function reloadScript(src: string, attrs: Record<string, string> = {}) {
+  document.querySelectorAll(`script[src="${src}"], script[data-src="${src}"]`).forEach(s => s.remove());
+  const s = document.createElement("script");
+  s.src = src;
+  s.defer = true;
+  Object.entries(attrs).forEach(([k, v]) => s.setAttribute(k, v));
+  document.body.appendChild(s);
+  return s;
+}
 
-    // Set LOCALE for Brevo validation messages
-    (window as any).LOCALE = lang;
-  }, [lang]);
+/** EXACT Brevo HTML (unchanged classes/ids) — FR & EN variants */
+const BREVO_ACTION = "https://c454d84b.sibforms.com/serve/MUIFABPnId223hP1MfXQhUKTZ-Hrpawb-mUK1I6K6Z23awSphtJWBleirm9cn-eH8BUbLtEd0uEGsyiLCLZGhvgXAyp37m1l4q7dUcHqtCA3BDWXEyncJcmoudjdvwBu4O5eu6JEptiOhjBgQef67s3Om8yQZZPmxI_NR9LWPXnzoWogE-z4RtuEZTvK8wz3y2TtSKqiOtQLpVWQ`;
 
-  // French version of form
-  const formFR = `
-    <div class="sib-form" style="text-align:center;">
-      <div id="sib-form-container" class="sib-form-container">
-        <div id="sib-container" class="sib-container--large sib-container--vertical">
-          <form id="sib-form" method="POST"
-            action="https://c454d84b.sibforms.com/serve/MUIFABPnId223hP1MfXQhUKTZ-Hrpawb-mUK1I6K6Z23awSphtJWBleirm9cn-eH8BUbLtEd0uEGsyiLCLZGhvgXAyp37m1l4q7dUcHqtCA3BDWXEyncJcmoudjdvwBu4O5eu6JEptiOhjBgQef67s3Om8yQZZPmxI_NR9LWPXnzoWogE-z4RtuEZTvK8wz3y2TtSKqiOtQLpVWQ"
-            data-type="subscription">
-            
-            <h1 class="text-2xl font-semibold text-[#121c2d] mb-2">The Automated SMB</h1>
-            <p class="text-lg font-semibold text-[#139e9c] mb-3">
-              L’infolettre pragmatique pour moderniser votre PME
-            </p>
-            <p class="text-sm text-[#4b5563] mb-6">
-              Chaque semaine : gagnez du temps, évitez les erreurs coûteuses et découvrez des outils IA prêts pour les PME québécoises.
-            </p>
-
-            <label for="EMAIL" class="block text-sm font-semibold text-[#121c2d] text-left mb-1">
-              Adresse courriel
-            </label>
-            <input type="email" id="EMAIL" name="EMAIL" required
-              placeholder="nom@entreprise.com"
-              class="input w-full rounded-lg border border-gray-300 px-4 py-2 mb-4" />
-
-            <div class="text-left mb-6">
-              <label class="flex items-start gap-2 text-sm text-[#4b5563]">
-                <input type="checkbox" id="OPT_IN" name="OPT_IN" value="1" required class="input_replaced mt-1" />
-                Oui, je veux recevoir l’Hebdo IA Québec et rester conforme à la Loi 25.
-              </label>
-            </div>
-
-            <button type="submit"
-              class="sib-form-block__button sib-form-block__button-with-loader w-full rounded-lg py-3 font-semibold text-white transition hover:opacity-90">
-              Recevoir l’infolettre chaque semaine
-            </button>
-
-            <input type="hidden" name="locale" value="fr" />
-            <input type="hidden" name="LANGUAGE" value="fr" />
-            <input type="text" name="email_address_check" value="" class="input--hidden" />
-          </form>
-        </div>
+const htmlFR = `
+<!-- Begin Brevo Form -->
+<div class="sib-form" style="text-align: center; background-color: #121c2d;">
+  <div id="sib-form-container" class="sib-form-container">
+    <div id="error-message" class="sib-form-message-panel" style="font-size:16px;text-align:left;font-family:Helvetica,sans-serif;color:#661d1d;background-color:#ffeded;border-radius:3px;border-color:#ff4949;max-width:540px;display:none;">
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon"><path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z"/></svg>
+        <span class="sib-form-message-panel__inner-text">Une erreur est survenue. Veuillez réessayer dans quelques instants.</span>
       </div>
     </div>
-  `;
 
-  // English version of form
-  const formEN = `
-    <div class="sib-form" style="text-align:center;">
-      <div id="sib-form-container" class="sib-form-container">
-        <div id="sib-container" class="sib-container--large sib-container--vertical">
-          <form id="sib-form" method="POST"
-            action="https://c454d84b.sibforms.com/serve/MUIFABPnId223hP1MfXQhUKTZ-Hrpawb-mUK1I6K6Z23awSphtJWBleirm9cn-eH8BUbLtEd0uEGsyiLCLZGhvgXAyp37m1l4q7dUcHqtCA3BDWXEyncJcmoudjdvwBu4O5eu6JEptiOhjBgQef67s3Om8yQZZPmxI_NR9LWPXnzoWogE-z4RtuEZTvK8wz3y2TtSKqiOtQLpVWQ"
-            data-type="subscription">
-            
-            <h1 class="text-2xl font-semibold text-[#121c2d] mb-2">The Automated SMB</h1>
-            <p class="text-lg font-semibold text-[#139e9c] mb-3">
-              The pragmatic newsletter to modernize your SMB
-            </p>
-            <p class="text-sm text-[#4b5563] mb-6">
-              Every week: save time, avoid costly mistakes, and discover AI tools built for Québec SMBs.
-            </p>
+    <div id="success-message" class="sib-form-message-panel" style="font-size:16px;text-align:left;font-family:Helvetica,sans-serif;color:#085229;background-color:#e7faf0;border-radius:3px;border-color:#13ce66;max-width:540px;display:none;">
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z"/></svg>
+        <span class="sib-form-message-panel__inner-text">Merci! Votre inscription à The Automated SMB est confirmée.</span>
+      </div>
+    </div>
 
-            <label for="EMAIL" class="block text-sm font-semibold text-[#121c2d] text-left mb-1">
-              Email address
-            </label>
-            <input type="email" id="EMAIL" name="EMAIL" required
-              placeholder="name@business.com"
-              class="input w-full rounded-lg border border-gray-300 px-4 py-2 mb-4" />
-
-            <div class="text-left mb-6">
-              <label class="flex items-start gap-2 text-sm text-[#4b5563]">
-                <input type="checkbox" id="OPT_IN" name="OPT_IN" value="1" required class="input_replaced mt-1" />
-                Yes, I want to receive Québec AI Weekly and stay compliant with Law 25.
-              </label>
+    <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center;background-color:rgba(249,250,251,1);max-width:540px;border-radius:20px;border-width:1px;border-color:#c3bebe;border-style:solid;direction:ltr">
+      <form id="sib-form" method="POST" action="${BREVO_ACTION}" data-type="subscription">
+        <div style="padding:16px 0;">
+          <div class="sib-form-block" style="font-size:19px;text-align:center;font-weight:700;font-family:Inter,webFonts;color:#121c2d;background-color:transparent;text-align:center">
+            <h1>The Automated SMB</h1>
+          </div>
+        </div>
+        <div style="padding:16px 0;">
+          <div class="sib-form-block" style="font-size:19px;text-align:center;font-family:Inter,webFonts;color:#139e9b;background-color:transparent;text-align:center">
+            <div class="sib-text-form-block"><p><strong>L’infolettre pragmatique pour moderniser votre PME</strong></p></div>
+          </div>
+        </div>
+        <div style="padding:16px 0;">
+          <div class="sib-form-block" style="font-size:16px;text-align:left;font-family:Inter,webFonts;color:#121c2d;background-color:transparent;text-align:left">
+            <div class="sib-text-form-block"><p>Chaque semaine : gagnez du temps, évitez les erreurs coûteuses et découvrez des outils IA prêts pour les PME québécoises.</p></div>
+          </div>
+        </div>
+        <div style="padding:16px 0;">
+          <div class="sib-input sib-form-block">
+            <div class="form__entry entry_block">
+              <div class="form__label-row">
+                <label class="entry__label" style="font-weight:700;text-align:left;font-size:16px;font-family:Inter,webFonts;color:#121c2d;" for="EMAIL" data-required="*">Entrez votre adresse courriel pour recevoir l’infolettre :</label>
+                <div class="entry__field">
+                  <input class="input " type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="nom@entreprise.com" data-required="true" required />
+                </div>
+              </div>
+              <label class="entry__error entry__error--primary" style="font-size:16px;text-align:left;font-family:Helvetica,sans-serif;color:#661d1d;background-color:#ffeded;border-radius:3px;border-color:#ff4949;"></label>
             </div>
+          </div>
+        </div>
+        <div style="padding:16px 0;">
+          <div class="sib-optin sib-form-block" data-required="true">
+            <div class="form__entry entry_mcq">
+              <div class="form__label-row">
+                <label class="entry__label" style="font-weight:700;text-align:left;font-size:16px;font-family:Inter,webFonts;color:#121c2d;" for="OPT_IN" data-required="*">Opt-in</label>
+                <div class="entry__choice">
+                  <label>
+                    <input type="checkbox" class="input_replaced" value="1" id="OPT_IN" name="OPT_IN" required />
+                    <span class="checkbox checkbox_tick_positive"></span>
+                    <span style="font-size:12px;text-align:left;font-family:Helvetica,sans-serif;color:#121c2d;"><p>Oui, je veux recevoir l’Hebdo IA Québec et rester conforme à la Loi 25.</p></span>
+                  </label>
+                </div>
+              </div>
+              <label class="entry__error entry__error--primary" style="font-size:16px;text-align:left;font-family:Helvetica,sans-serif;color:#661d1d;background-color:#ffeded;border-radius:3px;border-color:#ff4949;"></label>
+              <label class="entry__specification" style="font-size:12px;text-align:left;font-family:Inter,webFonts;color:#111827;">Vous pouvez vous désabonner en tout temps.</label>
+            </div>
+          </div>
+        </div>
+        <div style="padding:16px 0;">
+          <div class="sib-form-block" style="font-size:1px;text-align:left;font-family:Inter,webFonts;color:#121c2d;background-color:transparent;text-align:left"><div class="sib-text-form-block"><p><br></p></div></div>
+        </div>
+        <div style="padding:16px 0;">
+          <div class="sib-form-block" style="text-align: center">
+            <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-size:16px;text-align:center;font-weight:700;font-family:Inter, webFonts;color:#FFFFFF;background-color:#0473d0;border-radius:10px;border-width:0px;" form="sib-form" type="submit">
+              <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512" style="vertical-align:middle;margin-right:6px;height:14px;width:14px;"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/></svg>
+              Je m’abonne gratuitement
+            </button>
+          </div>
+        </div>
+        <div style="padding:16px 0;">
+          <div class="g-recaptcha-v3" data-sitekey="6Lf0RtYrAAAAAMnsVvJx3DTeKDVGi2ZQElXygdM-" style="display: none"></div>
+        </div>
+        <input type="text" name="email_address_check" value="" class="input--hidden">
+        <input type="hidden" name="locale" value="fr">
+        <input type="hidden" name="LANGUAGE" value="fr">
+      </form>
+    </div>
+  </div>
+</div>
+<!-- End Brevo Form -->
+`;
 
-            <button type="submit"
-              class="sib-form-block__button sib-form-block__button-with-loader w-full rounded-lg py-3 font-semibold text-white transition hover:opacity-90">
+const htmlEN = `
+<!-- Begin Brevo Form -->
+<div class="sib-form" style="text-align: center; background-color: #121c2d;">
+  <div id="sib-form-container" class="sib-form-container">
+    <div id="error-message" class="sib-form-message-panel" style="font-size:16px;text-align:left;font-family:Helvetica,sans-serif;color:#661d1d;background-color:#ffeded;border-radius:3px;border-color:#ff4949;max-width:540px;display:none;">
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon"><path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z"/></svg>
+        <span class="sib-form-message-panel__inner-text">Something went wrong. Please try again in a moment.</span>
+      </div>
+    </div>
+
+    <div id="success-message" class="sib-form-message-panel" style="font-size:16px;text-align:left;font-family:Helvetica,sans-serif;color:#085229;background-color:#e7faf0;border-radius:3px;border-color:#13ce66;max-width:540px;display:none;">
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z"/></svg>
+        <span class="sib-form-message-panel__inner-text">Thanks! Your subscription to The Automated SMB is confirmed.</span>
+      </div>
+    </div>
+
+    <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center;background-color:rgba(249,250,251,1);max-width:540px;border-radius:20px;border-width:1px;border-color:#c3bebe;border-style:solid;direction:ltr">
+      <form id="sib-form" method="POST" action="${BREVO_ACTION}" data-type="subscription">
+        <div style="padding:16px 0;">
+          <div class="sib-form-block" style="font-size:19px;text-align:center;font-weight:700;font-family:Inter,webFonts;color:#121c2d;background-color:transparent;text-align:center">
+            <h1>The Automated SMB</h1>
+          </div>
+        </div>
+        <div style="padding:16px 0;">
+          <div class="sib-form-block" style="font-size:19px;text-align:center;font-family:Inter,webFonts;color:#139e9b;background-color:transparent;text-align:center">
+            <div class="sib-text-form-block"><p><strong>The pragmatic newsletter to modernize your SMB</strong></p></div>
+          </div>
+        </div>
+        <div style="padding:16px 0;">
+          <div class="sib-form-block" style="font-size:16px;text-align:left;font-family:Inter,webFonts;color:#121c2d;background-color:transparent;text-align:left">
+            <div class="sib-text-form-block"><p>Every week: save time, avoid costly mistakes, and discover AI tools built for Québec SMBs.</p></div>
+          </div>
+        </div>
+        <div style="padding:16px 0;">
+          <div class="sib-input sib-form-block">
+            <div class="form__entry entry_block">
+              <div class="form__label-row">
+                <label class="entry__label" style="font-weight:700;text-align:left;font-size:16px;font-family:Inter,webFonts;color:#121c2d;" for="EMAIL" data-required="*">Enter your email to get the newsletter:</label>
+                <div class="entry__field"><input class="input " type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="name@business.com" data-required="true" required /></div>
+              </div>
+              <label class="entry__error entry__error--primary" style="font-size:16px;text-align:left;font-family:Helvetica,sans-serif;color:#661d1d;background-color:#ffeded;border-radius:3px;border-color:#ff4949;"></label>
+            </div>
+          </div>
+        </div>
+        <div style="padding:16px 0;">
+          <div class="sib-optin sib-form-block" data-required="true">
+            <div class="form__entry entry_mcq">
+              <div class="form__label-row">
+                <label class="entry__label" style="font-weight:700;text-align:left;font-size:16px;font-family:Inter,webFonts;color:#121c2d;" for="OPT_IN" data-required="*">Opt-in</label>
+                <div class="entry__choice">
+                  <label>
+                    <input type="checkbox" class="input_replaced" value="1" id="OPT_IN" name="OPT_IN" required />
+                    <span class="checkbox checkbox_tick_positive"></span>
+                    <span style="font-size:12px;text-align:left;font-family:Helvetica,sans-serif;color:#121c2d;"><p>Yes, I want to receive Québec AI Weekly and stay compliant with Law 25.</p></span>
+                  </label>
+                </div>
+              </div>
+              <label class="entry__error entry__error--primary" style="font-size:16px;text-align:left;font-family:Helvetica,sans-serif;color:#661d1d;background-color:#ffeded;border-radius:3px;border-color:#ff4949;"></label>
+              <label class="entry__specification" style="font-size:12px;text-align:left;font-family:Inter,webFonts;color:#111827;">You can unsubscribe at any time.</label>
+            </div>
+          </div>
+        </div>
+        <div style="padding:16px 0;"><div class="sib-form-block" style="font-size:1px;text-align:left;font-family:Inter,webFonts;color:#121c2d;background-color:transparent;text-align:left"><div class="sib-text-form-block"><p><br></p></div></div></div>
+        <div style="padding:16px 0;">
+          <div class="sib-form-block" style="text-align: center">
+            <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-size:16px;text-align:center;font-weight:700;font-family:Inter, webFonts;color:#FFFFFF;background-color:#0473d0;border-radius:10px;border-width:0px;" form="sib-form" type="submit">
+              <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512" style="vertical-align:middle;margin-right:6px;height:14px;width:14px;"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/></svg>
               Get the weekly newsletter
             </button>
-
-            <input type="hidden" name="locale" value="en" />
-            <input type="hidden" name="LANGUAGE" value="en" />
-            <input type="text" name="email_address_check" value="" class="input--hidden" />
-          </form>
+          </div>
         </div>
-      </div>
+        <div style="padding:16px 0;"><div class="g-recaptcha-v3" data-sitekey="6Lf0RtYrAAAAAMnsVvJx3DTeKDVGi2ZQElXygdM-" style="display: none"></div></div>
+        <input type="text" name="email_address_check" value="" class="input--hidden">
+        <input type="hidden" name="locale" value="en">
+        <input type="hidden" name="LANGUAGE" value="en">
+      </form>
     </div>
-  `;
+  </div>
+</div>
+<!-- End Brevo Form -->
+`;
+
+const SignupForm: React.FC<Props> = ({ lang }) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!ref.current) return;
+
+    // 1) Inject exact Brevo form for current lang
+    ref.current.innerHTML = lang === "fr" ? htmlFR : htmlEN;
+
+    // 2) Ensure Brevo CSS is present
+    ensureHeadLink(SIB_STYLES_HREF);
+
+    // 3) Set Brevo globals BEFORE (re)loading main.js
+    (window as any).LOCALE = lang;
+    (window as any).REQUIRED_CODE_ERROR_MESSAGE = "Please choose a country code";
+    (window as any).EMAIL_INVALID_MESSAGE = (window as any).SMS_INVALID_MESSAGE =
+      lang === "fr"
+        ? "Adresse courriel invalide. Veuillez vérifier le format (ex. nom@entreprise.com )."
+        : "Invalid email address. Please check the format (e.g. name@business.com).";
+    (window as any).REQUIRED_ERROR_MESSAGE =
+      lang === "fr" ? "Ce champ ne peut pas être laissé vide. " : "This field cannot be left blank.";
+    (window as any).GENERIC_INVALID_MESSAGE =
+      (window as any).EMAIL_INVALID_MESSAGE;
+    (window as any).translation = { common: { selectedList: "{quantity} list selected", selectedLists: "{quantity} lists selected", selectedOption: "{quantity} selected", selectedOptions: "{quantity} selected" } };
+    (window as any).AUTOHIDE = Boolean(0);
+
+    // 4) Ensure reCAPTCHA is present (ok if already added elsewhere)
+    if (!document.querySelector(`script[src^="https://www.google.com/recaptcha/api.js"]`)) {
+      reloadScript(RECAPTCHA_SRC, { "data-brevo": "recaptcha" });
+    }
+
+    // 5) Reload Brevo main.js AFTER form exists so it binds handlers
+    reloadScript(BREVO_MAIN_SRC, { "data-brevo": "main" });
+  }, [lang]);
 
   return (
     <section className="flex justify-center py-12 px-4">
-      <div
-        className="w-full max-w-lg rounded-2xl bg-[#f9fafb] p-8 shadow-xl"
-        dangerouslySetInnerHTML={{ __html: lang === "fr" ? formFR : formEN }}
-      />
-      <style jsx>{`
-        #sib-container {
-          background: #f9fafb !important;
-          border-radius: 16px !important;
-          border: 1px solid #ddd !important;
-          padding: 1.5rem !important;
-          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
-        }
-        .sib-form-block__button {
-          background: linear-gradient(90deg, #139e9c, #2280ff) !important;
-          border: none !important;
-        }
-      `}</style>
+      <div className="w-full max-w-[640px]">
+        <div ref={ref} />
+        <style>{`
+          /* Kill outer dark bg & extra framing */
+          .sib-form { background: transparent !important; }
+          #sib-form-container { background: transparent !important; border: 0 !important; box-shadow: none !important; }
+
+          /* Card look to match site */
+          #sib-container {
+            background: #f9fafb !important;
+            border: 1px solid #e5e7eb !important;
+            border-radius: 16px !important;
+            padding: 24px !important;
+            box-shadow: 0 16px 48px rgba(18,28,45,0.12) !important;
+          }
+
+          /* Button gradient */
+          .sib-form-block__button {
+            background: linear-gradient(90deg, #139E9C, #2280FF) !important;
+            border: none !important;
+            border-radius: 10px !important;
+            padding: 12px 16px !important;
+          }
+
+          /* Tidy message panels */
+          .sib-form-message-panel { max-width: 540px !important; margin: 0 auto 16px !important; }
+        `}</style>
+      </div>
     </section>
   );
 };
