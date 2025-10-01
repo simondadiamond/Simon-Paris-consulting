@@ -1,6 +1,76 @@
 import React from 'react';
 
-const SignupForm: React.FC = () => {
+type SignupFormLang = 'en' | 'fr';
+
+interface SignupFormProps {
+  lang: SignupFormLang;
+}
+
+const copy = {
+  fr: {
+    title: 'The Automated SMB',
+    subtitle: 'L’infolettre pragmatique pour moderniser votre PME',
+    body:
+      'Chaque semaine : gagnez du temps, évitez les erreurs coûteuses et découvrez des outils IA prêts pour les PME québécoises.',
+    emailLabel: 'Entrez votre adresse courriel pour recevoir l’infolettre :',
+    emailPlaceholder: 'nom@entreprise.com',
+    consent: 'Oui, je veux recevoir l’Hebdo IA Québec et rester conforme à la Loi 25.',
+    specification: 'Vous pouvez vous désabonner en tout temps.',
+    submit: 'Je m’abonne gratuitement',
+    success: 'Merci! Votre inscription à The Automated SMB est confirmée.',
+    error: 'Une erreur est survenue. Veuillez réessayer dans quelques instants.',
+    script: {
+      requiredCode: 'Please choose a country code',
+      locale: 'fr' as const,
+      emailInvalid:
+        'Adresse courriel invalide. Veuillez vérifier le format (ex. nom@entreprise.com ).',
+      required: 'Ce champ ne peut pas être laissé vide. ',
+      genericInvalid:
+        'Adresse courriel invalide. Veuillez vérifier le format (ex. nom@entreprise.com ).'
+    }
+  },
+  en: {
+    title: 'The Automated SMB',
+    subtitle: 'The pragmatic newsletter to modernize your SMB',
+    body: 'Every week: save time, avoid costly mistakes, and discover AI tools ready for Québec SMBs.',
+    emailLabel: 'Enter your email address to receive the newsletter:',
+    emailPlaceholder: 'name@business.com',
+    consent: 'Yes, I want to receive the Québec AI Weekly and stay compliant with Law 25.',
+    specification: 'You can unsubscribe at any time.',
+    submit: 'Get the newsletter for free',
+    success: 'Thanks! Your subscription to The Automated SMB is confirmed.',
+    error: 'Something went wrong. Please try again in a moment.',
+    script: {
+      requiredCode: 'Please choose a country code',
+      locale: 'en' as const,
+      emailInvalid: 'Invalid email address. Please check the format (e.g. name@business.com).',
+      required: 'This field cannot be left blank.',
+      genericInvalid: 'Invalid email address. Please check the format (e.g. name@business.com).'
+    }
+  }
+} as const satisfies Record<SignupFormLang, {
+  title: string;
+  subtitle: string;
+  body: string;
+  emailLabel: string;
+  emailPlaceholder: string;
+  consent: string;
+  specification: string;
+  submit: string;
+  success: string;
+  error: string;
+  script: {
+    requiredCode: string;
+    locale: SignupFormLang;
+    emailInvalid: string;
+    required: string;
+    genericInvalid: string;
+  };
+}>;
+
+const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
+  const content = copy[lang];
+
   return (
     <>
       <section className="mx-auto max-w-[540px] rounded-xl bg-white p-8 shadow-lg shadow-[0_32px_80px_rgba(18,28,45,0.12)] sm:p-12">
@@ -15,9 +85,7 @@ const SignupForm: React.FC = () => {
                 <svg viewBox="0 0 512 512" className="sib-icon sib-notification__icon h-6 w-6 text-[#661d1d]" aria-hidden="true">
                   <path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z" />
                 </svg>
-                <span className="sib-form-message-panel__inner-text">
-                  Une erreur est survenue. Veuillez réessayer dans quelques instants.
-                </span>
+                <span className="sib-form-message-panel__inner-text">{content.error}</span>
               </div>
             </div>
 
@@ -30,9 +98,7 @@ const SignupForm: React.FC = () => {
                 <svg viewBox="0 0 512 512" className="sib-icon sib-notification__icon h-6 w-6 text-[#085229]" aria-hidden="true">
                   <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z" />
                 </svg>
-                <span className="sib-form-message-panel__inner-text">
-                  Merci! Votre inscription à The Automated SMB est confirmée.
-                </span>
+                <span className="sib-form-message-panel__inner-text">{content.success}</span>
               </div>
             </div>
 
@@ -48,23 +114,20 @@ const SignupForm: React.FC = () => {
                 className="space-y-6"
               >
                 <div className="sib-form-block space-y-3 text-center">
-                  <h1 className="text-3xl font-semibold text-[#121c2d]">The Automated SMB</h1>
+                  <h1 className="text-3xl font-semibold text-[#121c2d]">{content.title}</h1>
                 </div>
 
                 <div className="sib-form-block text-center text-lg font-semibold text-[#139e9b]">
                   <div className="sib-text-form-block">
                     <p>
-                      <strong>L’infolettre pragmatique pour moderniser votre PME</strong>
+                      <strong>{content.subtitle}</strong>
                     </p>
                   </div>
                 </div>
 
                 <div className="sib-form-block text-left text-base text-[#121c2d]">
                   <div className="sib-text-form-block">
-                    <p>
-                      Chaque semaine : gagnez du temps, évitez les erreurs coûteuses et découvrez des outils IA prêts pour les PME
-                      québécoises.
-                    </p>
+                    <p>{content.body}</p>
                   </div>
                 </div>
 
@@ -76,7 +139,7 @@ const SignupForm: React.FC = () => {
                         htmlFor="EMAIL"
                         data-required="*"
                       >
-                        Entrez votre adresse courriel pour recevoir l’infolettre :
+                        {content.emailLabel}
                       </label>
                     </div>
                     <div className="entry__field">
@@ -86,7 +149,7 @@ const SignupForm: React.FC = () => {
                         id="EMAIL"
                         name="EMAIL"
                         autoComplete="off"
-                        placeholder="nom@entreprise.com"
+                        placeholder={content.emailPlaceholder}
                         data-required="true"
                         required
                       />
@@ -110,15 +173,13 @@ const SignupForm: React.FC = () => {
                           <input type="checkbox" className="input_replaced mt-1" value="1" id="OPT_IN" name="OPT_IN" required />
                           <span className="checkbox checkbox_tick_positive mt-1"></span>
                           <span className="text-xs text-[#121c2d]">
-                            <p>Oui, je veux recevoir l’Hebdo IA Québec et rester conforme à la Loi 25.</p>
+                            <p>{content.consent}</p>
                           </span>
                         </label>
                       </div>
                     </div>
                     <label className="entry__error entry__error--primary mt-2 block rounded-md border border-[#ff4949] bg-[#ffeded] px-3 py-2 text-sm text-[#661d1d]"></label>
-                    <label className="entry__specification block text-xs text-[#111827]">
-                      Vous pouvez vous désabonner en tout temps.
-                    </label>
+                    <label className="entry__specification block text-xs text-[#111827]">{content.specification}</label>
                   </div>
                 </div>
 
@@ -143,7 +204,7 @@ const SignupForm: React.FC = () => {
                     >
                       <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
                     </svg>
-                    Je m’abonne gratuitement
+                    {content.submit}
                   </button>
                 </div>
 
@@ -152,7 +213,7 @@ const SignupForm: React.FC = () => {
                 </div>
 
                 <input type="text" name="email_address_check" value="" className="input--hidden" />
-                <input type="hidden" name="locale" value="en" />
+                <input type="hidden" name="locale" value={lang} />
               </form>
             </div>
           </div>
@@ -161,13 +222,13 @@ const SignupForm: React.FC = () => {
 
       <script>
         {`
-  window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
-  window.LOCALE = 'en';
-  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "Adresse courriel invalide. Veuillez vérifier le format (ex. nom@entreprise.com ).";
+  window.REQUIRED_CODE_ERROR_MESSAGE = '${content.script.requiredCode}';
+  window.LOCALE = '${content.script.locale}';
+  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = '${content.script.emailInvalid}';
 
-  window.REQUIRED_ERROR_MESSAGE = "Ce champ ne peut pas être laissé vide. ";
+  window.REQUIRED_ERROR_MESSAGE = '${content.script.required}';
 
-  window.GENERIC_INVALID_MESSAGE = "Adresse courriel invalide. Veuillez vérifier le format (ex. nom@entreprise.com ).";
+  window.GENERIC_INVALID_MESSAGE = '${content.script.genericInvalid}';
 
 
 
@@ -187,7 +248,10 @@ const SignupForm: React.FC = () => {
 
       <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 
-      <script src="https://www.google.com/recaptcha/api.js?render=6Lf0RtYrAAAAAMnsVvJx3DTeKDVGi2ZQElXygdM-&hl=en" async defer></script>
+      <script src={`https://www.google.com/recaptcha/api.js?render=6Lf0RtYrAAAAAMnsVvJx3DTeKDVGi2ZQElXygdM-&hl=${lang}`}
+        async
+        defer
+      ></script>
     </>
   );
 };
