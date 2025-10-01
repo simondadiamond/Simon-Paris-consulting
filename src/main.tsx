@@ -7,7 +7,6 @@ import PolitiqueConfidentialite from './pages/PolitiqueConfidentialite';
 import { LandingEN, LandingFR } from './pages/SpeedToLead';
 import { NewsletterEN, NewsletterFR } from './pages/NewsletterPage';
 import NewsletterConfirmation from './pages/NewsletterConfirmation';
-import NewsletterFormPage from './pages/NewsletterFormPage';
 import { LanguageProvider } from './LanguageProvider';
 import './index.css';
 
@@ -28,8 +27,6 @@ if (path === '/privacy') {
   Component = NewsletterEN;
 } else if (path === '/newsletter/confirmation') {
   Component = NewsletterConfirmation;
-} else if (path === '/newsletterform') {
-  Component = NewsletterFormPage;
 } else if (path === '/en') {
   Component = App;
 }
