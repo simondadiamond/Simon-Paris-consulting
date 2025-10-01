@@ -144,8 +144,8 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
 
   return (
     <section className="w-full">
-      <div className="mx-auto w-full max-w-[600px] rounded-[10px] bg-white p-8 shadow-[0_32px_80px_rgba(18,28,45,0.12)] ring-1 ring-black/5 sm:p-12">
-        <header className="mb-8 space-y-4">
+      <div className="mx-auto w-full max-w-[600px] rounded-[12px] bg-white p-8 shadow-[0_32px_80px_rgba(18,28,45,0.12)] ring-1 ring-black/5 sm:p-12">
+        <header className="mb-10 space-y-5 md:space-y-6">
           <h1 className="text-3xl font-semibold text-[#121C2D] md:text-4xl">{t.heading}</h1>
           <p className="text-lg font-medium text-[#1F2937] md:text-xl">{t.subheading}</p>
           <p className="text-base leading-relaxed text-[#4B5563]">{t.body}</p>
@@ -162,7 +162,7 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
               type="email"
               required
               placeholder={t.emailPlaceholder}
-              className="w-full rounded-[10px] border border-[#D1D5DB] bg-white px-5 py-3 text-base text-[#121C2D] shadow-sm transition focus:border-[#139E9B] focus:outline-none focus:ring-4 focus:ring-[#139E9B]/20"
+              className="w-full rounded-[10px] border border-[#D1D5DB] bg-white px-5 py-3 text-base font-inter text-[#121C2D] shadow-sm transition focus:border-[#139E9B] focus:outline-none focus:ring-4 focus:ring-[#139E9B]/20"
             />
           </div>
 
@@ -205,8 +205,7 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
 
           <button
             type="submit"
-            className="btn-primary w-full text-base font-semibold"
-            style={{ textTransform: 'none' }}
+            className="btn-primary w-full"
           >
             {t.submit}
           </button>
