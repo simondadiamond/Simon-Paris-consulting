@@ -71,7 +71,6 @@ const NewsletterPage: React.FC<NewsletterPageProps> = ({ lang }) => {
     <div className="flex min-h-screen flex-col bg-[#F4F6FA] text-[var(--text-primary)]">
       <Header
         langToggle={{ fr: translations.fr.newsletter.meta.canonical, en: translations.en.newsletter.meta.canonical }}
-        ctaHref={lang === 'fr' ? '/fr#hero' : '/#hero'}
         forceDarkBackground
       />
       <main className="flex-1 px-4 pb-24 pt-32 md:px-6">

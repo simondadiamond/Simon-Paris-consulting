@@ -12,7 +12,7 @@ import PartnerBar from './components/PartnerBar';
 const Hero = () => {
   const { t } = useLanguage();
   const isFR = typeof window !== 'undefined' && window.location.pathname.startsWith('/fr');
-  const base = isFR ? '/fr' : '';
+  const newsletterHref = isFR ? '/fr/newsletter' : '/en/newsletter';
 
   return (
     <section
@@ -44,10 +44,10 @@ const Hero = () => {
 
         <div className="flex justify-center">
           <a
-            href={`${base}/checklist`}
+            href={newsletterHref}
             className="btn-primary text-lg px-8 py-4"
             data-event="cta_click"
-            data-cta="checklist"
+            data-cta="newsletter"
           >
             {t.hero.primaryCta}
           </a>
@@ -135,7 +135,7 @@ const GrowthEngine = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const { t, lang } = useLanguage();
-  const base = lang === 'fr' ? '/fr' : '';
+  const newsletterHref = lang === 'fr' ? '/fr/newsletter' : '/en/newsletter';
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -211,7 +211,7 @@ const OfferCards = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const { t, lang } = useLanguage();
-  const base = lang === 'fr' ? '/fr' : '';
+  const newsletterHref = lang === 'fr' ? '/fr/newsletter' : '/en/newsletter';
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -316,7 +316,7 @@ const ROIMath = () => {
 // Checklist Component
 const Checklist = () => {
   const { t, lang } = useLanguage();
-  const base = lang === 'fr' ? '/fr' : '';
+  const newsletterHref = lang === 'fr' ? '/fr/newsletter' : '/en/newsletter';
   return (
     <section className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
       <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8">
@@ -338,7 +338,14 @@ const Checklist = () => {
               </li>
             ))}
           </ul>
-          <a href={`${base}${t.checklist.href}`} className="btn-primary px-8 py-4">
+            <a
+              href={
+                t.checklist.href.startsWith('/fr') || t.checklist.href.startsWith('/en')
+                  ? t.checklist.href
+                  : newsletterHref
+              }
+              className="btn-primary px-8 py-4"
+            >
             {t.checklist.cta}
           </a>
         </div>
@@ -466,6 +473,8 @@ const FAQ = () => {
 const FinalCTA = () => {
   const { t, lang } = useLanguage();
   const base = lang === 'fr' ? '/fr' : '';
+  const resolveHref = (path: string) =>
+    path.startsWith('/fr') || path.startsWith('/en') ? path : `${base}${path}`;
 
   return (
     <section className="relative py-16 bg-[#121C2D] text-center text-white">
@@ -473,10 +482,10 @@ const FinalCTA = () => {
         <h2 className="text-3xl font-bold mb-4">{t.finalCTA.title}</h2>
         <p className="text-lg text-white/80 mb-8">{t.finalCTA.sub}</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href={`${base}${t.finalCTA.primaryHref}`} className="btn-primary px-8 py-4">
+          <a href={resolveHref(t.finalCTA.primaryHref)} className="btn-primary px-8 py-4">
             {t.finalCTA.primary}
           </a>
-          <a href={`${base}${t.finalCTA.secondaryHref}`} className="btn-outline text-lg px-8 py-4">
+          <a href={resolveHref(t.finalCTA.secondaryHref)} className="btn-outline text-lg px-8 py-4">
             {t.finalCTA.secondary}
           </a>
         </div>
@@ -496,10 +505,10 @@ const StickyCTA = () => {
   }, []);
 
   if (!visible) return null;
-  const base = lang === 'fr' ? '/fr' : '';
+  const newsletterHref = lang === 'fr' ? '/fr/newsletter' : '/en/newsletter';
   return (
     <div className="sticky-cta md:hidden">
-      <a href={`${base}/checklist`} className="btn-primary w-full text-lg py-4">
+      <a href={newsletterHref} className="btn-primary w-full text-lg py-4">
         {t.stickyCta}
       </a>
     </div>

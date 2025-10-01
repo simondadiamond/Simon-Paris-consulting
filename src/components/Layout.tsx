@@ -31,8 +31,9 @@ export const Header: React.FC<{
     ? 'text-[#121C2D]'
     : 'text-white';
   const textClass = resolvedTextClass;
-  const navLinkHoverClass = forceDarkBackground ? 'hover:text-white' : 'hover:text-[#2280FF]';
-  const base = lang === 'fr' ? '/fr' : '';
+  const newsletterHref = lang === 'fr' ? '/fr/newsletter' : '/en/newsletter';
+  const resolvedCtaHref = ctaHref ?? newsletterHref;
+  const resolvedCtaLabel = ctaLabel ?? t.header.cta;
 
   const LanguageToggle = ({ className }: { className?: string }) => {
     const otherLang = lang === 'fr' ? 'en' : 'fr';
@@ -75,14 +76,8 @@ export const Header: React.FC<{
             </a>
             <div className="hidden md:flex items-center space-x-8">
               <LanguageToggle />
-              <a
-                href={`mailto:${t.header.email}`}
-                className={`transition-colors duration-300 font-medium ${resolvedTextClass} ${navLinkHoverClass}`}
-              >
-                {t.header.email}
-              </a>
-              <a href={ctaHref ?? `${base}/checklist`} className="btn-primary text-sm px-6 py-3">
-                {ctaLabel ?? t.header.cta}
+              <a href={resolvedCtaHref} className="btn-primary text-sm px-6 py-3">
+                {resolvedCtaLabel}
               </a>
             </div>
             <div className="flex md:hidden items-center space-x-4">
@@ -116,14 +111,8 @@ export const Header: React.FC<{
         >
           <div className="p-6 pt-20 space-y-6 text-center">
             <LanguageToggle className="text-[#121C2D]" />
-            <a
-              href={`mailto:${t.header.email}`}
-              className="block text-[#121C2D] hover:text-[#2280FF] font-medium"
-            >
-              {t.header.email}
-            </a>
-            <a href={ctaHref ?? `${base}/checklist`} className="btn-primary w-full">
-              {ctaLabel ?? t.header.cta}
+            <a href={resolvedCtaHref} className="btn-primary w-full">
+              {resolvedCtaLabel}
             </a>
           </div>
         </div>

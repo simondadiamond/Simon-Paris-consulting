@@ -27,6 +27,8 @@ if (path === '/privacy') {
   Component = NewsletterEN;
 } else if (path === '/newsletter/confirmation') {
   Component = NewsletterConfirmation;
+} else if (path === '/en') {
+  Component = App;
 }
 
 createRoot(document.getElementById('root')!).render(

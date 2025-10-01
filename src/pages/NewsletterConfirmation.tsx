@@ -38,7 +38,7 @@ const NewsletterConfirmation: React.FC = () => {
       robots.name = 'robots';
       document.head.appendChild(robots);
     }
-    robots.content = 'noindex';
+    robots.content = 'noindex, nofollow';
   }, [copy.metaTitle]);
 
   return (
@@ -49,27 +49,15 @@ const NewsletterConfirmation: React.FC = () => {
           en: translations.en.newsletter.meta.canonical
         }}
         forceDarkBackground
-        ctaHref={resolvedLang === 'fr' ? '/fr#hero' : '/#hero'}
       />
       <main className="flex flex-1 items-center justify-center px-4 py-24 md:px-6">
-        <div className="w-full max-w-[560px] rounded-[16px] bg-white/95 p-10 shadow-[0_28px_72px_rgba(18,28,45,0.12)] ring-1 ring-black/5">
-          <h1 className="text-3xl font-semibold text-[#121C2D] md:text-4xl">{copy.heading}</h1>
-          <p className="mt-4 text-lg font-semibold text-[#139E9C]">{copy.subheading}</p>
-          <p className="mt-6 text-base leading-relaxed text-[#4B5563]">{copy.intro}</p>
-          <ul className="mt-6 space-y-3 text-base leading-relaxed text-[#4B5563]">
-            {copy.checklist.map(item => (
-              <li key={item} className="flex items-start gap-3">
-                <span className="mt-2 h-2 w-2 rounded-full bg-[#139E9C]" aria-hidden="true" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <a href={copy.ctaHref} className="btn-primary w-full sm:w-auto">
-              {copy.ctaLabel}
-            </a>
-            <p className="text-sm text-[#6B7280] sm:text-right">{copy.support}</p>
-          </div>
+        <div className="w-full max-w-[540px] rounded-[12px] bg-white/95 p-10 shadow-[0_28px_72px_rgba(18,28,45,0.12)] ring-1 ring-black/5 sm:p-12 font-inter">
+          <h1 className="text-3xl font-semibold text-[#121C2D] md:text-4xl">{copy.title}</h1>
+          <p className="mt-4 text-base leading-relaxed text-[#4B5563]">{copy.body}</p>
+          <p className="mt-6 text-sm font-medium text-[#139E9C]">{copy.extra}</p>
+          <a href={copy.backHome.href} className="btn-primary mt-10 inline-flex w-full justify-center sm:w-auto">
+            {copy.backHome.label}
+          </a>
         </div>
       </main>
       <Footer

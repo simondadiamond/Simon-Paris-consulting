@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { Lock } from 'lucide-react';
 import { translations, type Language } from '../i18n';
 
 const POST_URL =
@@ -21,8 +22,15 @@ interface SignupFormProps {
 }
 
 export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
-  const signupCopy = translations[lang].newsletter.signup;
+  const copy = translations[lang].newsletter;
   const [sourceUrl, setSourceUrl] = useState('');
+
+  const trustContent = useMemo(() => {
+    const privacyLabel = lang === 'fr' ? 'Politique de confidentialité' : 'Privacy Policy';
+    const sanitized = copy.trust.replace(/^🔒\s*/, '');
+    const [before, after = ''] = sanitized.split(privacyLabel);
+    return { before, after, privacyLabel };
+  }, [copy.trust, lang]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -57,11 +65,11 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
   return (
     <>
       <section className="w-full font-inter">
-        <div className="mx-auto w-full max-w-[600px] rounded-[12px] bg-white/95 p-8 shadow-[0_32px_80px_rgba(18,28,45,0.12)] ring-1 ring-black/5 sm:p-12">
-          <header className="mb-10 space-y-5 md:space-y-6">
-            <h1 className="text-3xl font-semibold text-[#121C2D] md:text-4xl">{signupCopy.heading}</h1>
-            <p className="text-lg font-semibold text-[#139E9C] md:text-xl">{signupCopy.subheading}</p>
-            <p className="text-base leading-relaxed text-[#4B5563]">{signupCopy.body}</p>
+        <div className="mx-auto w-full max-w-[540px] rounded-[12px] bg-white/95 p-8 shadow-[0_32px_80px_rgba(18,28,45,0.12)] ring-1 ring-black/5 sm:p-12">
+          <header className="mb-12 space-y-4 md:space-y-5">
+            <h1 className="text-3xl font-semibold text-[#121C2D] md:text-4xl">{copy.title}</h1>
+            <p className="text-lg font-semibold text-[#139E9C] md:text-xl">{copy.subtitle}</p>
+            <p className="text-base leading-relaxed text-[#4B5563] whitespace-pre-line">{copy.body}</p>
           </header>
 
           <form
@@ -69,20 +77,20 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
             data-type="subscription"
             method="POST"
             action={POST_URL}
-            className="space-y-6"
+            className="space-y-8"
           >
             <div className="space-y-2">
               <label htmlFor="EMAIL" className="text-sm font-semibold text-[#1F2937]">
-                {signupCopy.emailLabel}
+                {copy.emailLabel}
               </label>
               <input
                 id="EMAIL"
                 name="EMAIL"
                 type="email"
                 required
-                placeholder={signupCopy.emailPlaceholder}
+                placeholder={copy.emailPlaceholder}
                 autoComplete="email"
-                className="w-full rounded-[10px] border border-[#D1D5DB] bg-white px-5 py-3 text-base text-[#121C2D] shadow-sm transition focus:border-[#139E9C] focus:outline-none focus:ring-4 focus:ring-[#139E9C]/20"
+                className="w-full rounded-[12px] border border-[#D1D5DB] bg-white px-5 py-3 text-base text-[#121C2D] shadow-sm transition focus:border-[#139E9C] focus:outline-none focus:ring-4 focus:ring-[#139E9C]/20"
               />
             </div>
 
@@ -96,7 +104,7 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
                 className="mt-1 h-5 w-5 rounded border-[#D1D5DB] text-[#139E9C] focus:ring-[#139E9C]"
               />
               <label htmlFor="OPT_IN" className="text-sm leading-relaxed text-[#4B5563]">
-                {signupCopy.consentLabel}
+                {copy.consent}
               </label>
             </div>
 
@@ -106,8 +114,8 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
               style={{ display: 'none' }}
               className="rounded-[8px] border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
             >
-              <p className="font-semibold">{signupCopy.errorTitle}</p>
-              <p className="mt-1 leading-relaxed">{signupCopy.errorBody}</p>
+              <p className="font-semibold">{copy.error.title}</p>
+              <p className="mt-1 leading-relaxed">{copy.error.body}</p>
             </div>
 
             <div
@@ -116,11 +124,11 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
               style={{ display: 'none' }}
               className="rounded-[8px] border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700"
             >
-              <p className="font-semibold">{signupCopy.successTitle}</p>
-              <p className="mt-1 leading-relaxed">{signupCopy.successBody}</p>
+              <p className="font-semibold">{copy.success.title}</p>
+              <p className="mt-1 leading-relaxed">{copy.success.body}</p>
             </div>
 
-            <input type="text" name="email_address_check" value="" className="hidden" />
+            <input type="text" name="email_address_check" value="" className="input--hidden" />
             <input type="hidden" name="LANGUAGE" value={lang} />
             <input type="hidden" name="locale" value={lang} />
             <input type="hidden" name="SOURCE_URL" value={sourceUrl} />
@@ -128,20 +136,23 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
             <div className="g-recaptcha-v3" data-sitekey={RECAPTCHA_SITE_KEY} style={{ display: 'none' }} />
 
             <button type="submit" className="btn-primary w-full">
-              {signupCopy.submit}
+              {copy.submit}
             </button>
           </form>
 
-          <p className="mt-8 text-sm text-[#6B7280]">
-            {signupCopy.trustLine.prefix}
-            <a
-              href={lang === 'fr' ? '/fr/politique-confidentialite' : '/privacy'}
-              className="font-semibold text-[#139E9C] transition-colors hover:text-[#0F807E]"
-            >
-              {signupCopy.trustLine.linkLabel}
-            </a>
-            {signupCopy.trustLine.suffix}
-          </p>
+          <div className="mt-10 flex items-start gap-3 text-sm text-[#4B5563]">
+            <Lock className="mt-0.5 h-4 w-4 text-[#139E9C]" aria-hidden="true" />
+            <p>
+              {trustContent.before}
+              <a
+                href={lang === 'fr' ? '/fr/politique-confidentialite' : '/privacy'}
+                className="font-semibold text-[#139E9C] transition-colors hover:text-[#0F807E]"
+              >
+                {trustContent.privacyLabel}
+              </a>
+              {trustContent.after}
+            </p>
+          </div>
         </div>
       </section>
 
