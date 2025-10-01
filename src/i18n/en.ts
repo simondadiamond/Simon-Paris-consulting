@@ -162,11 +162,11 @@ export const en = {
       canonical: '/en/newsletter',
       alternate: '/fr/newsletter'
     },
-    title: 'The Automated SMB – The pragmatic newsletter for modernizing your SMB',
-    subtitle: 'Every week: save time and discover practical AI tools for SMBs.',
+    title: 'The Automated SMB',
+    subtitle: 'The pragmatic newsletter to modernize your SMB',
     bodyLines: [
-      'Clear, actionable tactics designed for Québec SMB leaders.',
-      'Stay compliant with Law 25 and cut costs without the jargon.'
+      'Every week: save time and cut costly mistakes.',
+      'Clear, practical tips for Québec SMBs that stay compliant with Law 25.'
     ],
     emailLabel: 'Email address',
     emailPlaceholder: 'name@business.com',

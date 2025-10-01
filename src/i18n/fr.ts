@@ -162,11 +162,11 @@ const fr: TranslationKeys = {
       canonical: '/fr/newsletter',
       alternate: '/en/newsletter'
     },
-    title: 'The Automated SMB – L’infolettre pragmatique pour moderniser votre PME',
-    subtitle: 'Chaque semaine : gagnez du temps et découvrez des outils IA concrets pour PME.',
+    title: 'The Automated SMB',
+    subtitle: 'L’infolettre pragmatique pour moderniser votre PME',
     bodyLines: [
-      'Des conseils clairs et applicables dès maintenant.',
-      'Pensés pour les dirigeants de PME québécoises qui veulent rester conformes à la Loi 25.'
+      'Chaque semaine : gagnez du temps et évitez les erreurs coûteuses.',
+      'Des conseils clairs, pensés pour les PME québécoises et conformes à la Loi 25.'
     ],
     emailLabel: 'Adresse courriel',
     emailPlaceholder: 'nom@entreprise.com',

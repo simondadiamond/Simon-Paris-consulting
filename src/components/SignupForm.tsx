@@ -64,13 +64,13 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
   return (
     <>
       <section className="w-full font-inter">
-        <div className="mx-auto w-full max-w-[540px] rounded-[12px] bg-white/95 p-8 shadow-[0_32px_80px_rgba(18,28,45,0.12)] ring-1 ring-black/5 sm:p-12">
-          <header className="mb-12 space-y-4 md:space-y-5">
+        <div className="mx-auto w-full max-w-[540px] rounded-[12px] bg-white p-8 shadow-[0_32px_80px_rgba(18,28,45,0.12)] ring-1 ring-black/5 sm:p-12">
+          <header className="mb-10 space-y-3 md:mb-12 md:space-y-4">
             <h1 className="text-3xl font-semibold text-[#121C2D] md:text-4xl">{copy.title}</h1>
             <p className="text-lg font-semibold text-[#139E9C] md:text-xl">{copy.subtitle}</p>
-            <div className="space-y-2">
+            <div className="space-y-1.5">
               {bodyLines.map(line => (
-                <p key={line} className="text-base leading-relaxed text-[#4B5563]">
+                <p key={line} className="text-sm leading-relaxed text-[#4B5563] md:text-base">
                   {line}
                 </p>
               ))}
@@ -82,7 +82,7 @@ export const SignupForm: React.FC<SignupFormProps> = ({ lang }) => {
             data-type="subscription"
             method="POST"
             action={POST_URL}
-            className="space-y-9"
+            className="space-y-8"
           >
             <div className="space-y-2">
               <label htmlFor="EMAIL" className="text-sm font-semibold text-[#1F2937]">
