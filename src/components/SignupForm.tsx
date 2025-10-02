@@ -254,11 +254,13 @@ const SignupForm: React.FC = () => {
           }
           
           /* Tighten space above/below the subtitle block */
-          #sib-container .sib-form-block:nth-of-type(2) { 
+          /* This targets the 2nd and 3rd blocks (Tagline and Description) */
+          #sib-container .sib-form-block:nth-of-type(2),
+          #sib-container .sib-form-block:nth-of-type(3) { 
             padding-top: 8px !important;
             padding-bottom: 8px !important;
           }
-
+          
           /* Tighten space around the email input block */
           #sib-container .sib-input {
             padding-top: 10px !important;
@@ -267,7 +269,7 @@ const SignupForm: React.FC = () => {
 
           /* --- Opt-in Field Adjustments (Fixing the disconnect) --- */
           
-          /* Target the specific padding container for the opt-in block */
+          /* Target the padding container for the opt-in block */
           #sib-container .sib-optin {
             /* Reduced padding above Opt-in label */
             padding-top: 10px !important; 
@@ -282,25 +284,25 @@ const SignupForm: React.FC = () => {
 
 
           /* --- Button Area Adjustments (Removing all surrounding space) --- */
-
-          /* Remove the empty block (space) right before the button block */
-          /* This targets the <div style="padding: 16px 0;"><div class="sib-form-block" ... >...</div></div> before the button */
-          #sib-container .sib-form-block:has(.sib-text-form-block) {
+          
+          /* NEW FIX: Remove the empty block (spacer) right before the button block.
+             This targets the 5th div with padding: 16px 0, which is the spacer after Opt-in and before the CTA. */
+          #sib-container > form > div:nth-child(5) {
             display: none !important;
           }
 
-          /* Target the button's direct container block */
-          #sib-container .sib-form-block[style*="text-align: center"] {
+          /* Target the button's direct container block (the 6th div with padding) */
+          #sib-container > form > div:nth-child(6) {
             padding-top: 20px !important; /* Single clean space above the button */
             padding-bottom: 0 !important; /* Removes space below the button */
           }
           
-          /* Remove the reCAPTCHA wrapper block (which adds space below the button) */
-          /* We can hide this safely, as the Recaptcha script is loaded externally anyway */
-          #sib-container .g-recaptcha-v3 { 
+          /* Remove the reCAPTCHA wrapper block (which adds space below the button) 
+             This is the 7th div with padding. */
+          #sib-container > form > div:nth-child(7) { 
             display: none !important;
           }
-
+          
           /* Ensure the Unsubscribe text is removed (from the previous request) */
           #sib-container .entry__specification {
             display: none !important;
