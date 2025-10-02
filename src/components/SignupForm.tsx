@@ -34,7 +34,7 @@ function reloadScript(src: string, attrs: Record<string, string> = {}) {
   return s;
 }
 
-// --- Text Content and HTML Generator (MODIFIED FOR TIGHTER SPACING) ---
+// --- Text Content and HTML Generator (FINAL SPACING) ---
 
 const translations = {
   fr: {
@@ -61,7 +61,6 @@ const translations = {
 
 /**
  * Builds the Brevo HTML with dynamic content and translations.
- * NOTE: INLINE PADDING ON DIVS HAS BEEN REDUCED OR REMOVED FOR TIGHTER SPACING.
  */
 const getFormHtml = (lang: 'fr' | 'en', sourceUrl: string) => {
   const text = translations[lang];
@@ -83,13 +82,13 @@ const getFormHtml = (lang: 'fr' | 'en', sourceUrl: string) => {
         action="${formActionUrl}"
         data-type="subscription">
 
-        <div style="padding: 12px 0;">
+        <div style="padding: 16px 0;">
           <div class="sib-form-block" style="font-size:19px; text-align:center; font-weight:700; font-family:Inter, webFonts; color:#121c2d; background-color:transparent; text-align:center">
             <h1>${text.headline}</h1>
           </div>
         </div>
 
-        <div style="padding: 12px 0 8px 0;">
+        <div style="padding: 16px 0 8px 0;">
           <div class="sib-form-block" style="font-size:19px; text-align:center; font-family:Inter, webFonts; color:#139e9b; background-color:transparent; text-align:center">
             <div class="sib-text-form-block">
               <p><strong>${text.tagline}</strong></p>
@@ -225,7 +224,7 @@ const SignupForm: React.FC = () => {
       <div className="w-full max-w-[720px]"> {/* WIDER CONTAINER: max-w-[720px] */}
         <div ref={containerRef} />
 
-        {/* --- Simplified CSS Overrides --- */}
+        {/* --- FINAL CSS Overrides for Aesthetics and Validation --- */}
         <style>{`
           /* General Container Styling */
           .sib-form { background: transparent !important; }
@@ -261,8 +260,45 @@ const SignupForm: React.FC = () => {
 
           /* CRITICAL FIX: Tighten space between "Opt-in*" label and the actual checkbox */
           #sib-container .sib-optin .form__label-row {
-            margin-bottom: 4px !important; 
+            margin-bottom: 2px !important; 
           }
+
+          /* --- Validation Error Styling FIX (Modern/Clean Look) --- */
+          
+          /* Target all validation panels (primary and top form messages) */
+          .entry__error, 
+          .sib-form-message-panel {
+            /* Remove Brevo's ugly red/pink background and border */
+            background-color: transparent !important; 
+            border: none !important;
+            border-radius: 0 !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            
+            /* Set font and color for a clean inline look */
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            color: #ef4444 !important; /* Tailwind's red-500 */
+            text-align: left !important;
+            
+            /* Reduce unnecessary top/bottom padding/margin on the error elements themselves */
+            margin-top: 4px !important;
+            margin-bottom: 4px !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+          }
+          
+          /* Ensure the top message panel respects the max width and looks clean */
+          #error-message {
+            max-width: 600px !important;
+            margin: 0 auto 16px !important; /* Restore a little space above form */
+            padding: 12px 16px !important; /* Add back padding to the message panel container */
+            border: 1px solid #ef4444 !important;
+            border-radius: 8px !important;
+            background-color: #fef2f2 !important; /* Light red background */
+            color: #b91c1c !important; /* Darker red text */
+          }
+
 
           /* Button Styling */
           .sib-form-block__button {
