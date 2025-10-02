@@ -224,7 +224,7 @@ const SignupForm: React.FC = () => {
       <div className="w-full max-w-[720px]"> {/* WIDER CONTAINER: max-w-[720px] */}
         <div ref={containerRef} />
 
-        {/* --- FINAL CSS Overrides for Aesthetics and Validation --- */}
+        {/* --- FINAL CSS Overrides for Aesthetics, Spacing, and Validation --- */}
         <style>{`
           /* General Container Styling */
           .sib-form { background: transparent !important; }
@@ -258,9 +258,21 @@ const SignupForm: React.FC = () => {
             display: none !important;
           }
 
-          /* CRITICAL FIX: Tighten space between "Opt-in*" label and the actual checkbox */
+          /* --- OPT-IN SPACING FIX (Using your requested values) --- */
+          
+          /* Target Opt-in field label */
+          #sib-container .sib-optin .entry__label {
+            margin-bottom: 2px !important;
+          }
+
+          /* Target Opt-in field choice (checkbox and text) */
+          #sib-container .sib-optin .entry__choice {
+            margin-top: 2px !important;
+          }
+
+          /* CRITICAL FIX: Ensure the label row itself has no default margin */
           #sib-container .sib-optin .form__label-row {
-            margin-bottom: 2px !important; 
+            margin-bottom: 0 !important;
           }
 
           /* --- Validation Error Styling FIX (Modern/Clean Look) --- */
