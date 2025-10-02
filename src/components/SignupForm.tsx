@@ -254,7 +254,6 @@ const SignupForm: React.FC = () => {
           }
           
           /* Tighten space above/below the tagline/description blocks */
-          /* Targets the 2nd and 3rd blocks */
           #sib-container .sib-form-block:nth-of-type(2),
           #sib-container .sib-form-block:nth-of-type(3) { 
             padding-top: 8px !important;
@@ -269,12 +268,19 @@ const SignupForm: React.FC = () => {
 
           /* --- Opt-in Field Adjustments (VISIBILITY & TIGHT SPACING) --- */
           
-          /* CRITICAL FIX: Ensure the entire opt-in block is visible and tight */
+          /* CRITICAL FIX: Ensure the entire opt-in block is visible */
+          /* We target the direct padding wrapper div and FORCE VISIBILITY */
+          #sib-container > form > div:has(.sib-optin) {
+            display: block !important;
+            padding-top: 10px !important;
+            padding-bottom: 0 !important; /* Remove space below the opt-in */
+          }
+          
+          /* CRITICAL FIX 2: Ensure the opt-in block itself has tight padding */
           #sib-container .sib-optin {
-            display: block !important; /* Forces visibility */
-            padding-top: 10px !important; /* Reduced padding above Opt-in label */
-            padding-bottom: 0 !important; /* Tighten up below the checkbox */
-            margin-bottom: 0 !important; /* Ensure no margin is inherited */
+            padding-top: 0 !important;
+            padding-bottom: 0 !important; 
+            margin-bottom: 0 !important;
           }
 
           /* Reduce vertical space below the Opt-in label itself */
@@ -285,20 +291,20 @@ const SignupForm: React.FC = () => {
           /* --- Button Area Adjustments (FINAL SPACING) --- */
           
           /* Hide the empty block (spacer) after the opt-in block, before the button. 
-             This is the <div style="padding: 16px 0;"> that is now the 5th child of the form. */
-          #sib-container > form > div:nth-child(5) {
+             This is the 6th div (assuming opt-in is the 5th) */
+          #sib-container > form > div:nth-child(6) {
             display: none !important;
           }
 
-          /* Target the button's direct container block (the 6th div with padding) */
-          #sib-container > form > div:nth-child(6) {
+          /* Target the button's direct container block (the 7th div with padding) */
+          #sib-container > form > div:nth-child(7) {
             padding-top: 20px !important; /* Single clean space above the button */
-            padding-bottom: 0 !important; /* Removes space below the button */
+            padding-bottom: 10px !important; /* Keep a minimal buffer at the very bottom */
           }
           
           /* Remove the reCAPTCHA wrapper block (which adds space below the button) 
-             This is the 7th div with padding. */
-          #sib-container > form > div:nth-child(7) { 
+             This is the 8th div with padding. */
+          #sib-container > form > div:nth-child(8) { 
             display: none !important;
           }
           
