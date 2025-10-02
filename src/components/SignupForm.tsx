@@ -232,7 +232,7 @@ const SignupForm: React.FC = () => {
             border: 1px solid #e5e7eb !important;
             border-radius: 16px !important;
             padding: 20px !important; /* REDUCED PADDING for mobile */
-            max-width: 600px !important; /* WIDER INNER FORM (up from 540px) */
+            max-width: 600px !important; /* WIDER INNER FORM */
             margin: 0 auto !important;
             box-shadow: 0 16px 48px rgba(18, 28, 45, 0.12) !important;
           }
@@ -253,8 +253,8 @@ const SignupForm: React.FC = () => {
             margin-bottom: 0px !important; 
           }
           
-          /* Tighten space above/below the subtitle block */
-          /* This targets the 2nd and 3rd blocks (Tagline and Description) */
+          /* Tighten space above/below the tagline/description blocks */
+          /* Targets the 2nd and 3rd blocks */
           #sib-container .sib-form-block:nth-of-type(2),
           #sib-container .sib-form-block:nth-of-type(3) { 
             padding-top: 8px !important;
@@ -267,14 +267,13 @@ const SignupForm: React.FC = () => {
             padding-bottom: 10px !important;
           }
 
-          /* --- Opt-in Field Adjustments (Fixing the disconnect) --- */
+          /* --- Opt-in Field Adjustments (FIXED) --- */
           
-          /* Target the padding container for the opt-in block */
+          /* Restore visibility and set tight padding for the Opt-in block */
           #sib-container .sib-optin {
-            /* Reduced padding above Opt-in label */
+            display: block !important; /* Ensure block is visible */
             padding-top: 10px !important; 
-            /* Significantly reduced padding below the checkbox block to remove disconnect */
-            padding-bottom: 0 !important; 
+            padding-bottom: 0 !important; /* Tighten up below the checkbox */
           }
 
           /* Reduce vertical space below the Opt-in label itself */
@@ -283,15 +282,16 @@ const SignupForm: React.FC = () => {
           }
 
 
-          /* --- Button Area Adjustments (Removing all surrounding space) --- */
+          /* --- Button Area Adjustments (FINAL SPACING) --- */
           
-          /* NEW FIX: Remove the empty block (spacer) right before the button block.
-             This targets the 5th div with padding: 16px 0, which is the spacer after Opt-in and before the CTA. */
+          /* NEW FIX: Hide the empty block (spacer) after the opt-in block, before the button. 
+             This is the <div style="padding: 16px 0;"> that contains the empty sib-form-block:nth-of-type(4) */
           #sib-container > form > div:nth-child(5) {
             display: none !important;
           }
 
-          /* Target the button's direct container block (the 6th div with padding) */
+          /* Target the button's direct container block */
+          /* This is the 6th div with padding (which holds the button) */
           #sib-container > form > div:nth-child(6) {
             padding-top: 20px !important; /* Single clean space above the button */
             padding-bottom: 0 !important; /* Removes space below the button */
@@ -303,7 +303,7 @@ const SignupForm: React.FC = () => {
             display: none !important;
           }
           
-          /* Ensure the Unsubscribe text is removed (from the previous request) */
+          /* Ensure the Unsubscribe text is removed */
           #sib-container .entry__specification {
             display: none !important;
           }
