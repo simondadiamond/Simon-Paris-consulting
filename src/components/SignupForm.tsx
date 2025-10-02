@@ -5,7 +5,7 @@ const BREVO_MAIN_SRC = "https://sibforms.com/forms/end-form/build/main.js";
 const RECAPTCHA_SRC =
   "https://www.google.com/recaptcha/api.js?render=6Lf0RtYrAAAAAMnsVvJx3DTeKDVGi2ZQElXygdM-&hl=en";
 
-// --- Utility Functions (keep as is) ---
+// --- Utility Functions (Keep as is) ---
 
 function ensureHeadLink(href: string, attr: Record<string, string> = {}) {
   const key = `[data-href="${href}"]`;
@@ -34,7 +34,7 @@ function reloadScript(src: string, attrs: Record<string, string> = {}) {
   return s;
 }
 
-// --- Text Content and HTML Generator ---
+// --- Text Content and HTML Generator (MODIFIED) ---
 
 const translations = {
   fr: {
@@ -61,9 +61,14 @@ const translations = {
 
 /**
  * Builds the Brevo HTML with dynamic content and translations.
+ * NOTE: INLINE PADDING ON DIVS HAS BEEN REDUCED OR REMOVED FOR TIGHTER SPACING.
  */
 const getFormHtml = (lang: 'fr' | 'en', sourceUrl: string) => {
   const text = translations[lang];
+  // NOTE: If you need to swap out the Brevo form, change the `action` URL here
+  // based on the `lang` variable. For now, it uses the FR action for all.
+  const formActionUrl = "https://c454d84b.sibforms.com/serve/MUIFABPnId223hP1MfXQhUKTZ-Hrpawb-mUK1I6K6Z23awSphtJWBleirm9cn-eH8BUbLtEd0uEGsyiLCLZGhvgXAyp37m1l4q7dUcHqtCA3BDWXEyncJcmoudjdvwBu4O5eu6JEptiOhjBgQef67s3Om8yQZZPmxI_NR9LWPXnzoWogE-z4RtuEZTvK8wz3y2TtSKqiOtQLpVWQ";
+
 
   return `
 <div class="sib-form" style="text-align: center; background-color: #121c2d;">
@@ -75,16 +80,16 @@ const getFormHtml = (lang: 'fr' | 'en', sourceUrl: string) => {
 
     <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:rgba(249,250,251,1); max-width:540px; border-radius:20px; border-width:1px; border-color:#c3bebe; border-style:solid; direction:ltr">
       <form id="sib-form" method="POST"
-        action="https://c454d84b.sibforms.com/serve/MUIFABPnId223hP1MfXQhUKTZ-Hrpawb-mUK1I6K6Z23awSphtJWBleirm9cn-eH8BUbLtEd0uEGsyiLCLZGhvgXAyp37m1l4q7dUcHqtCA3BDWXEyncJcmoudjdvwBu4O5eu6JEptiOhjBgQef67s3Om8yQZZPmxI_NR9LWPXnzoWogE-z4RtuEZTvK8wz3y2TtSKqiOtQLpVWQ"
+        action="${formActionUrl}"
         data-type="subscription">
 
-        <div style="padding: 16px 0;">
+        <div style="padding: 0;">
           <div class="sib-form-block" style="font-size:19px; text-align:center; font-weight:700; font-family:Inter, webFonts; color:#121c2d; background-color:transparent; text-align:center">
             <h1>${text.headline}</h1>
           </div>
         </div>
 
-        <div style="padding: 16px 0;">
+        <div style="padding: 8px 0;">
           <div class="sib-form-block" style="font-size:19px; text-align:center; font-family:Inter, webFonts; color:#139e9b; background-color:transparent; text-align:center">
             <div class="sib-text-form-block">
               <p><strong>${text.tagline}</strong></p>
@@ -92,7 +97,7 @@ const getFormHtml = (lang: 'fr' | 'en', sourceUrl: string) => {
           </div>
         </div>
 
-        <div style="padding: 16px 0;">
+        <div style="padding: 8px 0;">
           <div class="sib-form-block" style="font-size:16px; text-align:left; font-family:Inter, webFonts; color:#121c2d; background-color:transparent; text-align:left">
             <div class="sib-text-form-block">
               <p>${text.desc}</p>
@@ -103,7 +108,7 @@ const getFormHtml = (lang: 'fr' | 'en', sourceUrl: string) => {
         <input type="hidden" id="SOURCE_URL" name="SOURCE_URL" value="${sourceUrl}" />
         <input type="hidden" id="LANGUAGE" name="LANGUAGE" value="${text.languageCode}" />
         
-        <div style="padding: 16px 0;">
+        <div style="padding: 10px 0;">
           <div class="sib-input sib-form-block">
             <div class="form__entry entry_block">
               <div class="form__label-row ">
@@ -119,7 +124,7 @@ const getFormHtml = (lang: 'fr' | 'en', sourceUrl: string) => {
           </div>
         </div>
 
-        <div style="padding: 16px 0;">
+        <div style="padding: 10px 0;">
           <div class="sib-optin sib-form-block" data-required="true">
             <div class="form__entry entry_mcq">
               <div class="form__label-row">
@@ -142,7 +147,7 @@ const getFormHtml = (lang: 'fr' | 'en', sourceUrl: string) => {
           </div>
         </div>
 
-        <div style="padding: 16px 0;">
+        <div style="padding: 20px 0;">
           <div class="sib-form-block" style="text-align: center">
             <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-size:16px; text-align:center; font-weight:700; font-family:Inter, webFonts; color:#FFFFFF; background-color:#0473d0; border-radius:10px; border-width:0px;" form="sib-form" type="submit">
               <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512" style="vertical-align:middle; margin-right:6px; height:14px; width:14px;">
@@ -153,7 +158,7 @@ const getFormHtml = (lang: 'fr' | 'en', sourceUrl: string) => {
           </div>
         </div>
 
-        <div style="padding: 16px 0;">
+        <div style="padding: 0;">
           <div class="g-recaptcha-v3" data-sitekey="6Lf0RtYrAAAAAMnsVvJx3DTeKDVGi2ZQElXygdM-" style="display: none"></div>
         </div>
 
@@ -217,109 +222,49 @@ const SignupForm: React.FC = () => {
 
   return (
     <section className="flex justify-center py-12 px-4">
-      <div className="w-full max-w-[720px]"> {/* WIDER CONTAINER: max-w-[720px] (up from 640px) */}
+      <div className="w-full max-w-[720px]"> {/* WIDER CONTAINER: max-w-[720px] */}
         <div ref={containerRef} />
 
-           {/* CSS-only overrides to optimize mobile padding and adjust spacing */}
+        {/* --- Simplified CSS Overrides (Only aesthetic tweaks remain) --- */}
         <style>{`
-          /* Kill the outer dark bg and extra borders */
+          /* General Container Styling */
           .sib-form { background: transparent !important; }
           #sib-form-container { background: transparent !important; border: 0 !important; box-shadow: none !important; }
-
-          /* Make the inner card look like your site */
           #sib-container {
             background: #f9fafb !important;
             border: 1px solid #e5e7eb !important;
             border-radius: 16px !important;
-            padding: 20px !important; /* REDUCED PADDING for mobile */
-            max-width: 600px !important; /* WIDER INNER FORM */
+            padding: 20px !important; /* Mobile padding */
+            max-width: 600px !important; 
             margin: 0 auto !important;
             box-shadow: 0 16px 48px rgba(18, 28, 45, 0.12) !important;
           }
 
-          /* Tighter padding on desktop */
+          /* Desktop Padding */
           @media (min-width: 640px) {
             #sib-container {
-              padding: 32px !important; /* Standard padding for desktop */
+              padding: 32px !important; 
             }
           }
 
-          /* --- Typography and Spacing (General) --- */
-          
-          /* Make the main title bigger (H1) */
+          /* Typography and Opt-in Specifics */
           #sib-container h1 {
             font-size: 28px !important;
             line-height: 1.2 !important;
             margin-bottom: 0px !important; 
           }
           
-          /* Tighten space above/below the tagline/description blocks */
-          #sib-container .sib-form-block:nth-of-type(2),
-          #sib-container .sib-form-block:nth-of-type(3) { 
-            padding-top: 8px !important;
-            padding-bottom: 8px !important;
-          }
-          
-          /* Tighten space around the email input block */
-          #sib-container .sib-input {
-            padding-top: 10px !important;
-            padding-bottom: 10px !important;
+          /* Remove the "Vous pouvez vous désabonner..." text */
+          #sib-container .entry__specification {
+            display: none !important;
           }
 
-          /* --- Opt-in Field Adjustments (VISIBILITY & TIGHT SPACING) --- */
-          
-          /* CRITICAL FIX: Ensure the entire opt-in block is visible */
-          /* We target the direct padding wrapper div and FORCE VISIBILITY */
-          #sib-container > form > div:has(.sib-optin) {
-            display: block !important;
-            padding-top: 10px !important;
-            padding-bottom: 0 !important; /* Remove space below the opt-in */
-          }
-          
-          /* CRITICAL FIX 2: Ensure the opt-in block itself has tight padding */
-          #sib-container .sib-optin {
-            padding-top: 0 !important;
-            padding-bottom: 0 !important; 
-            margin-bottom: 0 !important;
-          }
-
-          /* Reduce vertical space below the Opt-in label itself */
+          /* Tighter vertical spacing below Opt-in label */
           #sib-container .sib-optin .form__label-row {
             margin-bottom: 8px !important;
           }
 
-          /* --- Button Area Adjustments (FINAL SPACING) --- */
-          
-          /* Hide the empty block (spacer) after the opt-in block, before the button. 
-             This is the 6th div (assuming opt-in is the 5th) */
-          #sib-container > form > div:nth-child(6) {
-            display: none !important;
-          }
-
-          /* Target the button's direct container block (the 7th div with padding) */
-          #sib-container > form > div:nth-child(7) {
-            padding-top: 20px !important; /* Single clean space above the button */
-            padding-bottom: 10px !important; /* Keep a minimal buffer at the very bottom */
-          }
-          
-          /* Remove the reCAPTCHA wrapper block (which adds space below the button) 
-             This is the 8th div with padding. */
-          #sib-container > form > div:nth-child(8) { 
-            display: none !important;
-          }
-          
-          /* Ensure the Unsubscribe text is removed */
-          #sib-container .entry__specification {
-            display: none !important;
-          }
-          
-          /* Tidy message panels width/spacing */
-          .sib-form-message-panel {
-            max-width: 600px !important;
-            margin: 0 auto 16px !important;
-          }
-
-          /* Gradient button, no extra borders */
+          /* Button Styling */
           .sib-form-block__button {
             background: linear-gradient(90deg, #139E9C, #2280FF) !important;
             border: none !important;
