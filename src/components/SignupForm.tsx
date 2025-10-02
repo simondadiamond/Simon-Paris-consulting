@@ -66,7 +66,7 @@ const getFormHtml = (lang: 'fr' | 'en', sourceUrl: string) => {
   const text = translations[lang];
   // NOTE: If you need to swap out the Brevo form, change the `action` URL here
   // based on the `lang` variable. For now, it uses the FR action for all.
-  const formActionUrl = "https://c454d84b.sibforms.com/serve/MUIFABPnId223hP1MfXQhUKTZ-Hrpawb-mUK1I6K6Z23awSphtJWBleirm9cn-eH8BUbLtEd0uEGsyiLCLZGhvgXAyp37m1l4q7dUcHqtCA3BDWXEyncJcmoudjdvwBu4O5eu6JEptiOhjBgQef67s-z4RtuEZTvK8wz3y2TtSKqiOtQLpVWQ";
+const formActionUrl = "https://c454d84b.sibforms.com/serve/MUIFAKOL2ES0iVRU7f9TS4DJeiNvWgNZgTAuWAFzzECJN-5Mr1LpCizF0cpTEHd24bAGTIdmu6CW1xNiN05WCO6bFHF-KsUxjmrjJSr0loIrevetQFMpTNrsV20S9NOpJgzf5bJXPSRCu5zu_RkFmovzeVCA81lHBq9k0N8Fy9jzjrq9uSS8DD2rcrIMyJtR-rs7s93aOBQrUrF-";
 
 
   return `
