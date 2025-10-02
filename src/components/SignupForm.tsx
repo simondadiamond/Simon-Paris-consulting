@@ -34,7 +34,7 @@ function reloadScript(src: string, attrs: Record<string, string> = {}) {
   return s;
 }
 
-// --- Text Content and HTML Generator (MODIFIED) ---
+// --- Text Content and HTML Generator (MODIFIED FOR TIGHTER SPACING) ---
 
 const translations = {
   fr: {
@@ -67,7 +67,7 @@ const getFormHtml = (lang: 'fr' | 'en', sourceUrl: string) => {
   const text = translations[lang];
   // NOTE: If you need to swap out the Brevo form, change the `action` URL here
   // based on the `lang` variable. For now, it uses the FR action for all.
-  const formActionUrl = "https://c454d84b.sibforms.com/serve/MUIFABPnId223hP1MfXQhUKTZ-Hrpawb-mUK1I6K6Z23awSphtJWBleirm9cn-eH8BUbLtEd0uEGsyiLCLZGhvgXAyp37m1l4q7dUcHqtCA3BDWXEyncJcmoudjdvwBu4O5eu6JEptiOhjBgQef67s3Om8yQZZPmxI_NR9LWPXnzoWogE-z4RtuEZTvK8wz3y2TtSKqiOtQLpVWQ";
+  const formActionUrl = "https://c454d84b.sibforms.com/serve/MUIFABPnId223hP1MfXQhUKTZ-Hrpawb-mUK1I6K6Z23awSphtJWBleirm9cn-eH8BUbLtEd0uEGsyiLCLZGhvgXAyp37m1l4q7dUcHqtCA3BDWXEyncJcmoudjdvwBu4O5eu6JEptiOhjBgQef67s-z4RtuEZTvK8wz3y2TtSKqiOtQLpVWQ";
 
 
   return `
@@ -83,13 +83,13 @@ const getFormHtml = (lang: 'fr' | 'en', sourceUrl: string) => {
         action="${formActionUrl}"
         data-type="subscription">
 
-        <div style="padding: 0;">
+        <div style="padding: 12px 0;">
           <div class="sib-form-block" style="font-size:19px; text-align:center; font-weight:700; font-family:Inter, webFonts; color:#121c2d; background-color:transparent; text-align:center">
             <h1>${text.headline}</h1>
           </div>
         </div>
 
-        <div style="padding: 8px 0;">
+        <div style="padding: 12px 0 8px 0;">
           <div class="sib-form-block" style="font-size:19px; text-align:center; font-family:Inter, webFonts; color:#139e9b; background-color:transparent; text-align:center">
             <div class="sib-text-form-block">
               <p><strong>${text.tagline}</strong></p>
@@ -225,7 +225,7 @@ const SignupForm: React.FC = () => {
       <div className="w-full max-w-[720px]"> {/* WIDER CONTAINER: max-w-[720px] */}
         <div ref={containerRef} />
 
-        {/* --- Simplified CSS Overrides (Only aesthetic tweaks remain) --- */}
+        {/* --- Simplified CSS Overrides --- */}
         <style>{`
           /* General Container Styling */
           .sib-form { background: transparent !important; }
@@ -259,9 +259,9 @@ const SignupForm: React.FC = () => {
             display: none !important;
           }
 
-          /* Tighter vertical spacing below Opt-in label */
+          /* CRITICAL FIX: Tighten space between "Opt-in*" label and the actual checkbox */
           #sib-container .sib-optin .form__label-row {
-            margin-bottom: 8px !important;
+            margin-bottom: 4px !important; 
           }
 
           /* Button Styling */
