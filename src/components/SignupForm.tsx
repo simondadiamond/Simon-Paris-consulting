@@ -57,30 +57,6 @@ const translations = {
     unsubscribe: "You can unsubscribe at any time.",
     languageCode: "en", // For the hidden field
   },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 };
 
 /**
@@ -190,30 +166,11 @@ const formActionUrl = "https://c454d84b.sibforms.com/serve/MUIFAKOL2ES0iVRU7f9TS
       </form>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 `;
 };
-@@ -174,155 +214,161 @@
+
+
 // --- Main Component ---
 
 const SignupForm: React.FC = () => {
@@ -366,12 +323,6 @@ const SignupForm: React.FC = () => {
       </div>
     </section>
   );
-
-
-
-
-
-
 };
 
 export default SignupForm;
