@@ -34,7 +34,14 @@ function reloadScript(src: string, attrs: Record<string, string> = {}) {
   return s;
 }
 
-// --- Text Content and HTML Generator (FINAL SPACING) ---
+// --- Brevo Configuration Data ---
+
+const FORM_ACTION_URLS = {
+  // French Form Action URL (original default)
+  fr: "https://c454d84b.sibforms.com/serve/MUIFAKOL2ES0iVRU7f9TS4DJeiNvWgNZgTAuWAFzzECJN-5Mr1LpCizF0cpTEHd24bAGTIdmu6CW1xNiN05WCO6bFHF-KsUxjmrjJSr0loIrevetQFMpTNrsV20S9NOpJgzf5bJXPSRCu5zu_RkFmovzeVCA81lHBq9k0N8Fy9jzjrq9uSS8DD2rcrIMyJtR-rs7s93aOBQrUrF-",
+  // English Form Action URL (from user reference)
+  en: "https://c454d84b.sibforms.com/serve/MUIFAIUIPgH0AIhOXpYGKM0b2Egfo-8rUwsW8BU7q_uwwtfZA4KeVj2CrS_ouvczzqoToEYLxUT9xsm61UbdRp1X9hJldRtUAJKvR7-WDYWIx3zD2tfBaTBG8l70MxrMPCd_xhL9AIvWyhjupByZ-2UPVrZQD7gudzxUeqjUGULD6TJ5WMH0NBSLFP47X8yaIMCJmlA2deX3NV-E",
+};
 
 const translations = {
   fr: {
@@ -64,13 +71,12 @@ const translations = {
  */
 const getFormHtml = (lang: 'fr' | 'en', sourceUrl: string) => {
   const text = translations[lang];
-  // NOTE: If you need to swap out the Brevo form, change the `action` URL here
-  // based on the `lang` variable. For now, it uses the FR action for all.
-const formActionUrl = "https://c454d84b.sibforms.com/serve/MUIFAKOL2ES0iVRU7f9TS4DJeiNvWgNZgTAuWAFzzECJN-5Mr1LpCizF0cpTEHd24bAGTIdmu6CW1xNiN05WCO6bFHF-KsUxjmrjJSr0loIrevetQFMpTNrsV20S9NOpJgzf5bJXPSRCu5zu_RkFmovzeVCA81lHBq9k0N8Fy9jzjrq9uSS8DD2rcrIMyJtR-rs7s93aOBQrUrF-";
+  // --- EDITED: Select the correct action URL based on language ---
+  const formActionUrl = FORM_ACTION_URLS[lang];
 
 
   return `
-<div class="sib-form" style="text-align: center; background-color: #121c2d;">
+<div class="sib-form" style="text-align: center; /* background-color: #121c2d; REMOVED to allow CSS to control background */">
   <div id="sib-form-container" class="sib-form-container">
     <div id="error-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949; max-width:540px; display:none;">
     </div>
@@ -115,7 +121,7 @@ const formActionUrl = "https://c454d84b.sibforms.com/serve/MUIFAKOL2ES0iVRU7f9TS
                   ${text.label} *
                 </label>
                 <div class="entry__field">
-                  <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="nom@entreprise.com" data-required="true" required />
+                  <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="${lang === 'fr' ? 'nom@entreprise.com' : 'name@business.com'}" data-required="true" required />
                 </div>
               </div>
               <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
@@ -191,15 +197,29 @@ const SignupForm: React.FC = () => {
     // 2) Ensure Brevo CSS exists
     ensureHeadLink(SIB_STYLES_HREF, { "data-brevo": "styles" });
     
-    // 3) Set Brevo globals (only need to set the LOCALE dynamically)
-    (window as any).REQUIRED_CODE_ERROR_MESSAGE = lang === 'en' ? 'Please choose a country code' : 'Veuillez choisir un indicatif de pays';
+    // 3) Set Brevo globals
+    
+    // --- EDITED: Dynamic Validation Messages based on language ---
+    const requiredErrorMsg = lang === 'en' 
+      ? "This field cannot be left blank. " 
+      : "Ce champ ne peut pas être laissé vide. ";
+      
+    const emailInvalidMsg = lang === 'en' 
+      ? "Invalid email address. Please check the format (ex. name@business.com)." 
+      : "Adresse courriel invalide. Veuillez vérifier le format (ex. nom@entreprise.com ).";
+
+    (window as any).REQUIRED_CODE_ERROR_MESSAGE = lang === 'en' 
+      ? 'Please choose a country code' 
+      : 'Veuillez choisir un indicatif de pays';
+      
     (window as any).LOCALE = lang; // DYNAMICALLY SETS LOCALE
-    // Keep error messages in French as per the Brevo originals (only the front-end text changes)
-    (window as any).EMAIL_INVALID_MESSAGE = (window as any).SMS_INVALID_MESSAGE =
-      "Adresse courriel invalide. Veuillez vérifier le format (ex. nom@entreprise.com ).";
-    (window as any).REQUIRED_ERROR_MESSAGE = "Ce champ ne peut pas être laissé vide. ";
-    (window as any).GENERIC_INVALID_MESSAGE =
-      "Adresse courriel invalide. Veuillez vérifier le format (ex. nom@entreprise.com ).";
+    
+    (window as any).EMAIL_INVALID_MESSAGE = emailInvalidMsg;
+    (window as any).SMS_INVALID_MESSAGE = emailInvalidMsg;
+    (window as any).REQUIRED_ERROR_MESSAGE = requiredErrorMsg;
+    (window as any).GENERIC_INVALID_MESSAGE = emailInvalidMsg;
+
+
     (window as any).translation = {
       common: {
         selectedList: "{quantity} list selected",
@@ -274,6 +294,19 @@ const SignupForm: React.FC = () => {
           #sib-container .sib-optin .form__label-row {
             margin-bottom: 0 !important;
           }
+          
+          /* Ensure input fields have better padding/border-radius */
+          #sib-container .input {
+            padding: 12px 16px !important;
+            border-radius: 8px !important;
+          }
+          /* Add a subtle focus style */
+          #sib-container .input:focus {
+             border-color: #2280FF !important; /* Blue accent on focus */
+             box-shadow: 0 0 0 3px rgba(34, 128, 255, 0.2) !important;
+             outline: none !important;
+          }
+
 
           /* --- Validation Error Styling FIX (Modern/Clean Look) --- */
           
@@ -301,23 +334,51 @@ const SignupForm: React.FC = () => {
           }
           
           /* Ensure the top message panel respects the max width and looks clean */
-          #error-message {
+          .sib-form-message-panel {
             max-width: 600px !important;
             margin: 0 auto 16px !important; /* Restore a little space above form */
             padding: 12px 16px !important; /* Add back padding to the message panel container */
-            border: 1px solid #ef4444 !important;
             border-radius: 8px !important;
+          }
+          
+          /* Error Message Panel */
+          #error-message {
+            border: 1px solid #ef4444 !important;
             background-color: #fef2f2 !important; /* Light red background */
             color: #b91c1c !important; /* Darker red text */
+          }
+          
+          /* Success Message Panel (Added for visual consistency) */
+          #success-message {
+            border: 1px solid #13ce66 !important;
+            background-color: #e7faf0 !important; /* Light green background */
+            color: #085229 !important; /* Darker green text */
           }
 
 
           /* Button Styling */
           .sib-form-block__button {
-            background: linear-gradient(90deg, #139E9C, #2280FF) !important;
+            /* Custom Gradient */
+            background: linear-gradient(to right, #2280FF, #139E9C) !important;
+            /* Enhanced Aesthetics */
+            width: 100% !important; /* Make it full width */
+            padding: 14px 24px !important;
+            font-size: 18px !important;
             border: none !important;
             border-radius: 10px !important;
-            padding: 12px 16px !important;
+            transition: opacity 0.2s, transform 0.1s, box-shadow 0.2s !important;
+            box-shadow: 0 4px 10px rgba(34, 128, 255, 0.2) !important;
+          }
+          
+          .sib-form-block__button:hover {
+             opacity: 0.95 !important;
+             transform: translateY(-1px) !important;
+             box-shadow: 0 6px 15px rgba(34, 128, 255, 0.4) !important;
+          }
+
+          .sib-form-block__button:active {
+             transform: translateY(1px) !important;
+             box-shadow: 0 2px 5px rgba(34, 128, 255, 0.1) !important;
           }
         `}</style>
       </div>
