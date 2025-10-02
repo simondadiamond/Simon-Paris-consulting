@@ -44,12 +44,13 @@ const SignupForm: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // >>> NEW: Get the current URL for the SOURCE_URL field
+    const sourceUrl = window.location.href;
+
     // 1) Inject EXACT Brevo HTML (structure & classes untouched)
     const html = `
-<!-- Begin Brevo Form -->
 <div class="sib-form" style="text-align: center; background-color: #121c2d;">
   <div id="sib-form-container" class="sib-form-container">
-    <!-- Error panel (Brevo expects this ID) -->
     <div id="error-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949; max-width:540px; display:none;">
       <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
         <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
@@ -61,7 +62,6 @@ const SignupForm: React.FC = () => {
       </div>
     </div>
 
-    <!-- Success panel (Brevo expects this ID) -->
     <div id="success-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#085229; background-color:#e7faf0; border-radius:3px; border-color:#13ce66; max-width:540px; display:none;">
       <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
         <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
@@ -99,7 +99,11 @@ const SignupForm: React.FC = () => {
             </div>
           </div>
         </div>
+        
+        <input type="hidden" id="SOURCE_URL" name="SOURCE_URL" value="${sourceUrl}" />
 
+        <input type="hidden" id="LANGUAGE" name="LANGUAGE" value="fr" />
+        
         <div style="padding: 16px 0;">
           <div class="sib-input sib-form-block">
             <div class="form__entry entry_block">
@@ -166,8 +170,7 @@ const SignupForm: React.FC = () => {
     </div>
   </div>
 </div>
-<!-- End Brevo Form -->
-    `;
+`;
     if (containerRef.current) {
       containerRef.current.innerHTML = html;
     }
