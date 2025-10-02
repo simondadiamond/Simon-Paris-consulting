@@ -220,7 +220,7 @@ const SignupForm: React.FC = () => {
       <div className="w-full max-w-[720px]"> {/* WIDER CONTAINER: max-w-[720px] (up from 640px) */}
         <div ref={containerRef} />
 
-        {/* CSS-only overrides to optimize mobile padding and adjust spacing */}
+         {/* CSS-only overrides to optimize mobile padding and adjust spacing */}
         <style>{`
           /* Kill the outer dark bg and extra borders */
           .sib-form { background: transparent !important; }
@@ -259,22 +259,44 @@ const SignupForm: React.FC = () => {
             padding-bottom: 8px !important;
           }
 
-          /* Tighten space around the email label */
-          #sib-container .form__label-row {
-            padding-bottom: 4px !important;
+          /* Tighten space around the email label block */
+          #sib-container .sib-input {
+            padding-top: 10px !important;
+            padding-bottom: 10px !important;
           }
 
-          /* Reduce spacing around the Opt-in block (entry_mcq) */
+          /* Tighten space around the Opt-in block (entry_mcq) */
           #sib-container .sib-optin {
-            padding-top: 8px !important; 
-            padding-bottom: 8px !important;
+            /* Reduced padding above Opt-in label */
+            padding-top: 10px !important; 
+            /* Significantly reduced padding below the checkbox block */
+            padding-bottom: 0 !important; 
           }
 
-          /* Reduce vertical space below the Opt-in label */
+          /* Remove extra vertical space below the Opt-in label */
           #sib-container .sib-optin .form__label-row {
             margin-bottom: 8px !important;
           }
 
+          /* --- Button Area Adjustments --- */
+
+          /* Remove the spacing block ABOVE the button */
+          /* This is the empty <div style="padding: 16px 0;"> right before the button block */
+          #sib-container .sib-form-block:nth-of-type(6) { 
+            display: none !important;
+          }
+
+          /* Reduce the top padding of the button's own container block */
+          #sib-container .sib-form-block:nth-of-type(7) {
+            padding-top: 16px !important; /* Half the original 16px 0 padding */
+            padding-bottom: 0 !important; /* Remove bottom padding */
+          }
+          
+          /* Remove the spacing block UNDER the button (g-recaptcha-v3 parent) */
+          #sib-container .sib-form-block:nth-of-type(8) { 
+            display: none !important;
+          }
+          
           /* Ensure the Unsubscribe text is removed (from the previous request) */
           #sib-container .entry__specification {
             display: none !important;
