@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 const SignupFormFr: React.FC = () => {
   useEffect(() => {
-    // Autofill hidden fields
+    // Autofill hidden fields after mount
     const src = document.getElementById("SOURCE_URL") as HTMLInputElement | null;
     if (src) src.value = window.location.href;
 
@@ -12,7 +12,7 @@ const SignupFormFr: React.FC = () => {
 
   return (
     <section className="flex justify-center py-12 px-4">
-      {/* Style overrides to improve look but keep Brevo functional */}
+      {/* Override styles while keeping Brevo structure intact */}
       <style>{`
         #sib-container {
           max-width: 540px !important;
@@ -42,20 +42,26 @@ const SignupFormFr: React.FC = () => {
           font-weight: 600 !important;
           border: none !important;
         }
-        #SOURCE_URL, #LANGUAGE { display: none !important; }
+        /* Hide extra inputs cleanly */
+        #SOURCE_URL, #LANGUAGE {
+          display: none !important;
+        }
       `}</style>
 
       <div className="w-full max-w-[560px]">
-        {/* KEEP Brevo's raw HTML intact */}
         <div
           dangerouslySetInnerHTML={{
             __html: `
-              <div class="sib-form" style="text-align: center;">
+              <!-- Begin Brevo Form -->
+              <div class="sib-form" style="text-align: center; background-color: transparent;">
                 <div id="sib-form-container" class="sib-form-container">
+
+                  <!-- Error -->
                   <div id="error-message" class="sib-form-message-panel" style="display:none;"></div>
+                  <!-- Success -->
                   <div id="success-message" class="sib-form-message-panel" style="display:none;"></div>
+
                   <div id="sib-container" class="sib-container--large sib-container--vertical">
-                    
                     <form id="sib-form" method="POST"
                       action="https://c454d84b.sibforms.com/serve/MUIFANWtc_ZXENCFgOE0x25spvjMqZh3YvPPNgc8i-eR71nYany6EABptSdMXFEn3gsK4AvkFnyWenuH7kfxzbpQSkxl-RDoLp9UWYrVVJPUx9pjl2vqasvE-DQIJLOZK3Xr7pWvyv2oOxMXUtCcq1d1FBiw35_LYA6uOpehokL7dT_ylL7HtHehEoDxs7d1P2hEy43TSEaIvXD5"
                       data-type="subscription">
@@ -70,7 +76,8 @@ const SignupFormFr: React.FC = () => {
 
                       <!-- Email -->
                       <label for="EMAIL">Adresse courriel</label>
-                      <input class="input" type="email" id="EMAIL" name="EMAIL" placeholder="nom@entreprise.com" required />
+                      <input class="input" type="email" id="EMAIL" name="EMAIL"
+                        placeholder="nom@entreprise.com" required />
 
                       <!-- Consent -->
                       <div class="sib-optin sib-form-block" data-required="true">
@@ -87,6 +94,7 @@ const SignupFormFr: React.FC = () => {
                         Je m’abonne gratuitement
                       </button>
 
+                      <!-- Brevo hidden -->
                       <div class="g-recaptcha-v3" data-sitekey="6Lf0RtYrAAAAAMnsVvJx3DTeKDVGi2ZQElXygdM-" style="display:none"></div>
                       <input type="text" name="email_address_check" value="" class="input--hidden" />
                       <input type="hidden" name="locale" value="fr" />
@@ -94,6 +102,7 @@ const SignupFormFr: React.FC = () => {
                   </div>
                 </div>
               </div>
+              <!-- End Brevo Form -->
             `,
           }}
         />
