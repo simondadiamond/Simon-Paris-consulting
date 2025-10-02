@@ -213,7 +213,7 @@ const SignupForm: React.FC = () => {
         {/* Injected Brevo form */}
         <div ref={containerRef} />
 
-        {/* CSS-only overrides to avoid “triple box” and add polish */}
+                {/* CSS-only overrides to avoid “triple box” and add polish */}
         <style>{`
           /* Kill the outer dark bg and extra borders */
           .sib-form { background: transparent !important; }
@@ -224,22 +224,53 @@ const SignupForm: React.FC = () => {
             background: #f9fafb !important;
             border: 1px solid #e5e7eb !important;
             border-radius: 16px !important;
-            padding: 24px !important;
+            padding: 32px !important; /* Increased padding for more breathing room */
             box-shadow: 0 16px 48px rgba(18, 28, 45, 0.12) !important;
-          }
-
-          /* Gradient button, no extra borders */
-          .sib-form-block__button {
-            background: linear-gradient(90deg, #139E9C, #2280FF) !important;
-            border: none !important;
-            border-radius: 10px !important;
-            padding: 12px 16px !important;
           }
 
           /* Tidy message panels width/spacing */
           .sib-form-message-panel {
             max-width: 540px !important;
             margin: 0 auto 16px !important;
+          }
+
+          /* --- Custom Formatting Changes --- */
+          
+          /* Make the main title bigger (H1) */
+          #sib-container h1 {
+            font-size: 28px !important;
+            line-height: 1.2 !important;
+            margin-bottom: 0px !important; /* Tighten up space below the main title */
+          }
+          
+          /* Tighten space above/below the subtitle block */
+          #sib-container .sib-form-block:nth-of-type(2) { 
+            padding-top: 8px !important;
+            padding-bottom: 8px !important;
+          }
+
+          /* Reduce spacing around the Opt-in block (entry_mcq) */
+          #sib-container .sib-optin {
+            padding-top: 8px !important; /* Reduced top padding */
+            padding-bottom: 8px !important; /* Reduced bottom padding */
+          }
+
+          /* Reduce vertical space below the Opt-in label */
+          #sib-container .sib-optin .form__label-row {
+            margin-bottom: 8px !important;
+          }
+
+          /* Remove the "Vous pouvez vous désabonner..." text */
+          #sib-container .entry__specification {
+            display: none !important;
+          }
+          
+          /* Gradient button, no extra borders */
+          .sib-form-block__button {
+            background: linear-gradient(90deg, #139E9C, #2280FF) !important;
+            border: none !important;
+            border-radius: 10px !important;
+            padding: 12px 16px !important;
           }
         `}</style>
       </div>
