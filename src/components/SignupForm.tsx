@@ -267,13 +267,14 @@ const SignupForm: React.FC = () => {
             padding-bottom: 10px !important;
           }
 
-          /* --- Opt-in Field Adjustments (FIXED) --- */
+          /* --- Opt-in Field Adjustments (VISIBILITY & TIGHT SPACING) --- */
           
-          /* Restore visibility and set tight padding for the Opt-in block */
+          /* CRITICAL FIX: Ensure the entire opt-in block is visible and tight */
           #sib-container .sib-optin {
-            display: block !important; /* Ensure block is visible */
-            padding-top: 10px !important; 
+            display: block !important; /* Forces visibility */
+            padding-top: 10px !important; /* Reduced padding above Opt-in label */
             padding-bottom: 0 !important; /* Tighten up below the checkbox */
+            margin-bottom: 0 !important; /* Ensure no margin is inherited */
           }
 
           /* Reduce vertical space below the Opt-in label itself */
@@ -281,17 +282,15 @@ const SignupForm: React.FC = () => {
             margin-bottom: 8px !important;
           }
 
-
           /* --- Button Area Adjustments (FINAL SPACING) --- */
           
-          /* NEW FIX: Hide the empty block (spacer) after the opt-in block, before the button. 
-             This is the <div style="padding: 16px 0;"> that contains the empty sib-form-block:nth-of-type(4) */
+          /* Hide the empty block (spacer) after the opt-in block, before the button. 
+             This is the <div style="padding: 16px 0;"> that is now the 5th child of the form. */
           #sib-container > form > div:nth-child(5) {
             display: none !important;
           }
 
-          /* Target the button's direct container block */
-          /* This is the 6th div with padding (which holds the button) */
+          /* Target the button's direct container block (the 6th div with padding) */
           #sib-container > form > div:nth-child(6) {
             padding-top: 20px !important; /* Single clean space above the button */
             padding-bottom: 0 !important; /* Removes space below the button */
