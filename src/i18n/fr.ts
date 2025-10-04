@@ -18,7 +18,7 @@ const fr: TranslationKeys = {
     subtext:
       'J’accompagne les PME du Québec à automatiser les tâches répétitives qui grugent temps et argent — tout en assurant la conformité à la Loi 25.',
     cta: {
-      text: 'Réserver un Diagnostic Éclair',
+      text: 'Diagnostic Éclair gratuit',
       href: 'https://cal.com/simonparis/diagnostic'
     },
     card: {
