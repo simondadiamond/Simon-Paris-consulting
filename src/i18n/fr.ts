@@ -142,10 +142,15 @@ const fr: TranslationKeys = {
     ]
   },
   finalcta: {
-    headline: 'Restez conforme. Restez à jour.',
-    subtext: 'Recevez chaque semaine une tactique concrète pour automatiser et rester conforme.',
+    headline: 'L’IA qui vous concerne.',
+    subtext: 'Chaque semaine, je traduis l’actualité IA en actions concrètes pour votre PME québécoise.',
     cta: 'Joindre l’infolettre',
-    href: '/fr/newsletter'
+    href: '/fr/newsletter',
+    alternativeHeadlines: [
+      'Faites travailler l’IA pour votre PME.',
+      'De l’actualité IA à vos prochaines actions.',
+      'Chaque semaine, une tactique IA applicable.'
+    ]
   },
   stickyCta: 'Joindre l’infolettre',
   trustBadge: 'Conçu pour le Québec • Démo en direct • Bilingue et conforme à la Loi 96',

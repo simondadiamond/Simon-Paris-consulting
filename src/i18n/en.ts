@@ -142,10 +142,15 @@ export const en = {
     ]
   },
   finalcta: {
-    headline: 'Stay compliant. Stay ahead.',
-    subtext: 'Get one actionable tactic each week to automate and stay compliant.',
-    cta: 'Join Newsletter',
-    href: '/en/newsletter'
+    headline: 'AI that matters to you.',
+    subtext: 'Every week, I translate AI and automation news into concrete actions for your SMB.',
+    cta: 'Join the newsletter',
+    href: '/en/newsletter',
+    alternativeHeadlines: [
+      'Make AI work for your SMB.',
+      'Turn AI noise into next steps.',
+      'Weekly AI guidance you can act on.'
+    ]
   },
   stickyCta: 'Join Newsletter',
   trustBadge: 'Built for Québec • Demo-first • Fully bilingual & Law 96\u2013compliant',
