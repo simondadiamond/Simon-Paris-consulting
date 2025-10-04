@@ -4,10 +4,8 @@ import { Menu, X } from 'lucide-react';
 
 export const Header: React.FC<{
   langToggle?: { fr: string; en: string };
-  ctaHref?: string;
-  ctaLabel?: string;
   forceDarkBackground?: boolean;
-}> = ({ langToggle, ctaHref, ctaLabel, forceDarkBackground }) => {
+}> = ({ langToggle, forceDarkBackground }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { t, lang, setLang } = useLanguage();
@@ -31,13 +29,6 @@ export const Header: React.FC<{
     ? 'text-[#121C2D]'
     : 'text-white';
   const textClass = resolvedTextClass;
-  const defaultCtaHref = t.hero.cta.href;
-  const defaultCtaLabel = t.hero.cta.text;
-  const resolvedCtaHref = ctaHref ?? defaultCtaHref;
-  const resolvedCtaLabel = ctaLabel ?? defaultCtaLabel;
-  const ctaClasses =
-    'inline-flex h-12 items-center justify-center rounded-xl bg-[#139E9C] px-6 font-semibold text-white shadow-md transition hover:bg-[#118C89] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#139E9C]/40';
-
   const LanguageToggle = ({ tone = 'desktop' }: { tone?: 'desktop' | 'mobile' }) => {
     const goTo = (targetLang: 'fr' | 'en') => {
       if (lang === targetLang) return;
@@ -114,9 +105,6 @@ export const Header: React.FC<{
           </a>
           <div className="hidden items-center gap-8 md:flex">
             <LanguageToggle />
-            <a href={resolvedCtaHref} className={`${ctaClasses} whitespace-nowrap text-base`}>
-              {resolvedCtaLabel}
-            </a>
           </div>
           <div className="flex items-center gap-4 md:hidden">
             <LanguageToggle />
@@ -148,9 +136,6 @@ export const Header: React.FC<{
         >
           <div className="flex h-full flex-col gap-8 p-6 pt-24">
             <LanguageToggle tone="mobile" />
-            <a href={resolvedCtaHref} className={`${ctaClasses} text-base`}>
-              {resolvedCtaLabel}
-            </a>
           </div>
         </div>
       </div>

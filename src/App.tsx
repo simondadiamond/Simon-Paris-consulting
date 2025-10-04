@@ -486,28 +486,6 @@ const FAQ = () => {
   );
 };
 
-const StickyCTA = () => {
-  const { t, lang } = useLanguage();
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 300);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  if (!visible) return null;
-  const newsletterHref = lang === 'fr' ? '/fr/newsletter' : '/en/newsletter';
-  return (
-    <div className="sticky-cta md:hidden">
-      <a href={newsletterHref} className="btn-primary w-full text-lg py-4">
-        {t.stickyCta}
-      </a>
-    </div>
-  );
-};
-
-
 // Main App Component
 function App() {
   return (
@@ -524,7 +502,6 @@ function App() {
       <ProofSection />
       <FAQ />
       <FinalCTA />
-      <StickyCTA />
       <Footer />
     </div>
   );
