@@ -121,43 +121,55 @@ export const en = {
   },
   faq: {
     title: 'FAQ',
-    list: [
-      {
-        question: 'How quickly can you set up my automation?',
-        answer: {
-          intro: 'Faster than you think.',
-          bullets: ['Live within 1–2 weeks', 'Hands-on support included']
-        }
-      },
-      {
-        question: 'Is this really compliant?',
-        answer: {
-          intro: 'Yes, and documented.',
-          bullets: ['Bill 25/96-checked templates', 'Audit-ready proof provided']
-        }
-      },
-      {
-        question: "What if I'm not tech-savvy?",
-        answer: {
-          intro: 'Built for non-tech folks.',
-          bullets: ['We set everything up', 'Human support in English & French']
-        }
-      },
-      {
-        question: 'How much does it cost?',
-        answer: {
-          intro: `From $${PACK_PRICE}.`,
-          bullets: ['Flat pricing, no contract', 'ROI within days for many']
-        }
-      },
-      {
-        question: 'Can you help us with AI adoption or strategy?',
-        answer: {
-          intro: 'Absolutely.',
-          bullets: ['Always testing new AI tools', 'Ask during the demo']
-        }
-      }
-    ]
+    q1: {
+      question: 'How fast can we see results?',
+      answer: [
+        'Most setups are live within 1–2 weeks.',
+        'You’ll start seeing time savings as soon as the first workflow goes live.'
+      ]
+    },
+    q2: {
+      question: 'Is this really compliant?',
+      answer: [
+        'Yes — everything follows Law 25 and Bill 96 requirements.',
+        'Each workflow includes consent tracking and audit-ready documentation.'
+      ]
+    },
+    q3: {
+      question: 'What if I’m not comfortable with technology?',
+      answer: [
+        'No problem — everything is handled for you.',
+        'You only review and approve; I take care of the setup and testing.',
+        'Each workflow is designed to be effortless for non-technical teams.'
+      ]
+    },
+    q4: {
+      question: 'What’s the price — and what do I get?',
+      answer: [
+        'Your 20-minute Mini Audit is free.',
+        'Custom automations start around $1,000 depending on scope.',
+        'Founding-member discounts and fixed-price bundles are available.',
+        'No monthly contracts — just clear deliverables and ROI you can measure.'
+      ]
+    },
+    q5: {
+      question: 'Do these automations actually work for small teams?',
+      answer: [
+        'Yes. They’re designed for lean SMB operations — no IT team required.',
+        'The goal is simple: save hours every week without adding complexity.'
+      ]
+    },
+    q6: {
+      question: 'Can you help us with AI or new tools later?',
+      answer: [
+        'Absolutely. Once your core workflows run smoothly,',
+        'I can help you integrate new AI features — chatbots, voice bots, or analytics — when you’re ready.'
+      ]
+    },
+    cta: {
+      text: 'Still unsure what fits your team?',
+      button: 'Book a Free Mini Audit'
+    }
   },
   finalcta: {
     headline: 'AI that matters to you.',
@@ -221,6 +233,10 @@ export const en = {
   },
   footer: {
     tagline: 'Bilingual automation for Québec SMBs.',
+    compliance: {
+      label: 'Privacy & Compliance',
+      href: '/privacy'
+    },
     contact: {
       emailLabel: 'Email',
       email: 'info@simonparis.ca',

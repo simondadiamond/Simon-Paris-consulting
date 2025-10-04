@@ -122,43 +122,55 @@ const fr: TranslationKeys = {
   },
   faq: {
     title: 'FAQ',
-    list: [
-      {
-        question: 'En combien de temps pouvez-vous configurer mon automatisation?',
-        answer: {
-          intro: 'Rapide, sans tracas.',
-          bullets: ['Configuration en 1–2 semaines', 'Support complet pendant l’installation']
-        }
-      },
-      {
-        question: 'C’est vraiment conforme?',
-        answer: {
-          intro: 'Oui, documenté.',
-          bullets: ['Modèles vérifiés Loi 25/96', 'Preuves prêtes pour audit']
-        }
-      },
-      {
-        question: 'Et si je ne suis pas à l’aise avec la technologie?',
-        answer: {
-          intro: 'Pensé pour les non‑tech.',
-          bullets: ['Installation gérée pour vous', 'Accompagnement humain en français']
-        }
-      },
-      {
-        question: 'Combien ça coûte?',
-        answer: {
-          intro: `À partir de ${PACK_PRICE} $.`,
-          bullets: ['Prix fixes, aucun contrat', 'Retour rapide sur investissement']
-        }
-      },
-      {
-        question: 'Pouvez-vous nous aider avec l’adoption ou la stratégie IA?',
-        answer: {
-          intro: 'Bien sûr.',
-          bullets: ['Veille constante des outils IA', 'Conseils lors de la démo']
-        }
-      }
-    ]
+    q1: {
+      question: 'En combien de temps puis-je voir des résultats ?',
+      answer: [
+        'La plupart des systèmes sont en ligne en 1 à 2 semaines.',
+        'Vous commencez à gagner du temps dès la première automatisation active.'
+      ]
+    },
+    q2: {
+      question: 'C’est vraiment conforme ?',
+      answer: [
+        'Oui — chaque automatisation respecte la Loi 25 et la Loi 96.',
+        'Les consentements sont tracés et la documentation prête pour les audits.'
+      ]
+    },
+    q3: {
+      question: 'Et si je ne suis pas à l’aise avec la technologie ?',
+      answer: [
+        'Aucun souci — tout est configuré pour vous.',
+        'Vous n’avez qu’à approuver ; je m’occupe de la mise en place et des tests.',
+        'Chaque automatisation est pensée pour les équipes non techniques.'
+      ]
+    },
+    q4: {
+      question: 'Quel est le prix — et qu’est-ce qui est inclus ?',
+      answer: [
+        'Le Diagnostic Éclair de 20 minutes est gratuit.',
+        'Les automatisations personnalisées débutent à environ 1 000 $, selon l’ampleur.',
+        'Des rabais fondateurs et forfaits à prix fixe sont offerts.',
+        'Aucun abonnement mensuel — des résultats clairs et mesurables.'
+      ]
+    },
+    q5: {
+      question: 'Est-ce que ces automatisations fonctionnent pour les petites équipes ?',
+      answer: [
+        'Oui, elles sont faites pour les PME sans équipe TI.',
+        'L’objectif : gagner des heures chaque semaine sans complexifier vos outils.'
+      ]
+    },
+    q6: {
+      question: 'Pouvez-vous nous aider avec l’adoption de l’IA ou de nouveaux outils ?',
+      answer: [
+        'Bien sûr. Une fois vos processus stables,',
+        'je peux vous aider à intégrer de nouvelles solutions IA — agents vocaux, chatbots ou analyses intelligentes.'
+      ]
+    },
+    cta: {
+      text: 'Pas certain de ce qui convient à votre équipe ?',
+      button: 'Réserver un Diagnostic Éclair'
+    }
   },
   finalcta: {
     headline: 'L’IA qui vous concerne.',
@@ -222,6 +234,10 @@ const fr: TranslationKeys = {
   },
   footer: {
     tagline: 'Automatisation bilingue pour les PME du Québec.',
+    compliance: {
+      label: 'Conformité & confidentialité',
+      href: '/fr/politique-confidentialite'
+    },
     contact: {
       emailLabel: 'Courriel',
       email: 'info@simonparis.ca',
