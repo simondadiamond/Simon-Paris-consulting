@@ -56,32 +56,38 @@ const fr: TranslationKeys = {
     ],
     note: 'Tout cela se règle avec des <span class="font-semibold">automatisations bilingues</span> pensées pour votre équipe.'
   },
-  growth: {
-    title: 'Des <span class="accent">automatisations prêtes</span> pour faire croître votre entreprise.',
-    gears: [
+  whatIBuild: {
+    title: 'Des automatisations concrètes — développées ici, au Québec.',
+    cards: [
       {
-        title: 'Réponse vitesse-à-lead',
-        bullets: [
-          'Répondez à chaque lead en moins de 5 minutes.',
-          'SMS + courriel en français d’abord, anglais au besoin.',
-          'Connecte formulaires, appels et messages sociaux.'
-        ]
+        title: 'Moteur d’infolettres IA',
+        tagline: 'Automatise la création et l’envoi d’infolettres bilingues.',
+        description: 'Construit avec n8n + Brevo pour publier chaque semaine sans effort.'
       },
       {
-        title: 'Rappels & suivis automatisés',
-        bullets: [
-          'Rappels sans effort pour rendez-vous, travaux et soumissions.',
-          'Messages envoyés automatiquement dans la bonne langue.',
-          'Votre pipeline avance sans embauches supplémentaires.'
-        ]
+        title: 'Journal de conformité (Loi 25)',
+        tagline: 'Enregistre et horodate chaque consentement automatiquement.',
+        description: 'Bilingue, prêt pour l’audit et adapté aux PME du Québec.'
       },
       {
-        title: 'Conformité + avis clients',
-        bullets: [
-          'Consentement tracé pour chaque message (Loi 25/96).',
-          'Modèles guidés pour avis, mises à jour et paiements.',
-          'Plus d’avis 5 étoiles sans surcharge administrative.'
-        ]
+        title: 'Centre de contrôle CRM',
+        tagline: 'Centralise vos contacts, projets et communications.',
+        description: 'Tableau Airtable utilisé pour gérer les opérations quotidiennes.'
+      },
+      {
+        title: 'Flux de capture et de planification',
+        tagline: 'Automatise formulaires, réservations et suivis.',
+        description: 'Tally → n8n → Airtable → Cal.com : chaque piste est suivie automatiquement.'
+      },
+      {
+        title: 'Générateur de vidéos IA (avatars)',
+        tagline: 'Crée des vidéos bilingues pour renforcer la présence des PME.',
+        description: 'Propulsé par Heygen + scripts IA personnalisés.'
+      },
+      {
+        title: 'Réceptionniste IA (prototype)',
+        tagline: 'Assistant bilingue 24/7 pour cliniques et petites entreprises.',
+        description: 'Planifie des rendez-vous, répond aux questions et assure la conformité.'
       }
     ]
   },

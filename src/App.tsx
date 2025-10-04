@@ -6,8 +6,12 @@ import {
   Receipt,
   Shield,
   CheckCircle,
-  Clock,
   ShieldCheck,
+  Send,
+  LayoutDashboard,
+  CalendarCheck,
+  Video,
+  Headset,
   ChevronDown,
   ChevronUp
 } from 'lucide-react';
@@ -150,8 +154,8 @@ const ProblemSection = () => {
   );
 };
 
-// Growth Engine Component
-const GrowthEngine = () => {
+// What I Build Component
+const WhatIBuild = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const { t } = useLanguage();
@@ -173,9 +177,9 @@ const GrowthEngine = () => {
     return () => observer.disconnect();
   }, []);
 
-  const gears = t.growth.gears.map((g, i) => ({
-    ...g,
-    icon: [MessageSquare, Clock, ShieldCheck][i]
+  const cards = t.whatIBuild.cards.map((card, index) => ({
+    ...card,
+    icon: [Send, ShieldCheck, LayoutDashboard, CalendarCheck, Video, Headset][index]
   }));
 
   return (
@@ -189,38 +193,28 @@ const GrowthEngine = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h2
-            className="text-[clamp(1.75rem,4vw,3rem)] font-semibold leading-tight text-gray-900"
-            dangerouslySetInnerHTML={{ __html: t.growth.title }}
-          />
+          <h2 className="text-[clamp(1.75rem,4vw,3rem)] font-semibold leading-tight text-[#139E9C]">
+            {t.whatIBuild.title}
+          </h2>
         </div>
 
-        <div className="mt-14 grid gap-8 lg:mt-16 lg:grid-cols-3">
-          {gears.map((gear, index) => (
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+          {cards.map((card, index) => (
             <div
               key={index}
-              className={`card-light flex h-full flex-col gap-6 rounded-3xl border border-white/40 bg-white/80 p-8 text-center backdrop-blur transition-all duration-700 ${
+              className={`card-light flex h-full flex-col gap-5 rounded-3xl border border-white/40 bg-white/80 p-8 text-left backdrop-blur transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: isVisible ? '0ms' : `${index * 160}ms` }}
             >
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#139E9C]/15 text-[#139E9C]">
-                <gear.icon className="h-7 w-7" />
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#139E9C]/15 text-[#139E9C]">
+                <card.icon className="h-7 w-7" />
               </div>
 
               <div className="space-y-3">
-                <h3
-                  className="text-lg font-semibold text-gray-900"
-                  dangerouslySetInnerHTML={{ __html: gear.title }}
-                />
-                <ul className="space-y-2 text-left text-sm text-gray-600 sm:text-base">
-                  {gear.bullets.map((b: string, i: number) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <CheckCircle className="mt-1 h-4 w-4 flex-shrink-0 text-[#139E9C]" />
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
+                <h3 className="text-lg font-semibold text-gray-900">{card.title}</h3>
+                <p className="text-sm font-medium text-[#139E9C] sm:text-base">{card.tagline}</p>
+                <p className="text-sm leading-relaxed text-gray-600 sm:text-base">{card.description}</p>
               </div>
             </div>
           ))}
@@ -501,7 +495,7 @@ function App() {
         <Hero />
         <PartnerBar />
         <ProblemSection />
-        <GrowthEngine />
+        <WhatIBuild />
         <MiniAuditCTA />
         <OfferCards />
       <ROIMath />

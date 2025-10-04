@@ -55,32 +55,38 @@ export const en = {
     ],
     note: 'All of this is fixable with simple <span class="font-semibold">bilingual automations</span> built for your team.'
   },
-  growth: {
-    title: 'The <span class="accent">growth engine</span> for your business: simple, bilingual, compliant.',
-    gears: [
+  whatIBuild: {
+    title: 'Real tools, real automation — all built in Québec.',
+    cards: [
       {
-        title: 'Speed-to-Lead Response',
-        bullets: [
-          'Reply to every lead in under 5 minutes.',
-          'SMS + email in French first, English when needed.',
-          'Connects forms, calls, and social DMs.'
-        ]
+        title: 'AI Newsletter Engine',
+        tagline: 'Automates bilingual newsletter creation and delivery.',
+        description: 'Built with n8n + Brevo to publish weekly updates without manual work.'
       },
       {
-        title: 'Reminder & Follow-Up Automation',
-        bullets: [
-          'Hands-free reminders for appointments, jobs, and quotes.',
-          'Smart nudges go out in the right language automatically.',
-          'Keeps your pipeline moving without adding headcount.'
-        ]
+        title: 'Compliance Tracker (Law 25)',
+        tagline: 'Logs every consent and timestamp automatically.',
+        description: 'Bilingual, audit-ready, and built for Québec SMBs.'
       },
       {
-        title: 'Compliance + Review Management',
-        bullets: [
-          'Consent tracked for every message (Law 25/96).',
-          'Guided templates for updates, invoices, and requests.',
-          'Collects 5-star reviews without extra admin work.'
-        ]
+        title: 'CRM Command Center',
+        tagline: 'Centralizes contacts, projects, and communication.',
+        description: 'Airtable-powered hub used to run daily operations.'
+      },
+      {
+        title: 'Lead Capture & Scheduling Flow',
+        tagline: 'Routes form submissions and bookings automatically.',
+        description: 'Tally → n8n → Airtable → Cal.com — every lead tracked instantly.'
+      },
+      {
+        title: 'AI Avatar Video Engine',
+        tagline: 'Creates short bilingual avatar videos for SMB visibility.',
+        description: 'Powered by Heygen + custom AI scripts for consistent content.'
+      },
+      {
+        title: 'AI Receptionist (Prototype)',
+        tagline: '24/7 bilingual assistant for clinics and small businesses.',
+        description: 'Books appointments, answers FAQs, and keeps logs compliant.'
       }
     ]
   },
