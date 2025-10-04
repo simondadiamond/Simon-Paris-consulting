@@ -9,16 +9,17 @@ const fr: TranslationKeys = {
     cta: 'Diagnostic Éclair'
   },
   hero: {
-    tagline: 'Pour les PME du Québec • Loi 25 prête • Zéro jargon',
-    headline: {
-      line1: 'Automatisez les tâches lourdes.',
-      line2: 'Protégez vos marges.',
-      line3: 'Restez conforme à la Loi 25.'
-    },
-    subtext:
-      'Des automatisations bilingues qui répondent aux leads, relancent les factures et documentent les consentements — sans ajouter d’outils que votre équipe n’utilisera pas.',
+    title: 'Automatisez les tâches lourdes. Protégez vos marges. Restez conforme à la Loi 25.',
+    highlight: 'Protégez vos marges',
+    subtitle:
+      'Je conçois et teste des automatisations IA concrètes — puis je partage ce qui fonctionne pour les PME du Québec. De la création de contenu à la conformité, j’aide les équipes à gagner du temps et à rester en avance.',
     cta: {
+      label: 'Réserver un Diagnostic Éclair',
       href: 'https://cal.com/simonparis/diagnostic'
+    },
+    secondaryCta: {
+      label: 'Pas prêt? Rejoignez l’infolettre →',
+      href: '/fr/infolettre'
     }
   },
   cta: {

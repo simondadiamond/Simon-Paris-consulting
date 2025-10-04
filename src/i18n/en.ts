@@ -8,16 +8,17 @@ export const en = {
     cta: 'Diagnostic Éclair'
   },
   hero: {
-    tagline: 'For Québec SMBs • Law 25 ready • Zero jargon',
-    headline: {
-      line1: 'Automate the busywork.',
-      line2: 'Protect your margins.',
-      line3: 'Stay Law 25 ready.'
-    },
-    subtext:
-      'Bilingual automations that answer leads, chase invoices, and document consent—without adding tools your team won’t use.',
+    title: 'Automate the busywork. Protect your margins. Stay Law 25 ready.',
+    highlight: 'Protect your margins',
+    subtitle:
+      'I design and test real AI automations — then share what works for Québec SMBs. From content to compliance, I help you save hours and stay ahead.',
     cta: {
+      label: 'Book Free Mini Audit',
       href: 'https://cal.com/simonparis/mini-audit'
+    },
+    secondaryCta: {
+      label: 'Not ready yet? Join the newsletter →',
+      href: '/en/newsletter'
     }
   },
   cta: {

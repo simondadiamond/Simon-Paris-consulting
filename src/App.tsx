@@ -20,12 +20,16 @@ import MiniAuditCTA from './components/MiniAuditCTA';
 const Hero = () => {
   const { t } = useLanguage();
   const hero = t.hero;
-  const taglineParts = hero.tagline.includes('•')
-    ? hero.tagline.split('•').map(part => part.trim()).filter(Boolean)
-    : [hero.tagline];
+  const titleSegments = hero.title
+    .split('.')
+    .map(segment => segment.trim())
+    .filter(Boolean);
 
   return (
-    <section id="hero" className="relative isolate overflow-hidden bg-[#0B1320] text-white">
+    <section
+      id="hero"
+      className="relative isolate flex min-h-[90vh] items-center justify-center overflow-hidden bg-[#0B1320] text-white"
+    >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_0%_0%,rgba(34,128,255,0.2),rgba(11,19,32,0)_60%),radial-gradient(120%_120%_at_85%_15%,rgba(19,158,156,0.25),rgba(11,19,32,0)_65%)] opacity-90" />
         <div className="absolute inset-0 bg-[linear-gradient(140deg,rgba(255,255,255,0.08),transparent_50%)] mix-blend-screen" />
@@ -33,30 +37,33 @@ const Hero = () => {
         <div className="absolute bottom-[-8rem] right-[-6rem] h-[28rem] w-[28rem] rounded-full bg-[#139E9C]/16 blur-[150px]" />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[90vh] max-w-7xl flex-col justify-center px-4 pb-20 pt-28 sm:px-6 lg:px-8 lg:pt-32">
-        <div className="max-w-3xl space-y-10">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold uppercase tracking-[0.28em] text-white/55">
-            {taglineParts.map((part, index) => (
-              <React.Fragment key={`${part}-${index}`}>
-                {index > 0 && <span className="text-white/30">•</span>}
-                <span>{part}</span>
-              </React.Fragment>
-            ))}
-          </div>
+      <div className="relative z-10 mx-auto w-full max-w-[60rem] px-4 py-24 text-center sm:px-6 lg:px-8 lg:py-32">
+        <div className="mx-auto flex max-w-3xl flex-col items-center gap-8 sm:gap-10">
+          <h1 className="text-balance text-[clamp(2rem,6vw,3.75rem)] font-semibold leading-[1.08] tracking-tight sm:leading-[1.12]">
+            {titleSegments.map((segment, index) => {
+              const isHighlight = hero.highlight && segment.toLowerCase() === hero.highlight.toLowerCase();
+              const text = `${segment}.`;
+              return (
+                <span key={`${segment}-${index}`} className={`block ${isHighlight ? 'text-[#139E9C]' : ''}`}>
+                  {text}
+                </span>
+              );
+            })}
+          </h1>
 
-          <div className="space-y-6">
-            <h1 className="text-[clamp(1.5rem,6vw,4rem)] font-semibold leading-[1.05] tracking-tight">
-              <span className="block">{hero.headline.line1}</span>
-              <span className="block text-[#139E9C]">{hero.headline.line2}</span>
-              <span className="block">{hero.headline.line3}</span>
-            </h1>
+          <p className="text-balance text-base leading-relaxed text-white/80 sm:text-lg sm:leading-relaxed">
+            {hero.subtitle}
+          </p>
 
-            <p className="text-base leading-relaxed text-white/80 sm:text-lg">{hero.subtext}</p>
-          </div>
-
-          <div>
-            <a href={hero.cta.href} className="btn-primary w-full sm:w-auto">
-              {t.cta.bookAudit}
+          <div className="mt-2 flex flex-col items-center gap-3">
+            <a href={hero.cta.href} className="btn-primary w-full max-w-xs sm:max-w-none sm:w-auto">
+              {hero.cta.label}
+            </a>
+            <a
+              href={hero.secondaryCta.href}
+              className="text-sm font-medium text-white/70 transition hover:text-white"
+            >
+              {hero.secondaryCta.label}
             </a>
           </div>
         </div>
