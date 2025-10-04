@@ -58,32 +58,74 @@ const fr: TranslationKeys = {
       timeline: 'Installation typique : 5 à 10 jours ouvrables.'
     }
   },
+  problems: {
+    title: 'Pourquoi les PME du Québec perdent du temps chaque semaine…',
+    list: [
+      {
+        title: 'Ventes perdues',
+        body: 'Appels manqués et formulaires ignorés font filer les prospects ailleurs.'
+      },
+      {
+        title: 'Heures gaspillées',
+        body: 'Des suivis manuels gardent les propriétaires coincés dans l’administratif.'
+      },
+      {
+        title: 'Stress de trésorerie',
+        body: 'Des factures impayées ralentissent les dépôts chaque mois.'
+      },
+      {
+        title: 'Amendes évitables',
+        body: 'Des preuves de consentement incomplètes augmentent le risque Loi 25.'
+      }
+    ],
+    note: 'Tout cela se règle avec des <span class="font-semibold">automatisations bilingues</span> pensées pour votre équipe.'
+  },
+  whatIBuild: {
+    heading: 'Des outils réels, <accent>conçus au Québec.</accent>',
+    badges: {
+      running: 'En production',
+      indev: 'En développement',
+      prototype: 'Prototype'
+    },
+    cards: [
+      {
+        title: 'Moteur d’infolettres IA',
+        tagline: 'Automatise la création et l’envoi d’infolettres bilingues.',
+        description: 'Construit avec n8n + Brevo pour publier chaque semaine sans effort.',
+        status: 'running'
+      },
+      {
+        title: 'Journal de conformité (Loi 25)',
+        tagline: 'Enregistre et horodate chaque consentement automatiquement.',
+        description: 'Bilingue, prêt pour l’audit et adapté aux PME du Québec.',
+        status: 'running'
+      },
+      {
+        title: 'Centre de contrôle CRM',
+        tagline: 'Centralise vos contacts, projets et communications.',
+        description: 'Tableau Airtable utilisé pour gérer les opérations quotidiennes.',
+        status: 'running'
+      },
   growth: {
     title: 'Des <span class="accent">automatisations prêtes</span> pour faire croître votre entreprise.',
     gears: [
       {
-        title: 'Réponse vitesse-à-lead',
-        bullets: [
-          'Répondez à chaque lead en moins de 5 minutes.',
-          'SMS + courriel en français d’abord, anglais au besoin.',
-          'Connecte formulaires, appels et messages sociaux.'
-        ]
+        title: 'Flux de capture et de planification',
+        tagline: 'Automatise formulaires, réservations et suivis.',
+        description: 'Tally → n8n → Airtable → Cal.com : chaque piste est suivie automatiquement.',
+        status: 'running'
       },
       {
-        title: 'Rappels & suivis automatisés',
-        bullets: [
-          'Rappels sans effort pour rendez-vous, travaux et soumissions.',
-          'Messages envoyés automatiquement dans la bonne langue.',
-          'Votre pipeline avance sans embauches supplémentaires.'
-        ]
+        title: 'Générateur de vidéos IA (avatars)',
+        tagline: 'Crée des vidéos bilingues pour renforcer la présence des PME.',
+        description: 'Propulsé par Heygen + scripts IA personnalisés.',
+        status: 'indev'
       },
       {
-        title: 'Conformité + avis clients',
-        bullets: [
-          'Consentement tracé pour chaque message (Loi 25/96).',
-          'Modèles guidés pour avis, mises à jour et paiements.',
-          'Plus d’avis 5 étoiles sans surcharge administrative.'
-        ]
+        title: 'Réceptionniste IA (prototype)',
+        tagline: 'Assistant bilingue 24/7 pour cliniques et petites entreprises.',
+        description: 'Planifie des rendez-vous, répond aux questions et assure la conformité.',
+        status: 'prototype'
       }
     ]
   },

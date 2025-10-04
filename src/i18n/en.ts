@@ -57,6 +57,59 @@ export const en = {
       timeline: 'Typical setup: 5 – 10 business days.'
     }
   },
+  problems: {
+    title: 'Why Québec SMBs lose time (and profit) every week…',
+    list: [
+      {
+        title: 'Lost sales',
+        body: 'Missed calls and ignored forms push ready-to-buy clients to competitors.'
+      },
+      {
+        title: 'Wasted hours',
+        body: 'Manual follow-ups keep owners stuck in admin instead of growth.'
+      },
+      {
+        title: 'Cash-flow stress',
+        body: 'Invoices slip through the cracks and payouts get delayed.'
+      },
+      {
+        title: 'Avoidable fines',
+        body: 'Consent tracking gaps create unnecessary Law 25 risk.'
+      }
+    ],
+    note: 'All of this is fixable with simple <span class="font-semibold">bilingual automations</span> built for your team.'
+  },
+  whatIBuild: {
+    heading: 'Real tools, <accent>built in Québec.</accent>',
+    badges: {
+      running: 'Running',
+      indev: 'In development',
+      prototype: 'Prototype'
+    },
+    cards: [
+      {
+        title: 'AI Newsletter Engine',
+        tagline: 'Automates bilingual newsletter creation and delivery.',
+        description: 'Built with n8n + Brevo to publish weekly updates without manual work.',
+        status: 'running'
+      },
+      {
+        title: 'Compliance Tracker (Law 25)',
+        tagline: 'Logs every consent and timestamp automatically.',
+        description: 'Bilingual, audit-ready, and built for Québec SMBs.',
+        status: 'running'
+      },
+      {
+        title: 'CRM Command Center',
+        tagline: 'Centralizes contacts, projects, and communication.',
+        description: 'Airtable-powered hub used to run daily operations.',
+        status: 'running'
+      },
+      {
+        title: 'Lead Capture & Scheduling Flow',
+        tagline: 'Routes form submissions and bookings automatically.',
+        description: 'Tally → n8n → Airtable → Cal.com — every lead tracked instantly.',
+        status: 'running'
   growth: {
     title: 'The <span class="accent">growth engine</span> for your business: simple, bilingual, compliant.',
     gears: [
@@ -69,20 +122,16 @@ export const en = {
         ]
       },
       {
-        title: 'Reminder & Follow-Up Automation',
-        bullets: [
-          'Hands-free reminders for appointments, jobs, and quotes.',
-          'Smart nudges go out in the right language automatically.',
-          'Keeps your pipeline moving without adding headcount.'
-        ]
+        title: 'AI Avatar Video Engine',
+        tagline: 'Creates short bilingual avatar videos for SMB visibility.',
+        description: 'Powered by Heygen + custom AI scripts for consistent content.',
+        status: 'indev'
       },
       {
-        title: 'Compliance + Review Management',
-        bullets: [
-          'Consent tracked for every message (Law 25/96).',
-          'Guided templates for updates, invoices, and requests.',
-          'Collects 5-star reviews without extra admin work.'
-        ]
+        title: 'AI Receptionist (Prototype)',
+        tagline: '24/7 bilingual assistant for clinics and small businesses.',
+        description: 'Books appointments, answers FAQs, and keeps logs compliant.',
+        status: 'prototype'
       }
     ]
   },
