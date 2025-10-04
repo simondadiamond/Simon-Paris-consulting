@@ -105,7 +105,9 @@ const fr: TranslationKeys = {
         tagline: 'Centralise vos contacts, projets et communications.',
         description: 'Tableau Airtable utilisé pour gérer les opérations quotidiennes.',
         status: 'running'
-      },
+      }
+    ]
+  },
   growth: {
     title: 'Des <span class="accent">automatisations prêtes</span> pour faire croître votre entreprise.',
     gears: [
