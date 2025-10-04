@@ -56,37 +56,48 @@ export const en = {
     note: 'All of this is fixable with simple <span class="font-semibold">bilingual automations</span> built for your team.'
   },
   whatIBuild: {
-    title: 'Real tools, real automation — all built in Québec.',
+    heading: 'Real tools, <accent>built in Québec.</accent>',
+    badges: {
+      running: 'Running',
+      indev: 'In development',
+      prototype: 'Prototype'
+    },
     cards: [
       {
         title: 'AI Newsletter Engine',
         tagline: 'Automates bilingual newsletter creation and delivery.',
-        description: 'Built with n8n + Brevo to publish weekly updates without manual work.'
+        description: 'Built with n8n + Brevo to publish weekly updates without manual work.',
+        status: 'running'
       },
       {
         title: 'Compliance Tracker (Law 25)',
         tagline: 'Logs every consent and timestamp automatically.',
-        description: 'Bilingual, audit-ready, and built for Québec SMBs.'
+        description: 'Bilingual, audit-ready, and built for Québec SMBs.',
+        status: 'running'
       },
       {
         title: 'CRM Command Center',
         tagline: 'Centralizes contacts, projects, and communication.',
-        description: 'Airtable-powered hub used to run daily operations.'
+        description: 'Airtable-powered hub used to run daily operations.',
+        status: 'running'
       },
       {
         title: 'Lead Capture & Scheduling Flow',
         tagline: 'Routes form submissions and bookings automatically.',
-        description: 'Tally → n8n → Airtable → Cal.com — every lead tracked instantly.'
+        description: 'Tally → n8n → Airtable → Cal.com — every lead tracked instantly.',
+        status: 'running'
       },
       {
         title: 'AI Avatar Video Engine',
         tagline: 'Creates short bilingual avatar videos for SMB visibility.',
-        description: 'Powered by Heygen + custom AI scripts for consistent content.'
+        description: 'Powered by Heygen + custom AI scripts for consistent content.',
+        status: 'indev'
       },
       {
         title: 'AI Receptionist (Prototype)',
         tagline: '24/7 bilingual assistant for clinics and small businesses.',
-        description: 'Books appointments, answers FAQs, and keeps logs compliant.'
+        description: 'Books appointments, answers FAQs, and keeps logs compliant.',
+        status: 'prototype'
       }
     ]
   },

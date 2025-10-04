@@ -20,6 +20,14 @@ import PartnerBar from './components/PartnerBar';
 import FinalCTA from './components/FinalCTA';
 import MiniAuditCTA from './components/MiniAuditCTA';
 
+const WHAT_I_BUILD_STATUS = {
+  running: { accent: '#16a34a' },
+  indev: { accent: '#f59e0b' },
+  prototype: { accent: '#64748b' }
+} as const;
+
+type WhatIBuildStatus = keyof typeof WHAT_I_BUILD_STATUS;
+
 // Hero Component
 const Hero = () => {
   const { t } = useLanguage();
@@ -182,42 +190,69 @@ const WhatIBuild = () => {
     icon: [Send, ShieldCheck, LayoutDashboard, CalendarCheck, Video, Headset][index]
   }));
 
+  const headingHtml = t.whatIBuild.heading.replace(
+    /<accent>(.*?)<\/accent>/g,
+    '<span class="text-teal-600">$1</span>'
+  );
+
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-white bg-section-gradient-top py-20 lg:py-28"
+      className="relative overflow-hidden py-20 lg:py-28"
+      style={{
+        background:
+          'radial-gradient(800px 300px at 50% 0%, rgba(19,158,156,0.08), transparent 60%), linear-gradient(to bottom, #F9FBFC, #FFFFFF)'
+      }}
     >
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
         <div
           className={`flex flex-col gap-8 text-center transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h2 className="text-[clamp(1.75rem,4vw,3rem)] font-semibold leading-tight text-[#139E9C]">
-            {t.whatIBuild.title}
-          </h2>
+          <h2
+            className="text-3xl font-semibold text-slate-900 md:text-4xl"
+            dangerouslySetInnerHTML={{ __html: headingHtml }}
+          />
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
-          {cards.map((card, index) => (
-            <div
-              key={index}
-              className={`card-light flex h-full flex-col gap-5 rounded-3xl border border-white/40 bg-white/80 p-8 text-left backdrop-blur transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{ transitionDelay: isVisible ? '0ms' : `${index * 160}ms` }}
-            >
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#139E9C]/15 text-[#139E9C]">
-                <card.icon className="h-7 w-7" />
-              </div>
+        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {cards.map((card, index) => {
+            const statusKey = card.status as WhatIBuildStatus;
+            const accentColor = WHAT_I_BUILD_STATUS[statusKey].accent;
+            const accentStyle = { '--accent': accentColor } as React.CSSProperties;
+            const badgeStyle = { '--dot': accentColor } as React.CSSProperties;
 
-              <div className="space-y-3">
-                <h3 className="text-lg font-semibold text-gray-900">{card.title}</h3>
-                <p className="text-sm font-medium text-[#139E9C] sm:text-base">{card.tagline}</p>
-                <p className="text-sm leading-relaxed text-gray-600 sm:text-base">{card.description}</p>
+            return (
+              <div
+                key={card.title}
+                className={`group relative flex h-full flex-col rounded-2xl border border-slate-200/80 bg-white p-6 shadow-[0_4px_14px_rgba(2,6,23,0.06)] transition-all duration-200 before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:rounded-t-2xl before:bg-[var(--accent)] ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                } hover:-translate-y-1 hover:shadow-[0_10px_28px_rgba(2,6,23,0.12)] hover:ring-1 hover:ring-teal-300/40`}
+                style={{
+                  ...accentStyle,
+                  transitionDelay: isVisible ? '0ms' : `${index * 160}ms`
+                }}
+              >
+                <div className="icon grid h-10 w-10 place-items-center rounded-xl bg-teal-50 text-teal-700 transition-colors duration-200 group-hover:bg-teal-100 group-hover:text-teal-800">
+                  <card.icon className="h-6 w-6 transition-transform duration-200 group-hover:-translate-y-0.5" />
+                </div>
+
+                <div className="mt-4 space-y-3">
+                  <span
+                    className="inline-flex items-center gap-2 rounded-full bg-slate-50 px-2.5 py-1 text-xs font-medium tracking-wide text-slate-700"
+                    style={badgeStyle}
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full" style={{ background: 'var(--dot)' }} />
+                    {t.whatIBuild.badges[statusKey]}
+                  </span>
+                  <h3 className="text-lg font-semibold text-slate-900 md:text-xl">{card.title}</h3>
+                  <p className="text-[17px] font-medium leading-7 text-slate-700">{card.tagline}</p>
+                  <p className="text-[17px] leading-7 text-slate-600 line-clamp-3">{card.description}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

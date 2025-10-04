@@ -57,37 +57,48 @@ const fr: TranslationKeys = {
     note: 'Tout cela se règle avec des <span class="font-semibold">automatisations bilingues</span> pensées pour votre équipe.'
   },
   whatIBuild: {
-    title: 'Des automatisations concrètes — développées ici, au Québec.',
+    heading: 'Des outils réels, <accent>conçus au Québec.</accent>',
+    badges: {
+      running: 'En production',
+      indev: 'En développement',
+      prototype: 'Prototype'
+    },
     cards: [
       {
         title: 'Moteur d’infolettres IA',
         tagline: 'Automatise la création et l’envoi d’infolettres bilingues.',
-        description: 'Construit avec n8n + Brevo pour publier chaque semaine sans effort.'
+        description: 'Construit avec n8n + Brevo pour publier chaque semaine sans effort.',
+        status: 'running'
       },
       {
         title: 'Journal de conformité (Loi 25)',
         tagline: 'Enregistre et horodate chaque consentement automatiquement.',
-        description: 'Bilingue, prêt pour l’audit et adapté aux PME du Québec.'
+        description: 'Bilingue, prêt pour l’audit et adapté aux PME du Québec.',
+        status: 'running'
       },
       {
         title: 'Centre de contrôle CRM',
         tagline: 'Centralise vos contacts, projets et communications.',
-        description: 'Tableau Airtable utilisé pour gérer les opérations quotidiennes.'
+        description: 'Tableau Airtable utilisé pour gérer les opérations quotidiennes.',
+        status: 'running'
       },
       {
         title: 'Flux de capture et de planification',
         tagline: 'Automatise formulaires, réservations et suivis.',
-        description: 'Tally → n8n → Airtable → Cal.com : chaque piste est suivie automatiquement.'
+        description: 'Tally → n8n → Airtable → Cal.com : chaque piste est suivie automatiquement.',
+        status: 'running'
       },
       {
         title: 'Générateur de vidéos IA (avatars)',
         tagline: 'Crée des vidéos bilingues pour renforcer la présence des PME.',
-        description: 'Propulsé par Heygen + scripts IA personnalisés.'
+        description: 'Propulsé par Heygen + scripts IA personnalisés.',
+        status: 'indev'
       },
       {
         title: 'Réceptionniste IA (prototype)',
         tagline: 'Assistant bilingue 24/7 pour cliniques et petites entreprises.',
-        description: 'Planifie des rendez-vous, répond aux questions et assure la conformité.'
+        description: 'Planifie des rendez-vous, répond aux questions et assure la conformité.',
+        status: 'prototype'
       }
     ]
   },
