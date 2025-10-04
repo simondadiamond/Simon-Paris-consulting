@@ -14,18 +14,18 @@
   .bg-section-gradient-top {
     background-image: linear-gradient(
       to bottom,
-      rgba(34, 128, 255, 0.16),
-      rgba(19, 158, 156, 0.12) 42%,
-      rgba(255, 255, 255, 0) 82%
+      rgba(34, 128, 255, 0.12),
+      rgba(19, 158, 156, 0.14) 44%,
+      rgba(255, 255, 255, 0) 84%
     );
   }
 
   .bg-section-gradient-bottom {
     background-image: linear-gradient(
       to top,
-      rgba(19, 158, 156, 0.16),
-      rgba(34, 128, 255, 0.12) 42%,
-      rgba(255, 255, 255, 0) 82%
+      rgba(34, 128, 255, 0.12),
+      rgba(19, 158, 156, 0.14) 44%,
+      rgba(255, 255, 255, 0) 84%
     );
   }
 }
