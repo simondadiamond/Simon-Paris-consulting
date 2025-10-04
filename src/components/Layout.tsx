@@ -27,8 +27,10 @@ export const Header: React.FC<{
 
   const resolvedTextClass = forceDarkBackground
     ? 'text-white'
-    : !isScrolled && isPrivacyPage
-    ? 'text-[#121C2D]'
+    : isPrivacyPage
+    ? 'text-white'
+    : !isScrolled
+    ? 'text-white'
     : 'text-white';
   const textClass = resolvedTextClass;
   const defaultCtaHref = t.hero.cta.href;
@@ -94,6 +96,8 @@ export const Header: React.FC<{
   };
 
   const headerBackgroundClass = forceDarkBackground
+    ? 'bg-[#0B1320]/95 backdrop-blur-lg'
+    : isPrivacyPage
     ? 'bg-[#0B1320]/95 backdrop-blur-lg'
     : isScrolled
     ? 'bg-[#0B1320]/90 backdrop-blur-lg'
