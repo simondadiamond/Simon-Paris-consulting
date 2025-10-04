@@ -10,51 +10,78 @@ export const en = {
   hero: {
     tagline: 'For Québec SMBs • Law 25 ready • Zero jargon',
     headline: {
-      line1: 'Less waste.',
-      line2: 'More profit.',
-      line3: '100% compliant.'
+      line1: 'Automate the busywork.',
+      line2: 'Protect your margins.',
+      line3: 'Stay Law 25 ready.'
     },
     subtext:
-      'I help Québec SMBs automate the repetitive tasks that drain time and money — while keeping Law 25 compliance covered.',
+      'Bilingual automations that answer leads, chase invoices, and document consent—without adding tools your team won’t use.',
     cta: {
-      text: 'Free Mini Audit',
       href: 'https://cal.com/simonparis/mini-audit'
-    },
-    card: {
-      title: 'During the diagnostic, we identify…',
-      bullet1: 'A bottleneck costing you time or clients.',
-      bullet2: 'One task to automate without changing your software.',
-      bullet3: 'The next step to stay safe with Law 25 / 96.',
-      bullet4: 'Typical setup: 5–10 business days.'
+    }
+  },
+  cta: {
+    bookAudit: 'Book Free Mini Audit',
+    audit: {
+      title: 'Here’s what we identify in your 20-minute Mini Audit.',
+      bullets: [
+        'The workflow that is leaking the most time or revenue.',
+        'The quick-win automation that fits your current stack.',
+        'The compliance risks to close before Law 25 fines.'
+      ],
+      timeline: 'Typical setup: 5–10 business days.'
     }
   },
   problems: {
-    title: 'Why clinics <span class="accent">lose money</span> every week…',
-      list: [
-        { title: 'Ignored leads', body: 'Patients book elsewhere.' },
-        { title: 'Missed appointments', body: 'Empty chairs at peak hours.' },
-        { title: 'Late invoices', body: 'Cash flow gets squeezed.' },
-        { title: 'Legal uncertainty', body: 'Messages may breach Law 25/Bill 96.' }
-      ],
-    note: 'You can fix all of this with simple <span class="font-semibold">bilingual automation</span>.'
+    title: 'Why Québec SMBs lose time (and profit) every week…',
+    list: [
+      {
+        title: 'Lost sales',
+        body: 'Missed calls and ignored forms push ready-to-buy clients to competitors.'
+      },
+      {
+        title: 'Wasted hours',
+        body: 'Manual follow-ups keep owners stuck in admin instead of growth.'
+      },
+      {
+        title: 'Cash-flow stress',
+        body: 'Invoices slip through the cracks and payouts get delayed.'
+      },
+      {
+        title: 'Avoidable fines',
+        body: 'Consent tracking gaps create unnecessary Law 25 risk.'
+      }
+    ],
+    note: 'All of this is fixable with simple <span class="font-semibold">bilingual automations</span> built for your team.'
   },
   growth: {
-    title: 'The <span class="accent">growth engine</span> for your clinic: simple, bilingual, compliant.',
+    title: 'The <span class="accent">growth engine</span> for your business: simple, bilingual, compliant.',
     gears: [
-        {
-          title: 'Speed‑to‑Lead SMS',
-          bullets: ['Replies in under 5 min', 'FR-first, then EN', 'Integrates web, calls, social']
-        },
-        {
-          title: 'No‑Show Chaser + Reminders',
-          bullets: ['24h & 2h reminders', 'Easy reschedule link', '25–50% fewer no-shows']
-        },
-        {
-          title: 'Review Engine + Compliance',
-          bullets: ['Polite FR/EN review asks', '3× more reviews in 30–60 days', 'Audit-ready docs (Law 25/96)']
-        }
-      ],
-    cta: 'See the packs in action'
+      {
+        title: 'Speed-to-Lead Response',
+        bullets: [
+          'Reply to every lead in under 5 minutes.',
+          'SMS + email in French first, English when needed.',
+          'Connects forms, calls, and social DMs.'
+        ]
+      },
+      {
+        title: 'Reminder & Follow-Up Automation',
+        bullets: [
+          'Hands-free reminders for appointments, jobs, and quotes.',
+          'Smart nudges go out in the right language automatically.',
+          'Keeps your pipeline moving without adding headcount.'
+        ]
+      },
+      {
+        title: 'Compliance + Review Management',
+        bullets: [
+          'Consent tracked for every message (Law 25/96).',
+          'Guided templates for updates, invoices, and requests.',
+          'Collects 5-star reviews without extra admin work.'
+        ]
+      }
+    ]
   },
   offers: {
     heading: 'Choose your path',

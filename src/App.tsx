@@ -2,78 +2,62 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from './LanguageProvider';
 import {
   MessageSquare,
-  CalendarX,
+  Clock3,
   Receipt,
   Shield,
   CheckCircle,
-  Zap,
-  CalendarCheck,
-  Star,
+  Clock,
+  ShieldCheck,
   ChevronDown,
-  ChevronUp,
-  CheckCircle2
+  ChevronUp
 } from 'lucide-react';
 import { Header, Footer } from './components/Layout';
 import PartnerBar from './components/PartnerBar';
 import FinalCTA from './components/FinalCTA';
+import MiniAuditCTA from './components/MiniAuditCTA';
 
 // Hero Component
 const Hero = () => {
   const { t } = useLanguage();
   const hero = t.hero;
-  const cardBullets = [
-    hero.card.bullet1,
-    hero.card.bullet2,
-    hero.card.bullet3,
-    hero.card.bullet4
-  ];
-  const ctaClasses =
-    'inline-flex h-12 items-center justify-center rounded-xl bg-[#139E9C] px-6 font-semibold text-white shadow-md transition hover:bg-[#118C89] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#139E9C]/40';
+  const taglineParts = hero.tagline.includes('•')
+    ? hero.tagline.split('•').map(part => part.trim()).filter(Boolean)
+    : [hero.tagline];
 
   return (
     <section id="hero" className="relative isolate overflow-hidden bg-[#0B1320] text-white">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 -left-24 h-72 w-72 rounded-full bg-[#2280FF]/15 blur-3xl" />
-        <div className="absolute bottom-[-6rem] right-[-4rem] h-[26rem] w-[26rem] rounded-full bg-[#139E9C]/15 blur-3xl" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(19,158,156,0.06),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_0%_0%,rgba(34,128,255,0.2),rgba(11,19,32,0)_60%),radial-gradient(120%_120%_at_85%_15%,rgba(19,158,156,0.25),rgba(11,19,32,0)_65%)] opacity-90" />
+        <div className="absolute inset-0 bg-[linear-gradient(140deg,rgba(255,255,255,0.08),transparent_50%)] mix-blend-screen" />
+        <div className="absolute -left-24 top-[-6rem] h-[22rem] w-[22rem] rounded-full bg-[#2280FF]/18 blur-[140px]" />
+        <div className="absolute bottom-[-8rem] right-[-6rem] h-[28rem] w-[28rem] rounded-full bg-[#139E9C]/16 blur-[150px]" />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 pb-16 pt-28 sm:pb-24 lg:px-8">
-        <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] xl:gap-16">
-          <div className="space-y-8 md:space-y-10">
-            <div className="space-y-4 md:space-y-6">
-              <p className="text-sm font-medium text-white/70">{hero.tagline}</p>
-
-              <h1 className="text-[clamp(28px,6vw,56px)] font-semibold leading-[1.05] tracking-tight">
-                <span className="block">{hero.headline.line1}</span>
-                <span className="block text-[#139E9C]">{hero.headline.line2}</span>
-                <span className="block">{hero.headline.line3}</span>
-              </h1>
-
-              <p className="max-w-xl text-base leading-relaxed text-white/80 md:text-lg">{hero.subtext}</p>
-            </div>
-
-            <a href={hero.cta.href} className={`${ctaClasses} w-full sm:w-auto`}>
-              {hero.cta.text}
-            </a>
+      <div className="relative z-10 mx-auto flex min-h-[90vh] max-w-7xl flex-col justify-center px-4 pb-20 pt-28 sm:px-6 lg:px-8 lg:pt-32">
+        <div className="max-w-3xl space-y-10">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold uppercase tracking-[0.28em] text-white/55">
+            {taglineParts.map((part, index) => (
+              <React.Fragment key={`${part}-${index}`}>
+                {index > 0 && <span className="text-white/30">•</span>}
+                <span>{part}</span>
+              </React.Fragment>
+            ))}
           </div>
 
-          <div className="relative lg:ml-auto">
-            <div className="absolute -top-6 -right-6 hidden h-24 w-24 rounded-full bg-[#2280FF]/15 blur-3xl lg:block" />
-            <div className="relative mt-8 overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl sm:p-8 lg:mt-0 lg:p-10">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-[#139E9C]/10" />
-              <div className="relative space-y-6">
-                <h2 className="text-lg font-semibold text-white">{hero.card.title}</h2>
-                <ul className="space-y-4 md:space-y-5">
-                  {cardBullets.map(item => (
-                    <li key={item} className="flex items-start gap-3 text-sm leading-relaxed text-white/90 md:text-base">
-                      <CheckCircle2 className="mt-1 h-5 w-5 flex-shrink-0 text-[#139E9C]" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+          <div className="space-y-6">
+            <h1 className="text-[clamp(1.5rem,6vw,4rem)] font-semibold leading-[1.05] tracking-tight">
+              <span className="block">{hero.headline.line1}</span>
+              <span className="block text-[#139E9C]">{hero.headline.line2}</span>
+              <span className="block">{hero.headline.line3}</span>
+            </h1>
+
+            <p className="text-base leading-relaxed text-white/80 sm:text-lg">{hero.subtext}</p>
+          </div>
+
+          <div>
+            <a href={hero.cta.href} className="btn-primary w-full sm:w-auto">
+              {t.cta.bookAudit}
+            </a>
           </div>
         </div>
       </div>
@@ -106,48 +90,54 @@ const ProblemSection = () => {
 
   const problems = t.problems.list.map((p, i) => ({
     ...p,
-    icon: [MessageSquare, CalendarX, Receipt, Shield][i]
+    icon: [MessageSquare, Clock3, Receipt, Shield][i]
   }));
 
   return (
-    <section id="automations" ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+    <section
+      id="automations"
+      ref={sectionRef}
+      className="relative overflow-hidden bg-white py-20 lg:py-28"
+    >
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div
+          className={`flex flex-col gap-8 text-center transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2
-            className="text-display text-gray-900 mb-6"
+            className="text-[clamp(1.75rem,4vw,3rem)] font-semibold leading-tight text-gray-900"
             dangerouslySetInnerHTML={{ __html: t.problems.title }}
+          />
+          <p
+            className="mx-auto max-w-2xl text-base text-gray-600 sm:text-lg"
+            dangerouslySetInnerHTML={{ __html: t.problems.note }}
           />
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-8">
           {problems.map((problem, index) => (
             <div
               key={index}
-              className={`card-light p-6 md:p-8 text-center group transition-all duration-700 ${
+              className={`card-light group flex flex-col gap-5 p-6 text-center transition-all duration-700 sm:p-7 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
-              style={{ transitionDelay: isVisible ? '0ms' : `${index * 150}ms` }}
+              style={{ transitionDelay: isVisible ? '0ms' : `${index * 120}ms` }}
             >
-              <div className="w-16 h-16 rounded-2xl bg-[#2280FF]/20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <problem.icon className="w-8 h-8 text-[#2280FF]" />
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#2280FF]/15 text-[#2280FF] transition-transform duration-300 group-hover:scale-110">
+                <problem.icon className="h-7 w-7" />
               </div>
 
-              <h3
-                className="text-lg lg:text-xl font-semibold text-gray-900 mb-3"
-                dangerouslySetInnerHTML={{ __html: problem.title }}
-              />
-
-              <p className="text-gray-700 leading-relaxed text-sm lg:text-base">
-                {problem.body}
-              </p>
+              <div className="space-y-2">
+                <h3
+                  className="text-lg font-semibold text-gray-900"
+                  dangerouslySetInnerHTML={{ __html: problem.title }}
+                />
+                <p className="text-sm leading-relaxed text-gray-600 sm:text-base">{problem.body}</p>
+              </div>
             </div>
           ))}
         </div>
-
-        <p
-          className="text-center text-gray-700 mt-8"
-          dangerouslySetInnerHTML={{ __html: t.problems.note }}
-        />
       </div>
     </section>
   );
@@ -157,8 +147,7 @@ const ProblemSection = () => {
 const GrowthEngine = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const { t, lang } = useLanguage();
-  const base = lang === 'fr' ? '/fr' : '';
+  const { t } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -179,50 +168,56 @@ const GrowthEngine = () => {
 
   const gears = t.growth.gears.map((g, i) => ({
     ...g,
-    icon: [Zap, CalendarCheck, Star][i]
+    icon: [MessageSquare, Clock, ShieldCheck][i]
   }));
 
   return (
-    <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#F9FAFB' }}>
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden bg-[#F5F7FA] py-20 lg:py-28"
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(34,128,255,0.08),transparent_55%)]" />
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div
+          className={`flex flex-col gap-8 text-center transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2
-            className="text-display text-gray-900 mb-6"
+            className="text-[clamp(1.75rem,4vw,3rem)] font-semibold leading-tight text-gray-900"
             dangerouslySetInnerHTML={{ __html: t.growth.title }}
           />
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 items-stretch">
+        <div className="mt-14 grid gap-8 lg:mt-16 lg:grid-cols-3">
           {gears.map((gear, index) => (
             <div
               key={index}
-              className={`card-light p-6 md:p-8 flex flex-col items-center text-center group transition-all duration-700 ${
+              className={`card-light flex h-full flex-col gap-6 rounded-3xl border border-white/40 bg-white/80 p-8 text-center backdrop-blur transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              } h-full`}
-              style={{ transitionDelay: isVisible ? '0ms' : `${index * 200}ms` }}
+              }`}
+              style={{ transitionDelay: isVisible ? '0ms' : `${index * 160}ms` }}
             >
-              <div className="w-16 h-16 rounded-2xl bg-[#2280FF] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <gear.icon className="w-8 h-8 text-white" />
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#139E9C]/15 text-[#139E9C]">
+                <gear.icon className="h-7 w-7" />
               </div>
 
-              <h3
-                className="text-xl font-semibold text-gray-900 mb-4 text-center"
-                dangerouslySetInnerHTML={{ __html: gear.title }}
-              />
-              <ul className="text-gray-700 space-y-2 text-left w-full">
-                {gear.bullets.map((b: string, i: number) => (
-                  <li key={i} className="flex items-start">
-                    <CheckCircle className="w-4 h-4 text-[#139E9B] mr-2 mt-1 flex-shrink-0" />
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="space-y-3">
+                <h3
+                  className="text-lg font-semibold text-gray-900"
+                  dangerouslySetInnerHTML={{ __html: gear.title }}
+                />
+                <ul className="space-y-2 text-left text-sm text-gray-600 sm:text-base">
+                  {gear.bullets.map((b: string, i: number) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <CheckCircle className="mt-1 h-4 w-4 flex-shrink-0 text-[#139E9C]" />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <a href={`${base}/packs`} className="btn-outline text-lg px-10 py-4">{t.growth.cta}</a>
         </div>
       </div>
     </section>
@@ -519,10 +514,11 @@ function App() {
   return (
     <div className="min-h-screen">
       <Header />
-      <Hero />
-      <PartnerBar />
+        <Hero />
+        <PartnerBar />
         <ProblemSection />
         <GrowthEngine />
+        <MiniAuditCTA />
         <OfferCards />
       <ROIMath />
       <Checklist />

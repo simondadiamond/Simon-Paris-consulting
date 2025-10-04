@@ -11,51 +11,78 @@ const fr: TranslationKeys = {
   hero: {
     tagline: 'Pour les PME du Québec • Loi 25 prête • Zéro jargon',
     headline: {
-      line1: 'Moins de pertes.',
-      line2: 'Plus de profits.',
-      line3: '100 % conforme.'
+      line1: 'Automatisez les tâches lourdes.',
+      line2: 'Protégez vos marges.',
+      line3: 'Restez conforme à la Loi 25.'
     },
     subtext:
-      'J’accompagne les PME du Québec à automatiser les tâches répétitives qui grugent temps et argent — tout en assurant la conformité à la Loi 25.',
+      'Des automatisations bilingues qui répondent aux leads, relancent les factures et documentent les consentements — sans ajouter d’outils que votre équipe n’utilisera pas.',
     cta: {
-      text: 'Diagnostic Éclair gratuit',
       href: 'https://cal.com/simonparis/diagnostic'
-    },
-    card: {
-      title: 'Pendant le diagnostic, nous identifions…',
-      bullet1: 'Un goulot qui vous fait perdre du temps ou des patients.',
-      bullet2: 'Une tâche à automatiser sans changer votre logiciel.',
-      bullet3: 'La prochaine étape pour rester tranquille côté Loi 25 / 96.',
-      bullet4: 'Installation typique : 5 à 10 jours ouvrables.'
+    }
+  },
+  cta: {
+    bookAudit: 'Réserver un Diagnostic Éclair',
+    audit: {
+      title: 'Voici ce que l’on identifie dans votre Mini Audit de 20 minutes.',
+      bullets: [
+        'Le processus qui vous fait perdre le plus de temps ou de revenus.',
+        'L’automatisation à implanter rapidement dans vos outils actuels.',
+        'Les risques de conformité à corriger avant les amendes de la Loi 25.'
+      ],
+      timeline: 'Installation typique : 5 à 10 jours ouvrables.'
     }
   },
   problems: {
-    title: 'Pourquoi les cliniques <span class="accent">perdent de l’argent</span> chaque semaine…',
-      list: [
-        { title: 'Leads ignorés', body: 'Les patients réservent ailleurs.' },
-        { title: 'Rendez‑vous manqués', body: 'Des chaises vides aux heures de pointe.' },
-        { title: 'Factures en retard', body: 'Moins de liquidités chaque mois.' },
-        { title: 'Incertitude légale', body: 'Risque de non‑conformité (Loi 25/Loi 96).' }
-      ],
-    note: 'Tout se corrige avec une <span class="font-semibold">automatisation bilingue</span> simple.'
+    title: 'Pourquoi les PME du Québec perdent du temps chaque semaine…',
+    list: [
+      {
+        title: 'Ventes perdues',
+        body: 'Appels manqués et formulaires ignorés font filer les prospects ailleurs.'
+      },
+      {
+        title: 'Heures gaspillées',
+        body: 'Des suivis manuels gardent les propriétaires coincés dans l’administratif.'
+      },
+      {
+        title: 'Stress de trésorerie',
+        body: 'Des factures impayées ralentissent les dépôts chaque mois.'
+      },
+      {
+        title: 'Amendes évitables',
+        body: 'Des preuves de consentement incomplètes augmentent le risque Loi 25.'
+      }
+    ],
+    note: 'Tout cela se règle avec des <span class="font-semibold">automatisations bilingues</span> pensées pour votre équipe.'
   },
   growth: {
-    title: 'Le <span class="accent">moteur de croissance</span> de votre clinique : simple, bilingue, conforme.',
+    title: 'Des <span class="accent">automatisations prêtes</span> pour faire croître votre entreprise.',
     gears: [
-        {
-          title: 'SMS vitesse‑à‑lead',
-          bullets: ['Réponse en moins de 5 min', 'Priorité FR → EN', 'Intégration web, appels, réseaux sociaux']
-        },
-        {
-          title: 'Relance d’absences + rappels',
-          bullets: ['Rappels 24 h & 2 h', 'Lien simple pour replanifier', '25–50 % d’absences en moins']
-        },
-        {
-          title: 'Moteur d’avis + conformité',
-          bullets: ['Demandes d’avis polies FR/EN', '3× plus d’avis en 30–60 jours', 'Docs prêts pour audit (Loi 25/96)']
-        }
-      ],
-    cta: 'Voir les packs en action'
+      {
+        title: 'Réponse vitesse-à-lead',
+        bullets: [
+          'Répondez à chaque lead en moins de 5 minutes.',
+          'SMS + courriel en français d’abord, anglais au besoin.',
+          'Connecte formulaires, appels et messages sociaux.'
+        ]
+      },
+      {
+        title: 'Rappels & suivis automatisés',
+        bullets: [
+          'Rappels sans effort pour rendez-vous, travaux et soumissions.',
+          'Messages envoyés automatiquement dans la bonne langue.',
+          'Votre pipeline avance sans embauches supplémentaires.'
+        ]
+      },
+      {
+        title: 'Conformité + avis clients',
+        bullets: [
+          'Consentement tracé pour chaque message (Loi 25/96).',
+          'Modèles guidés pour avis, mises à jour et paiements.',
+          'Plus d’avis 5 étoiles sans surcharge administrative.'
+        ]
+      }
+    ]
   },
   offers: {
     heading: 'Trois parcours productisés',
