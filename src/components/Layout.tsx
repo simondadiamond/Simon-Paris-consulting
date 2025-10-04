@@ -32,7 +32,7 @@ export const Header: React.FC<{
     : 'text-white';
   const textClass = resolvedTextClass;
   const defaultCtaHref = t.hero.cta.href;
-  const defaultCtaLabel = t.hero.cta.text;
+  const defaultCtaLabel = t.cta.bookAudit;
   const resolvedCtaHref = ctaHref ?? defaultCtaHref;
   const resolvedCtaLabel = ctaLabel ?? defaultCtaLabel;
   const ctaClasses =
@@ -112,11 +112,8 @@ export const Header: React.FC<{
           >
             {t.header.brand}
           </a>
-          <div className="hidden items-center gap-8 md:flex">
+          <div className="hidden items-center md:flex">
             <LanguageToggle />
-            <a href={resolvedCtaHref} className={`${ctaClasses} whitespace-nowrap text-base`}>
-              {resolvedCtaLabel}
-            </a>
           </div>
           <div className="flex items-center gap-4 md:hidden">
             <LanguageToggle />

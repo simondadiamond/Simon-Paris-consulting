@@ -7,9 +7,9 @@ const MiniAuditCTA: React.FC = () => {
   const bullets: string[] = t.cta.audit.bullets;
 
   return (
-    <section className="relative py-20 lg:py-28">
+    <section className="relative -mt-12 py-20 lg:-mt-16 lg:py-28">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl bg-[#0e1a25] p-8 sm:p-10 lg:p-12 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
+        <div className="relative overflow-hidden rounded-3xl bg-[#0F1620] p-8 sm:p-10 lg:p-12 text-white shadow-[0_40px_80px_-40px_rgba(7,13,22,0.9)]">
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(34,128,255,0.2),transparent_60%)]" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(19,158,156,0.28),transparent_65%)]" />

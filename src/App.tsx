@@ -33,31 +33,35 @@ const Hero = () => {
         <div className="absolute bottom-[-8rem] right-[-6rem] h-[28rem] w-[28rem] rounded-full bg-[#139E9C]/16 blur-[150px]" />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[90vh] max-w-7xl flex-col justify-center px-4 pb-20 pt-28 sm:px-6 lg:px-8 lg:pt-32">
-        <div className="max-w-3xl space-y-10">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold uppercase tracking-[0.28em] text-white/55">
-            {taglineParts.map((part, index) => (
-              <React.Fragment key={`${part}-${index}`}>
-                {index > 0 && <span className="text-white/30">•</span>}
-                <span>{part}</span>
-              </React.Fragment>
-            ))}
-          </div>
+      <div className="relative z-10 mx-auto flex min-h-[90vh] max-w-7xl flex-col justify-center pb-20 pt-28 lg:pt-32">
+        <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center gap-10 text-center">
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold uppercase tracking-[0.28em] text-white/55">
+              {taglineParts.map((part, index) => (
+                <React.Fragment key={`${part}-${index}`}>
+                  {index > 0 && <span className="text-white/30">•</span>}
+                  <span>{part}</span>
+                </React.Fragment>
+              ))}
+            </div>
 
-          <div className="space-y-6">
-            <h1 className="text-[clamp(1.5rem,6vw,4rem)] font-semibold leading-[1.05] tracking-tight">
-              <span className="block">{hero.headline.line1}</span>
-              <span className="block text-[#139E9C]">{hero.headline.line2}</span>
-              <span className="block">{hero.headline.line3}</span>
-            </h1>
+            <div className="space-y-6">
+              <h1 className="mx-auto max-w-3xl text-[clamp(1.5rem,6vw,4rem)] font-semibold leading-[1.05] tracking-tight text-balance">
+                <span className="block">{hero.headline.line1}</span>
+                <span className="block text-[#139E9C]">{hero.headline.line2}</span>
+                <span className="block">{hero.headline.line3}</span>
+              </h1>
 
-            <p className="text-base leading-relaxed text-white/80 sm:text-lg">{hero.subtext}</p>
-          </div>
+              <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/80 text-balance sm:text-lg">
+                {hero.subtext}
+              </p>
+            </div>
 
-          <div>
-            <a href={hero.cta.href} className="btn-primary w-full sm:w-auto">
-              {t.cta.bookAudit}
-            </a>
+            <div className="flex w-full justify-center">
+              <a href={hero.cta.href} className="btn-primary w-full sm:w-auto">
+                {t.cta.bookAudit}
+              </a>
+            </div>
           </div>
         </div>
       </div>

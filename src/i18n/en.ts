@@ -15,7 +15,7 @@ export const en = {
       line3: 'Stay Law 25 ready.'
     },
     subtext:
-      'Bilingual automations that answer leads, chase invoices, and document consent—without adding tools your team won’t use.',
+      'Bring every lead response, follow-up, and consent log into one bilingual system built to save hours each week.',
     cta: {
       href: 'https://cal.com/simonparis/mini-audit'
     }
@@ -23,7 +23,7 @@ export const en = {
   cta: {
     bookAudit: 'Book Free Mini Audit',
     audit: {
-      title: 'Here’s what we identify in your 20-minute Mini Audit.',
+      title: 'Here’s what we identify in your 20-minute Mini Audit',
       bullets: [
         'The workflow that is leaking the most time or revenue.',
         'The quick-win automation that fits your current stack.',
@@ -33,7 +33,7 @@ export const en = {
     }
   },
   problems: {
-    title: 'Why Québec SMBs lose time (and profit) every week…',
+    title: 'Why Québec SMBs lose time, money, and trust every week…',
     list: [
       {
         title: 'Lost sales',
@@ -58,7 +58,7 @@ export const en = {
     title: 'The <span class="accent">growth engine</span> for your business: simple, bilingual, compliant.',
     gears: [
       {
-        title: 'Speed-to-Lead Response',
+        title: 'Fast Response',
         bullets: [
           'Reply to every lead in under 5 minutes.',
           'SMS + email in French first, English when needed.',
@@ -66,7 +66,7 @@ export const en = {
         ]
       },
       {
-        title: 'Reminder & Follow-Up Automation',
+        title: 'Follow-Up Automation',
         bullets: [
           'Hands-free reminders for appointments, jobs, and quotes.',
           'Smart nudges go out in the right language automatically.',
@@ -74,7 +74,7 @@ export const en = {
         ]
       },
       {
-        title: 'Compliance + Review Management',
+        title: 'Compliance & Trust',
         bullets: [
           'Consent tracked for every message (Law 25/96).',
           'Guided templates for updates, invoices, and requests.',

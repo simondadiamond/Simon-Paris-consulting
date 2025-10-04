@@ -16,7 +16,7 @@ const fr: TranslationKeys = {
       line3: 'Restez conforme à la Loi 25.'
     },
     subtext:
-      'Des automatisations bilingues qui répondent aux leads, relancent les factures et documentent les consentements — sans ajouter d’outils que votre équipe n’utilisera pas.',
+      'Centralisez réponses aux leads, suivis et preuves de consentement dans un système bilingue qui vous redonne des heures chaque semaine.',
     cta: {
       href: 'https://cal.com/simonparis/diagnostic'
     }
@@ -24,7 +24,7 @@ const fr: TranslationKeys = {
   cta: {
     bookAudit: 'Réserver un Diagnostic Éclair',
     audit: {
-      title: 'Voici ce que l’on identifie dans votre Mini Audit de 20 minutes.',
+      title: 'Voici ce que nous identifions dans votre Mini Audit de 20 minutes',
       bullets: [
         'Le processus qui vous fait perdre le plus de temps ou de revenus.',
         'L’automatisation à implanter rapidement dans vos outils actuels.',
@@ -34,7 +34,7 @@ const fr: TranslationKeys = {
     }
   },
   problems: {
-    title: 'Pourquoi les PME du Québec perdent du temps chaque semaine…',
+    title: 'Pourquoi les PME du Québec perdent temps, argent et confiance chaque semaine…',
     list: [
       {
         title: 'Ventes perdues',
@@ -59,7 +59,7 @@ const fr: TranslationKeys = {
     title: 'Des <span class="accent">automatisations prêtes</span> pour faire croître votre entreprise.',
     gears: [
       {
-        title: 'Réponse vitesse-à-lead',
+        title: 'Réponse rapide',
         bullets: [
           'Répondez à chaque lead en moins de 5 minutes.',
           'SMS + courriel en français d’abord, anglais au besoin.',
@@ -67,7 +67,7 @@ const fr: TranslationKeys = {
         ]
       },
       {
-        title: 'Rappels & suivis automatisés',
+        title: 'Suivis automatisés',
         bullets: [
           'Rappels sans effort pour rendez-vous, travaux et soumissions.',
           'Messages envoyés automatiquement dans la bonne langue.',
@@ -75,7 +75,7 @@ const fr: TranslationKeys = {
         ]
       },
       {
-        title: 'Conformité + avis clients',
+        title: 'Conformité & confiance',
         bullets: [
           'Consentement tracé pour chaque message (Loi 25/96).',
           'Modèles guidés pour avis, mises à jour et paiements.',
