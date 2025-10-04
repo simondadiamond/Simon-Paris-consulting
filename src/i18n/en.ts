@@ -21,6 +21,30 @@ export const en = {
       href: '/en/newsletter'
     }
   },
+  sections: {
+    problem: {
+      heading: 'Why Québec SMBs lose time (and margins) every week…',
+      subheading: 'The same four problems I’ve solved again and again — starting with my own systems.',
+      cards: [
+        {
+          title: 'Repetitive admin tasks',
+          description: 'Hours lost on manual scheduling, invoices, and data entry.'
+        },
+        {
+          title: 'Delayed follow-ups',
+          description: 'Leads, quotes, and reminders sent too late to convert.'
+        },
+        {
+          title: 'Last-minute compliance',
+          description: 'Privacy and consent handled only when an audit looms.'
+        },
+        {
+          title: 'Disconnected tools',
+          description: 'Systems that don’t talk — forcing your team to do double work.'
+        }
+      ]
+    }
+  },
   cta: {
     bookAudit: 'Book Free Mini Audit',
     audit: {
@@ -32,28 +56,6 @@ export const en = {
       ],
       timeline: 'Typical setup: 5–10 business days.'
     }
-  },
-  problems: {
-    title: 'Why Québec SMBs lose time (and profit) every week…',
-    list: [
-      {
-        title: 'Lost sales',
-        body: 'Missed calls and ignored forms push ready-to-buy clients to competitors.'
-      },
-      {
-        title: 'Wasted hours',
-        body: 'Manual follow-ups keep owners stuck in admin instead of growth.'
-      },
-      {
-        title: 'Cash-flow stress',
-        body: 'Invoices slip through the cracks and payouts get delayed.'
-      },
-      {
-        title: 'Avoidable fines',
-        body: 'Consent tracking gaps create unnecessary Law 25 risk.'
-      }
-    ],
-    note: 'All of this is fixable with simple <span class="font-semibold">bilingual automations</span> built for your team.'
   },
   growth: {
     title: 'The <span class="accent">growth engine</span> for your business: simple, bilingual, compliant.',

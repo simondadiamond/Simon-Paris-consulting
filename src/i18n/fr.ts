@@ -22,6 +22,30 @@ const fr: TranslationKeys = {
       href: '/fr/infolettre'
     }
   },
+  sections: {
+    problem: {
+      heading: 'Pourquoi les PME du Québec perdent du temps (et des marges) chaque semaine…',
+      subheading: 'Les quatre problèmes que j’ai appris à résoudre — en commençant par mes propres systèmes.',
+      cards: [
+        {
+          title: 'Tâches administratives répétitives',
+          description: 'Des heures perdues à planifier, facturer et saisir manuellement des données.'
+        },
+        {
+          title: 'Suivis trop tardifs',
+          description: 'Des clients ou soumissions qui tombent entre les mailles du filet.'
+        },
+        {
+          title: 'Conformité à la dernière minute',
+          description: 'Des consentements et politiques gérés seulement sous pression.'
+        },
+        {
+          title: 'Outils déconnectés',
+          description: 'Des systèmes qui ne se parlent pas — et font perdre du temps à votre équipe.'
+        }
+      ]
+    }
+  },
   cta: {
     bookAudit: 'Réserver un Diagnostic Éclair',
     audit: {
@@ -33,28 +57,6 @@ const fr: TranslationKeys = {
       ],
       timeline: 'Installation typique : 5 à 10 jours ouvrables.'
     }
-  },
-  problems: {
-    title: 'Pourquoi les PME du Québec perdent du temps chaque semaine…',
-    list: [
-      {
-        title: 'Ventes perdues',
-        body: 'Appels manqués et formulaires ignorés font filer les prospects ailleurs.'
-      },
-      {
-        title: 'Heures gaspillées',
-        body: 'Des suivis manuels gardent les propriétaires coincés dans l’administratif.'
-      },
-      {
-        title: 'Stress de trésorerie',
-        body: 'Des factures impayées ralentissent les dépôts chaque mois.'
-      },
-      {
-        title: 'Amendes évitables',
-        body: 'Des preuves de consentement incomplètes augmentent le risque Loi 25.'
-      }
-    ],
-    note: 'Tout cela se règle avec des <span class="font-semibold">automatisations bilingues</span> pensées pour votre équipe.'
   },
   growth: {
     title: 'Des <span class="accent">automatisations prêtes</span> pour faire croître votre entreprise.',
