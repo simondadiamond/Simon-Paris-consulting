@@ -114,43 +114,40 @@ export const en = {
   },
   faq: {
     title: 'FAQ',
-    list: [
-      {
-        question: 'How quickly can you set up my automation?',
-        answer: {
-          intro: 'Faster than you think.',
-          bullets: ['Live within 1–2 weeks', 'Hands-on support included']
-        }
-      },
-      {
-        question: 'Is this really compliant?',
-        answer: {
-          intro: 'Yes, and documented.',
-          bullets: ['Bill 25/96-checked templates', 'Audit-ready proof provided']
-        }
-      },
-      {
-        question: "What if I'm not tech-savvy?",
-        answer: {
-          intro: 'Built for non-tech folks.',
-          bullets: ['We set everything up', 'Human support in English & French']
-        }
-      },
-      {
-        question: 'How much does it cost?',
-        answer: {
-          intro: `From $${PACK_PRICE}.`,
-          bullets: ['Flat pricing, no contract', 'ROI within days for many']
-        }
-      },
-      {
-        question: 'Can you help us with AI adoption or strategy?',
-        answer: {
-          intro: 'Absolutely.',
-          bullets: ['Always testing new AI tools', 'Ask during the demo']
-        }
-      }
-    ]
+    q1: {
+      question: 'How fast can we see results?',
+      answer:
+        'Most clients see their first automation live in 7–10 business days. You’ll get a clear plan after the free audit — no surprises, no tech headaches.'
+    },
+    q2: {
+      question: 'Is this really compliant?',
+      answer:
+        'Yes. Every automation includes Law 25-ready templates and documented consent tracking. You’ll even receive a short audit report as proof.'
+    },
+    q3: {
+      question: 'What if I’m not comfortable with technology?',
+      answer:
+        'No problem. Everything is set up for you — you just approve. I work with dozens of owners who hate tech but love saving time.'
+    },
+    q4: {
+      question: 'What’s the price — and what do I get?',
+      answer:
+        'The mini audit is free. Custom builds start at $199, fixed price. No monthly contract, and most clients recover the cost in under a week.'
+    },
+    q5: {
+      question: 'Do these automations actually work for small teams?',
+      answer:
+        'Yes. They’re designed for clinics, trades, and offices with 3–25 employees. The goal: cut admin time, keep leads warm, and reduce stress — without changing your current tools.'
+    },
+    q6: {
+      question: 'Can you help us with AI or new tools later?',
+      answer:
+        'Absolutely. I test new AI assistants, chatbots, and voice bots monthly — and can add them once your core workflows are stable.'
+    },
+    cta: {
+      text: 'Still unsure what fits your team?',
+      button: 'Book a Free Mini Audit'
+    }
   },
   finalcta: {
     headline: 'AI that matters to you.',

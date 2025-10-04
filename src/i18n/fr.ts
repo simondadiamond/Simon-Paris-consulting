@@ -115,43 +115,40 @@ const fr: TranslationKeys = {
   },
   faq: {
     title: 'FAQ',
-    list: [
-      {
-        question: 'En combien de temps pouvez-vous configurer mon automatisation?',
-        answer: {
-          intro: 'Rapide, sans tracas.',
-          bullets: ['Configuration en 1–2 semaines', 'Support complet pendant l’installation']
-        }
-      },
-      {
-        question: 'C’est vraiment conforme?',
-        answer: {
-          intro: 'Oui, documenté.',
-          bullets: ['Modèles vérifiés Loi 25/96', 'Preuves prêtes pour audit']
-        }
-      },
-      {
-        question: 'Et si je ne suis pas à l’aise avec la technologie?',
-        answer: {
-          intro: 'Pensé pour les non‑tech.',
-          bullets: ['Installation gérée pour vous', 'Accompagnement humain en français']
-        }
-      },
-      {
-        question: 'Combien ça coûte?',
-        answer: {
-          intro: `À partir de ${PACK_PRICE} $.`,
-          bullets: ['Prix fixes, aucun contrat', 'Retour rapide sur investissement']
-        }
-      },
-      {
-        question: 'Pouvez-vous nous aider avec l’adoption ou la stratégie IA?',
-        answer: {
-          intro: 'Bien sûr.',
-          bullets: ['Veille constante des outils IA', 'Conseils lors de la démo']
-        }
-      }
-    ]
+    q1: {
+      question: 'En combien de temps verrai-je des résultats ?',
+      answer:
+        'La majorité de mes clients voient leur première automatisation en place en 7 à 10 jours ouvrables. Vous recevez un plan clair après le diagnostic — sans jargon, sans casse-tête.'
+    },
+    q2: {
+      question: 'Est-ce vraiment conforme à la Loi 25 / 96 ?',
+      answer:
+        'Oui. Chaque automatisation inclut des modèles conformes et un suivi de consentement documenté. Vous recevez un mini-rapport d’audit comme preuve.'
+    },
+    q3: {
+      question: 'Et si je ne suis pas à l’aise avec la technologie ?',
+      answer:
+        'Aucun souci. J’installe tout pour vous — vous n’avez qu’à valider. J’accompagne plusieurs propriétaires qui détestent la techno, mais adorent gagner du temps.'
+    },
+    q4: {
+      question: 'Combien ça coûte — et qu’est-ce que j’obtiens ?',
+      answer:
+        'Le diagnostic est gratuit. Les automatisations sur mesure commencent à 199 $, prix fixe. Aucun abonnement, et la majorité des clients récupèrent l’investissement en moins d’une semaine.'
+    },
+    q5: {
+      question: 'Est-ce que ça fonctionne vraiment pour les petites équipes ?',
+      answer:
+        'Oui. C’est conçu pour les cliniques, commerces et bureaux de 3 à 25 employés. Objectif : moins d’administration, plus de clients, zéro stress — sans changer vos outils actuels.'
+    },
+    q6: {
+      question: 'Pouvez-vous nous aider avec l’IA ou de nouveaux outils ?',
+      answer:
+        'Absolument. Je teste chaque mois de nouveaux assistants IA, chatbots et voice bots — que je peux ajouter une fois vos flux stables.'
+    },
+    cta: {
+      text: 'Pas certain de ce qui convient à votre équipe ?',
+      button: 'Réserver un Diagnostic Éclair'
+    }
   },
   finalcta: {
     headline: 'L’IA qui vous concerne.',
