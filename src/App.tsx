@@ -174,7 +174,7 @@ const GrowthEngine = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-[#F5F7FA] bg-section-gradient-top py-20 lg:py-28"
+      className="relative overflow-hidden bg-white bg-section-gradient-top py-20 lg:py-28"
     >
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
