@@ -7,9 +7,9 @@ const FinalCTA: React.FC = () => {
   const ctaHref = t.finalcta?.href ?? fallbackHref;
 
   return (
-    <section className="bg-[#0B1220] py-12 text-white">
+    <section className="bg-[#0B1220] pt-12 pb-16 text-white md:pt-14 md:pb-20">
       <div className="mx-auto max-w-5xl px-6">
-        <div className="flex flex-col items-center space-y-4 text-center md:flex-row md:items-center md:justify-between md:space-y-0 md:text-left">
+        <div className="flex flex-col items-center gap-6 text-center md:flex-row md:items-center md:justify-between md:gap-0 md:text-left">
           <div className="md:max-w-3xl md:pr-8">
             <h2 className="text-2xl font-bold leading-tight md:text-3xl">
               {t.finalcta.headline}

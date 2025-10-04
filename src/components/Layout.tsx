@@ -127,27 +127,27 @@ export const Footer: React.FC<{ langToggle?: { fr: string; en: string } }> = ({
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-[#0B1220] text-white">
-      <div className="mx-auto max-w-5xl px-6 py-6 md:py-8">
-        <div className="flex flex-col items-center gap-6 text-center md:flex-row md:items-center md:justify-between md:text-left">
+    <footer className="border-t border-white/10 bg-[#0B1220] text-white">
+      <div className="mx-auto max-w-5xl px-6 py-8 md:py-10">
+        <div className="flex flex-col items-center gap-5 text-center md:flex-row md:items-start md:justify-between md:text-left">
           <div>
-            <div className="text-xl font-semibold md:text-2xl">{t.header.brand}</div>
-            <p className="mt-1 text-sm text-white/70 md:text-base">{t.footer.tagline}</p>
+            <div className="text-lg font-medium text-white/80 md:text-xl">{t.header.brand}</div>
+            <p className="mt-1 text-xs text-white/60 md:text-sm">{t.footer.tagline}</p>
           </div>
 
-          <address className="text-sm text-white/70 not-italic md:text-right md:text-base">
+          <address className="text-xs text-white/60 not-italic md:text-right md:text-sm">
             <a
               href={`mailto:${t.footer.contact.email}`}
-              className="block font-semibold text-white/90 transition hover:text-white"
+              className="block font-medium text-white/80 transition hover:text-white"
             >
               {t.footer.contact.emailLabel}: {t.footer.contact.email}
             </a>
-            <div>{t.footer.contact.locationLabel}: {t.footer.contact.location}</div>
+            <div className="mt-1">{t.footer.contact.locationLabel}: {t.footer.contact.location}</div>
           </address>
         </div>
 
         <div className="mt-6 border-t border-white/10 pt-4">
-          <p className="text-center text-xs text-white/50 md:text-left">
+          <p className="text-center text-[11px] text-white/45 md:text-left">
             {t.footer.copyright}
           </p>
         </div>
