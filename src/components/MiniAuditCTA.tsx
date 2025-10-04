@@ -4,40 +4,32 @@ import { useLanguage } from '../LanguageProvider';
 
 const MiniAuditCTA: React.FC = () => {
   const { t } = useLanguage();
-  const bullets: string[] = t.cta.audit.bullets;
+  const bullets: string[] = t.audit.bullets;
+  const ctaHref = t.hero.ctaHref ?? 'https://cal.com/simonparis/diagnostic';
 
   return (
-    <section className="relative -mt-12 py-20 lg:-mt-16 lg:py-28">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl bg-[#0F1620] p-8 sm:p-10 lg:p-12 text-white shadow-[0_40px_80px_-40px_rgba(7,13,22,0.9)]">
-          <div className="pointer-events-none absolute inset-0">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(34,128,255,0.2),transparent_60%)]" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(19,158,156,0.28),transparent_65%)]" />
-            <div className="absolute -bottom-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-[#139E9C]/25 blur-[140px]" />
-          </div>
+    <section className="relative -mt-16 bg-[radial-gradient(1000px_600px_at_50%_0%,#0C2430_0%,#0B1624_100%)] py-24 md:py-28 text-white">
+      <div className="mx-auto max-w-3xl px-6">
+        <div className="relative overflow-hidden rounded-3xl bg-[#0F1E2C]/80 p-12 text-center shadow-[0_25px_80px_rgba(19,158,156,0.25)] ring-1 ring-white/10 backdrop-blur-2xl before:absolute before:inset-0 before:rounded-3xl before:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] before:content-[''] md:p-16">
+          <div className="relative z-10">
+            <h2 className="text-2xl font-extrabold md:text-3xl">{t.audit.title}</h2>
 
-          <div className="relative flex flex-col gap-8 text-center">
-            <h2 className="text-[clamp(1.5rem,4vw,2.75rem)] font-semibold leading-tight text-white">
-              {t.cta.audit.title}
-            </h2>
-
-            <ul className="flex flex-col gap-4 text-left text-base text-white/85 sm:text-lg">
+            <ul className="mx-auto mt-8 max-w-lg space-y-4 text-left text-white/90">
               {bullets.map((item, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-1 h-6 w-6 flex-shrink-0 text-[#4fd5d2]" />
+                  <CheckCircle2 className="mt-1 h-5 w-5 flex-shrink-0 text-[#139E9C]" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
 
-            <div className="flex flex-col items-center gap-4">
-              <span className="text-sm font-medium uppercase tracking-[0.2em] text-[#8be9e7]">
-                {t.cta.audit.timeline}
-              </span>
-              <a href={t.hero.cta.href} className="btn-primary">
-                {t.cta.bookAudit}
-              </a>
-            </div>
+            <p className="mt-6 text-sm font-semibold uppercase tracking-[0.3em] text-[#7cdedc]">
+              {t.audit.timeline}
+            </p>
+
+            <a href={ctaHref} className="btn-primary mt-10 inline-flex">
+              {t.audit.cta}
+            </a>
           </div>
         </div>
       </div>

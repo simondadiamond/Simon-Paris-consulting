@@ -3,13 +3,14 @@ import { useLanguage } from './LanguageProvider';
 import {
   MessageSquare,
   Clock3,
-  Receipt,
-  Shield,
   CheckCircle,
   Clock,
   ShieldCheck,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  FileWarning,
+  DollarSign,
+  UserX
 } from 'lucide-react';
 import { Header, Footer } from './components/Layout';
 import PartnerBar from './components/PartnerBar';
@@ -19,50 +20,36 @@ import MiniAuditCTA from './components/MiniAuditCTA';
 // Hero Component
 const Hero = () => {
   const { t } = useLanguage();
-  const hero = t.hero;
-  const taglineParts = hero.tagline.includes('•')
-    ? hero.tagline.split('•').map(part => part.trim()).filter(Boolean)
-    : [hero.tagline];
+  const taglineParts = t.hero.tagline.includes('•')
+    ? t.hero.tagline.split('•').map(part => part.trim()).filter(Boolean)
+    : [t.hero.tagline];
+  const ctaHref = t.hero.ctaHref ?? 'https://cal.com/simonparis/diagnostic';
 
   return (
-    <section id="hero" className="relative isolate overflow-hidden bg-[#0B1320] text-white">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_0%_0%,rgba(34,128,255,0.2),rgba(11,19,32,0)_60%),radial-gradient(120%_120%_at_85%_15%,rgba(19,158,156,0.25),rgba(11,19,32,0)_65%)] opacity-90" />
-        <div className="absolute inset-0 bg-[linear-gradient(140deg,rgba(255,255,255,0.08),transparent_50%)] mix-blend-screen" />
-        <div className="absolute -left-24 top-[-6rem] h-[22rem] w-[22rem] rounded-full bg-[#2280FF]/18 blur-[140px]" />
-        <div className="absolute bottom-[-8rem] right-[-6rem] h-[28rem] w-[28rem] rounded-full bg-[#139E9C]/16 blur-[150px]" />
-      </div>
-
-      <div className="relative z-10 mx-auto flex min-h-[90vh] max-w-7xl flex-col justify-center pb-20 pt-28 lg:pt-32">
-        <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center gap-10 text-center">
-            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold uppercase tracking-[0.28em] text-white/55">
-              {taglineParts.map((part, index) => (
-                <React.Fragment key={`${part}-${index}`}>
-                  {index > 0 && <span className="text-white/30">•</span>}
-                  <span>{part}</span>
-                </React.Fragment>
-              ))}
-            </div>
-
-            <div className="space-y-6">
-              <h1 className="mx-auto max-w-3xl text-[clamp(1.5rem,6vw,4rem)] font-semibold leading-[1.05] tracking-tight text-balance">
-                <span className="block">{hero.headline.line1}</span>
-                <span className="block text-[#139E9C]">{hero.headline.line2}</span>
-                <span className="block">{hero.headline.line3}</span>
-              </h1>
-
-              <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/80 text-balance sm:text-lg">
-                {hero.subtext}
-              </p>
-            </div>
-
-            <div className="flex w-full justify-center">
-              <a href={hero.cta.href} className="btn-primary w-full sm:w-auto">
-                {t.cta.bookAudit}
-              </a>
-            </div>
+    <section className="relative flex min-h-screen items-center justify-center bg-[#0E1824] text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(1200px_800px_at_60%_10%,#0F2235_0%,#0E1824_70%,#0B1420_100%)] opacity-95" />
+      <div className="relative z-10 w-full max-w-[1100px] px-6 text-center md:text-left">
+        <div className="mx-auto flex max-w-[700px] flex-col items-center pb-16 text-center md:items-start md:pb-24 md:text-left">
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/60 md:justify-start">
+            {taglineParts.map((part, index) => (
+              <React.Fragment key={`${part}-${index}`}>
+                {index > 0 && <span className="text-white/30">•</span>}
+                <span>{part}</span>
+              </React.Fragment>
+            ))}
           </div>
+
+          <h1 className="mt-8 text-[clamp(2rem,6vw,4.25rem)] font-semibold leading-[1.1] tracking-tight text-balance">
+            {t.hero.h1}
+          </h1>
+
+          <p className="mt-6 max-w-2xl text-lg text-white/80 text-balance md:text-xl">
+            {t.hero.sub}
+          </p>
+
+          <a href={ctaHref} className="btn-primary mt-8">
+            {t.hero.cta}
+          </a>
         </div>
       </div>
     </section>
@@ -92,56 +79,53 @@ const ProblemSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  const problems = t.problems.list.map((p, i) => ({
+  const problems = t.pain.cards.map((p, i) => ({
     ...p,
-    icon: [MessageSquare, Clock3, Receipt, Shield][i]
+    icon: [UserX, Clock, DollarSign, FileWarning][i]
   }));
 
   return (
     <section
       id="automations"
       ref={sectionRef}
-      className="relative overflow-hidden bg-white py-20 lg:py-28"
+      className="bg-white py-24 md:py-28 text-[#0E1824]"
     >
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl px-6 text-center">
         <div
           className={`flex flex-col gap-8 text-center transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h2
-            className="text-[clamp(1.75rem,4vw,3rem)] font-semibold leading-tight text-gray-900"
-            dangerouslySetInnerHTML={{ __html: t.problems.title }}
-          />
-          <p
-            className="mx-auto max-w-2xl text-base text-gray-600 sm:text-lg"
-            dangerouslySetInnerHTML={{ __html: t.problems.note }}
-          />
+          <h2 className="text-3xl font-extrabold md:text-4xl">{t.pain.title}</h2>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-8">
+        <div
+          className={`mt-16 grid grid-cols-1 gap-6 transition-all duration-1000 sm:grid-cols-2 md:grid-cols-4 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           {problems.map((problem, index) => (
             <div
               key={index}
-              className={`card-light group flex flex-col gap-5 p-6 text-center transition-all duration-700 sm:p-7 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{ transitionDelay: isVisible ? '0ms' : `${index * 120}ms` }}
+              className="rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm transition-all hover:shadow-lg"
             >
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#2280FF]/15 text-[#2280FF] transition-transform duration-300 group-hover:scale-110">
-                <problem.icon className="h-7 w-7" />
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#139E9C]/10 text-[#139E9C]">
+                <problem.icon className="h-8 w-8" />
               </div>
 
               <div className="space-y-2">
-                <h3
-                  className="text-lg font-semibold text-gray-900"
-                  dangerouslySetInnerHTML={{ __html: problem.title }}
-                />
-                <p className="text-sm leading-relaxed text-gray-600 sm:text-base">{problem.body}</p>
+                <h3 className="text-lg font-semibold">{problem.title}</h3>
+                <p className="text-sm leading-relaxed text-gray-600">{problem.body}</p>
               </div>
             </div>
           ))}
         </div>
+
+        <p className={`mt-12 text-base text-gray-600 transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
+          {t.pain.sub}
+        </p>
       </div>
     </section>
   );
@@ -170,56 +154,38 @@ const GrowthEngine = () => {
     return () => observer.disconnect();
   }, []);
 
-  const gears = t.growth.gears.map((g, i) => ({
-    ...g,
-    icon: [MessageSquare, Clock, ShieldCheck][i]
+  const solutionCards = t.solution.cards.map((card, i) => ({
+    ...card,
+    icon: [MessageSquare, Clock3, ShieldCheck][i]
   }));
 
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-[#F5F7FA] py-20 lg:py-28"
+      className="bg-[radial-gradient(1200px_600px_at_50%_0%,#11283A_0%,#0E1824_90%)] py-28 text-white"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(34,128,255,0.08),transparent_55%)]" />
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl px-6 text-center">
         <div
-          className={`flex flex-col gap-8 text-center transition-all duration-1000 ${
+          className={`transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h2
-            className="text-[clamp(1.75rem,4vw,3rem)] font-semibold leading-tight text-gray-900"
-            dangerouslySetInnerHTML={{ __html: t.growth.title }}
-          />
+          <h2 className="text-3xl font-extrabold md:text-4xl">{t.solution.title}</h2>
         </div>
 
-        <div className="mt-14 grid gap-8 lg:mt-16 lg:grid-cols-3">
-          {gears.map((gear, index) => (
+        <div
+          className={`mt-16 grid grid-cols-1 gap-8 transition-all duration-1000 sm:grid-cols-2 md:grid-cols-3 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          {solutionCards.map((card, index) => (
             <div
               key={index}
-              className={`card-light flex h-full flex-col gap-6 rounded-3xl border border-white/40 bg-white/80 p-8 text-center backdrop-blur transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{ transitionDelay: isVisible ? '0ms' : `${index * 160}ms` }}
+              className="rounded-2xl bg-white/5 p-10 text-left shadow-[0_8px_30px_rgba(0,0,0,0.25)] ring-1 ring-white/10 backdrop-blur-xl transition-transform hover:scale-[1.02]"
             >
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#139E9C]/15 text-[#139E9C]">
-                <gear.icon className="h-7 w-7" />
-              </div>
-
-              <div className="space-y-3">
-                <h3
-                  className="text-lg font-semibold text-gray-900"
-                  dangerouslySetInnerHTML={{ __html: gear.title }}
-                />
-                <ul className="space-y-2 text-left text-sm text-gray-600 sm:text-base">
-                  {gear.bullets.map((b: string, i: number) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <CheckCircle className="mt-1 h-4 w-4 flex-shrink-0 text-[#139E9C]" />
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <card.icon className="h-10 w-10 text-[#139E9C]" />
+              <h3 className="mt-6 text-xl font-semibold text-white">{card.title}</h3>
+              <p className="mt-3 text-base text-gray-200">{card.body}</p>
             </div>
           ))}
         </div>

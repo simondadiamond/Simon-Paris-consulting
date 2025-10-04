@@ -9,32 +9,14 @@ export const en = {
   },
   hero: {
     tagline: 'For Québec SMBs • Law 25 ready • Zero jargon',
-    headline: {
-      line1: 'Automate the busywork.',
-      line2: 'Protect your margins.',
-      line3: 'Stay Law 25 ready.'
-    },
-    subtext:
-      'Bring every lead response, follow-up, and consent log into one bilingual system built to save hours each week.',
-    cta: {
-      href: 'https://cal.com/simonparis/mini-audit'
-    }
+    h1: 'Automate the busywork. Protect your margins. Stay Law 25 ready.',
+    sub: 'One bilingual automation system to capture leads, follow up, and stay compliant without adding headcount.',
+    cta: 'Book your Mini Audit',
+    ctaHref: 'https://cal.com/simonparis/diagnostic'
   },
-  cta: {
-    bookAudit: 'Book Free Mini Audit',
-    audit: {
-      title: 'Here’s what we identify in your 20-minute Mini Audit',
-      bullets: [
-        'The workflow that is leaking the most time or revenue.',
-        'The quick-win automation that fits your current stack.',
-        'The compliance risks to close before Law 25 fines.'
-      ],
-      timeline: 'Typical setup: 5–10 business days.'
-    }
-  },
-  problems: {
-    title: 'Why Québec SMBs lose time, money, and trust every week…',
-    list: [
+  pain: {
+    title: 'Why Québec SMBs lose time (and profit) every week…',
+    cards: [
       {
         title: 'Lost sales',
         body: 'Missed calls and ignored forms push ready-to-buy clients to competitors.'
@@ -48,40 +30,38 @@ export const en = {
         body: 'Invoices slip through the cracks and payouts get delayed.'
       },
       {
-        title: 'Avoidable fines',
+        title: 'Compliance risk',
         body: 'Consent tracking gaps create unnecessary Law 25 risk.'
       }
     ],
-    note: 'All of this is fixable with simple <span class="font-semibold">bilingual automations</span> built for your team.'
+    sub: 'All of this is fixable with simple bilingual automations.'
   },
-  growth: {
-    title: 'The <span class="accent">growth engine</span> for your business: simple, bilingual, compliant.',
-    gears: [
+  solution: {
+    title: 'The growth engine for your business: simple, bilingual, compliant.',
+    cards: [
       {
         title: 'Fast Response',
-        bullets: [
-          'Reply to every lead in under 5 minutes.',
-          'SMS + email in French first, English when needed.',
-          'Connects forms, calls, and social DMs.'
-        ]
+        body: 'Respond instantly to new leads and clients.'
       },
       {
-        title: 'Follow-Up Automation',
-        bullets: [
-          'Hands-free reminders for appointments, jobs, and quotes.',
-          'Smart nudges go out in the right language automatically.',
-          'Keeps your pipeline moving without adding headcount.'
-        ]
+        title: 'Smart Follow-ups',
+        body: 'Automate reminders without adding headcount.'
       },
       {
         title: 'Compliance & Trust',
-        bullets: [
-          'Consent tracked for every message (Law 25/96).',
-          'Guided templates for updates, invoices, and requests.',
-          'Collects 5-star reviews without extra admin work.'
-        ]
+        body: 'Stay compliant and earn client trust effortlessly.'
       }
     ]
+  },
+  audit: {
+    title: 'Here’s what we identify in your 20-minute Mini Audit',
+    bullets: [
+      'The workflow leaking the most time or revenue.',
+      'Quick-win automations that fit your current stack.',
+      'Consent and compliance gaps to close before fines.'
+    ],
+    timeline: 'Typical setup: 5–10 business days.',
+    cta: 'Book your Mini Audit'
   },
   offers: {
     heading: 'Choose your path',

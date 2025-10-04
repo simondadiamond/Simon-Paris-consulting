@@ -159,22 +159,21 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Premium Buttons */
 .btn-primary {
-  @apply inline-flex items-center justify-center rounded-xl px-6 py-3 text-base font-medium text-white transition;
+  @apply inline-flex items-center justify-center rounded-xl px-8 py-4 text-lg font-semibold text-white transition-all;
   background-color: #139e9c;
-  box-shadow: 0 22px 48px -20px rgba(19, 158, 156, 0.8);
+  box-shadow: 0 8px 20px rgba(19, 158, 156, 0.35);
   border: none;
   cursor: pointer;
-  transition: background-color 0.25s ease, box-shadow 0.35s ease, transform 0.25s ease;
 }
 
 .btn-primary:hover {
-  background-color: #118883;
-  box-shadow: 0 28px 54px -22px rgba(19, 158, 156, 0.9);
+  background-color: #11a8a4;
+  box-shadow: 0 10px 30px rgba(19, 158, 156, 0.55);
 }
 
 .btn-primary:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(19, 158, 156, 0.35), 0 26px 54px -22px rgba(19, 158, 156, 0.9);
+  box-shadow: 0 0 0 3px rgba(19, 158, 156, 0.35), 0 10px 30px rgba(19, 158, 156, 0.55);
 }
 
 .btn-primary:active {

@@ -10,79 +10,59 @@ const fr: TranslationKeys = {
   },
   hero: {
     tagline: 'Pour les PME du Québec • Loi 25 prête • Zéro jargon',
-    headline: {
-      line1: 'Automatisez les tâches lourdes.',
-      line2: 'Protégez vos marges.',
-      line3: 'Restez conforme à la Loi 25.'
-    },
-    subtext:
-      'Centralisez réponses aux leads, suivis et preuves de consentement dans un système bilingue qui vous redonne des heures chaque semaine.',
-    cta: {
-      href: 'https://cal.com/simonparis/diagnostic'
-    }
+    h1: 'Automatisez le travail répétitif. Protégez vos marges. Restez conforme à la Loi 25.',
+    sub: 'Un système d’automatisation bilingue pour capter chaque lead, assurer les suivis et documenter vos consentements.',
+    cta: 'Réserver un Diagnostic Éclair',
+    ctaHref: 'https://cal.com/simonparis/diagnostic'
   },
-  cta: {
-    bookAudit: 'Réserver un Diagnostic Éclair',
-    audit: {
-      title: 'Voici ce que nous identifions dans votre Mini Audit de 20 minutes',
-      bullets: [
-        'Le processus qui vous fait perdre le plus de temps ou de revenus.',
-        'L’automatisation à implanter rapidement dans vos outils actuels.',
-        'Les risques de conformité à corriger avant les amendes de la Loi 25.'
-      ],
-      timeline: 'Installation typique : 5 à 10 jours ouvrables.'
-    }
-  },
-  problems: {
-    title: 'Pourquoi les PME du Québec perdent temps, argent et confiance chaque semaine…',
-    list: [
+  pain: {
+    title: 'Pourquoi les PME du Québec perdent temps (et argent) chaque semaine…',
+    cards: [
       {
         title: 'Ventes perdues',
-        body: 'Appels manqués et formulaires ignorés font filer les prospects ailleurs.'
+        body: 'Les appels manqués et formulaires ignorés envoient vos prospects chez la concurrence.'
       },
       {
         title: 'Heures gaspillées',
-        body: 'Des suivis manuels gardent les propriétaires coincés dans l’administratif.'
+        body: 'Les suivis manuels et rappels vous gardent coincé dans l’administration.'
       },
       {
         title: 'Stress de trésorerie',
-        body: 'Des factures impayées ralentissent les dépôts chaque mois.'
+        body: 'Les factures impayées et suivis tardifs ralentissent les encaissements.'
       },
       {
-        title: 'Amendes évitables',
-        body: 'Des preuves de consentement incomplètes augmentent le risque Loi 25.'
+        title: 'Risque de conformité',
+        body: 'Des preuves de consentement incomplètes ouvrent la porte aux amendes de la Loi 25.'
       }
     ],
-    note: 'Tout cela se règle avec des <span class="font-semibold">automatisations bilingues</span> pensées pour votre équipe.'
+    sub: 'Tout cela se règle avec des automatisations bilingues simples.'
   },
-  growth: {
-    title: 'Des <span class="accent">automatisations prêtes</span> pour faire croître votre entreprise.',
-    gears: [
+  solution: {
+    title: 'Le moteur de croissance de votre entreprise : simple, bilingue, conforme.',
+    cards: [
       {
-        title: 'Réponse rapide',
-        bullets: [
-          'Répondez à chaque lead en moins de 5 minutes.',
-          'SMS + courriel en français d’abord, anglais au besoin.',
-          'Connecte formulaires, appels et messages sociaux.'
-        ]
+        title: 'Réponse éclair',
+        body: 'Répondez instantanément aux nouveaux prospects et clients.'
       },
       {
-        title: 'Suivis automatisés',
-        bullets: [
-          'Rappels sans effort pour rendez-vous, travaux et soumissions.',
-          'Messages envoyés automatiquement dans la bonne langue.',
-          'Votre pipeline avance sans embauches supplémentaires.'
-        ]
+        title: 'Suivis intelligents',
+        body: 'Automatisez les relances sans ajouter d’effectifs.'
       },
       {
         title: 'Conformité & confiance',
-        bullets: [
-          'Consentement tracé pour chaque message (Loi 25/96).',
-          'Modèles guidés pour avis, mises à jour et paiements.',
-          'Plus d’avis 5 étoiles sans surcharge administrative.'
-        ]
+        body: 'Restez conforme et inspirez confiance sans effort.'
       }
     ]
+  },
+  audit: {
+    title: 'Voici ce que nous identifions dans votre mini audit de 20 minutes',
+    bullets: [
+      'Le flux qui fait perdre le plus de temps ou de revenus.',
+      'L’automatisation rapide qui s’intègre à votre stack actuelle.',
+      'Les écarts de consentement à corriger avant les amendes.'
+    ],
+    timeline: 'Mise en place typique : 5 à 10 jours ouvrables.',
+    cta: 'Réserver un Diagnostic Éclair'
   },
   offers: {
     heading: 'Trois parcours productisés',
