@@ -11,7 +11,7 @@ import {
   FileWarning,
   DollarSign,
   UserX,
-  Shield
+  Shield,
   Zap,
   CalendarCheck,
   Star,
