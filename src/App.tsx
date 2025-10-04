@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { Header, Footer } from './components/Layout';
 import PartnerBar from './components/PartnerBar';
+import FinalCTA from './components/FinalCTA';
 
 // Hero Component
 const Hero = () => {
@@ -485,31 +486,6 @@ const FAQ = () => {
               </div>
             </div>
           ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-// Final CTA Component
-const FinalCTA = () => {
-  const { t, lang } = useLanguage();
-  const base = lang === 'fr' ? '/fr' : '';
-  const resolveHref = (path: string) =>
-    path.startsWith('/fr') || path.startsWith('/en') ? path : `${base}${path}`;
-
-  return (
-    <section className="relative py-16 bg-[#121C2D] text-center text-white">
-      <div className="max-w-4xl mx-auto px-6">
-        <h2 className="text-3xl font-bold mb-4">{t.finalCTA.title}</h2>
-        <p className="text-lg text-white/80 mb-8">{t.finalCTA.sub}</p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href={resolveHref(t.finalCTA.primaryHref)} className="btn-primary px-8 py-4">
-            {t.finalCTA.primary}
-          </a>
-          <a href={resolveHref(t.finalCTA.secondaryHref)} className="btn-outline text-lg px-8 py-4">
-            {t.finalCTA.secondary}
-          </a>
         </div>
       </div>
     </section>

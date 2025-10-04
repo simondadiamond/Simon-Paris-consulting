@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../LanguageProvider';
-import { Menu, X, Mail, MapPin } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 export const Header: React.FC<{
   langToggle?: { fr: string; en: string };
@@ -159,78 +159,34 @@ export const Header: React.FC<{
 };
 
 export const Footer: React.FC<{ langToggle?: { fr: string; en: string } }> = ({
-  langToggle
+  langToggle: _langToggle
 }) => {
-  const { t, lang, setLang } = useLanguage();
-
-  const LanguageToggle = () => {
-    const otherLang = lang === 'fr' ? 'en' : 'fr';
-    const target = lang === 'fr' ? langToggle?.en ?? '/' : langToggle?.fr ?? '/fr';
-    return (
-      <button
-        aria-label="Switch language"
-        onClick={() => {
-          setLang(otherLang as 'fr' | 'en');
-          localStorage.setItem('lang', otherLang);
-          window.location.href = target;
-        }}
-        className="px-3 py-1 rounded-full border border-white text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2280FF]"
-      >
-        {otherLang.toUpperCase()}
-      </button>
-    );
-  };
+  const { t } = useLanguage();
 
   return (
-    <footer className="relative py-16 bg-[#121C2D] text-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+    <footer className="border-t border-white/10 bg-[#0B1220] text-white">
+      <div className="mx-auto max-w-5xl px-6 py-8 md:py-10">
+        <div className="flex flex-col items-center gap-5 text-center md:flex-row md:items-start md:justify-between md:text-left">
           <div>
-            <div className="text-2xl font-bold mb-4">{t.header.brand}</div>
-            <p className="mb-6 leading-relaxed">{t.footer.blurb}</p>
-            <LanguageToggle />
+            <div className="text-lg font-medium text-white/80 md:text-xl">{t.header.brand}</div>
+            <p className="mt-1 text-xs text-white/60 md:text-sm">{t.footer.tagline}</p>
           </div>
 
-          <div>
-            <h4 className="text-lg font-semibold mb-4">{t.footer.services}</h4>
-            <ul className="space-y-2">
-              {t.footer.servicesList.map(item => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-lg font-semibold mb-4">{t.footer.contact}</h4>
-            <div className="space-y-3">
-              <a
-                href={`mailto:${t.header.email}`}
-                className="flex items-center hover:text-[#2280FF] transition-colors"
-              >
-                <Mail className="w-4 h-4 mr-2" />
-                {t.header.email}
-              </a>
-              <div className="flex items-center">
-                <MapPin className="w-4 h-4 mr-2" />
-                {t.footer.location}
-              </div>
-            </div>
-          </div>
+          <address className="text-xs text-white/60 not-italic md:text-right md:text-sm">
+            <a
+              href={`mailto:${t.footer.contact.email}`}
+              className="block font-medium text-white/80 transition hover:text-white"
+            >
+              {t.footer.contact.emailLabel}: {t.footer.contact.email}
+            </a>
+            <div className="mt-1">{t.footer.contact.locationLabel}: {t.footer.contact.location}</div>
+          </address>
         </div>
 
-        <div className="pt-8 border-t border-gray-700">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="mb-4 md:mb-0">{t.footer.copyright}</p>
-            <div className="flex items-center space-x-4 text-sm">
-              <a
-                href={lang === 'fr' ? '/fr/politique-confidentialite' : '/privacy'}
-                className="hover:text-[#2280FF] transition-colors"
-              >
-                {t.footer.privacy}
-              </a>
-              <p>{t.footer.curiosity}</p>
-            </div>
-          </div>
+        <div className="mt-6 border-t border-white/10 pt-4">
+          <p className="text-center text-[11px] text-white/45 md:text-left">
+            {t.footer.copyright}
+          </p>
         </div>
       </div>
     </footer>

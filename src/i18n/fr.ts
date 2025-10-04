@@ -153,13 +153,16 @@ const fr: TranslationKeys = {
       }
     ]
   },
-  finalCTA: {
-    title: 'Restez conforme. Restez en avance.',
-    sub: 'Rejoignez l’infolettre hebdo pour des tactiques d’automatisation pensées pour les PME québécoises.',
-    primary: 'Joindre l’infolettre',
-    primaryHref: '/fr/newsletter',
-    secondary: 'Voir les packs',
-    secondaryHref: '/packs'
+  finalcta: {
+    headline: 'L’IA qui vous concerne.',
+    subtext: 'Chaque semaine, je traduis l’actualité IA en actions concrètes pour votre PME québécoise.',
+    cta: 'Joindre l’infolettre',
+    href: '/fr/newsletter',
+    alternativeHeadlines: [
+      'Faites travailler l’IA pour votre PME.',
+      'De l’actualité IA à vos prochaines actions.',
+      'Chaque semaine, une tactique IA applicable.'
+    ]
   },
   stickyCta: 'Joindre l’infolettre',
   trustBadge: 'Conçu pour le Québec • Démo en direct • Bilingue et conforme à la Loi 96',
@@ -211,15 +214,14 @@ const fr: TranslationKeys = {
     }
   },
   footer: {
-    blurb: 'Automatisation bilingue pour les PME du Québec. Conçu pour aujourd’hui, prêt pour l’IA de demain.',
-    language: 'Pour tout le Québec • FR/EN',
-    services: 'Services',
-    servicesList: ['Suivi des clients potentiels', 'Rappels de rendez-vous', 'Gestion des avis', 'Conformité Loi 96'],
-    contact: 'Contact',
-    location: 'Québec, Canada',
-    privacy: 'Politique de confidentialité',
-    copyright: '© 2024 Simon Paris Consulting. Tous droits réservés.',
-    curiosity: 'Curieux des prochaines avancées IA pour PME ? Écrivez à Simon.'
+    tagline: 'Automatisation bilingue pour les PME du Québec.',
+    contact: {
+      emailLabel: 'Courriel',
+      email: 'info@simonparis.ca',
+      locationLabel: 'Basé à',
+      location: 'Québec, Canada'
+    },
+    copyright: '© 2024 Simon Paris Consulting'
   }
 };
 

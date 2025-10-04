@@ -152,13 +152,16 @@ export const en = {
       }
     ]
   },
-  finalCTA: {
-    title: 'Stay compliant. Stay ahead.',
-    sub: 'Join the weekly newsletter for proven automation tactics built for Québec SMBs.',
-    primary: 'Join Newsletter',
-    primaryHref: '/en/newsletter',
-    secondary: 'See Packs',
-    secondaryHref: '/packs'
+  finalcta: {
+    headline: 'AI that matters to you.',
+    subtext: 'Every week, I translate AI and automation news into concrete actions for your SMB.',
+    cta: 'Join the newsletter',
+    href: '/en/newsletter',
+    alternativeHeadlines: [
+      'Make AI work for your SMB.',
+      'Turn AI noise into next steps.',
+      'Weekly AI guidance you can act on.'
+    ]
   },
   stickyCta: 'Join Newsletter',
   trustBadge: 'Built for Québec • Demo-first • Fully bilingual & Law 96\u2013compliant',
@@ -210,15 +213,14 @@ export const en = {
     }
   },
   footer: {
-    blurb: "Bilingual automation for Québec SMBs. Built for today's needs, ready for tomorrow's AI.",
-    language: 'Serving all of Québec • EN/FR',
-    services: 'Services',
-    servicesList: ['Lead Follow-up Automation', 'Appointment Reminders', 'Review Management', 'Bill 96 Compliance'],
-    contact: 'Contact',
-    location: 'Québec, Canada',
-    privacy: 'Privacy Policy',
-    copyright: '© 2024 Simon Paris Consulting. All rights reserved.',
-    curiosity: 'Curious about the next wave of AI for SMBs? Ask Simon.'
+    tagline: 'Bilingual automation for Québec SMBs.',
+    contact: {
+      emailLabel: 'Email',
+      email: 'info@simonparis.ca',
+      locationLabel: 'Based in',
+      location: 'Québec, Canada'
+    },
+    copyright: '© 2024 Simon Paris Consulting'
   }
 };
 export type TranslationKeys = typeof en;
