@@ -14,8 +14,8 @@
   .bg-section-gradient-top {
     background-image: linear-gradient(
       to bottom,
-      #e1efff 0%,
-      #d2f2ef 55%,
+      #d9e7ff 0%,
+      #f1f6ff 55%,
       #ffffff 100%
     );
   }
@@ -23,8 +23,8 @@
   .bg-section-gradient-bottom {
     background-image: linear-gradient(
       to top,
-      #e1efff 0%,
-      #d2f2ef 55%,
+      #d9e7ff 0%,
+      #f1f6ff 55%,
       #ffffff 100%
     );
   }
