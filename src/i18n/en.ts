@@ -8,29 +8,25 @@ export const en = {
     cta: 'Diagnostic Éclair'
   },
   hero: {
-    trustTag: 'For Québec clinics • Law 25 ready • Plain language',
-    headline: {
-      leading: 'Fewer no-shows.',
-      accent: 'More booked patients.',
-      trailing: '100% compliant.'
+    tag: 'For Québec clinics • Law 25 ready • Zero jargon',
+    h1: {
+      line1: 'Fewer no-shows.',
+      line2: 'More patients.',
+      line3: '100% compliant.'
     },
-    subheadline:
-      'In 20 minutes, we surface a leak in your follow-ups, missed calls, or reminders—and leave you with a simple action plan.',
-    primaryCta: 'Book a Diagnostic Éclair',
-    primaryHref: 'https://cal.com/simonparis/diagnostic',
-    secondaryCta: 'Not ready? Join the briefing.',
-    secondaryHref: '/en/newsletter',
-    assurance: 'Choose the conversation in French or English—whatever serves your team.',
-    checklistTitle: 'During the call we pinpoint:',
-    checklist: [
-      'One bottleneck that’s draining time or patients each week',
-      'An automation you can deploy without replacing your PMS/EMR',
-      'The next step to stay calm about Law 25 / Bill 96'
-    ],
-    complianceNote: 'Includes a quick Law 25 & Bill 96 compliance check.',
-    installTime: 'Typical setup: 5–10 business days.',
-    trustLogosLabel: 'Plays nicely with your stack',
-    trustLogos: ['Stripe', 'Airtable', 'Microsoft Founders Hub']
+    body:
+      'In 20 minutes, we find a time or revenue leak in your follow-ups, calls or reminders — and you leave with a clear plan.',
+    cta: {
+      primary: 'Book a Diagnostic Éclair',
+      primaryHref: 'https://cal.com/simonparis/diagnostic'
+    },
+    card: {
+      title: "What you'll leave with",
+      bullet1: 'A bottleneck costing you time or patients.',
+      bullet2: 'One task to automate without changing your clinic software.',
+      bullet3: 'The next step to stay safe with Law 25 / 96.',
+      bullet4: 'Typical setup: 5–10 business days.'
+    }
   },
   problems: {
     title: 'Why clinics <span class="accent">lose money</span> every week…',

@@ -91,14 +91,16 @@ export const Header: React.FC<{
   };
 
   const headerBackgroundClass = forceDarkBackground
-    ? 'bg-[#0B1320]/95 backdrop-blur-lg border-b border-white/10'
+    ? 'bg-[#0B1320]/95 backdrop-blur-lg'
     : isScrolled
-    ? 'bg-[#0B1320]/90 backdrop-blur-lg border-b border-white/10'
+    ? 'bg-[#0B1320]/90 backdrop-blur-lg'
     : 'bg-transparent';
+
+  const headerClassName = `fixed top-0 left-0 right-0 z-50 border-b border-white/10 transition-colors duration-300 ${headerBackgroundClass}`;
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${headerBackgroundClass}`}>
+      <header className={headerClassName}>
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
           <a
             href={lang === 'fr' ? '/fr' : '/'}

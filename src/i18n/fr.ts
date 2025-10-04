@@ -9,29 +9,25 @@ const fr: TranslationKeys = {
     cta: 'Diagnostic Éclair'
   },
   hero: {
-    trustTag: 'Pour les cliniques du Québec • Loi 25 prête • Zéro jargon',
-    headline: {
-      leading: 'Moins de no-shows.',
-      accent: 'Plus de patients.',
-      trailing: '100 % conforme.'
+    tag: 'Pour les cliniques du Québec • Loi 25 prête • Zéro jargon',
+    h1: {
+      line1: 'Moins de no-shows.',
+      line2: 'Plus de patients.',
+      line3: '100 % conforme.'
     },
-    subheadline:
+    body:
       'En 20 min, on repère une fuite de temps ou de revenus dans vos suivis, appels ou rappels — et vous repartez avec un plan clair.',
-    primaryCta: 'Réserver un Diagnostic Éclair',
-    primaryHref: 'https://cal.com/simonparis/diagnostic',
-    secondaryCta: 'Pas prêt? Recevoir l’infolettre.',
-    secondaryHref: '/fr/newsletter',
-    assurance: 'La rencontre est offerte en français ou en anglais, selon votre équipe.',
-    checklistTitle: 'Pendant l’appel, on identifie :',
-    checklist: [
-      'Un goulot qui vous fait perdre des patients ou des heures chaque semaine',
-      'Une tâche à automatiser sans changer votre logiciel clinique',
-      'La prochaine étape pour rester tranquille côté Loi 25 / Loi 96'
-    ],
-    complianceNote: 'Inclut une vérification express Loi 25 et Loi 96.',
-    installTime: 'Installation typique : 5 à 10 jours ouvrables.',
-    trustLogosLabel: 'S’intègre à vos outils existants',
-    trustLogos: ['Stripe', 'Airtable', 'Microsoft Founders Hub']
+    cta: {
+      primary: 'Réserver un Diagnostic Éclair',
+      primaryHref: 'https://cal.com/simonparis/diagnostic'
+    },
+    card: {
+      title: 'Ce que vous repartez avec',
+      bullet1: 'Un goulot qui vous fait perdre du temps ou des patients.',
+      bullet2: 'Une tâche à automatiser sans changer votre logiciel clinique.',
+      bullet3: 'La prochaine étape pour rester tranquille côté Loi 25 / 96.',
+      bullet4: 'Installation typique : 5 à 10 jours ouvrables.'
+    }
   },
   problems: {
     title: 'Pourquoi les cliniques <span class="accent">perdent de l’argent</span> chaque semaine…',
