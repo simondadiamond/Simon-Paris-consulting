@@ -52,7 +52,7 @@ const fr: TranslationKeys = {
       title: 'Voici ce que l’on identifie dans votre Mini Audit de 20 minutes.',
       bullets: [
         'Le processus qui vous fait perdre le plus de temps ou de revenus.',
-        'L’automatisation à implanter rapidement dans vos outils actuels.',
+        'L’automatisation rapide à implanter dans vos outils actuels.',
         'Les risques de conformité à corriger avant les amendes de la Loi 25.'
       ],
       timeline: 'Installation typique : 5 à 10 jours ouvrables.'

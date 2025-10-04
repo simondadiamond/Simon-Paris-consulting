@@ -50,11 +50,11 @@ export const en = {
     audit: {
       title: 'Here’s what we identify in your 20-minute Mini Audit.',
       bullets: [
-        'The workflow that is leaking the most time or revenue.',
-        'The quick-win automation that fits your current stack.',
-        'The compliance risks to close before Law 25 fines.'
+        "The workflow that’s costing the most time or revenue.",
+        'A quick-win automation that fits your current tools.',
+        'Any compliance risks to fix before Law 25 fines.'
       ],
-      timeline: 'Typical setup: 5–10 business days.'
+      timeline: 'Typical setup: 5 – 10 business days.'
     }
   },
   growth: {
