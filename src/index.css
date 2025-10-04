@@ -11,20 +11,21 @@
   .font-inter {
     font-family: 'Inter', sans-serif;
   }
-  .bg-soft-radial-top {
-    background-image: radial-gradient(
-      140% 120% at 50% 0%,
-      rgba(34, 128, 255, 0.12),
-      rgba(19, 158, 156, 0.08) 45%,
-      rgba(255, 255, 255, 0) 78%
+  .bg-section-gradient-top {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(34, 128, 255, 0.16),
+      rgba(19, 158, 156, 0.12) 42%,
+      rgba(255, 255, 255, 0) 82%
     );
   }
-  .bg-soft-radial-bottom {
-    background-image: radial-gradient(
-      140% 120% at 50% 100%,
-      rgba(34, 128, 255, 0.12),
-      rgba(19, 158, 156, 0.08) 45%,
-      rgba(255, 255, 255, 0) 78%
+
+  .bg-section-gradient-bottom {
+    background-image: linear-gradient(
+      to top,
+      rgba(19, 158, 156, 0.16),
+      rgba(34, 128, 255, 0.12) 42%,
+      rgba(255, 255, 255, 0) 82%
     );
   }
 }
