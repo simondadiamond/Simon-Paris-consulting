@@ -9,14 +9,32 @@ export const en = {
   },
   hero: {
     tagline: 'For Québec SMBs • Law 25 ready • Zero jargon',
-    h1: 'Automate the busywork. Protect your margins. Stay Law 25 ready.',
-    sub: 'One bilingual automation system to capture leads, follow up, and stay compliant without adding headcount.',
-    cta: 'Book your Mini Audit',
-    ctaHref: 'https://cal.com/simonparis/diagnostic'
+    headline: {
+      line1: 'Automate the busywork.',
+      line2: 'Protect your margins.',
+      line3: 'Stay Law 25 ready.'
+    },
+    subtext:
+      'Bilingual automations that answer leads, chase invoices, and document consent—without adding tools your team won’t use.',
+    cta: {
+      href: 'https://cal.com/simonparis/mini-audit'
+    }
   },
-  pain: {
+  cta: {
+    bookAudit: 'Book Free Mini Audit',
+    audit: {
+      title: 'Here’s what we identify in your 20-minute Mini Audit.',
+      bullets: [
+        'The workflow that is leaking the most time or revenue.',
+        'The quick-win automation that fits your current stack.',
+        'The compliance risks to close before Law 25 fines.'
+      ],
+      timeline: 'Typical setup: 5–10 business days.'
+    }
+  },
+  problems: {
     title: 'Why Québec SMBs lose time (and profit) every week…',
-    cards: [
+    list: [
       {
         title: 'Lost sales',
         body: 'Missed calls and ignored forms push ready-to-buy clients to competitors.'
@@ -30,38 +48,40 @@ export const en = {
         body: 'Invoices slip through the cracks and payouts get delayed.'
       },
       {
-        title: 'Compliance risk',
+        title: 'Avoidable fines',
         body: 'Consent tracking gaps create unnecessary Law 25 risk.'
       }
     ],
-    sub: 'All of this is fixable with simple bilingual automations.'
+    note: 'All of this is fixable with simple <span class="font-semibold">bilingual automations</span> built for your team.'
   },
-  solution: {
-    title: 'The growth engine for your business: simple, bilingual, compliant.',
-    cards: [
+  growth: {
+    title: 'The <span class="accent">growth engine</span> for your business: simple, bilingual, compliant.',
+    gears: [
       {
-        title: 'Fast Response',
-        body: 'Respond instantly to new leads and clients.'
+        title: 'Speed-to-Lead Response',
+        bullets: [
+          'Reply to every lead in under 5 minutes.',
+          'SMS + email in French first, English when needed.',
+          'Connects forms, calls, and social DMs.'
+        ]
       },
       {
-        title: 'Smart Follow-ups',
-        body: 'Automate reminders without adding headcount.'
+        title: 'Reminder & Follow-Up Automation',
+        bullets: [
+          'Hands-free reminders for appointments, jobs, and quotes.',
+          'Smart nudges go out in the right language automatically.',
+          'Keeps your pipeline moving without adding headcount.'
+        ]
       },
       {
-        title: 'Compliance & Trust',
-        body: 'Stay compliant and earn client trust effortlessly.'
+        title: 'Compliance + Review Management',
+        bullets: [
+          'Consent tracked for every message (Law 25/96).',
+          'Guided templates for updates, invoices, and requests.',
+          'Collects 5-star reviews without extra admin work.'
+        ]
       }
     ]
-  },
-  audit: {
-    title: 'Here’s what we identify in your 20-minute Mini Audit',
-    bullets: [
-      'The workflow leaking the most time or revenue.',
-      'Quick-win automations that fit your current stack.',
-      'Consent and compliance gaps to close before fines.'
-    ],
-    timeline: 'Typical setup: 5–10 business days.',
-    cta: 'Book your Mini Audit'
   },
   offers: {
     heading: 'Choose your path',
@@ -121,55 +141,43 @@ export const en = {
   },
   faq: {
     title: 'FAQ',
-    q1: {
-      question: 'How fast can we see results?',
-      answer: [
-        'Most setups are live within 1–2 weeks.',
-        'You’ll start seeing time savings as soon as the first workflow goes live.'
-      ]
-    },
-    q2: {
-      question: 'Is this really compliant?',
-      answer: [
-        'Yes — everything follows Law 25 and Bill 96 requirements.',
-        'Each workflow includes consent tracking and audit-ready documentation.'
-      ]
-    },
-    q3: {
-      question: 'What if I’m not comfortable with technology?',
-      answer: [
-        'No problem — everything is handled for you.',
-        'You only review and approve; I take care of the setup and testing.',
-        'Each workflow is designed to be effortless for non-technical teams.'
-      ]
-    },
-    q4: {
-      question: 'What’s the price — and what do I get?',
-      answer: [
-        'Your 20-minute Mini Audit is free.',
-        'Custom automations start around $1,000 depending on scope.',
-        'Founding-member discounts and fixed-price bundles are available.',
-        'No monthly contracts — just clear deliverables and ROI you can measure.'
-      ]
-    },
-    q5: {
-      question: 'Do these automations actually work for small teams?',
-      answer: [
-        'Yes. They’re designed for lean SMB operations — no IT team required.',
-        'The goal is simple: save hours every week without adding complexity.'
-      ]
-    },
-    q6: {
-      question: 'Can you help us with AI or new tools later?',
-      answer: [
-        'Absolutely. Once your core workflows run smoothly,',
-        'I can help you integrate new AI features — chatbots, voice bots, or analytics — when you’re ready.'
-      ]
-    },
-    cta: {
-      text: 'Still unsure what fits your team?',
-      button: 'Book a Free Mini Audit'
-    }
+    list: [
+      {
+        question: 'How quickly can you set up my automation?',
+        answer: {
+          intro: 'Faster than you think.',
+          bullets: ['Live within 1–2 weeks', 'Hands-on support included']
+        }
+      },
+      {
+        question: 'Is this really compliant?',
+        answer: {
+          intro: 'Yes, and documented.',
+          bullets: ['Bill 25/96-checked templates', 'Audit-ready proof provided']
+        }
+      },
+      {
+        question: "What if I'm not tech-savvy?",
+        answer: {
+          intro: 'Built for non-tech folks.',
+          bullets: ['We set everything up', 'Human support in English & French']
+        }
+      },
+      {
+        question: 'How much does it cost?',
+        answer: {
+          intro: `From $${PACK_PRICE}.`,
+          bullets: ['Flat pricing, no contract', 'ROI within days for many']
+        }
+      },
+      {
+        question: 'Can you help us with AI adoption or strategy?',
+        answer: {
+          intro: 'Absolutely.',
+          bullets: ['Always testing new AI tools', 'Ask during the demo']
+        }
+      }
+    ]
   },
   finalcta: {
     headline: 'AI that matters to you.',
@@ -233,10 +241,6 @@ export const en = {
   },
   footer: {
     tagline: 'Bilingual automation for Québec SMBs.',
-    compliance: {
-      label: 'Privacy & Compliance',
-      href: '/privacy'
-    },
     contact: {
       emailLabel: 'Email',
       email: 'info@simonparis.ca',
