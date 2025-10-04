@@ -8,7 +8,7 @@ export const en = {
     cta: 'Diagnostic Éclair'
   },
   hero: {
-    tagline: 'For Québec clinics • Law 25 ready • Zero jargon',
+    tagline: 'For Québec SMBs • Law 25 ready • Zero jargon',
     headline: {
       line1: 'Less waste.',
       line2: 'More profit.',
