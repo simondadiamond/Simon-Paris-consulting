@@ -5,17 +5,32 @@ export const en = {
     brand: 'Simon Paris',
     languageToggle: 'EN/FR',
     email: 'info@simonparis.ca',
-    cta: 'Join Newsletter'
+    cta: 'Diagnostic Éclair'
   },
   hero: {
-    eyebrow: 'For Québec clinics • Law 25 + Bill 96 ready',
-    h1_part1: 'Fill Your Schedule.',
-    h1_accent: 'Stay 100% Compliant.',
-    subhead:
-      'Plug‑and‑play bilingual automations for Speed‑to‑Lead, No‑Show Chaser, and Review Engine—built for Québec clinics. Demo first. Install in minutes.',
-    proof:
-      'Clinics that automate often see 25–50% fewer no‑shows and much faster follow‑ups.',
-    primaryCta: 'Join Newsletter'
+    trustTag: 'For Québec clinics • Law 25 ready • Plain language',
+    headline: {
+      leading: 'Fewer no-shows.',
+      accent: 'More booked patients.',
+      trailing: '100% compliant.'
+    },
+    subheadline:
+      'In 20 minutes, we surface a leak in your follow-ups, missed calls, or reminders—and leave you with a simple action plan.',
+    primaryCta: 'Book a Diagnostic Éclair',
+    primaryHref: 'https://cal.com/simonparis/diagnostic',
+    secondaryCta: 'Not ready? Join the briefing.',
+    secondaryHref: '/en/newsletter',
+    assurance: 'Choose the conversation in French or English—whatever serves your team.',
+    checklistTitle: 'During the call we pinpoint:',
+    checklist: [
+      'One bottleneck that’s draining time or patients each week',
+      'An automation you can deploy without replacing your PMS/EMR',
+      'The next step to stay calm about Law 25 / Bill 96'
+    ],
+    complianceNote: 'Includes a quick Law 25 & Bill 96 compliance check.',
+    installTime: 'Typical setup: 5–10 business days.',
+    trustLogosLabel: 'Plays nicely with your stack',
+    trustLogos: ['Stripe', 'Airtable', 'Microsoft Founders Hub']
   },
   problems: {
     title: 'Why clinics <span class="accent">lose money</span> every week…',

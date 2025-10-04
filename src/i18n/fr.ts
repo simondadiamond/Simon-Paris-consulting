@@ -6,16 +6,32 @@ const fr: TranslationKeys = {
     brand: 'Simon Paris',
     languageToggle: 'FR/EN',
     email: 'info@simonparis.ca',
-    cta: 'Joindre l’infolettre'
+    cta: 'Diagnostic Éclair'
   },
   hero: {
-    eyebrow: 'Pour les cliniques du Québec • Prêt Loi 25 + Loi 96',
-    h1_part1: 'Remplissez votre horaire.',
-    h1_accent: 'Restez 100% conforme.',
-    subhead:
-      'Automatisations bilingues prêtes à l’emploi pour vitesse‑à‑lead, relance d’absences et moteur d’avis — conçues pour les cliniques du Québec. Démo d’abord. Installation en minutes.',
-    proof: 'Les cliniques qui automatisent voient souvent 25–50 % moins d’absences et des suivis beaucoup plus rapides.',
-    primaryCta: 'Joindre l’infolettre'
+    trustTag: 'Pour les cliniques du Québec • Loi 25 prête • Zéro jargon',
+    headline: {
+      leading: 'Moins de no-shows.',
+      accent: 'Plus de patients.',
+      trailing: '100 % conforme.'
+    },
+    subheadline:
+      'En 20 min, on repère une fuite de temps ou de revenus dans vos suivis, appels ou rappels — et vous repartez avec un plan clair.',
+    primaryCta: 'Réserver un Diagnostic Éclair',
+    primaryHref: 'https://cal.com/simonparis/diagnostic',
+    secondaryCta: 'Pas prêt? Recevoir l’infolettre.',
+    secondaryHref: '/fr/newsletter',
+    assurance: 'La rencontre est offerte en français ou en anglais, selon votre équipe.',
+    checklistTitle: 'Pendant l’appel, on identifie :',
+    checklist: [
+      'Un goulot qui vous fait perdre des patients ou des heures chaque semaine',
+      'Une tâche à automatiser sans changer votre logiciel clinique',
+      'La prochaine étape pour rester tranquille côté Loi 25 / Loi 96'
+    ],
+    complianceNote: 'Inclut une vérification express Loi 25 et Loi 96.',
+    installTime: 'Installation typique : 5 à 10 jours ouvrables.',
+    trustLogosLabel: 'S’intègre à vos outils existants',
+    trustLogos: ['Stripe', 'Airtable', 'Microsoft Founders Hub']
   },
   problems: {
     title: 'Pourquoi les cliniques <span class="accent">perdent de l’argent</span> chaque semaine…',

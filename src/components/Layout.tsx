@@ -35,61 +35,96 @@ export const Header: React.FC<{
   const resolvedCtaHref = ctaHref ?? newsletterHref;
   const resolvedCtaLabel = ctaLabel ?? t.header.cta;
 
-  const LanguageToggle = ({ className }: { className?: string }) => {
-    const otherLang = lang === 'fr' ? 'en' : 'fr';
-    const target = lang === 'fr' ? langToggle?.en ?? '/' : langToggle?.fr ?? '/fr';
-    const color = className ?? textClass;
+  const LanguageToggle = ({ tone = 'desktop' }: { tone?: 'desktop' | 'mobile' }) => {
+    const goTo = (targetLang: 'fr' | 'en') => {
+      if (lang === targetLang) return;
+      setLang(targetLang);
+      localStorage.setItem('lang', targetLang);
+      const href = targetLang === 'fr' ? langToggle?.fr ?? '/fr' : langToggle?.en ?? '/';
+      window.location.href = href;
+    };
+
+    const isLight = textClass.includes('#121C2D');
+    const isMobile = tone === 'mobile';
+    const activeClass = isMobile
+      ? 'text-white'
+      : isLight
+      ? 'text-[#121C2D]'
+      : 'text-white';
+    const inactiveClass = isMobile
+      ? 'text-white/60 hover:text-white'
+      : isLight
+      ? 'text-[#121C2D]/60 hover:text-[#121C2D]'
+      : 'text-white/60 hover:text-white';
+    const dividerClass = isMobile
+      ? 'text-white/25'
+      : isLight
+      ? 'text-[#121C2D]/30'
+      : 'text-white/30';
+
+    const wrapperClass =
+      tone === 'desktop'
+        ? 'flex items-center text-[0.7rem] font-semibold uppercase tracking-[0.35em]'
+        : 'flex items-center text-[0.7rem] font-semibold uppercase tracking-[0.35em]';
+
     return (
-      <button
-        aria-label="Switch language"
-        onClick={() => {
-          setLang(otherLang as 'fr' | 'en');
-          localStorage.setItem('lang', otherLang);
-          window.location.href = target;
-        }}
-        className={`px-3 py-1 rounded-full border ${color} border-current hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2280FF]`}
-      >
-        {otherLang.toUpperCase()}
-      </button>
+      <div className={wrapperClass}>
+        <button
+          type="button"
+          aria-pressed={lang === 'fr'}
+          onClick={() => goTo('fr')}
+          className={`${lang === 'fr' ? activeClass : inactiveClass} transition-colors`}
+        >
+          FR
+        </button>
+        <span className={`mx-2 ${dividerClass}`}>|</span>
+        <button
+          type="button"
+          aria-pressed={lang === 'en'}
+          onClick={() => goTo('en')}
+          className={`${lang === 'en' ? activeClass : inactiveClass} transition-colors`}
+        >
+          EN
+        </button>
+      </div>
     );
   };
 
   const headerBackgroundClass = forceDarkBackground
-    ? 'bg-[#121C2D]'
+    ? 'bg-[#0B1320]/95 backdrop-blur-lg border-b border-white/10'
     : isScrolled
-    ? 'bg-[#121C2D]'
+    ? 'bg-[#0B1320]/90 backdrop-blur-lg border-b border-white/10'
     : 'bg-transparent';
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${headerBackgroundClass}`}
-      >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${headerBackgroundClass}`}>
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+          <a
+            href={lang === 'fr' ? '/fr' : '/'}
+            onClick={() => localStorage.setItem('lang', lang)}
+            className={`text-xl font-semibold tracking-tight ${resolvedTextClass}`}
+          >
+            {t.header.brand}
+          </a>
+          <div className="hidden items-center gap-8 md:flex">
+            <LanguageToggle />
             <a
-              href={lang === 'fr' ? '/fr' : '/'}
-              onClick={() => localStorage.setItem('lang', lang)}
-              className={`text-2xl font-bold ${resolvedTextClass}`}
+              href={resolvedCtaHref}
+              className="inline-flex items-center justify-center rounded-full bg-[#139E9C] px-5 py-2 text-sm font-semibold text-[#041820] shadow-sm shadow-[#139E9C]/40 transition-transform duration-150 hover:-translate-y-0.5 hover:shadow-[#139E9C]/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#139E9C]"
             >
-              {t.header.brand}
+              {resolvedCtaLabel}
             </a>
-            <div className="hidden md:flex items-center space-x-8">
-              <LanguageToggle />
-              <a href={resolvedCtaHref} className="btn-primary text-sm px-6 py-3">
-                {resolvedCtaLabel}
-              </a>
-            </div>
-            <div className="flex md:hidden items-center space-x-4">
-              <LanguageToggle />
-              <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-                {isMobileMenuOpen ? (
-                  <X className={`w-6 h-6 ${resolvedTextClass}`} />
-                ) : (
-                  <Menu className={`w-6 h-6 ${resolvedTextClass}`} />
-                )}
-              </button>
-            </div>
+          </div>
+          <div className="flex items-center gap-4 md:hidden">
+            <LanguageToggle />
+            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+              {isMobileMenuOpen ? (
+                <X className={`w-6 h-6 ${resolvedTextClass}`} />
+              ) : (
+                <Menu className={`w-6 h-6 ${resolvedTextClass}`} />
+              )}
+            </button>
           </div>
         </div>
       </header>
@@ -105,13 +140,16 @@ export const Header: React.FC<{
           onClick={() => setIsMobileMenuOpen(false)}
         />
         <div
-          className={`absolute top-0 right-0 h-full w-64 bg-white shadow-2xl transform transition-transform duration-300 ${
+          className={`absolute top-0 right-0 h-full w-72 bg-[#0B1320] text-white shadow-2xl transition-transform duration-300 ${
             isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
-          <div className="p-6 pt-20 space-y-6 text-center">
-            <LanguageToggle className="text-[#121C2D]" />
-            <a href={resolvedCtaHref} className="btn-primary w-full">
+          <div className="flex h-full flex-col gap-8 p-6 pt-24">
+            <LanguageToggle tone="mobile" />
+            <a
+              href={resolvedCtaHref}
+              className="inline-flex items-center justify-center rounded-full bg-[#139E9C] px-6 py-3 text-sm font-semibold text-[#041820] shadow-sm shadow-[#139E9C]/40 transition-transform duration-150 hover:-translate-y-0.5 hover:shadow-[#139E9C]/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#139E9C]"
+            >
               {resolvedCtaLabel}
             </a>
           </div>

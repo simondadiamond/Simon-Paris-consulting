@@ -1,9 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from './LanguageProvider';
 import {
-  MessageSquare, CalendarX, Receipt, Shield, CheckCircle,
-  Zap, CalendarCheck, Star,
-  ChevronDown, ChevronUp
+  MessageSquare,
+  CalendarX,
+  Receipt,
+  Shield,
+  CheckCircle,
+  Zap,
+  CalendarCheck,
+  Star,
+  ChevronDown,
+  ChevronUp,
+  Sparkles,
+  CheckCircle2,
+  ShieldCheck,
+  Clock3
 } from 'lucide-react';
 import { Header, Footer } from './components/Layout';
 import PartnerBar from './components/PartnerBar';
@@ -11,48 +22,96 @@ import PartnerBar from './components/PartnerBar';
 // Hero Component
 const Hero = () => {
   const { t } = useLanguage();
-  const isFR = typeof window !== 'undefined' && window.location.pathname.startsWith('/fr');
-  const newsletterHref = isFR ? '/fr/newsletter' : '/en/newsletter';
+  const hero = t.hero;
 
   return (
-    <section
-      id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ background: '#121C2D' }}
-    >
-      {/* Animated background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-float" />
-        <div
-          className="absolute bottom-20 right-10 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: '2s' }}
-        />
+    <section id="hero" className="relative isolate overflow-hidden bg-[#0B1320] text-white">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-32 -left-24 h-72 w-72 rounded-full bg-[#2280FF]/20 blur-3xl" />
+        <div className="absolute bottom-[-6rem] right-[-4rem] h-[26rem] w-[26rem] rounded-full bg-[#139E9C]/20 blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(19,158,156,0.08),transparent_60%)]" />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 text-center">
-        <div className="inline-flex items-center card-glass rounded-full px-4 py-2 mb-8">
-          <span className="text-sm font-medium text-white">{t.hero.eyebrow}</span>
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 pb-16 pt-28 lg:px-8 lg:pb-24">
+        <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] xl:gap-20">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
+              {hero.trustTag}
+            </p>
+
+            <h1 className="mt-6 text-4xl font-semibold leading-tight sm:text-5xl lg:text-[3.4rem] lg:leading-[1.05]">
+              <span className="block">{hero.headline.leading}</span>
+              <span className="block text-[#139E9C]">{hero.headline.accent}</span>
+              <span className="block">{hero.headline.trailing}</span>
+            </h1>
+
+            <p className="mt-6 max-w-xl text-lg text-white/80 lg:text-xl">{hero.subheadline}</p>
+
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <a
+                href={hero.primaryHref}
+                className="inline-flex items-center justify-center rounded-full bg-[#139E9C] px-7 py-3 text-base font-semibold text-[#041820] shadow-lg shadow-[#139E9C]/40 transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-[#139E9C]/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#139E9C]"
+              >
+                {hero.primaryCta}
+              </a>
+              <a
+                href={hero.secondaryHref}
+                className="text-sm font-medium text-white/70 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white"
+              >
+                {hero.secondaryCta}
+              </a>
+            </div>
+
+            <p className="mt-6 text-sm text-white/60">{hero.assurance}</p>
+
+            <div className="mt-12 space-y-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-white/40">
+                {hero.trustLogosLabel}
+              </p>
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm font-semibold uppercase tracking-wide text-white/50">
+                {hero.trustLogos.map((logo: string) => (
+                  <span key={logo} className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#139E9C]" />
+                    {logo}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="absolute -top-6 -right-6 hidden h-24 w-24 rounded-full bg-[#2280FF]/20 blur-3xl lg:block" />
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl lg:p-10">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-[#139E9C]/10" />
+              <div className="relative">
+                <div className="flex items-center gap-3 text-[#139E9C]">
+                  <Sparkles className="h-5 w-5" />
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#139E9C]">
+                    {hero.checklistTitle}
+                  </p>
+                </div>
+                <ul className="mt-6 space-y-4">
+                  {hero.checklist.map((item: string) => (
+                    <li key={item} className="flex items-start gap-3 text-base leading-relaxed text-white/90">
+                      <CheckCircle2 className="mt-1 h-5 w-5 flex-shrink-0 text-[#139E9C]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8 space-y-3 text-sm text-white/70">
+                  <div className="flex items-center gap-3">
+                    <ShieldCheck className="h-5 w-5 text-[#139E9C]" />
+                    <span>{hero.complianceNote}</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Clock3 className="h-5 w-5 text-[#139E9C]" />
+                    <span>{hero.installTime}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <h1 className="text-hero text-white mb-6 leading-tight tracking-tight">
-          <span>{t.hero.h1_part1} </span>
-          <span className="accent">{t.hero.h1_accent}</span>
-        </h1>
-
-        <p className="text-subhead !text-white/90 max-w-3xl mx-auto mb-4">{t.hero.subhead}</p>
-        <p className="text-sm !text-white/70 mb-10">{t.hero.proof}</p>
-
-        <div className="flex justify-center">
-          <a
-            href={newsletterHref}
-            className="btn-primary text-lg px-8 py-4"
-            data-event="cta_click"
-            data-cta="newsletter"
-          >
-            {t.hero.primaryCta}
-          </a>
-        </div>
-
       </div>
     </section>
   );
