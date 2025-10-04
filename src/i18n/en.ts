@@ -9,52 +9,59 @@ export const en = {
   },
   hero: {
     tagline: 'For Québec SMBs • Law 25 ready • Zero jargon',
-    headline: {
-      line1: 'Less waste.',
-      line2: 'More profit.',
-      line3: '100% compliant.'
-    },
-    subtext:
-      'I help Québec SMBs automate the repetitive tasks that drain time and money — while keeping Law 25 compliance covered.',
-    cta: {
-      text: 'Free Mini Audit',
-      href: 'https://cal.com/simonparis/mini-audit'
-    },
-    card: {
-      title: 'During the diagnostic, we identify…',
-      bullet1: 'A bottleneck costing you time or clients.',
-      bullet2: 'One task to automate without changing your software.',
-      bullet3: 'The next step to stay safe with Law 25 / 96.',
-      bullet4: 'Typical setup: 5–10 business days.'
-    }
+    h1: 'Automate the busywork. Protect your margins. Stay Law 25 ready.',
+    sub: 'One bilingual automation system to capture leads, follow up, and stay compliant without adding headcount.',
+    cta: 'Book your Mini Audit',
+    ctaHref: 'https://cal.com/simonparis/diagnostic'
   },
-  problems: {
-    title: 'Why clinics <span class="accent">lose money</span> every week…',
-      list: [
-        { title: 'Ignored leads', body: 'Patients book elsewhere.' },
-        { title: 'Missed appointments', body: 'Empty chairs at peak hours.' },
-        { title: 'Late invoices', body: 'Cash flow gets squeezed.' },
-        { title: 'Legal uncertainty', body: 'Messages may breach Law 25/Bill 96.' }
-      ],
-    note: 'You can fix all of this with simple <span class="font-semibold">bilingual automation</span>.'
+  pain: {
+    title: 'Why Québec SMBs lose time (and profit) every week…',
+    cards: [
+      {
+        title: 'Lost sales',
+        body: 'Missed calls and ignored forms push ready-to-buy clients to competitors.'
+      },
+      {
+        title: 'Wasted hours',
+        body: 'Manual follow-ups keep owners stuck in admin instead of growth.'
+      },
+      {
+        title: 'Cash-flow stress',
+        body: 'Invoices slip through the cracks and payouts get delayed.'
+      },
+      {
+        title: 'Compliance risk',
+        body: 'Consent tracking gaps create unnecessary Law 25 risk.'
+      }
+    ],
+    sub: 'All of this is fixable with simple bilingual automations.'
   },
-  growth: {
-    title: 'The <span class="accent">growth engine</span> for your clinic: simple, bilingual, compliant.',
-    gears: [
-        {
-          title: 'Speed‑to‑Lead SMS',
-          bullets: ['Replies in under 5 min', 'FR-first, then EN', 'Integrates web, calls, social']
-        },
-        {
-          title: 'No‑Show Chaser + Reminders',
-          bullets: ['24h & 2h reminders', 'Easy reschedule link', '25–50% fewer no-shows']
-        },
-        {
-          title: 'Review Engine + Compliance',
-          bullets: ['Polite FR/EN review asks', '3× more reviews in 30–60 days', 'Audit-ready docs (Law 25/96)']
-        }
-      ],
-    cta: 'See the packs in action'
+  solution: {
+    title: 'The growth engine for your business: simple, bilingual, compliant.',
+    cards: [
+      {
+        title: 'Fast Response',
+        body: 'Respond instantly to new leads and clients.'
+      },
+      {
+        title: 'Smart Follow-ups',
+        body: 'Automate reminders without adding headcount.'
+      },
+      {
+        title: 'Compliance & Trust',
+        body: 'Stay compliant and earn client trust effortlessly.'
+      }
+    ]
+  },
+  audit: {
+    title: 'Here’s what we identify in your 20-minute Mini Audit',
+    bullets: [
+      'The workflow leaking the most time or revenue.',
+      'Quick-win automations that fit your current stack.',
+      'Consent and compliance gaps to close before fines.'
+    ],
+    timeline: 'Typical setup: 5–10 business days.',
+    cta: 'Book your Mini Audit'
   },
   offers: {
     heading: 'Choose your path',

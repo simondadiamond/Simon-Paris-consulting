@@ -33,12 +33,11 @@ export const Header: React.FC<{
     ? 'text-white'
     : 'text-white';
   const textClass = resolvedTextClass;
-  const defaultCtaHref = t.hero.cta.href;
-  const defaultCtaLabel = t.hero.cta.text;
+  const defaultCtaHref = t.hero.ctaHref ?? 'https://cal.com/simonparis/diagnostic';
+  const defaultCtaLabel = t.hero.cta;
   const resolvedCtaHref = ctaHref ?? defaultCtaHref;
   const resolvedCtaLabel = ctaLabel ?? defaultCtaLabel;
-  const ctaClasses =
-    'inline-flex h-12 items-center justify-center rounded-xl bg-[#139E9C] px-6 font-semibold text-white shadow-md transition hover:bg-[#118C89] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#139E9C]/40';
+  const ctaClasses = 'btn-primary';
 
   const LanguageToggle = ({ tone = 'desktop' }: { tone?: 'desktop' | 'mobile' }) => {
     const goTo = (targetLang: 'fr' | 'en') => {
@@ -116,11 +115,8 @@ export const Header: React.FC<{
           >
             {t.header.brand}
           </a>
-          <div className="hidden items-center gap-8 md:flex">
+          <div className="hidden items-center md:flex">
             <LanguageToggle />
-            <a href={resolvedCtaHref} className={`${ctaClasses} whitespace-nowrap text-base`}>
-              {resolvedCtaLabel}
-            </a>
           </div>
           <div className="flex items-center gap-4 md:hidden">
             <LanguageToggle />
@@ -152,7 +148,7 @@ export const Header: React.FC<{
         >
           <div className="flex h-full flex-col gap-8 p-6 pt-24">
             <LanguageToggle tone="mobile" />
-            <a href={resolvedCtaHref} className={`${ctaClasses} text-base`}>
+            <a href={resolvedCtaHref} className={ctaClasses}>
               {resolvedCtaLabel}
             </a>
           </div>

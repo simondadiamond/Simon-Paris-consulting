@@ -2,10 +2,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from './LanguageProvider';
 import {
   MessageSquare,
-  CalendarX,
-  Receipt,
-  Shield,
+  Clock3,
   CheckCircle,
+  Clock,
+  ShieldCheck,
+  ChevronDown,
+  ChevronUp,
+  FileWarning,
+  DollarSign,
+  UserX,
+  Shield
   Zap,
   CalendarCheck,
   Star,
@@ -14,66 +20,42 @@ import {
 import { Header, Footer } from './components/Layout';
 import PartnerBar from './components/PartnerBar';
 import FinalCTA from './components/FinalCTA';
+import MiniAuditCTA from './components/MiniAuditCTA';
 import FAQ from './components/FAQ';
 
 // Hero Component
 const Hero = () => {
   const { t } = useLanguage();
-  const hero = t.hero;
-  const cardBullets = [
-    hero.card.bullet1,
-    hero.card.bullet2,
-    hero.card.bullet3,
-    hero.card.bullet4
-  ];
-  const ctaClasses =
-    'inline-flex h-12 items-center justify-center rounded-xl bg-[#139E9C] px-6 font-semibold text-white shadow-md transition hover:bg-[#118C89] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#139E9C]/40';
+  const taglineParts = t.hero.tagline.includes('•')
+    ? t.hero.tagline.split('•').map(part => part.trim()).filter(Boolean)
+    : [t.hero.tagline];
+  const ctaHref = t.hero.ctaHref ?? 'https://cal.com/simonparis/diagnostic';
 
   return (
-    <section id="hero" className="relative isolate overflow-hidden bg-[#0B1320] text-white">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 -left-24 h-72 w-72 rounded-full bg-[#2280FF]/15 blur-3xl" />
-        <div className="absolute bottom-[-6rem] right-[-4rem] h-[26rem] w-[26rem] rounded-full bg-[#139E9C]/15 blur-3xl" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(19,158,156,0.06),transparent_60%)]" />
-      </div>
-
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 pb-16 pt-28 sm:pb-24 lg:px-8">
-        <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] xl:gap-16">
-          <div className="space-y-8 md:space-y-10">
-            <div className="space-y-4 md:space-y-6">
-              <p className="text-sm font-medium text-white/70">{hero.tagline}</p>
-
-              <h1 className="text-[clamp(28px,6vw,56px)] font-semibold leading-[1.05] tracking-tight">
-                <span className="block">{hero.headline.line1}</span>
-                <span className="block text-[#139E9C]">{hero.headline.line2}</span>
-                <span className="block">{hero.headline.line3}</span>
-              </h1>
-
-              <p className="max-w-xl text-base leading-relaxed text-white/80 md:text-lg">{hero.subtext}</p>
-            </div>
-
-            <a href={hero.cta.href} className={`${ctaClasses} w-full sm:w-auto`}>
-              {hero.cta.text}
-            </a>
+    <section className="relative flex min-h-screen items-center justify-center bg-[#0E1824] text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(1200px_800px_at_60%_10%,#0F2235_0%,#0E1824_70%,#0B1420_100%)] opacity-95" />
+      <div className="relative z-10 w-full max-w-[1100px] px-6 text-center md:text-left">
+        <div className="mx-auto flex max-w-[700px] flex-col items-center pb-16 text-center md:items-start md:pb-24 md:text-left">
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/60 md:justify-start">
+            {taglineParts.map((part, index) => (
+              <React.Fragment key={`${part}-${index}`}>
+                {index > 0 && <span className="text-white/30">•</span>}
+                <span>{part}</span>
+              </React.Fragment>
+            ))}
           </div>
 
-          <div className="relative lg:ml-auto">
-            <div className="absolute -top-6 -right-6 hidden h-24 w-24 rounded-full bg-[#2280FF]/15 blur-3xl lg:block" />
-            <div className="relative mt-8 overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl sm:p-8 lg:mt-0 lg:p-10">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-[#139E9C]/10" />
-              <div className="relative space-y-6">
-                <h2 className="text-lg font-semibold text-white">{hero.card.title}</h2>
-                <ul className="space-y-4 md:space-y-5">
-                  {cardBullets.map(item => (
-                    <li key={item} className="flex items-start gap-3 text-sm leading-relaxed text-white/90 md:text-base">
-                      <CheckCircle2 className="mt-1 h-5 w-5 flex-shrink-0 text-[#139E9C]" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
+          <h1 className="mt-8 text-[clamp(2rem,6vw,4.25rem)] font-semibold leading-[1.1] tracking-tight text-balance">
+            {t.hero.h1}
+          </h1>
+
+          <p className="mt-6 max-w-2xl text-lg text-white/80 text-balance md:text-xl">
+            {t.hero.sub}
+          </p>
+
+          <a href={ctaHref} className="btn-primary mt-8">
+            {t.hero.cta}
+          </a>
         </div>
       </div>
     </section>
@@ -103,50 +85,54 @@ const ProblemSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  const problems = t.problems.list.map((p, i) => ({
+  const iconMap = [UserX, Clock, DollarSign, FileWarning];
+  const problems = t.pain.cards.map((p, i) => ({
     ...p,
-    icon: [MessageSquare, CalendarX, Receipt, Shield][i]
+    icon: iconMap[i] ?? UserX
   }));
 
   return (
-    <section id="automations" ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2
-            className="text-display text-gray-900 mb-6"
-            dangerouslySetInnerHTML={{ __html: t.problems.title }}
-          />
+    <section
+      id="automations"
+      ref={sectionRef}
+      className="bg-white py-24 md:py-28 text-[#0E1824]"
+    >
+      <div className="mx-auto max-w-6xl px-6 text-center">
+        <div
+          className={`flex flex-col gap-8 text-center transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <h2 className="text-3xl font-extrabold md:text-4xl">{t.pain.title}</h2>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div
+          className={`mt-16 grid grid-cols-1 gap-6 transition-all duration-1000 sm:grid-cols-2 md:grid-cols-4 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           {problems.map((problem, index) => (
             <div
               key={index}
-              className={`card-light p-6 md:p-8 text-center group transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{ transitionDelay: isVisible ? '0ms' : `${index * 150}ms` }}
+              className="rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm transition-all hover:shadow-lg"
             >
-              <div className="w-16 h-16 rounded-2xl bg-[#2280FF]/20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <problem.icon className="w-8 h-8 text-[#2280FF]" />
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#139E9C]/10 text-[#139E9C]">
+                <problem.icon className="h-8 w-8" />
               </div>
 
-              <h3
-                className="text-lg lg:text-xl font-semibold text-gray-900 mb-3"
-                dangerouslySetInnerHTML={{ __html: problem.title }}
-              />
-
-              <p className="text-gray-700 leading-relaxed text-sm lg:text-base">
-                {problem.body}
-              </p>
+              <div className="space-y-2">
+                <h3 className="text-lg font-semibold">{problem.title}</h3>
+                <p className="text-sm leading-relaxed text-gray-600">{problem.body}</p>
+              </div>
             </div>
           ))}
         </div>
 
-        <p
-          className="text-center text-gray-700 mt-8"
-          dangerouslySetInnerHTML={{ __html: t.problems.note }}
-        />
+        <p className={`mt-12 text-base text-gray-600 transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
+          {t.pain.sub}
+        </p>
       </div>
     </section>
   );
@@ -156,8 +142,7 @@ const ProblemSection = () => {
 const GrowthEngine = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const { t, lang } = useLanguage();
-  const base = lang === 'fr' ? '/fr' : '';
+  const { t } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -176,52 +161,40 @@ const GrowthEngine = () => {
     return () => observer.disconnect();
   }, []);
 
-  const gears = t.growth.gears.map((g, i) => ({
-    ...g,
-    icon: [Zap, CalendarCheck, Star][i]
+  const solutionCards = t.solution.cards.map((card, i) => ({
+    ...card,
+    icon: [MessageSquare, Clock3, ShieldCheck][i]
   }));
 
   return (
-    <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#F9FAFB' }}>
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2
-            className="text-display text-gray-900 mb-6"
-            dangerouslySetInnerHTML={{ __html: t.growth.title }}
-          />
+    <section
+      ref={sectionRef}
+      className="bg-[radial-gradient(1200px_600px_at_50%_0%,#11283A_0%,#0E1824_90%)] py-28 text-white"
+    >
+      <div className="mx-auto max-w-6xl px-6 text-center">
+        <div
+          className={`transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <h2 className="text-3xl font-extrabold md:text-4xl">{t.solution.title}</h2>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 items-stretch">
-          {gears.map((gear, index) => (
+        <div
+          className={`mt-16 grid grid-cols-1 gap-8 transition-all duration-1000 sm:grid-cols-2 md:grid-cols-3 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          {solutionCards.map((card, index) => (
             <div
               key={index}
-              className={`card-light p-6 md:p-8 flex flex-col items-center text-center group transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              } h-full`}
-              style={{ transitionDelay: isVisible ? '0ms' : `${index * 200}ms` }}
+              className="rounded-2xl bg-white/5 p-10 text-left shadow-[0_8px_30px_rgba(0,0,0,0.25)] ring-1 ring-white/10 backdrop-blur-xl transition-transform hover:scale-[1.02]"
             >
-              <div className="w-16 h-16 rounded-2xl bg-[#2280FF] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <gear.icon className="w-8 h-8 text-white" />
-              </div>
-
-              <h3
-                className="text-xl font-semibold text-gray-900 mb-4 text-center"
-                dangerouslySetInnerHTML={{ __html: gear.title }}
-              />
-              <ul className="text-gray-700 space-y-2 text-left w-full">
-                {gear.bullets.map((b: string, i: number) => (
-                  <li key={i} className="flex items-start">
-                    <CheckCircle className="w-4 h-4 text-[#139E9B] mr-2 mt-1 flex-shrink-0" />
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
+              <card.icon className="h-10 w-10 text-[#139E9C]" />
+              <h3 className="mt-6 text-xl font-semibold text-white">{card.title}</h3>
+              <p className="mt-3 text-base text-gray-200">{card.body}</p>
             </div>
           ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <a href={`${base}/packs`} className="btn-outline text-lg px-10 py-4">{t.growth.cta}</a>
         </div>
       </div>
     </section>
@@ -360,14 +333,14 @@ const Checklist = () => {
               </li>
             ))}
           </ul>
-            <a
-              href={
-                t.checklist.href.startsWith('/fr') || t.checklist.href.startsWith('/en')
-                  ? t.checklist.href
-                  : newsletterHref
-              }
-              className="btn-primary px-8 py-4"
-            >
+          <a
+            href={
+              t.checklist.href.startsWith('/fr') || t.checklist.href.startsWith('/en')
+                ? t.checklist.href
+                : newsletterHref
+            }
+            className="btn-primary"
+          >
             {t.checklist.cta}
           </a>
         </div>
@@ -430,7 +403,7 @@ const StickyCTA = () => {
   const newsletterHref = lang === 'fr' ? '/fr/newsletter' : '/en/newsletter';
   return (
     <div className="sticky-cta md:hidden">
-      <a href={newsletterHref} className="btn-primary w-full text-lg py-4">
+      <a href={newsletterHref} className="btn-primary w-full">
         {t.stickyCta}
       </a>
     </div>
@@ -443,10 +416,11 @@ function App() {
   return (
     <div className="min-h-screen">
       <Header />
-      <Hero />
-      <PartnerBar />
+        <Hero />
+        <PartnerBar />
         <ProblemSection />
         <GrowthEngine />
+        <MiniAuditCTA />
         <OfferCards />
       <ROIMath />
       <Checklist />
