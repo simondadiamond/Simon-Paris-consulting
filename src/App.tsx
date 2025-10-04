@@ -99,6 +99,7 @@ const ProblemSection = () => {
       ref={sectionRef}
       className="relative overflow-hidden bg-white py-20 lg:py-28"
     >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(34,128,255,0.08),transparent_55%)]" />
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
           className={`flex flex-col gap-8 text-center transition-all duration-1000 ${
