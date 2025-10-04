@@ -226,7 +226,7 @@ const WhatIBuild = () => {
             return (
               <div
                 key={card.title}
-                className={`group relative flex h-full flex-col rounded-2xl border border-slate-200/80 bg-white p-6 shadow-[0_4px_14px_rgba(2,6,23,0.06)] transition-all duration-200 before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:rounded-t-2xl before:bg-[var(--accent)] ${
+                className={`group relative flex h-full flex-col rounded-2xl border border-slate-200/80 bg-white p-6 shadow-[0_4px_14px_rgba(2,6,23,0.06)] transition-all duration-200 before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:rounded-t-2xl before:bg-[var(--accent)] before:content-[''] ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 } hover:-translate-y-1 hover:shadow-[0_10px_28px_rgba(2,6,23,0.12)] hover:ring-1 hover:ring-teal-300/40`}
                 style={{
