@@ -104,33 +104,28 @@ export const en = {
         tagline: 'Centralizes contacts, projects, and communication.',
         description: 'Airtable-powered hub used to run daily operations.',
         status: 'running'
-      },
-      {
-        title: 'Lead Capture & Scheduling Flow',
-        tagline: 'Routes form submissions and bookings automatically.',
-        description: 'Tally → n8n → Airtable → Cal.com — every lead tracked instantly.',
-        status: 'running'
+      }
+    ]
+  },
   growth: {
     title: 'The <span class="accent">growth engine</span> for your business: simple, bilingual, compliant.',
     gears: [
       {
-        title: 'Speed-to-Lead Response',
-        bullets: [
-          'Reply to every lead in under 5 minutes.',
-          'SMS + email in French first, English when needed.',
-          'Connects forms, calls, and social DMs.'
-        ]
+        title: 'Lead Capture & Scheduling Flow',
+        tagline: 'Automates forms, bookings, and follow-ups.',
+        description: 'Tally → n8n → Airtable → Cal.com — every lead tracked automatically.',
+        status: 'running'
       },
       {
         title: 'AI Avatar Video Engine',
-        tagline: 'Creates short bilingual avatar videos for SMB visibility.',
-        description: 'Powered by Heygen + custom AI scripts for consistent content.',
+        tagline: 'Creates bilingual videos to boost SMB visibility.',
+        description: 'Powered by Heygen + custom AI scripts.',
         status: 'indev'
       },
       {
         title: 'AI Receptionist (Prototype)',
         tagline: '24/7 bilingual assistant for clinics and small businesses.',
-        description: 'Books appointments, answers FAQs, and keeps logs compliant.',
+        description: 'Books appointments, answers questions, and keeps everything compliant.',
         status: 'prototype'
       }
     ]
