@@ -18,7 +18,7 @@ export const en = {
       'I help Québec SMBs automate the repetitive tasks that drain time and money — while keeping Law 25 compliance covered.',
     cta: {
       text: 'Book a Diagnostic Éclair',
-      href: 'https://cal.com/simonparis/diagnostic'
+      href: 'https://cal.com/simonparis/rapid-diagnostic'
     },
     card: {
       title: 'During the diagnostic, we identify…',
