@@ -22,13 +22,37 @@ const fr: TranslationKeys = {
       href: '/fr/infolettre'
     }
   },
+  sections: {
+    problem: {
+      heading: 'Pourquoi les PME du Québec perdent du temps (et des marges <span class="accent">réelles</span>) chaque semaine…',
+      subheading: 'Les quatre problèmes que j’ai appris à résoudre — en commençant par mes propres systèmes.',
+      cards: [
+        {
+          title: 'Tâches administratives répétitives',
+          description: 'Des heures perdues à planifier, facturer et saisir manuellement des données.'
+        },
+        {
+          title: 'Suivis trop tardifs',
+          description: 'Des clients ou soumissions qui tombent entre les mailles du filet.'
+        },
+        {
+          title: 'Conformité à la dernière minute',
+          description: 'Des consentements et politiques gérés seulement sous pression.'
+        },
+        {
+          title: 'Outils déconnectés',
+          description: 'Des systèmes qui ne se parlent pas — et font perdre du temps à votre équipe.'
+        }
+      ]
+    }
+  },
   cta: {
     bookAudit: 'Réserver un Diagnostic Éclair',
     audit: {
       title: 'Voici ce que l’on identifie dans votre Mini Audit de 20 minutes.',
       bullets: [
         'Le processus qui vous fait perdre le plus de temps ou de revenus.',
-        'L’automatisation à implanter rapidement dans vos outils actuels.',
+        'L’automatisation rapide à implanter dans vos outils actuels.',
         'Les risques de conformité à corriger avant les amendes de la Loi 25.'
       ],
       timeline: 'Installation typique : 5 à 10 jours ouvrables.'
@@ -82,6 +106,9 @@ const fr: TranslationKeys = {
         description: 'Tableau Airtable utilisé pour gérer les opérations quotidiennes.',
         status: 'running'
       },
+  growth: {
+    title: 'Des <span class="accent">automatisations prêtes</span> pour faire croître votre entreprise.',
+    gears: [
       {
         title: 'Flux de capture et de planification',
         tagline: 'Automatise formulaires, réservations et suivis.',
@@ -103,7 +130,7 @@ const fr: TranslationKeys = {
     ]
   },
   offers: {
-    heading: 'Trois parcours productisés',
+    heading: 'Trois parcours <span class="accent">efficaces</span>',
     list: [
       {
         title: 'Packs DIY',

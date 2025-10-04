@@ -21,16 +21,40 @@ export const en = {
       href: '/en/newsletter'
     }
   },
+  sections: {
+    problem: {
+      heading: 'Why Québec SMBs lose time (and <span class="accent">real</span> margins) every week…',
+      subheading: 'The same four problems I’ve solved again and again — starting with my own systems.',
+      cards: [
+        {
+          title: 'Repetitive admin tasks',
+          description: 'Hours lost on manual scheduling, invoices, and data entry.'
+        },
+        {
+          title: 'Delayed follow-ups',
+          description: 'Leads, quotes, and reminders sent too late to convert.'
+        },
+        {
+          title: 'Last-minute compliance',
+          description: 'Privacy and consent handled only when an audit looms.'
+        },
+        {
+          title: 'Disconnected tools',
+          description: 'Systems that don’t talk — forcing your team to do double work.'
+        }
+      ]
+    }
+  },
   cta: {
     bookAudit: 'Book Free Mini Audit',
     audit: {
       title: 'Here’s what we identify in your 20-minute Mini Audit.',
       bullets: [
-        'The workflow that is leaking the most time or revenue.',
-        'The quick-win automation that fits your current stack.',
-        'The compliance risks to close before Law 25 fines.'
+        "The workflow that’s costing the most time or revenue.",
+        'A quick-win automation that fits your current tools.',
+        'Any compliance risks to fix before Law 25 fines.'
       ],
-      timeline: 'Typical setup: 5–10 business days.'
+      timeline: 'Typical setup: 5 – 10 business days.'
     }
   },
   problems: {
@@ -86,6 +110,16 @@ export const en = {
         tagline: 'Routes form submissions and bookings automatically.',
         description: 'Tally → n8n → Airtable → Cal.com — every lead tracked instantly.',
         status: 'running'
+  growth: {
+    title: 'The <span class="accent">growth engine</span> for your business: simple, bilingual, compliant.',
+    gears: [
+      {
+        title: 'Speed-to-Lead Response',
+        bullets: [
+          'Reply to every lead in under 5 minutes.',
+          'SMS + email in French first, English when needed.',
+          'Connects forms, calls, and social DMs.'
+        ]
       },
       {
         title: 'AI Avatar Video Engine',
@@ -102,7 +136,7 @@ export const en = {
     ]
   },
   offers: {
-    heading: 'Choose your path',
+    heading: 'Choose your <span class="accent">smart</span> path',
     list: [
       {
         title: 'DIY Packs',
