@@ -6,16 +6,28 @@ const fr: TranslationKeys = {
     brand: 'Simon Paris',
     languageToggle: 'FR/EN',
     email: 'info@simonparis.ca',
-    cta: 'Joindre l’infolettre'
+    cta: 'Diagnostic Éclair'
   },
   hero: {
-    eyebrow: 'Pour les cliniques du Québec • Prêt Loi 25 + Loi 96',
-    h1_part1: 'Remplissez votre horaire.',
-    h1_accent: 'Restez 100% conforme.',
-    subhead:
-      'Automatisations bilingues prêtes à l’emploi pour vitesse‑à‑lead, relance d’absences et moteur d’avis — conçues pour les cliniques du Québec. Démo d’abord. Installation en minutes.',
-    proof: 'Les cliniques qui automatisent voient souvent 25–50 % moins d’absences et des suivis beaucoup plus rapides.',
-    primaryCta: 'Joindre l’infolettre'
+    tagline: 'Pour les cliniques du Québec • Loi 25 prête • Zéro jargon',
+    headline: {
+      line1: 'Moins de pertes.',
+      line2: 'Plus de profits.',
+      line3: '100 % conforme.'
+    },
+    subtext:
+      'J’accompagne les PME du Québec à automatiser les tâches répétitives qui grugent temps et argent — tout en assurant la conformité à la Loi 25.',
+    cta: {
+      text: 'Diagnostic Éclair gratuit',
+      href: 'https://cal.com/simonparis/diagnostic'
+    },
+    card: {
+      title: 'Pendant le diagnostic, nous identifions…',
+      bullet1: 'Un goulot qui vous fait perdre du temps ou des patients.',
+      bullet2: 'Une tâche à automatiser sans changer votre logiciel.',
+      bullet3: 'La prochaine étape pour rester tranquille côté Loi 25 / 96.',
+      bullet4: 'Installation typique : 5 à 10 jours ouvrables.'
+    }
   },
   problems: {
     title: 'Pourquoi les cliniques <span class="accent">perdent de l’argent</span> chaque semaine…',

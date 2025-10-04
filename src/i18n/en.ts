@@ -5,17 +5,28 @@ export const en = {
     brand: 'Simon Paris',
     languageToggle: 'EN/FR',
     email: 'info@simonparis.ca',
-    cta: 'Join Newsletter'
+    cta: 'Diagnostic Éclair'
   },
   hero: {
-    eyebrow: 'For Québec clinics • Law 25 + Bill 96 ready',
-    h1_part1: 'Fill Your Schedule.',
-    h1_accent: 'Stay 100% Compliant.',
-    subhead:
-      'Plug‑and‑play bilingual automations for Speed‑to‑Lead, No‑Show Chaser, and Review Engine—built for Québec clinics. Demo first. Install in minutes.',
-    proof:
-      'Clinics that automate often see 25–50% fewer no‑shows and much faster follow‑ups.',
-    primaryCta: 'Join Newsletter'
+    tagline: 'For Québec clinics • Law 25 ready • Zero jargon',
+    headline: {
+      line1: 'Less waste.',
+      line2: 'More profit.',
+      line3: '100% compliant.'
+    },
+    subtext:
+      'I help Québec SMBs automate the repetitive tasks that drain time and money — while keeping Law 25 compliance covered.',
+    cta: {
+      text: 'Free Mini Audit',
+      href: 'https://cal.com/simonparis/mini-audit'
+    },
+    card: {
+      title: 'During the diagnostic, we identify…',
+      bullet1: 'A bottleneck costing you time or clients.',
+      bullet2: 'One task to automate without changing your software.',
+      bullet3: 'The next step to stay safe with Law 25 / 96.',
+      bullet4: 'Typical setup: 5–10 business days.'
+    }
   },
   problems: {
     title: 'Why clinics <span class="accent">lose money</span> every week…',
