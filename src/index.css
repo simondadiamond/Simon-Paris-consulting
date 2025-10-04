@@ -149,6 +149,50 @@ h1, h2, h3, h4, h5, h6 {
   50% { box-shadow: 0 0 30px rgba(17, 230, 176, 0.5); }
 }
 
+@keyframes mini-audit-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mini-audit-card {
+  border-radius: 20px;
+  background: linear-gradient(135deg, #0f1e2e 0%, #112b3c 100%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), inset 0 0 12px rgba(19, 158, 156, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.mini-audit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35), inset 0 0 14px rgba(19, 158, 156, 0.36);
+}
+
+.mini-audit-list-item {
+  opacity: 0;
+  animation: mini-audit-fade-in 0.6s ease forwards;
+}
+
+.btn-primary--audit {
+  background: linear-gradient(90deg, #139e9c 0%, #11b8b6 100%);
+  box-shadow: 0 10px 26px rgba(19, 158, 156, 0.45);
+  background-size: 200% 200%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-position 0.4s ease;
+}
+
+.btn-primary--audit:hover {
+  background-position: 100% 50%;
+  box-shadow: 0 4px 12px rgba(19, 158, 156, 0.4);
+}
+
+.btn-primary--audit:focus-visible {
+  box-shadow: 0 0 0 3px rgba(19, 158, 156, 0.35), 0 12px 32px rgba(19, 158, 156, 0.45);
+}
+
 .animate-float {
   animation: float 4s ease-in-out infinite;
 }
@@ -345,11 +389,22 @@ h1, h2, h3, h4, h5, h6 {
   .animate-pulse-glow {
     animation: none;
   }
-  
+
   .btn-primary:hover,
   .btn-secondary:hover,
   .btn-outline:hover,
-  .card-dark:hover {
+  .card-dark:hover,
+  .mini-audit-card:hover {
+    transform: none;
+  }
+
+  .mini-audit-card {
+    transition: none;
+  }
+
+  .mini-audit-list-item {
+    animation: none;
+    opacity: 1;
     transform: none;
   }
 }
