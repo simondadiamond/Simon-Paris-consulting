@@ -1,9 +1,58 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Users, Clock, Star, Shield, CheckCircle, Zap, Target, Award } from 'lucide-react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+import { useLanguage } from '../LanguageProvider';
+import type { Translation } from '../i18n';
 
-const Services = () => {
+interface ButtonProps {
+  href: string;
+  variant?: 'teal';
+  children: React.ReactNode;
+}
+
+const Button: React.FC<ButtonProps> = ({ href, variant = 'teal', children }) => {
+  const baseClasses =
+    'inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2';
+  const variantClasses =
+    variant === 'teal'
+      ? 'bg-[#139E9C] text-white shadow-lg shadow-[#139E9C]/25 transition-colors duration-200 hover:bg-[#0EAAA9] focus-visible:ring-[#139E9C] focus-visible:ring-offset-white'
+      : '';
+
+  return (
+    <a href={href} className={`${baseClasses} ${variantClasses}`}>
+      {children}
+    </a>
+  );
+};
+
+const getNestedTranslation = (translation: Translation, key: string): unknown => {
+  const value = key.split('.').reduce<unknown>((acc, segment) => {
+    if (acc && typeof acc === 'object') {
+      return (acc as Record<string, unknown>)[segment];
+    }
+    return undefined;
+  }, translation);
+
+  return value;
+};
+
+const FAQ: React.FC = () => {
+  const { t: translation } = useLanguage();
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+
+  const getValue = useCallback(
+    (key: string) => getNestedTranslation(translation, key),
+    [translation]
+  );
+
+  const t = useCallback(
+    (key: string) => {
+      const value = getValue(key);
+      return typeof value === 'string' ? value : '';
+    },
+    [getValue]
+  );
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -22,135 +71,96 @@ const Services = () => {
     return () => observer.disconnect();
   }, []);
 
-  const services = [
-    {
-      icon: Users,
-      title: "Missed Lead Rescue",
-      description: "Instantly follow up on every inquiry (web, phone, email, DM), in English and French.",
-      features: ["Instant response automation", "Bilingual templates", "Multi-channel integration"],
-    },
-    {
-      icon: Clock,
-      title: "No-Show & Invoice Chaser",
-      description: "Automated reminders for appointments and overdue invoices—clients pay and show up.",
-      features: ["Smart reminder sequences", "Payment automation", "Appointment confirmations"],
-    },
-    {
-      icon: Star,
-      title: "Review Engine",
-      description: "Request, track, and respond to reviews in both languages—boost your reputation and Google ranking.",
-      features: ["Automated review requests", "Response management", "Reputation monitoring"],
-    },
-    {
-      icon: Shield,
-      title: "Bill 96 Compliance Review",
-      description: "Ensure every message, reminder, and review request is 100% legal and ready for audit.",
-      features: ["Legal compliance check", "Bilingual verification", "Audit-ready documentation"],
-    }
-  ];
+  const faqItems = useMemo(
+    () =>
+      Array.from({ length: 6 }, (_, index) => {
+        const question = t(`faq.q${index + 1}.question`);
+        const answerValue = getValue(`faq.q${index + 1}.answer`);
+        const answer = Array.isArray(answerValue)
+          ? answerValue
+          : typeof answerValue === 'string'
+          ? [answerValue]
+          : [];
 
-  const benefits = [
-    {
-      icon: CheckCircle,
-      title: "Demo-first",
-      description: "See your process automated before you commit",
-    },
-    {
-      icon: Target,
-      title: "Personal Support",
-      description: "Expert support—no agency handoff",
-    },
-    {
-      icon: Zap,
-      title: "Fast ROI",
-      description: "Fast setup, flat pricing, visible ROI",
-    }
-  ];
+        return { question, answer };
+      }),
+    [getValue, t]
+  );
 
   return (
-    <section ref={sectionRef} className="relative py-20 overflow-hidden" style={{ background: '#121C2D' }}>
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="inline-flex items-center card-glass rounded-full px-4 py-2 mb-6">
-            <Award className="w-4 h-4 mr-2 text-[#2280FF]" />
-            <span className="text-sm font-medium text-white">Premium Automation Suite</span>
-          </div>
-          <h2 className="text-display text-white mb-6">
-            Automations that 
-            <span className="text-teal-400"> Pay for Themselves</span>
-          </h2>
-          <p className="text-subhead max-w-3xl mx-auto text-gray-300">
-            Transform your business operations with intelligent automation that works 24/7, 
-            speaks both languages, and keeps you compliant.
-          </p>
+    <section ref={sectionRef} className="relative overflow-hidden bg-white py-16 lg:py-20">
+      <div className="relative z-10 mx-auto max-w-[720px] px-4 sm:px-6">
+        <div
+          className={`mb-12 text-center transition-all duration-700 ${
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+          }`}
+        >
+          <h2 className="text-3xl font-semibold text-gray-900 md:text-4xl">{t('faq.title')}</h2>
         </div>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {services.map((service, index) => (
-            <div 
-              key={index}
-              className={`card-dark p-6 group transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{ transitionDelay: isVisible ? '0ms' : `${index * 150}ms` }}
-            >
-              <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 bg-teal-400">
-                <service.icon className="w-8 h-8 text-white" />
-              </div>
-              
-              <h3 className="text-lg font-semibold text-white mb-3">
-                {service.title}
-              </h3>
-              
-              <p className="text-gray-300 mb-4 leading-relaxed text-sm">
-                {service.description}
-              </p>
-              
-              <ul className="space-y-2">
-                {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-sm text-gray-400">
-                    <CheckCircle className="w-4 h-4 mr-2 flex-shrink-0 text-[#2280FF]" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        
-        <div className={`transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="card-dark p-12 relative overflow-hidden">
-            <div className="relative z-10">
-              <h3 className="text-2xl lg:text-3xl font-bold text-white text-center mb-12">
-                Why Work With Simon Paris?
-              </h3>
-              
-              <div className="grid md:grid-cols-3 gap-8">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="text-center group">
-                    <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 bg-teal-400">
-                      <benefit.icon className="w-10 h-10 text-white" />
-                    </div>
-                    <h4 className="text-xl font-semibold text-white mb-3">
-                      {benefit.title}
-                    </h4>
-                    <p className="text-gray-300 leading-relaxed">
-                      {benefit.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-              
-              <div className="text-center mt-12">
-                <button className="btn-primary px-10 py-4">
-                  Start Your Automation Journey
+
+        <div
+          className={`space-y-4 transition-all duration-700 delay-150 ${
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+          }`}
+        >
+          {faqItems.map((item, index) => {
+            const isOpen = openIndex === index;
+
+            return (
+              <div
+                key={item.question}
+                className="overflow-hidden border-b border-gray-200/80 last:border-b-0"
+              >
+                <button
+                  type="button"
+                  className="flex w-full items-center justify-between px-6 py-4 text-left transition-colors duration-200 hover:text-gray-900 focus-visible:text-gray-900 md:px-8 md:py-5"
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-panel-${index}`}
+                >
+                  <span className="pr-6 text-base font-semibold text-gray-900 md:text-lg">
+                    {item.question}
+                  </span>
+                  {isOpen ? (
+                    <ChevronUp className="h-6 w-6 text-[#2280FF]" />
+                  ) : (
+                    <ChevronDown className="h-6 w-6 text-[#2280FF]" />
+                  )}
                 </button>
-                
-                <p className="text-gray-300 mt-6 max-w-2xl mx-auto leading-relaxed">
-                  I'm not just solving today's admin headaches—I'm helping Québec businesses get ready for the next wave of AI-driven growth.
-                </p>
+
+                <div
+                  id={`faq-panel-${index}`}
+                  className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
+                    isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-6 pb-4 text-base leading-7 text-gray-600 md:px-8 md:pb-5 md:text-lg">
+                      <div className="space-y-3">
+                        {item.answer.map((paragraph, paragraphIndex) => (
+                          <p key={paragraphIndex}>{paragraph}</p>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+            );
+          })}
+        </div>
+
+        <div
+          className={`mt-10 flex flex-col items-center transition-all duration-700 delay-300 ${
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+          }`}
+        >
+          <p className="max-w-md text-center text-sm leading-6 text-gray-600 opacity-90">
+            {t('faq.cta.text')}
+          </p>
+          <div className="mt-4">
+            <Button href="/diagnostic" variant="teal">
+              {t('faq.cta.button')}
+            </Button>
           </div>
         </div>
       </div>
@@ -158,4 +168,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default FAQ;
