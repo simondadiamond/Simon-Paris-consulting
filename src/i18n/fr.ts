@@ -215,6 +215,10 @@ const fr: TranslationKeys = {
   },
   footer: {
     tagline: 'Automatisation bilingue pour les PME du Québec.',
+    compliance: {
+      label: 'Conformité & confidentialité',
+      href: '/fr/politique-confidentialite'
+    },
     contact: {
       emailLabel: 'Courriel',
       email: 'info@simonparis.ca',
