@@ -214,6 +214,10 @@ export const en = {
   },
   footer: {
     tagline: 'Bilingual automation for Québec SMBs.',
+    compliance: {
+      label: 'Privacy & Compliance',
+      href: '/privacy'
+    },
     contact: {
       emailLabel: 'Email',
       email: 'info@simonparis.ca',

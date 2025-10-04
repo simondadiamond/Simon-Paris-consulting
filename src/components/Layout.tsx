@@ -184,9 +184,17 @@ export const Footer: React.FC<{ langToggle?: { fr: string; en: string } }> = ({
         </div>
 
         <div className="mt-6 border-t border-white/10 pt-4">
-          <p className="text-center text-[11px] text-white/45 md:text-left">
-            {t.footer.copyright}
-          </p>
+          <div className="flex flex-col items-center gap-2 text-center md:flex-row md:justify-between md:text-left">
+            <a
+              href={t.footer.compliance.href}
+              className="text-xs font-medium text-white/70 transition hover:text-white md:text-sm"
+            >
+              {t.footer.compliance.label}
+            </a>
+            <p className="text-[11px] text-white/45 md:text-left">
+              {t.footer.copyright}
+            </p>
+          </div>
         </div>
       </div>
     </footer>
