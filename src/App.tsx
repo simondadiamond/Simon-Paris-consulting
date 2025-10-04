@@ -97,7 +97,7 @@ const ProblemSection = () => {
     <section
       id="automations"
       ref={sectionRef}
-      className="relative overflow-hidden bg-white py-20 lg:py-28"
+      className="relative overflow-hidden bg-white bg-section-gradient-bottom py-20 lg:py-28"
     >
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
@@ -174,9 +174,8 @@ const GrowthEngine = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-[#F5F7FA] py-20 lg:py-28"
+      className="relative overflow-hidden bg-white bg-section-gradient-top py-20 lg:py-28"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(34,128,255,0.08),transparent_55%)]" />
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
           className={`flex flex-col gap-8 text-center transition-all duration-1000 ${
@@ -487,28 +486,6 @@ const FAQ = () => {
   );
 };
 
-const StickyCTA = () => {
-  const { t, lang } = useLanguage();
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 300);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  if (!visible) return null;
-  const newsletterHref = lang === 'fr' ? '/fr/newsletter' : '/en/newsletter';
-  return (
-    <div className="sticky-cta md:hidden">
-      <a href={newsletterHref} className="btn-primary w-full text-lg py-4">
-        {t.stickyCta}
-      </a>
-    </div>
-  );
-};
-
-
 // Main App Component
 function App() {
   return (
@@ -525,7 +502,6 @@ function App() {
       <ProofSection />
       <FAQ />
       <FinalCTA />
-      <StickyCTA />
       <Footer />
     </div>
   );
