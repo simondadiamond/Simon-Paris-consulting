@@ -10,59 +10,79 @@ const fr: TranslationKeys = {
   },
   hero: {
     tagline: 'Pour les PME du Québec • Loi 25 prête • Zéro jargon',
-    h1: 'Automatisez le travail répétitif. Protégez vos marges. Restez conforme à la Loi 25.',
-    sub: 'Un système d’automatisation bilingue pour capter chaque lead, assurer les suivis et documenter vos consentements.',
-    cta: 'Réserver un Diagnostic Éclair',
-    ctaHref: 'https://cal.com/simonparis/diagnostic'
+    headline: {
+      line1: 'Automatisez les tâches lourdes.',
+      line2: 'Protégez vos marges.',
+      line3: 'Restez conforme à la Loi 25.'
+    },
+    subtext:
+      'Des automatisations bilingues qui répondent aux leads, relancent les factures et documentent les consentements — sans ajouter d’outils que votre équipe n’utilisera pas.',
+    cta: {
+      href: 'https://cal.com/simonparis/diagnostic'
+    }
   },
-  pain: {
-    title: 'Pourquoi les PME du Québec perdent temps (et argent) chaque semaine…',
-    cards: [
+  cta: {
+    bookAudit: 'Réserver un Diagnostic Éclair',
+    audit: {
+      title: 'Voici ce que l’on identifie dans votre Mini Audit de 20 minutes.',
+      bullets: [
+        'Le processus qui vous fait perdre le plus de temps ou de revenus.',
+        'L’automatisation à implanter rapidement dans vos outils actuels.',
+        'Les risques de conformité à corriger avant les amendes de la Loi 25.'
+      ],
+      timeline: 'Installation typique : 5 à 10 jours ouvrables.'
+    }
+  },
+  problems: {
+    title: 'Pourquoi les PME du Québec perdent du temps chaque semaine…',
+    list: [
       {
         title: 'Ventes perdues',
-        body: 'Les appels manqués et formulaires ignorés envoient vos prospects chez la concurrence.'
+        body: 'Appels manqués et formulaires ignorés font filer les prospects ailleurs.'
       },
       {
         title: 'Heures gaspillées',
-        body: 'Les suivis manuels et rappels vous gardent coincé dans l’administration.'
+        body: 'Des suivis manuels gardent les propriétaires coincés dans l’administratif.'
       },
       {
         title: 'Stress de trésorerie',
-        body: 'Les factures impayées et suivis tardifs ralentissent les encaissements.'
+        body: 'Des factures impayées ralentissent les dépôts chaque mois.'
       },
       {
-        title: 'Risque de conformité',
-        body: 'Des preuves de consentement incomplètes ouvrent la porte aux amendes de la Loi 25.'
+        title: 'Amendes évitables',
+        body: 'Des preuves de consentement incomplètes augmentent le risque Loi 25.'
       }
     ],
-    sub: 'Tout cela se règle avec des automatisations bilingues simples.'
+    note: 'Tout cela se règle avec des <span class="font-semibold">automatisations bilingues</span> pensées pour votre équipe.'
   },
-  solution: {
-    title: 'Le moteur de croissance de votre entreprise : simple, bilingue, conforme.',
-    cards: [
+  growth: {
+    title: 'Des <span class="accent">automatisations prêtes</span> pour faire croître votre entreprise.',
+    gears: [
       {
-        title: 'Réponse éclair',
-        body: 'Répondez instantanément aux nouveaux prospects et clients.'
+        title: 'Réponse vitesse-à-lead',
+        bullets: [
+          'Répondez à chaque lead en moins de 5 minutes.',
+          'SMS + courriel en français d’abord, anglais au besoin.',
+          'Connecte formulaires, appels et messages sociaux.'
+        ]
       },
       {
-        title: 'Suivis intelligents',
-        body: 'Automatisez les relances sans ajouter d’effectifs.'
+        title: 'Rappels & suivis automatisés',
+        bullets: [
+          'Rappels sans effort pour rendez-vous, travaux et soumissions.',
+          'Messages envoyés automatiquement dans la bonne langue.',
+          'Votre pipeline avance sans embauches supplémentaires.'
+        ]
       },
       {
-        title: 'Conformité & confiance',
-        body: 'Restez conforme et inspirez confiance sans effort.'
+        title: 'Conformité + avis clients',
+        bullets: [
+          'Consentement tracé pour chaque message (Loi 25/96).',
+          'Modèles guidés pour avis, mises à jour et paiements.',
+          'Plus d’avis 5 étoiles sans surcharge administrative.'
+        ]
       }
     ]
-  },
-  audit: {
-    title: 'Voici ce que nous identifions dans votre mini audit de 20 minutes',
-    bullets: [
-      'Le flux qui fait perdre le plus de temps ou de revenus.',
-      'L’automatisation rapide qui s’intègre à votre stack actuelle.',
-      'Les écarts de consentement à corriger avant les amendes.'
-    ],
-    timeline: 'Mise en place typique : 5 à 10 jours ouvrables.',
-    cta: 'Réserver un Diagnostic Éclair'
   },
   offers: {
     heading: 'Trois parcours productisés',
@@ -122,55 +142,43 @@ const fr: TranslationKeys = {
   },
   faq: {
     title: 'FAQ',
-    q1: {
-      question: 'En combien de temps puis-je voir des résultats ?',
-      answer: [
-        'La plupart des systèmes sont en ligne en 1 à 2 semaines.',
-        'Vous commencez à gagner du temps dès la première automatisation active.'
-      ]
-    },
-    q2: {
-      question: 'C’est vraiment conforme ?',
-      answer: [
-        'Oui — chaque automatisation respecte la Loi 25 et la Loi 96.',
-        'Les consentements sont tracés et la documentation prête pour les audits.'
-      ]
-    },
-    q3: {
-      question: 'Et si je ne suis pas à l’aise avec la technologie ?',
-      answer: [
-        'Aucun souci — tout est configuré pour vous.',
-        'Vous n’avez qu’à approuver ; je m’occupe de la mise en place et des tests.',
-        'Chaque automatisation est pensée pour les équipes non techniques.'
-      ]
-    },
-    q4: {
-      question: 'Quel est le prix — et qu’est-ce qui est inclus ?',
-      answer: [
-        'Le Diagnostic Éclair de 20 minutes est gratuit.',
-        'Les automatisations personnalisées débutent à environ 1 000 $, selon l’ampleur.',
-        'Des rabais fondateurs et forfaits à prix fixe sont offerts.',
-        'Aucun abonnement mensuel — des résultats clairs et mesurables.'
-      ]
-    },
-    q5: {
-      question: 'Est-ce que ces automatisations fonctionnent pour les petites équipes ?',
-      answer: [
-        'Oui, elles sont faites pour les PME sans équipe TI.',
-        'L’objectif : gagner des heures chaque semaine sans complexifier vos outils.'
-      ]
-    },
-    q6: {
-      question: 'Pouvez-vous nous aider avec l’adoption de l’IA ou de nouveaux outils ?',
-      answer: [
-        'Bien sûr. Une fois vos processus stables,',
-        'je peux vous aider à intégrer de nouvelles solutions IA — agents vocaux, chatbots ou analyses intelligentes.'
-      ]
-    },
-    cta: {
-      text: 'Pas certain de ce qui convient à votre équipe ?',
-      button: 'Réserver un Diagnostic Éclair'
-    }
+    list: [
+      {
+        question: 'En combien de temps pouvez-vous configurer mon automatisation?',
+        answer: {
+          intro: 'Rapide, sans tracas.',
+          bullets: ['Configuration en 1–2 semaines', 'Support complet pendant l’installation']
+        }
+      },
+      {
+        question: 'C’est vraiment conforme?',
+        answer: {
+          intro: 'Oui, documenté.',
+          bullets: ['Modèles vérifiés Loi 25/96', 'Preuves prêtes pour audit']
+        }
+      },
+      {
+        question: 'Et si je ne suis pas à l’aise avec la technologie?',
+        answer: {
+          intro: 'Pensé pour les non‑tech.',
+          bullets: ['Installation gérée pour vous', 'Accompagnement humain en français']
+        }
+      },
+      {
+        question: 'Combien ça coûte?',
+        answer: {
+          intro: `À partir de ${PACK_PRICE} $.`,
+          bullets: ['Prix fixes, aucun contrat', 'Retour rapide sur investissement']
+        }
+      },
+      {
+        question: 'Pouvez-vous nous aider avec l’adoption ou la stratégie IA?',
+        answer: {
+          intro: 'Bien sûr.',
+          bullets: ['Veille constante des outils IA', 'Conseils lors de la démo']
+        }
+      }
+    ]
   },
   finalcta: {
     headline: 'L’IA qui vous concerne.',
@@ -234,10 +242,6 @@ const fr: TranslationKeys = {
   },
   footer: {
     tagline: 'Automatisation bilingue pour les PME du Québec.',
-    compliance: {
-      label: 'Conformité & confidentialité',
-      href: '/fr/politique-confidentialite'
-    },
     contact: {
       emailLabel: 'Courriel',
       email: 'info@simonparis.ca',

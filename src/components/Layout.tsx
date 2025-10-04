@@ -27,17 +27,16 @@ export const Header: React.FC<{
 
   const resolvedTextClass = forceDarkBackground
     ? 'text-white'
-    : isPrivacyPage
-    ? 'text-white'
-    : !isScrolled
-    ? 'text-white'
+    : !isScrolled && isPrivacyPage
+    ? 'text-[#121C2D]'
     : 'text-white';
   const textClass = resolvedTextClass;
-  const defaultCtaHref = t.hero.ctaHref ?? 'https://cal.com/simonparis/diagnostic';
-  const defaultCtaLabel = t.hero.cta;
+  const defaultCtaHref = t.hero.cta.href;
+  const defaultCtaLabel = t.hero.cta.text;
   const resolvedCtaHref = ctaHref ?? defaultCtaHref;
   const resolvedCtaLabel = ctaLabel ?? defaultCtaLabel;
-  const ctaClasses = 'btn-primary';
+  const ctaClasses =
+    'inline-flex h-12 items-center justify-center rounded-xl bg-[#139E9C] px-6 font-semibold text-white shadow-md transition hover:bg-[#118C89] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#139E9C]/40';
 
   const LanguageToggle = ({ tone = 'desktop' }: { tone?: 'desktop' | 'mobile' }) => {
     const goTo = (targetLang: 'fr' | 'en') => {
@@ -96,8 +95,6 @@ export const Header: React.FC<{
 
   const headerBackgroundClass = forceDarkBackground
     ? 'bg-[#0B1320]/95 backdrop-blur-lg'
-    : isPrivacyPage
-    ? 'bg-[#0B1320]/95 backdrop-blur-lg'
     : isScrolled
     ? 'bg-[#0B1320]/90 backdrop-blur-lg'
     : 'bg-transparent';
@@ -115,8 +112,11 @@ export const Header: React.FC<{
           >
             {t.header.brand}
           </a>
-          <div className="hidden items-center md:flex">
+          <div className="hidden items-center gap-8 md:flex">
             <LanguageToggle />
+            <a href={resolvedCtaHref} className={`${ctaClasses} whitespace-nowrap text-base`}>
+              {resolvedCtaLabel}
+            </a>
           </div>
           <div className="flex items-center gap-4 md:hidden">
             <LanguageToggle />
@@ -148,7 +148,7 @@ export const Header: React.FC<{
         >
           <div className="flex h-full flex-col gap-8 p-6 pt-24">
             <LanguageToggle tone="mobile" />
-            <a href={resolvedCtaHref} className={ctaClasses}>
+            <a href={resolvedCtaHref} className={`${ctaClasses} text-base`}>
               {resolvedCtaLabel}
             </a>
           </div>
@@ -184,17 +184,9 @@ export const Footer: React.FC<{ langToggle?: { fr: string; en: string } }> = ({
         </div>
 
         <div className="mt-6 border-t border-white/10 pt-4">
-          <div className="flex flex-col items-center gap-2 text-center md:flex-row md:justify-between md:text-left">
-            <a
-              href={t.footer.compliance.href}
-              className="text-xs font-medium text-white/70 transition hover:text-white md:text-sm"
-            >
-              {t.footer.compliance.label}
-            </a>
-            <p className="text-[11px] text-white/45 md:text-left">
-              {t.footer.copyright}
-            </p>
-          </div>
+          <p className="text-center text-[11px] text-white/45 md:text-left">
+            {t.footer.copyright}
+          </p>
         </div>
       </div>
     </footer>
