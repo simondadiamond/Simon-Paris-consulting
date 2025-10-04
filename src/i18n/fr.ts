@@ -24,7 +24,7 @@ const fr: TranslationKeys = {
   },
   sections: {
     problem: {
-      heading: 'Pourquoi les PME du Québec perdent du temps (et des marges) chaque semaine…',
+      heading: 'Pourquoi les PME du Québec perdent du temps (et des marges <span class="accent">réelles</span>) chaque semaine…',
       subheading: 'Les quatre problèmes que j’ai appris à résoudre — en commençant par mes propres systèmes.',
       cards: [
         {
@@ -88,7 +88,7 @@ const fr: TranslationKeys = {
     ]
   },
   offers: {
-    heading: 'Trois parcours productisés',
+    heading: 'Trois parcours <span class="accent">efficaces</span>',
     list: [
       {
         title: 'Packs DIY',

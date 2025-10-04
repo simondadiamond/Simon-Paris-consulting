@@ -23,7 +23,7 @@ export const en = {
   },
   sections: {
     problem: {
-      heading: 'Why Québec SMBs lose time (and margins) every week…',
+      heading: 'Why Québec SMBs lose time (and <span class="accent">real</span> margins) every week…',
       subheading: 'The same four problems I’ve solved again and again — starting with my own systems.',
       cards: [
         {
@@ -87,7 +87,7 @@ export const en = {
     ]
   },
   offers: {
-    heading: 'Choose your path',
+    heading: 'Choose your <span class="accent">smart</span> path',
     list: [
       {
         title: 'DIY Packs',
