@@ -128,19 +128,17 @@ export const Footer: React.FC<{ langToggle?: { fr: string; en: string } }> = ({
 
   return (
     <footer className="bg-[#0B1220] text-white">
-      <div className="mx-auto max-w-7xl px-6 py-6 md:py-8 lg:px-8">
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div className="text-center md:text-left">
+      <div className="mx-auto max-w-5xl px-6 py-6 md:py-8">
+        <div className="flex flex-col items-center gap-6 text-center md:flex-row md:items-center md:justify-between md:text-left">
+          <div>
             <div className="text-xl font-semibold md:text-2xl">{t.header.brand}</div>
             <p className="mt-1 text-sm text-white/70 md:text-base">{t.footer.tagline}</p>
           </div>
 
-          <div className="hidden flex-1 md:block" aria-hidden="true" />
-
-          <address className="text-center text-sm text-white/70 not-italic md:text-right md:text-base">
+          <address className="text-sm text-white/70 not-italic md:text-right md:text-base">
             <a
               href={`mailto:${t.footer.contact.email}`}
-              className="block font-medium text-white transition hover:text-white"
+              className="block font-semibold text-white/90 transition hover:text-white"
             >
               {t.footer.contact.emailLabel}: {t.footer.contact.email}
             </a>
