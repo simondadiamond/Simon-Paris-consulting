@@ -13,19 +13,19 @@
   }
   .bg-section-gradient-top {
     background-image: linear-gradient(
-      to bottom,
-      #d9e7ff 0%,
-      #f1f6ff 55%,
-      #ffffff 100%
+      to bottom left,
+      #e4eeff,
+      #e6faff 55%,
+      #ffffff
     );
   }
 
   .bg-section-gradient-bottom {
     background-image: linear-gradient(
-      to top,
-      #d9e7ff 0%,
-      #f1f6ff 55%,
-      #ffffff 100%
+      to top left,
+      #e4eeff,
+      #e6faff 55%,
+      #ffffff
     );
   }
 }
