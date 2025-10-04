@@ -2,14 +2,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from './LanguageProvider';
 import {
   MessageSquare,
-  Clock3,
-  Receipt,
-  Shield,
   CheckCircle,
   Clock,
   ShieldCheck,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Repeat,
+  CalendarClock,
+  ShieldAlert,
+  Link2,
+  Shield
 } from 'lucide-react';
 import { Header, Footer } from './components/Layout';
 import PartnerBar from './components/PartnerBar';
@@ -95,52 +97,55 @@ const ProblemSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  const problems = t.problems.list.map((p, i) => ({
-    ...p,
-    icon: [MessageSquare, Clock3, Receipt, Shield][i]
+  const problemIcons = [Repeat, CalendarClock, ShieldAlert, Link2];
+  const cards = t.sections.problem.cards.map((card, index) => ({
+    ...card,
+    icon: problemIcons[index] ?? MessageSquare
   }));
 
   return (
     <section
       id="automations"
       ref={sectionRef}
-      className="relative overflow-hidden bg-white bg-section-gradient-bottom py-20 lg:py-28"
+      className="relative overflow-hidden pt-[100px] pb-20 lg:pb-[100px]"
+      style={{
+        backgroundImage:
+          'linear-gradient(to top left, rgba(228, 238, 255, 0.6), rgba(230, 250, 255, 0.6) 55%, rgba(255, 255, 255, 0.6))'
+      }}
     >
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
-          className={`flex flex-col gap-8 text-center transition-all duration-1000 ${
+          className={`mx-auto flex max-w-3xl flex-col text-center transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
           <h2
-            className="text-[clamp(1.75rem,4vw,3rem)] font-semibold leading-tight text-gray-900"
-            dangerouslySetInnerHTML={{ __html: t.problems.title }}
+            className="text-4xl font-semibold text-[#121C2D] md:text-5xl"
+            dangerouslySetInnerHTML={{ __html: t.sections.problem.heading }}
           />
-          <p
-            className="mx-auto max-w-2xl text-base text-gray-600 sm:text-lg"
-            dangerouslySetInnerHTML={{ __html: t.problems.note }}
-          />
+          {t.sections.problem.subheading && (
+            <p className="mt-4 text-base text-[#475467]">
+              {t.sections.problem.subheading}
+            </p>
+          )}
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-8">
-          {problems.map((problem, index) => (
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-8">
+          {cards.map((card, index) => (
             <div
               key={index}
-              className={`card-light group flex flex-col gap-5 p-6 text-center transition-all duration-700 sm:p-7 ${
+              className={`group flex h-full flex-col rounded-2xl border border-gray-100 bg-white p-7 text-center shadow-sm transition-all duration-300 ease-out transform ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
+              } hover:-translate-y-1 hover:scale-[1.015] hover:shadow-xl`}
               style={{ transitionDelay: isVisible ? '0ms' : `${index * 120}ms` }}
             >
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#2280FF]/15 text-[#2280FF] transition-transform duration-300 group-hover:scale-110">
-                <problem.icon className="h-7 w-7" />
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#139E9C]/10 text-[#139E9C] transition-transform duration-300 group-hover:scale-110">
+                <card.icon className="h-7 w-7" />
               </div>
 
               <div className="space-y-2">
-                <h3
-                  className="text-lg font-semibold text-gray-900"
-                  dangerouslySetInnerHTML={{ __html: problem.title }}
-                />
-                <p className="text-sm leading-relaxed text-gray-600 sm:text-base">{problem.body}</p>
+                <h3 className="text-lg font-semibold text-[#121C2D]">{card.title}</h3>
+                <p className="text-base leading-relaxed text-gray-600">{card.description}</p>
               </div>
             </div>
           ))}
@@ -264,9 +269,16 @@ const OfferCards = () => {
           dangerouslySetInnerHTML={{ __html: t.offers.heading }}
         />
 
-        <div className={`grid md:grid-cols-3 gap-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div
+          className={`grid md:grid-cols-3 gap-8 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           {offers.map((offer, index) => (
-            <div key={index} className="card-light p-6 md:p-8 flex flex-col relative">
+            <div
+              key={index}
+              className="card-light relative flex h-full flex-col rounded-3xl border border-gray-100 bg-white/90 p-6 md:p-8 shadow-sm transition-all duration-300 ease-out transform hover:-translate-y-1 hover:scale-[1.015] hover:shadow-xl"
+            >
               {offer.badge && (
                 <span className="absolute top-4 right-4 text-xs font-semibold bg-[#2280FF] text-white px-2 py-1 rounded-full">
                   {offer.badge}
