@@ -9,7 +9,7 @@ const fr: TranslationKeys = {
     cta: 'Diagnostic Éclair'
   },
   hero: {
-    tagline: 'Pour les cliniques du Québec • Loi 25 prête • Zéro jargon',
+    tagline: 'Pour les PME du Québec • Loi 25 prête • Zéro jargon',
     headline: {
       line1: 'Moins de pertes.',
       line2: 'Plus de profits.',
