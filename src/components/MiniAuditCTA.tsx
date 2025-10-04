@@ -27,7 +27,7 @@ const MiniAuditCTA: React.FC = () => {
               {t.audit.timeline}
             </p>
 
-            <a href={ctaHref} className="btn-primary mt-10 inline-flex">
+            <a href={ctaHref} className="btn-primary mt-10">
               {t.audit.cta}
             </a>
           </div>

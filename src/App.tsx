@@ -10,7 +10,8 @@ import {
   ChevronUp,
   FileWarning,
   DollarSign,
-  UserX
+  UserX,
+  Shield
 } from 'lucide-react';
 import { Header, Footer } from './components/Layout';
 import PartnerBar from './components/PartnerBar';
@@ -79,9 +80,10 @@ const ProblemSection = () => {
     return () => observer.disconnect();
   }, []);
 
+  const iconMap = [UserX, Clock, DollarSign, FileWarning];
   const problems = t.pain.cards.map((p, i) => ({
     ...p,
-    icon: [UserX, Clock, DollarSign, FileWarning][i]
+    icon: iconMap[i] ?? UserX
   }));
 
   return (
@@ -326,14 +328,14 @@ const Checklist = () => {
               </li>
             ))}
           </ul>
-            <a
-              href={
-                t.checklist.href.startsWith('/fr') || t.checklist.href.startsWith('/en')
-                  ? t.checklist.href
-                  : newsletterHref
-              }
-              className="btn-primary px-8 py-4"
-            >
+          <a
+            href={
+              t.checklist.href.startsWith('/fr') || t.checklist.href.startsWith('/en')
+                ? t.checklist.href
+                : newsletterHref
+            }
+            className="btn-primary"
+          >
             {t.checklist.cta}
           </a>
         </div>
@@ -471,7 +473,7 @@ const StickyCTA = () => {
   const newsletterHref = lang === 'fr' ? '/fr/newsletter' : '/en/newsletter';
   return (
     <div className="sticky-cta md:hidden">
-      <a href={newsletterHref} className="btn-primary w-full text-lg py-4">
+      <a href={newsletterHref} className="btn-primary w-full">
         {t.stickyCta}
       </a>
     </div>
