@@ -11,10 +11,10 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({ href, variant = 'teal', children }) => {
   const baseClasses =
-    'inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-offset-2';
+    'inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2';
   const variantClasses =
     variant === 'teal'
-      ? 'bg-[#139E9C] text-white hover:bg-[#118C89] focus:ring-[#139E9C] focus:ring-offset-white'
+      ? 'bg-[#139E9C] text-white shadow-lg shadow-[#139E9C]/25 transition-colors duration-200 hover:bg-[#0EAAA9] focus-visible:ring-[#139E9C] focus-visible:ring-offset-white'
       : '';
 
   return (
@@ -24,7 +24,7 @@ const Button: React.FC<ButtonProps> = ({ href, variant = 'teal', children }) => 
   );
 };
 
-const getNestedTranslation = (translation: Translation, key: string): string => {
+const getNestedTranslation = (translation: Translation, key: string): unknown => {
   const value = key.split('.').reduce<unknown>((acc, segment) => {
     if (acc && typeof acc === 'object') {
       return (acc as Record<string, unknown>)[segment];
@@ -32,7 +32,7 @@ const getNestedTranslation = (translation: Translation, key: string): string => 
     return undefined;
   }, translation);
 
-  return typeof value === 'string' ? value : '';
+  return value;
 };
 
 const FAQ: React.FC = () => {
@@ -41,7 +41,18 @@ const FAQ: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
-  const t = useCallback((key: string) => getNestedTranslation(translation, key), [translation]);
+  const getValue = useCallback(
+    (key: string) => getNestedTranslation(translation, key),
+    [translation]
+  );
+
+  const t = useCallback(
+    (key: string) => {
+      const value = getValue(key);
+      return typeof value === 'string' ? value : '';
+    },
+    [getValue]
+  );
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -61,20 +72,24 @@ const FAQ: React.FC = () => {
   }, []);
 
   const faqItems = useMemo(
-    () => [
-      { question: t('faq.q1.question'), answer: t('faq.q1.answer') },
-      { question: t('faq.q2.question'), answer: t('faq.q2.answer') },
-      { question: t('faq.q3.question'), answer: t('faq.q3.answer') },
-      { question: t('faq.q4.question'), answer: t('faq.q4.answer') },
-      { question: t('faq.q5.question'), answer: t('faq.q5.answer') },
-      { question: t('faq.q6.question'), answer: t('faq.q6.answer') }
-    ],
-    [t]
+    () =>
+      Array.from({ length: 6 }, (_, index) => {
+        const question = t(`faq.q${index + 1}.question`);
+        const answerValue = getValue(`faq.q${index + 1}.answer`);
+        const answer = Array.isArray(answerValue)
+          ? answerValue
+          : typeof answerValue === 'string'
+          ? [answerValue]
+          : [];
+
+        return { question, answer };
+      }),
+    [getValue, t]
   );
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden bg-white py-16 lg:py-20">
-      <div className="relative z-10 mx-auto max-w-3xl px-6">
+      <div className="relative z-10 mx-auto max-w-[720px] px-4 sm:px-6">
         <div
           className={`mb-12 text-center transition-all duration-700 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
@@ -84,7 +99,7 @@ const FAQ: React.FC = () => {
         </div>
 
         <div
-          className={`space-y-8 transition-all duration-700 delay-150 ${
+          className={`space-y-4 transition-all duration-700 delay-150 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
@@ -92,15 +107,20 @@ const FAQ: React.FC = () => {
             const isOpen = openIndex === index;
 
             return (
-              <div key={item.question} className="overflow-hidden rounded-2xl border border-white/60 bg-white shadow-sm">
+              <div
+                key={item.question}
+                className="overflow-hidden border-b border-gray-200/80 last:border-b-0"
+              >
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between px-6 py-5 text-left"
+                  className="flex w-full items-center justify-between px-6 py-4 text-left transition-colors duration-200 hover:text-gray-900 focus-visible:text-gray-900 md:px-8 md:py-5"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   aria-expanded={isOpen}
                   aria-controls={`faq-panel-${index}`}
                 >
-                  <span className="pr-8 text-base font-semibold text-gray-900 md:text-lg">{item.question}</span>
+                  <span className="pr-6 text-base font-semibold text-gray-900 md:text-lg">
+                    {item.question}
+                  </span>
                   {isOpen ? (
                     <ChevronUp className="h-6 w-6 text-[#2280FF]" />
                   ) : (
@@ -115,8 +135,12 @@ const FAQ: React.FC = () => {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="px-6 pb-6 text-base leading-relaxed text-gray-700 md:text-lg">
-                      <p>{item.answer}</p>
+                    <div className="px-6 pb-4 text-base leading-7 text-gray-600 md:px-8 md:pb-5 md:text-lg">
+                      <div className="space-y-3">
+                        {item.answer.map((paragraph, paragraphIndex) => (
+                          <p key={paragraphIndex}>{paragraph}</p>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -126,11 +150,13 @@ const FAQ: React.FC = () => {
         </div>
 
         <div
-          className={`mt-12 flex flex-col items-center transition-all duration-700 delay-300 ${
+          className={`mt-10 flex flex-col items-center transition-all duration-700 delay-300 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
-          <p className="mt-8 text-center text-sm opacity-80">{t('faq.cta.text')}</p>
+          <p className="max-w-md text-center text-sm leading-6 text-gray-600 opacity-90">
+            {t('faq.cta.text')}
+          </p>
           <div className="mt-4">
             <Button href="/diagnostic" variant="teal">
               {t('faq.cta.button')}

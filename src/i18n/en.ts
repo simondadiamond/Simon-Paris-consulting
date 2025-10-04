@@ -116,33 +116,48 @@ export const en = {
     title: 'FAQ',
     q1: {
       question: 'How fast can we see results?',
-      answer:
-        'Most clients see their first automation live in 7–10 business days. You’ll get a clear plan after the free audit — no surprises, no tech headaches.'
+      answer: [
+        'Most setups are live within 1–2 weeks.',
+        'You’ll start seeing time savings as soon as the first workflow goes live.'
+      ]
     },
     q2: {
       question: 'Is this really compliant?',
-      answer:
-        'Yes. Every automation includes Law 25-ready templates and documented consent tracking. You’ll even receive a short audit report as proof.'
+      answer: [
+        'Yes — everything follows Law 25 and Bill 96 requirements.',
+        'Each workflow includes consent tracking and audit-ready documentation.'
+      ]
     },
     q3: {
       question: 'What if I’m not comfortable with technology?',
-      answer:
-        'No problem. Everything is set up for you — you just approve. I work with dozens of owners who hate tech but love saving time.'
+      answer: [
+        'No problem — everything is handled for you.',
+        'You only review and approve; I take care of the setup and testing.',
+        'Each workflow is designed to be effortless for non-technical teams.'
+      ]
     },
     q4: {
       question: 'What’s the price — and what do I get?',
-      answer:
-        'The mini audit is free. Custom builds start at $199, fixed price. No monthly contract, and most clients recover the cost in under a week.'
+      answer: [
+        'Your 20-minute Mini Audit is free.',
+        'Custom automations start around $1,000 depending on scope.',
+        'Founding-member discounts and fixed-price bundles are available.',
+        'No monthly contracts — just clear deliverables and ROI you can measure.'
+      ]
     },
     q5: {
       question: 'Do these automations actually work for small teams?',
-      answer:
-        'Yes. They’re designed for clinics, trades, and offices with 3–25 employees. The goal: cut admin time, keep leads warm, and reduce stress — without changing your current tools.'
+      answer: [
+        'Yes. They’re designed for lean SMB operations — no IT team required.',
+        'The goal is simple: save hours every week without adding complexity.'
+      ]
     },
     q6: {
       question: 'Can you help us with AI or new tools later?',
-      answer:
-        'Absolutely. I test new AI assistants, chatbots, and voice bots monthly — and can add them once your core workflows are stable.'
+      answer: [
+        'Absolutely. Once your core workflows run smoothly,',
+        'I can help you integrate new AI features — chatbots, voice bots, or analytics — when you’re ready.'
+      ]
     },
     cta: {
       text: 'Still unsure what fits your team?',

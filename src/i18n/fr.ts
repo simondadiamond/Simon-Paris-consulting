@@ -116,34 +116,49 @@ const fr: TranslationKeys = {
   faq: {
     title: 'FAQ',
     q1: {
-      question: 'En combien de temps verrai-je des résultats ?',
-      answer:
-        'La majorité de mes clients voient leur première automatisation en place en 7 à 10 jours ouvrables. Vous recevez un plan clair après le diagnostic — sans jargon, sans casse-tête.'
+      question: 'En combien de temps puis-je voir des résultats ?',
+      answer: [
+        'La plupart des systèmes sont en ligne en 1 à 2 semaines.',
+        'Vous commencez à gagner du temps dès la première automatisation active.'
+      ]
     },
     q2: {
-      question: 'Est-ce vraiment conforme à la Loi 25 / 96 ?',
-      answer:
-        'Oui. Chaque automatisation inclut des modèles conformes et un suivi de consentement documenté. Vous recevez un mini-rapport d’audit comme preuve.'
+      question: 'C’est vraiment conforme ?',
+      answer: [
+        'Oui — chaque automatisation respecte la Loi 25 et la Loi 96.',
+        'Les consentements sont tracés et la documentation prête pour les audits.'
+      ]
     },
     q3: {
       question: 'Et si je ne suis pas à l’aise avec la technologie ?',
-      answer:
-        'Aucun souci. J’installe tout pour vous — vous n’avez qu’à valider. J’accompagne plusieurs propriétaires qui détestent la techno, mais adorent gagner du temps.'
+      answer: [
+        'Aucun souci — tout est configuré pour vous.',
+        'Vous n’avez qu’à approuver ; je m’occupe de la mise en place et des tests.',
+        'Chaque automatisation est pensée pour les équipes non techniques.'
+      ]
     },
     q4: {
-      question: 'Combien ça coûte — et qu’est-ce que j’obtiens ?',
-      answer:
-        'Le diagnostic est gratuit. Les automatisations sur mesure commencent à 199 $, prix fixe. Aucun abonnement, et la majorité des clients récupèrent l’investissement en moins d’une semaine.'
+      question: 'Quel est le prix — et qu’est-ce qui est inclus ?',
+      answer: [
+        'Le Diagnostic Éclair de 20 minutes est gratuit.',
+        'Les automatisations personnalisées débutent à environ 1 000 $, selon l’ampleur.',
+        'Des rabais fondateurs et forfaits à prix fixe sont offerts.',
+        'Aucun abonnement mensuel — des résultats clairs et mesurables.'
+      ]
     },
     q5: {
-      question: 'Est-ce que ça fonctionne vraiment pour les petites équipes ?',
-      answer:
-        'Oui. C’est conçu pour les cliniques, commerces et bureaux de 3 à 25 employés. Objectif : moins d’administration, plus de clients, zéro stress — sans changer vos outils actuels.'
+      question: 'Est-ce que ces automatisations fonctionnent pour les petites équipes ?',
+      answer: [
+        'Oui, elles sont faites pour les PME sans équipe TI.',
+        'L’objectif : gagner des heures chaque semaine sans complexifier vos outils.'
+      ]
     },
     q6: {
-      question: 'Pouvez-vous nous aider avec l’IA ou de nouveaux outils ?',
-      answer:
-        'Absolument. Je teste chaque mois de nouveaux assistants IA, chatbots et voice bots — que je peux ajouter une fois vos flux stables.'
+      question: 'Pouvez-vous nous aider avec l’adoption de l’IA ou de nouveaux outils ?',
+      answer: [
+        'Bien sûr. Une fois vos processus stables,',
+        'je peux vous aider à intégrer de nouvelles solutions IA — agents vocaux, chatbots ou analyses intelligentes.'
+      ]
     },
     cta: {
       text: 'Pas certain de ce qui convient à votre équipe ?',
