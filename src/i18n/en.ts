@@ -8,22 +8,22 @@ export const en = {
     cta: 'Diagnostic Éclair'
   },
   hero: {
-    tag: 'For Québec clinics • Law 25 ready • Zero jargon',
-    h1: {
-      line1: 'Fewer no-shows.',
-      line2: 'More patients.',
+    tagline: 'For Québec clinics • Law 25 ready • Zero jargon',
+    headline: {
+      line1: 'Less waste.',
+      line2: 'More profit.',
       line3: '100% compliant.'
     },
-    body:
-      'In 20 minutes, we find a time or revenue leak in your follow-ups, calls or reminders — and you leave with a clear plan.',
+    subtext:
+      'I help Québec SMBs automate the repetitive tasks that drain time and money — while keeping Law 25 compliance covered.',
     cta: {
-      primary: 'Book a Diagnostic Éclair',
-      primaryHref: 'https://cal.com/simonparis/diagnostic'
+      text: 'Book a Diagnostic Éclair',
+      href: 'https://cal.com/simonparis/diagnostic'
     },
     card: {
-      title: "What you'll leave with",
-      bullet1: 'A bottleneck costing you time or patients.',
-      bullet2: 'One task to automate without changing your clinic software.',
+      title: 'During the diagnostic, we identify…',
+      bullet1: 'A bottleneck costing you time or clients.',
+      bullet2: 'One task to automate without changing your software.',
       bullet3: 'The next step to stay safe with Law 25 / 96.',
       bullet4: 'Typical setup: 5–10 business days.'
     }

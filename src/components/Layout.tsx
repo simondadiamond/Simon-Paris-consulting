@@ -31,9 +31,12 @@ export const Header: React.FC<{
     ? 'text-[#121C2D]'
     : 'text-white';
   const textClass = resolvedTextClass;
-  const newsletterHref = lang === 'fr' ? '/fr/newsletter' : '/en/newsletter';
-  const resolvedCtaHref = ctaHref ?? newsletterHref;
-  const resolvedCtaLabel = ctaLabel ?? t.header.cta;
+  const defaultCtaHref = t.hero.cta.href;
+  const defaultCtaLabel = t.hero.cta.text;
+  const resolvedCtaHref = ctaHref ?? defaultCtaHref;
+  const resolvedCtaLabel = ctaLabel ?? defaultCtaLabel;
+  const ctaClasses =
+    'inline-flex h-12 items-center justify-center rounded-xl bg-[#139E9C] px-6 font-semibold text-white shadow-md transition hover:bg-[#118C89] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#139E9C]/40';
 
   const LanguageToggle = ({ tone = 'desktop' }: { tone?: 'desktop' | 'mobile' }) => {
     const goTo = (targetLang: 'fr' | 'en') => {
@@ -96,7 +99,7 @@ export const Header: React.FC<{
     ? 'bg-[#0B1320]/90 backdrop-blur-lg'
     : 'bg-transparent';
 
-  const headerClassName = `fixed top-0 left-0 right-0 z-50 border-b border-white/10 transition-colors duration-300 ${headerBackgroundClass}`;
+  const headerClassName = `fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${headerBackgroundClass}`;
 
   return (
     <>
@@ -111,10 +114,7 @@ export const Header: React.FC<{
           </a>
           <div className="hidden items-center gap-8 md:flex">
             <LanguageToggle />
-            <a
-              href={resolvedCtaHref}
-              className="inline-flex items-center justify-center rounded-full bg-[#139E9C] px-5 py-2 text-sm font-semibold text-[#041820] shadow-sm shadow-[#139E9C]/40 transition-transform duration-150 hover:-translate-y-0.5 hover:shadow-[#139E9C]/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#139E9C]"
-            >
+            <a href={resolvedCtaHref} className={`${ctaClasses} whitespace-nowrap text-base`}>
               {resolvedCtaLabel}
             </a>
           </div>
@@ -148,10 +148,7 @@ export const Header: React.FC<{
         >
           <div className="flex h-full flex-col gap-8 p-6 pt-24">
             <LanguageToggle tone="mobile" />
-            <a
-              href={resolvedCtaHref}
-              className="inline-flex items-center justify-center rounded-full bg-[#139E9C] px-6 py-3 text-sm font-semibold text-[#041820] shadow-sm shadow-[#139E9C]/40 transition-transform duration-150 hover:-translate-y-0.5 hover:shadow-[#139E9C]/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#139E9C]"
-            >
+            <a href={resolvedCtaHref} className={`${ctaClasses} text-base`}>
               {resolvedCtaLabel}
             </a>
           </div>

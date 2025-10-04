@@ -9,22 +9,22 @@ const fr: TranslationKeys = {
     cta: 'Diagnostic Éclair'
   },
   hero: {
-    tag: 'Pour les cliniques du Québec • Loi 25 prête • Zéro jargon',
-    h1: {
-      line1: 'Moins de no-shows.',
-      line2: 'Plus de patients.',
+    tagline: 'Pour les cliniques du Québec • Loi 25 prête • Zéro jargon',
+    headline: {
+      line1: 'Moins de pertes.',
+      line2: 'Plus de profits.',
       line3: '100 % conforme.'
     },
-    body:
-      'En 20 min, on repère une fuite de temps ou de revenus dans vos suivis, appels ou rappels — et vous repartez avec un plan clair.',
+    subtext:
+      'J’accompagne les PME du Québec à automatiser les tâches répétitives qui grugent temps et argent — tout en assurant la conformité à la Loi 25.',
     cta: {
-      primary: 'Réserver un Diagnostic Éclair',
-      primaryHref: 'https://cal.com/simonparis/diagnostic'
+      text: 'Réserver un Diagnostic Éclair',
+      href: 'https://cal.com/simonparis/diagnostic'
     },
     card: {
-      title: 'Ce que vous repartez avec',
+      title: 'Pendant le diagnostic, nous identifions…',
       bullet1: 'Un goulot qui vous fait perdre du temps ou des patients.',
-      bullet2: 'Une tâche à automatiser sans changer votre logiciel clinique.',
+      bullet2: 'Une tâche à automatiser sans changer votre logiciel.',
       bullet3: 'La prochaine étape pour rester tranquille côté Loi 25 / 96.',
       bullet4: 'Installation typique : 5 à 10 jours ouvrables.'
     }

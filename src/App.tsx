@@ -26,6 +26,8 @@ const Hero = () => {
     hero.card.bullet3,
     hero.card.bullet4
   ];
+  const ctaClasses =
+    'inline-flex h-12 items-center justify-center rounded-xl bg-[#139E9C] px-6 font-semibold text-white shadow-md transition hover:bg-[#118C89] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#139E9C]/40';
 
   return (
     <section id="hero" className="relative isolate overflow-hidden bg-[#0B1320] text-white">
@@ -38,28 +40,21 @@ const Hero = () => {
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 pb-16 pt-28 sm:pb-24 lg:px-8">
         <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] xl:gap-16">
           <div className="space-y-8 md:space-y-10">
-            <div className="space-y-3 md:space-y-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/60">
-                {hero.tag}
-              </p>
+            <div className="space-y-4 md:space-y-6">
+              <p className="text-sm font-medium text-white/70">{hero.tagline}</p>
 
               <h1 className="text-[clamp(28px,6vw,56px)] font-semibold leading-[1.05] tracking-tight">
-                <span className="block">{hero.h1.line1}</span>
-                <span className="block text-[#139E9C]">{hero.h1.line2}</span>
-                <span className="block">{hero.h1.line3}</span>
+                <span className="block">{hero.headline.line1}</span>
+                <span className="block text-[#139E9C]">{hero.headline.line2}</span>
+                <span className="block">{hero.headline.line3}</span>
               </h1>
 
-              <p className="max-w-xl text-base leading-relaxed text-white/80 md:text-lg">{hero.body}</p>
+              <p className="max-w-xl text-base leading-relaxed text-white/80 md:text-lg">{hero.subtext}</p>
             </div>
 
-            <div className="space-y-4 md:space-y-6">
-              <a
-                href={hero.cta.primaryHref}
-                className="inline-flex h-12 w-full max-w-xs items-center justify-center rounded-xl bg-[#139E9C] px-6 font-semibold text-white shadow-md shadow-[#139E9C]/30 transition hover:bg-[#12908E] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-white/20 sm:w-auto"
-              >
-                {hero.cta.primary}
-              </a>
-            </div>
+            <a href={hero.cta.href} className={`${ctaClasses} w-full sm:w-auto`}>
+              {hero.cta.text}
+            </a>
           </div>
 
           <div className="relative lg:ml-auto">
