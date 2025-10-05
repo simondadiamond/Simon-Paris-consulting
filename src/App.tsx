@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from './LanguageProvider';
+import type { Language } from './i18n';
 import {
   MessageSquare,
   CheckCircle,
@@ -24,53 +25,81 @@ import MiniAuditCTA from './components/MiniAuditCTA';
 
 // Hero Component
 const Hero = () => {
-  const { t } = useLanguage();
+  const { t, lang, setLang } = useLanguage();
   const hero = t.hero;
-  const titleSegments = hero.title
-    .split('.')
-    .map(segment => segment.trim())
-    .filter(Boolean);
+  const subtitleLines = hero.subtitle.split('\n');
+
+  const handleLanguageToggle = (targetLang: Language) => {
+    if (targetLang !== lang) {
+      setLang(targetLang);
+    }
+  };
 
   return (
     <section
       id="hero"
-      className="relative isolate flex min-h-[90vh] items-center justify-center overflow-hidden bg-[#0B1320] text-white"
+      className="relative isolate flex min-h-[85vh] items-center justify-center overflow-hidden bg-gradient-to-br from-[#121C2D] to-[#0D1627] px-6 text-white sm:px-8"
     >
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_0%_0%,rgba(34,128,255,0.2),rgba(11,19,32,0)_60%),radial-gradient(120%_120%_at_85%_15%,rgba(19,158,156,0.25),rgba(11,19,32,0)_65%)] opacity-90" />
-        <div className="absolute inset-0 bg-[linear-gradient(140deg,rgba(255,255,255,0.08),transparent_50%)] mix-blend-screen" />
-        <div className="absolute -left-24 top-[-6rem] h-[22rem] w-[22rem] rounded-full bg-[#2280FF]/18 blur-[140px]" />
-        <div className="absolute bottom-[-8rem] right-[-6rem] h-[28rem] w-[28rem] rounded-full bg-[#139E9C]/16 blur-[150px]" />
+      <div className="hero-aurora" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_55%)] mix-blend-screen" />
+
+      <div className="absolute top-6 right-6 z-20 flex rounded-full border border-white/10 bg-white/5 text-xs font-semibold uppercase tracking-[0.18em] backdrop-blur-md sm:text-sm">
+        <button
+          type="button"
+          onClick={() => handleLanguageToggle('fr')}
+          className={`px-4 py-2 transition ${
+            lang === 'fr'
+              ? 'bg-white/15 text-white'
+              : 'text-white/70 hover:text-white'
+          }`}
+          aria-pressed={lang === 'fr'}
+        >
+          FR
+        </button>
+        <button
+          type="button"
+          onClick={() => handleLanguageToggle('en')}
+          className={`px-4 py-2 transition ${
+            lang === 'en'
+              ? 'bg-white/15 text-white'
+              : 'text-white/70 hover:text-white'
+          }`}
+          aria-pressed={lang === 'en'}
+        >
+          EN
+        </button>
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-[60rem] px-4 py-24 text-center sm:px-6 lg:px-8 lg:py-32">
-        <div className="mx-auto flex max-w-3xl flex-col items-center gap-8 sm:gap-10">
-          <h1 className="text-balance text-[clamp(2rem,6vw,3.75rem)] font-semibold leading-[1.08] tracking-tight sm:leading-[1.12] text-white">
-            {titleSegments.map((segment, index) => {
-              const isHighlight = hero.highlight && segment.toLowerCase() === hero.highlight.toLowerCase();
-              const text = `${segment}.`;
-              return (
-                <span
-                  key={`${segment}-${index}`}
-                  className={`block ${isHighlight ? 'text-[#13A89E]' : 'text-white'}`}
-                >
-                  {text}
-                </span>
-              );
-            })}
+      <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center justify-center py-24 text-center sm:py-28 lg:items-start lg:text-left xl:max-w-6xl">
+        <div className="flex max-w-3xl flex-col items-center space-y-6 lg:items-start">
+          <h1 className="text-[clamp(2.2rem,4vw,3.5rem)] font-semibold leading-[1.08] text-white">
+            <span className="block text-balance">{hero.headline?.line1 ?? hero.title}</span>
+            <span className="block text-balance text-[#13A89E] whitespace-nowrap">
+              {hero.headline?.highlight ?? hero.highlight}
+            </span>
           </h1>
 
-          <p className="text-balance text-base leading-relaxed text-white/80 sm:text-lg sm:leading-relaxed">
-            {hero.subtitle}
+          <p className="max-w-2xl text-[clamp(1rem,2.2vw,1.4rem)] leading-relaxed text-white/85 line-clamp-3 md:line-clamp-2">
+            {subtitleLines.map((line, index) => (
+              <React.Fragment key={`${line}-${index}`}>
+                {line.trim()}
+                {index < subtitleLines.length - 1 && (
+                  <>
+                    <br className="hidden md:block" />
+                    <span className="md:hidden"> </span>
+                  </>
+                )}
+              </React.Fragment>
+            ))}
           </p>
 
-          <div className="mt-2 flex flex-col items-center gap-3">
-            <a href={hero.cta.href} className="btn-primary hero-cta w-full max-w-xs sm:max-w-none sm:w-auto">
+          <div className="mt-4 flex w-full max-w-sm flex-col items-center gap-3 sm:max-w-none lg:items-start">
+            <a href={hero.cta.href} className="btn-primary hero-cta w-full sm:w-auto">
               {hero.cta.label}
             </a>
             <a
               href={hero.secondaryCta.href}
-              className="text-sm font-medium text-white/70 transition hover:text-white"
+              className="text-[0.9rem] font-medium text-white/70 transition hover:text-white"
             >
               {hero.secondaryCta.label}
             </a>
