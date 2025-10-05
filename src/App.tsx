@@ -42,9 +42,9 @@ const Hero = () => {
 
       <div className="relative z-10 mx-auto w-full max-w-[60rem] px-4 py-24 text-center sm:px-6 lg:px-8 lg:py-32">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-          <h1 className="text-balance text-[clamp(2.2rem,4vw,3.5rem)] font-semibold leading-[1.12] tracking-tight text-white">
+          <h1 className="hero-headline text-balance font-semibold leading-[1.12] tracking-tight text-white">
             <span className="block">{hero.headline}</span>
-            <span className="mt-2 block whitespace-nowrap text-[#13A89E]">{hero.accent}</span>
+            <span className="hero-accent mt-2 block whitespace-nowrap text-[#13A89E]">{hero.accent}</span>
           </h1>
 
           <p className="mt-[1em] text-balance text-[clamp(1rem,2.2vw,1.4rem)] leading-[1.5] text-[rgba(255,255,255,0.85)]">
