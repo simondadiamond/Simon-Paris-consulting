@@ -8,12 +8,13 @@ import {
   ShieldCheck,
   Shield,
   Clock,
+  ClipboardList,
   Languages,
   Star,
   Mail,
   Zap,
   CalendarCheck,
-  CalendarX,
+  Link,
   Lock
 } from 'lucide-react';
 
@@ -38,11 +39,36 @@ const content = {
     whyTitle: 'Le coût des demandes manquées',
     whyCopy:
       '<strong>Chaque demande non traitée est un rendez-vous perdu.</strong> Les patients comparent plusieurs cliniques et la première réponse claire l’emporte souvent. Un suivi lent crée des trous d’horaire et du stress. Une réponse français d’abord, envoyée en quelques minutes, saisit l’intention, précise la suite et pousse à réserver — même hors heures.',
-    pain: [
-      { pain: 'Si\u00e8ges vides', outcome: 'Plus de cr\u00e9neaux remplis' },
-      { pain: 'Suivi lent', outcome: 'R\u00e9ponses instantan\u00e9es, m\u00eame hors heures' },
-      { pain: 'Stress de conformit\u00e9', outcome: 'Fran\u00e7ais d’abord, tra\u00e7able, conforme' }
-    ],
+    painSection: {
+      heading:
+        '<span style="color:#FFFFFF;">Pourquoi les PME du Qu\u00e9bec perdent des heures</span> <span style="color:#13A89E;">(et des marges r\u00e9elles)</span> <span style="color:#FFFFFF;">chaque semaine</span>',
+      subheading: 'Quatre fuites \u00e0 colmater en priorit\u00e9 \u2014 la #1 reste le suivi trop tardif.',
+      cards: [
+        {
+          title: 'Suivis trop tardifs',
+          line: 'Au-del\u00e0 de 5 minutes, ils passent ailleurs.',
+          cta: 'Passer sous 5 min \u2192'
+        },
+        {
+          title: 'Admin manuelle',
+          line: 'Soumissions, factures, relances… des heures perdues, des erreurs.',
+          cta: 'Automatiser \u00e7a \u2192'
+        },
+        {
+          title: 'Conformit\u00e9 \u00e0 la derni\u00e8re minute (Loi 25)',
+          line: 'Consentements et registres g\u00e9r\u00e9s sous pression = risque.',
+          cta: 'Mettre en r\u00e8gle \u2192'
+        },
+        {
+          title: 'Outils qui ne se parlent pas',
+          line: 'Site, t\u00e9l\u00e9phone, CRM… d\u00e9branch\u00e9s = pertes invisibles.',
+          cta: 'Connecter le tout \u2192'
+        }
+      ],
+      proof:
+        'Objectif simple : r\u00e9pondre en < 5 minutes, r\u00e9server plus de rendez-vous \u2014 tout en restant conforme \u00e0 la Loi 25.',
+      secondaryCta: { label: 'Voir comment je r\u00e9pare la fuite #1 \u2192', href: '#book' }
+    },
     howTitle: 'Comment \u00e7a marche',
     howCopy:
       '<strong>Speed\u2011to\u2011Lead travaille discr\u00e8tement en coulisses.</strong> Une demande patient d\u00e9clenche un courriel que notre robot capte instantan\u00e9ment. <strong>En quelques secondes, une r\u00e9ponse bilingue est envoy\u00e9e avec une invitation chaleureuse \u00e0 r\u00e9server ou \u00e0 appeler.</strong> Votre \u00e9quipe re\u00e7oit le transcript et peut intervenir au besoin. Le syst\u00e8me garde les \u00e9changes organis\u00e9s, conformes et toujours align\u00e9s \u00e0 votre marque. Aucun nouveau logiciel \u00e0 ma\u00eetriser et aucune application \u00e0 installer pour les patients.',
@@ -106,11 +132,35 @@ const content = {
     whyTitle: 'The cost of missed inquiries',
     whyCopy:
       '<strong>Every missed inquiry is lost revenue.</strong> Patients compare multiple clinics and the first clear reply usually wins. Slow follow‑up means empty chairs tomorrow and stressed staff. A French‑first reply within minutes captures intent while it’s high, sets expectations for next steps, and nudges patients to book — even after hours.',
-    pain: [
-      { pain: 'Empty chairs', outcome: 'More filled slots' },
-      { pain: 'Slow follow-up', outcome: 'Instant replies, even after hours' },
-      { pain: 'Compliance stress', outcome: 'French-first, trackable, compliant' }
-    ],
+    painSection: {
+      heading:
+        '<span style="color:#FFFFFF;">Where Qu\u00e9bec SMBs lose hours</span> <span style="color:#13A89E;">(and real margin)</span> <span style="color:#FFFFFF;">every week</span>',
+      subheading: 'Four leaks to fix first \u2014 #1 is slow follow-ups.',
+      cards: [
+        {
+          title: 'Slow follow-ups',
+          line: 'After 5 minutes, they move on.',
+          cta: 'Get under 5 min \u2192'
+        },
+        {
+          title: 'Manual admin',
+          line: 'Quotes, invoices, reminders… hours lost, errors made.',
+          cta: 'Automate it \u2192'
+        },
+        {
+          title: 'Last-minute compliance (Law 25)',
+          line: 'Consent & logs under pressure = risk.',
+          cta: 'Get compliant \u2192'
+        },
+        {
+          title: 'Disconnected tools',
+          line: 'Site, phone, CRM… not talking = invisible losses.',
+          cta: 'Connect it all \u2192'
+        }
+      ],
+      proof: 'Simple goal: reply in < 5 minutes, book more meetings \u2014 and stay Law 25 compliant.',
+      secondaryCta: { label: 'See how I fix leak #1 \u2192', href: '#book' }
+    },
     howTitle: 'How it works',
     howCopy:
       '<strong>Speed-to-Lead works quietly behind the scenes.</strong> A patient inquiry triggers an email that our bot sees instantly. <strong>Within seconds a bilingual reply is sent with a friendly prompt to book or call.</strong> Your team receives the transcript and can jump in whenever needed. The system keeps conversations organized, compliant, and always on-brand. No new software to learn and no apps for patients to install.',
@@ -207,11 +257,11 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
   const bulletIcons = [Clock, Languages, Mail];
   const howIcons = [Mail, Zap, CalendarCheck];
   const statIcons = [CheckCircle, Clock, Star];
-  const painIcons = [CalendarX, Clock, Shield];
+  const painIcons = [Clock, ClipboardList, Shield, Link];
 
   return (
     <div className="font-sans">
-      <Header langToggle={{ fr: frHref, en: enHref }} ctaHref="#demo" ctaLabel={t.navDemo} />
+      <Header langToggle={{ fr: frHref, en: enHref }} ctaHref="#book" ctaLabel={t.navDemo} />
 
       <main>
         <section
@@ -229,7 +279,7 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
             <div>
               <h1 className="text-4xl font-bold mb-4">{t.hero.headline}</h1>
               <p className="mb-6 max-w-md">{t.hero.sub}</p>
-              <a href="#demo" data-action="demo" className="btn-primary text-lg px-8 py-4">
+              <a href="#book" data-action="demo" className="btn-primary text-lg px-8 py-4">
                 {t.hero.cta}
               </a>
               <ul className="mt-6 space-y-2">
@@ -270,23 +320,50 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
 
         <PartnerBar />
 
-        <section className="py-16 bg-white">
-          <div className="max-w-6xl mx-auto px-6">
-            <h2 className="text-3xl font-bold mb-6">{t.whyTitle}</h2>
-            <p className="mb-10 text-gray-700" dangerouslySetInnerHTML={{ __html: t.whyCopy }} />
-            <div className="grid md:grid-cols-3 gap-6">
-              {t.pain.map((item, i) => {
+        <section className="py-16 bg-[#121c2d]">
+          <div className="max-w-6xl mx-auto px-6 text-center">
+            <h2
+              className="text-3xl md:text-4xl font-bold leading-snug mb-4"
+              dangerouslySetInnerHTML={{ __html: t.painSection.heading }}
+            />
+            <p
+              className="mx-auto max-w-2xl text-sm md:text-base font-medium mb-10"
+              style={{ color: 'rgba(232, 240, 242, 0.8)' }}
+            >
+              {t.painSection.subheading}
+            </p>
+            <div className="grid gap-4 md:grid-cols-2 text-left">
+              {t.painSection.cards.map((item, i) => {
                 const Icon = painIcons[i];
                 return (
-                  <div key={i} className="card-light p-6 flex items-start space-x-3">
-                    <Icon className="w-6 h-6 text-[#2280FF] flex-shrink-0" />
-                    <p>
-                      {item.pain} → <strong>{item.outcome}</strong>
-                    </p>
+                  <div
+                    key={item.title}
+                    className="group bg-white/5 border border-white/10 rounded-2xl p-5 flex items-start gap-4"
+                  >
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#13A89E]/10 text-[#13A89E]">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </div>
+                    <div className="flex-1 space-y-1">
+                      <h3 className="text-white text-lg font-semibold leading-tight">{item.title}</h3>
+                      <p className="text-sm text-white/80 leading-snug">{item.line}</p>
+                      <a
+                        href={t.painSection.secondaryCta.href}
+                        className="inline-flex items-center text-[#13A89E] text-xs font-semibold tracking-wide hover:underline"
+                      >
+                        {item.cta}
+                      </a>
+                    </div>
                   </div>
                 );
               })}
             </div>
+            <p className="mt-10 text-sm md:text-base text-white/80">{t.painSection.proof}</p>
+            <a
+              href={t.painSection.secondaryCta.href}
+              className="mt-4 inline-block text-[#13A89E] text-sm font-semibold hover:underline"
+            >
+              {t.painSection.secondaryCta.label}
+            </a>
           </div>
         </section>
 
@@ -388,7 +465,7 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
                 >
                   {t.founders.primary}
                 </a>
-                <a href="#demo" data-action="demo" className="btn-outline">
+                <a href="#book" data-action="demo" className="btn-outline">
                   {t.founders.secondary}
                 </a>
               </div>
@@ -398,12 +475,12 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
 
         <LandingFAQ title="FAQ" intro={t.faqIntro} items={t.faq} />
 
-        <section id="demo" className="bg-[#121c2d] text-white py-20 text-center">
+        <section id="book" className="bg-[#121c2d] text-white py-20 text-center">
           <div className="max-w-6xl mx-auto px-6">
             <h2 className="text-3xl font-bold mb-4">{t.final.title}</h2>
             <p className="mb-8" dangerouslySetInnerHTML={{ __html: t.final.copy }} />
             <div className="flex justify-center space-x-4 mb-8">
-              <a href="#demo" data-action="demo" className="btn-primary">
+              <a href="#book" data-action="demo" className="btn-primary">
                 {t.final.primary}
               </a>
               <a
@@ -467,7 +544,7 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
       </main>
 
       <a
-        href="#demo"
+        href="#book"
         data-action="demo"
         className="fixed bottom-4 right-4 z-50 btn-primary md:hidden"
       >
