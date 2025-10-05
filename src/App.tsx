@@ -4,7 +4,6 @@ import {
   MessageSquare,
   CheckCircle,
   ShieldCheck,
-  Send,
   LayoutDashboard,
   CalendarCheck,
   Video,
@@ -15,20 +14,13 @@ import {
   CalendarClock,
   ShieldAlert,
   Link2,
-  Shield
+  Shield,
+  FlaskConical
 } from 'lucide-react';
 import { Header, Footer } from './components/Layout';
 import PartnerBar from './components/PartnerBar';
 import FinalCTA from './components/FinalCTA';
 import MiniAuditCTA from './components/MiniAuditCTA';
-
-const WHAT_I_BUILD_STATUS = {
-  running: { accent: '#16a34a' },
-  indev: { accent: '#f59e0b' },
-  prototype: { accent: '#64748b' }
-} as const;
-
-type WhatIBuildStatus = keyof typeof WHAT_I_BUILD_STATUS;
 
 // Hero Component
 const Hero = () => {
@@ -167,8 +159,8 @@ const ProblemSection = () => {
   );
 };
 
-// What I Build Component
-const WhatIBuild = () => {
+// Proof Lab Component
+const ProofLab = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const { t } = useLanguage();
@@ -183,79 +175,102 @@ const WhatIBuild = () => {
       { threshold: 0.3 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const current = sectionRef.current;
+    if (current) {
+      observer.observe(current);
     }
 
     return () => observer.disconnect();
   }, []);
 
-  const cards = t.whatIBuild.cards.map((card, index) => ({
-    ...card,
-    icon: [Send, ShieldCheck, LayoutDashboard, CalendarCheck, Video, Headset][index]
-  }));
+  const placeholderIcons = [FlaskConical, ShieldCheck, LayoutDashboard, CalendarCheck, Video, Headset];
+  const formatHighlight = (value: string) =>
+    value.replace(/<highlight>(.*?)<\/highlight>/g, '<span class="text-[#139E9C] font-semibold">$1</span>');
 
-  const headingHtml = t.whatIBuild.heading.replace(
-    /<accent>(.*?)<\/accent>/g,
-    '<span class="text-teal-600">$1</span>'
-  );
+  const headingHtml = formatHighlight(t.proofLab.title);
+  const cards = t.proofLab.cards.map((card, index) => ({
+    ...card,
+    icon: placeholderIcons[index] ?? FlaskConical
+  }));
 
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden py-20 lg:py-28"
-      style={{
-        background:
-          'radial-gradient(800px 300px at 50% 0%, rgba(19,158,156,0.08), transparent 60%), linear-gradient(to bottom, #F9FBFC, #FFFFFF)'
-      }}
+      id="proof-lab"
+      className="relative overflow-hidden bg-section-gradient-bottom py-24 lg:py-32"
     >
-      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
+      <div className="pointer-events-none absolute inset-0 opacity-60">
+        <div className="absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_0%,rgba(34,128,255,0.12),transparent_65%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(80%_70%_at_20%_100%,rgba(19,158,156,0.12),transparent_70%)]" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8">
         <div
-          className={`flex flex-col gap-8 text-center transition-all duration-1000 ${
+          className={`mx-auto max-w-3xl text-center transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
           <h2
-            className="text-3xl font-semibold text-slate-900 md:text-4xl"
+            className="text-balance text-3xl font-semibold text-[#121C2D] md:text-4xl"
             dangerouslySetInnerHTML={{ __html: headingHtml }}
           />
+          <p className="mt-4 text-base leading-relaxed text-slate-600 md:text-lg">{t.proofLab.subtitle}</p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div
+          className={`mt-14 grid grid-cols-1 gap-6 transition-all duration-1000 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 lg:gap-10 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           {cards.map((card, index) => {
-            const statusKey = card.status as WhatIBuildStatus;
-            const accentColor = WHAT_I_BUILD_STATUS[statusKey].accent;
-            const accentStyle = { '--accent': accentColor } as React.CSSProperties;
-            const badgeStyle = { '--dot': accentColor } as React.CSSProperties;
+            const CardIcon = card.icon;
+            const hasImage = card.image && typeof card.image === 'object' && 'src' in card.image;
+            const backgroundTone = index % 2 === 0 ? 'bg-white' : 'bg-[#F8FBFB]';
 
             return (
-              <div
+              <article
                 key={card.title}
-                className={`group relative flex h-full flex-col rounded-2xl border border-slate-200/80 bg-white p-6 shadow-[0_4px_14px_rgba(2,6,23,0.06)] transition-all duration-200 before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:rounded-t-2xl before:bg-[var(--accent)] before:content-[''] ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                } hover:-translate-y-1 hover:shadow-[0_10px_28px_rgba(2,6,23,0.12)] hover:ring-1 hover:ring-teal-300/40`}
-                style={{
-                  ...accentStyle,
-                  transitionDelay: isVisible ? '0ms' : `${index * 160}ms`
-                }}
+                className={`group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-white/60 shadow-[0_18px_45px_rgba(18,28,45,0.08)] transition-all duration-500 ease-out ${
+                  backgroundTone
+                } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} hover:-translate-y-[2px] hover:opacity-95 hover:shadow-[0_24px_60px_rgba(18,28,45,0.18)]`}
+                style={{ transitionDelay: isVisible ? `${index * 120}ms` : '0ms' }}
               >
-                <div className="icon grid h-10 w-10 place-items-center rounded-xl bg-teal-50 text-teal-700 transition-colors duration-200 group-hover:bg-teal-100 group-hover:text-teal-800">
-                  <card.icon className="h-6 w-6 transition-transform duration-200 group-hover:-translate-y-0.5" />
+                <div className="relative aspect-[16/9] w-full overflow-hidden">
+                  {hasImage && card.image ? (
+                    <img
+                      src={card.image.src}
+                      alt={card.image.alt}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#139E9C] via-[#0F6C8C] to-[#121C2D] transition-all duration-500 group-hover:brightness-110">
+                      <CardIcon className="h-10 w-10 text-white/85" />
+                    </div>
+                  )}
                 </div>
 
-                <div className="mt-4 space-y-3">
-                  <span
-                    className="inline-flex items-center gap-2 rounded-full bg-slate-50 px-2.5 py-1 text-xs font-medium tracking-wide text-slate-700"
-                    style={badgeStyle}
-                  >
-                    <span className="h-1.5 w-1.5 rounded-full" style={{ background: 'var(--dot)' }} />
-                    {t.whatIBuild.badges[statusKey]}
-                  </span>
-                  <h3 className="text-lg font-semibold text-slate-900 md:text-xl">{card.title}</h3>
-                  <p className="text-[17px] font-medium leading-7 text-slate-700">{card.tagline}</p>
-                  <p className="text-[17px] leading-7 text-slate-600 line-clamp-3">{card.description}</p>
+                <div className="flex flex-1 flex-col gap-4 px-6 pb-7 pt-6 md:px-7 md:pt-7">
+                  <h3 className="text-[19px] font-semibold text-[#121C2D]">{card.title}</h3>
+                  <p
+                    className="text-[15px] leading-6 text-slate-700"
+                    dangerouslySetInnerHTML={{ __html: formatHighlight(card.desc) }}
+                  />
+                  <p className="text-[13px] font-medium text-slate-500">{card.status}</p>
+
+                  {card.badges?.length ? (
+                    <div className="mt-auto flex flex-wrap gap-2 pt-2">
+                      {card.badges.map((badge: string) => (
+                        <span
+                          key={badge}
+                          className="inline-flex items-center rounded-full border border-[#139E9C]/20 bg-white/80 px-3 py-1 text-[12px] font-semibold uppercase tracking-wide text-[#139E9C]"
+                        >
+                          {badge}
+                        </span>
+                      ))}
+                    </div>
+                  ) : null}
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>
@@ -542,7 +557,7 @@ function App() {
         <Hero />
         <PartnerBar />
         <ProblemSection />
-        <WhatIBuild />
+        <ProofLab />
         <MiniAuditCTA />
         <OfferCards />
       <ROIMath />
