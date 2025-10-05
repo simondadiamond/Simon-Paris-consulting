@@ -105,6 +105,12 @@ const fr: TranslationKeys = {
         tagline: 'Centralise vos contacts, projets et communications.',
         description: 'Tableau Airtable utilisé pour gérer les opérations quotidiennes.',
         status: 'running'
+      },
+      {
+        title: 'Flux de capture et de planification',
+        tagline: 'Dirige automatiquement formulaires et réservations.',
+        description: 'Tally → n8n → Airtable → Cal.com — chaque piste suivie instantanément.',
+        status: 'running'
       }
     ]
   },

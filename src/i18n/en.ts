@@ -104,6 +104,12 @@ export const en = {
         tagline: 'Centralizes contacts, projects, and communication.',
         description: 'Airtable-powered hub used to run daily operations.',
         status: 'running'
+      },
+      {
+        title: 'Lead Capture & Scheduling Flow',
+        tagline: 'Routes form submissions and bookings automatically.',
+        description: 'Tally → n8n → Airtable → Cal.com — every lead tracked instantly.',
+        status: 'running'
       }
     ]
   },
