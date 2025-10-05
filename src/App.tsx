@@ -53,12 +53,15 @@ const Hero = () => {
 
       <div className="relative z-10 mx-auto w-full max-w-[60rem] px-4 py-24 text-center sm:px-6 lg:px-8 lg:py-32">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-8 sm:gap-10">
-          <h1 className="text-balance text-[clamp(2rem,6vw,3.75rem)] font-semibold leading-[1.08] tracking-tight sm:leading-[1.12]">
+          <h1 className="text-balance text-[clamp(2rem,6vw,3.75rem)] font-semibold leading-[1.08] tracking-tight sm:leading-[1.12] text-white">
             {titleSegments.map((segment, index) => {
               const isHighlight = hero.highlight && segment.toLowerCase() === hero.highlight.toLowerCase();
               const text = `${segment}.`;
               return (
-                <span key={`${segment}-${index}`} className={`block ${isHighlight ? 'text-[#139E9C]' : ''}`}>
+                <span
+                  key={`${segment}-${index}`}
+                  className={`block ${isHighlight ? 'text-[#13A89E]' : 'text-white'}`}
+                >
                   {text}
                 </span>
               );
@@ -70,9 +73,12 @@ const Hero = () => {
           </p>
 
           <div className="mt-2 flex flex-col items-center gap-3">
-            <a href={hero.cta.href} className="btn-primary w-full max-w-xs sm:max-w-none sm:w-auto">
+            <a href={hero.cta.href} className="btn-primary hero-cta w-full max-w-xs sm:max-w-none sm:w-auto">
               {hero.cta.label}
             </a>
+            {hero.cta.subtext && (
+              <p className="text-sm font-medium text-white/60">{hero.cta.subtext}</p>
+            )}
             <a
               href={hero.secondaryCta.href}
               className="text-sm font-medium text-white/70 transition hover:text-white"

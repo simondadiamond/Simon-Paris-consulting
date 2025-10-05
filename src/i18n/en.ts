@@ -8,12 +8,13 @@ export const en = {
     cta: 'Diagnostic Éclair'
   },
   hero: {
-    title: 'Win more clients by replying in under 5 minutes.',
-    highlight: 'Win more clients by replying in under 5 minutes',
+    title: 'Reply faster. Win more clients.',
+    highlight: 'Win more clients',
     subtitle:
-      'For Québec clinics, trades & professional services: AI-powered, bilingual automations that catch every new inquiry before competitors — fully Law 25 compliant.',
+      'For Québec clinics, trades & professional services: AI-powered bilingual automations that reply to every new inquiry in under 5 minutes — fully Law 25 compliant.',
     cta: {
-      label: 'Book Your Free 20-min Diagnostic',
+      label: 'Book My Free Audit',
+      subtext: '20-minute Diagnostic',
       href: 'https://cal.com/simonparis/mini-audit'
     },
     secondaryCta: {

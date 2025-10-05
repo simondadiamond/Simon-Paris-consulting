@@ -9,12 +9,13 @@ const fr: TranslationKeys = {
     cta: 'Diagnostic Éclair'
   },
   hero: {
-    title: 'Plus de clients en répondant en moins de 5 minutes.',
-    highlight: 'Plus de clients en répondant en moins de 5 minutes',
+    title: 'Répondez plus vite. Gagnez plus de clients.',
+    highlight: 'Gagnez plus de clients',
     subtitle:
-      'Pour cliniques, commerces et pros du Québec : automatisations IA bilingues qui captent chaque nouveau contact avant qu’il ne parte ailleurs — tout en respectant la Loi 25.',
+      'Pour cliniques, commerces et pros du Québec : des automatisations IA bilingues qui répondent à chaque nouveau contact en moins de 5 minutes — tout en respectant la Loi 25.',
     cta: {
-      label: 'Réserver mon Diagnostic Éclair gratuit (20 min)',
+      label: 'Réserver mon Diagnostic Éclair',
+      subtext: 'Gratuit – 20 minutes',
       href: 'https://cal.com/simonparis/diagnostic'
     },
     secondaryCta: {
