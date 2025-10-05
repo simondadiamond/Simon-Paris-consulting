@@ -9,12 +9,12 @@ const fr: TranslationKeys = {
     cta: 'Diagnostic Éclair'
   },
   hero: {
-    title: 'Automatisez les tâches lourdes. Protégez vos marges. Restez conforme à la Loi 25.',
-    highlight: 'Protégez vos marges',
+    title: 'Répondez plus vite. Gagnez plus de clients.',
+    highlight: 'Gagnez plus de clients',
     subtitle:
-      'Je conçois et teste des automatisations IA concrètes — puis je partage ce qui fonctionne pour les PME du Québec. De la création de contenu à la conformité, j’aide les équipes à gagner du temps et à rester en avance.',
+      'Pour cliniques, commerces et pros du Québec : des automatisations IA bilingues qui répondent à chaque nouveau contact en moins de 5 minutes — tout en respectant la Loi 25.',
     cta: {
-      label: 'Réserver un Diagnostic Éclair',
+      label: 'Réserver mon Diagnostic Éclair',
       href: 'https://cal.com/simonparis/diagnostic'
     },
     secondaryCta: {
