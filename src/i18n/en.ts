@@ -8,12 +8,12 @@ export const en = {
     cta: 'Diagnostic Éclair'
   },
   hero: {
-    title: 'Automate the busywork. Protect your margins. Stay Law 25 ready.',
-    highlight: 'Protect your margins',
+    title: 'Win more Québec clients with 5-minute follow-ups. Stay Law 25 compliant automatically.',
+    highlight: 'Win more Québec clients with 5-minute follow-ups',
     subtitle:
-      'I design and test real AI automations — then share what works for Québec SMBs. From content to compliance, I help you save hours and stay ahead.',
+      'I help Québec clinics, trades, wellness teams, and professional services reply to new inquiries in under 5 minutes with bilingual automations trusted by local owners. Book your free 20-minute Diagnostic Éclair to uncover your #1 sales/time leak and stay Law 25 compliant.',
     cta: {
-      label: 'Book Free Mini Audit',
+      label: 'Book Your Free 20-min Diagnostic',
       href: 'https://cal.com/simonparis/mini-audit'
     },
     secondaryCta: {
