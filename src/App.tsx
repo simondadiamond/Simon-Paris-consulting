@@ -166,13 +166,30 @@ const ProofLab = () => {
   const { t } = useLanguage();
 
   useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const enableVisibility = () => setIsVisible(true);
+
+    if (window.innerWidth < 768) {
+      enableVisibility();
+      return;
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      enableVisibility();
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
+          enableVisibility();
+          observer.disconnect();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.25, rootMargin: '0px 0px -10% 0px' }
     );
 
     const current = sectionRef.current;
