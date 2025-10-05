@@ -14,7 +14,6 @@ export const en = {
       'For Québec clinics, trades & professional services: AI-powered bilingual automations that reply to every new inquiry in under 5 minutes — fully Law 25 compliant.',
     cta: {
       label: 'Book My Free Audit',
-      subtext: '20-minute Diagnostic',
       href: 'https://cal.com/simonparis/mini-audit'
     },
     secondaryCta: {

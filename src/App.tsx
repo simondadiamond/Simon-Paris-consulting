@@ -76,9 +76,6 @@ const Hero = () => {
             <a href={hero.cta.href} className="btn-primary hero-cta w-full max-w-xs sm:max-w-none sm:w-auto">
               {hero.cta.label}
             </a>
-            {hero.cta.subtext && (
-              <p className="text-sm font-medium text-white/60">{hero.cta.subtext}</p>
-            )}
             <a
               href={hero.secondaryCta.href}
               className="text-sm font-medium text-white/70 transition hover:text-white"
