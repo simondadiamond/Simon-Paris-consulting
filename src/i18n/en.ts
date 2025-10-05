@@ -317,6 +317,9 @@ export const en = {
       locationLabel: 'Based in',
       location: 'Québec, Canada'
     },
+    links: {
+      privacy: 'Privacy Policy'
+    },
     copyright: '© 2024 Simon Paris Consulting'
   }
 };

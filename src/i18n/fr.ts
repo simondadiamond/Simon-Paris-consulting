@@ -318,6 +318,9 @@ const fr: TranslationKeys = {
       locationLabel: 'Basé à',
       location: 'Québec, Canada'
     },
+    links: {
+      privacy: 'Politique de confidentialité'
+    },
     copyright: '© 2024 Simon Paris Consulting'
   }
 };

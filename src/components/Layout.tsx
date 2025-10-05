@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../LanguageProvider';
 import { Menu, X } from 'lucide-react';
 
+const getTargetHref = (
+  targetLang: 'fr' | 'en',
+  langToggle?: { fr: string; en: string }
+) => (targetLang === 'fr' ? langToggle?.fr ?? '/fr' : langToggle?.en ?? '/');
+
 export const Header: React.FC<{
   langToggle?: { fr: string; en: string };
   forceDarkBackground?: boolean;
@@ -23,18 +28,14 @@ export const Header: React.FC<{
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const resolvedTextClass = forceDarkBackground
-    ? 'text-white'
-    : !isScrolled && isPrivacyPage
-    ? 'text-[#121C2D]'
-    : 'text-white';
+  const resolvedTextClass = 'text-white';
   const textClass = resolvedTextClass;
   const LanguageToggle = ({ tone = 'desktop' }: { tone?: 'desktop' | 'mobile' }) => {
-    const goTo = (targetLang: 'fr' | 'en') => {
-      if (lang === targetLang) return;
+    const toggleLanguage = () => {
+      const targetLang = lang === 'fr' ? 'en' : 'fr';
       setLang(targetLang);
       localStorage.setItem('lang', targetLang);
-      const href = targetLang === 'fr' ? langToggle?.fr ?? '/fr' : langToggle?.en ?? '/';
+      const href = getTargetHref(targetLang, langToggle);
       window.location.href = href;
     };
 
@@ -46,46 +47,42 @@ export const Header: React.FC<{
       ? 'text-[#121C2D]'
       : 'text-white';
     const inactiveClass = isMobile
-      ? 'text-white/60 hover:text-white'
+      ? 'text-white/55'
       : isLight
-      ? 'text-[#121C2D]/60 hover:text-[#121C2D]'
-      : 'text-white/60 hover:text-white';
+      ? 'text-[#121C2D]/55'
+      : 'text-white/55';
     const dividerClass = isMobile
-      ? 'text-white/25'
+      ? 'text-white/30'
       : isLight
-      ? 'text-[#121C2D]/30'
-      : 'text-white/30';
+      ? 'text-[#121C2D]/35'
+      : 'text-white/35';
 
     const wrapperClass =
       tone === 'desktop'
-        ? 'flex items-center text-[0.7rem] font-semibold uppercase tracking-[0.35em]'
-        : 'flex items-center text-[0.7rem] font-semibold uppercase tracking-[0.35em]';
+        ? 'flex items-center text-[0.7rem] font-semibold uppercase tracking-[0.25em]'
+        : 'flex items-center text-[0.7rem] font-semibold uppercase tracking-[0.25em]';
+
+    const nextLang = lang === 'fr' ? 'en' : 'fr';
+    const label = nextLang === 'fr' ? 'Switch language to French' : 'Switch language to English';
 
     return (
-      <div className={wrapperClass}>
-        <button
-          type="button"
-          aria-pressed={lang === 'fr'}
-          onClick={() => goTo('fr')}
-          className={`${lang === 'fr' ? activeClass : inactiveClass} transition-colors`}
-        >
-          FR
-        </button>
-        <span className={`mx-2 ${dividerClass}`}>|</span>
-        <button
-          type="button"
-          aria-pressed={lang === 'en'}
-          onClick={() => goTo('en')}
-          className={`${lang === 'en' ? activeClass : inactiveClass} transition-colors`}
-        >
-          EN
-        </button>
-      </div>
+      <button
+        type="button"
+        onClick={toggleLanguage}
+        className={`${wrapperClass} transition-colors hover:opacity-90 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white`}
+        aria-label={label}
+      >
+        <span className={lang === 'fr' ? activeClass : inactiveClass}>FR</span>
+        <span className={`mx-[6px] ${dividerClass}`}>|</span>
+        <span className={lang === 'en' ? activeClass : inactiveClass}>EN</span>
+      </button>
     );
   };
 
   const headerBackgroundClass = forceDarkBackground
     ? 'bg-[#0B1320]/95 backdrop-blur-lg'
+    : isPrivacyPage
+    ? 'bg-[#0B1320]/95 backdrop-blur-lg shadow-sm'
     : isScrolled
     ? 'bg-[#0B1320]/90 backdrop-blur-lg'
     : 'bg-transparent';
@@ -147,14 +144,21 @@ export const Footer: React.FC<{ langToggle?: { fr: string; en: string } }> = ({
   langToggle,
 }) => {
   const { t, lang, setLang } = useLanguage();
+  const resolvedLangToggle = {
+    fr: langToggle?.fr ?? '/fr',
+    en: langToggle?.en ?? '/',
+  };
 
-  const handleFooterLangSwitch = (targetLang: 'fr' | 'en') => {
-    if (!langToggle || lang === targetLang) return;
+  const toggleFooterLanguage = () => {
+    const targetLang = lang === 'fr' ? 'en' : 'fr';
     setLang(targetLang);
     localStorage.setItem('lang', targetLang);
-    const href = targetLang === 'fr' ? langToggle.fr : langToggle.en;
+    const href = getTargetHref(targetLang, resolvedLangToggle);
     window.location.href = href;
   };
+
+  const nextLang = lang === 'fr' ? 'en' : 'fr';
+  const footerLabel = nextLang === 'fr' ? 'Switch language to French' : 'Switch language to English';
 
   return (
     <footer className="border-t border-white/10 bg-[#0B1220] text-white">
@@ -182,31 +186,25 @@ export const Footer: React.FC<{ langToggle?: { fr: string; en: string } }> = ({
               {t.footer.copyright}
             </p>
 
-            {langToggle && (
-              <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.3em] text-white/40">
-                <button
-                  type="button"
-                  onClick={() => handleFooterLangSwitch('fr')}
-                  className={`transition-colors ${
-                    lang === 'fr' ? 'text-white' : 'hover:text-white/70'
-                  }`}
-                  aria-pressed={lang === 'fr'}
-                >
-                  FR
-                </button>
-                <span className="text-white/25">|</span>
-                <button
-                  type="button"
-                  onClick={() => handleFooterLangSwitch('en')}
-                  className={`transition-colors ${
-                    lang === 'en' ? 'text-white' : 'hover:text-white/70'
-                  }`}
-                  aria-pressed={lang === 'en'}
-                >
-                  EN
-                </button>
-              </div>
-            )}
+            <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
+              <a
+                href={lang === 'fr' ? '/fr/politique-confidentialite' : '/privacy'}
+                className="text-[11px] uppercase tracking-[0.3em] text-white/60 transition hover:text-white"
+              >
+                {t.footer.links.privacy}
+              </a>
+
+              <button
+                type="button"
+                onClick={toggleFooterLanguage}
+                className="flex items-center text-[11px] font-semibold uppercase tracking-[0.25em] text-white/55 transition hover:text-white focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                aria-label={footerLabel}
+              >
+                <span className={lang === 'fr' ? 'text-white' : 'text-white/55'}>FR</span>
+                <span className="mx-[6px] text-white/30">|</span>
+                <span className={lang === 'en' ? 'text-white' : 'text-white/55'}>EN</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
