@@ -9,16 +9,16 @@ const fr: TranslationKeys = {
     cta: 'Diagnostic Éclair'
   },
   hero: {
-    title: 'Répondez plus vite. Gagnez plus de clients.',
-    highlight: 'Gagnez plus de clients',
+    headline: 'L’IA pratique pour les PME du Québec.',
+    accent: 'Rapide. Conforme. Rentable.',
     subtitle:
-      'Pour cliniques, commerces et pros du Québec : des automatisations IA bilingues qui répondent à chaque nouveau contact en moins de 5 minutes — tout en respectant la Loi 25.',
+      'Je transforme vos suivis, vos tâches et votre conformité en systèmes IA bilingues\nqui travaillent pendant que vous dormez.',
     cta: {
-      label: 'Réserver mon Diagnostic Éclair',
+      label: 'Diagnostic Éclair Gratuit',
       href: 'https://cal.com/simonparis/diagnostic'
     },
     secondaryCta: {
-      label: 'Pas prêt? Rejoignez l’infolettre →',
+      label: 'Pas prêt ? Rejoignez l’infolettre →',
       href: '/fr/infolettre'
     }
   },

@@ -26,10 +26,7 @@ import MiniAuditCTA from './components/MiniAuditCTA';
 const Hero = () => {
   const { t } = useLanguage();
   const hero = t.hero;
-  const titleSegments = hero.title
-    .split('.')
-    .map(segment => segment.trim())
-    .filter(Boolean);
+  const subtitleLines = hero.subtitle.split('\n');
 
   return (
     <section
@@ -44,33 +41,27 @@ const Hero = () => {
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-[60rem] px-4 py-24 text-center sm:px-6 lg:px-8 lg:py-32">
-        <div className="mx-auto flex max-w-3xl flex-col items-center gap-8 sm:gap-10">
-          <h1 className="text-balance text-[clamp(2rem,6vw,3.75rem)] font-semibold leading-[1.08] tracking-tight sm:leading-[1.12] text-white">
-            {titleSegments.map((segment, index) => {
-              const isHighlight = hero.highlight && segment.toLowerCase() === hero.highlight.toLowerCase();
-              const text = `${segment}.`;
-              return (
-                <span
-                  key={`${segment}-${index}`}
-                  className={`block ${isHighlight ? 'text-[#13A89E]' : 'text-white'}`}
-                >
-                  {text}
-                </span>
-              );
-            })}
+        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+          <h1 className="hero-headline text-balance font-semibold leading-[1.12] tracking-tight text-white">
+            <span className="block">{hero.headline}</span>
+            <span className="hero-accent mt-2 block whitespace-nowrap text-[#13A89E]">{hero.accent}</span>
           </h1>
 
-          <p className="text-balance text-base leading-relaxed text-white/80 sm:text-lg sm:leading-relaxed">
-            {hero.subtitle}
+          <p className="mt-[1em] text-balance text-[clamp(1rem,2.2vw,1.4rem)] leading-[1.5] text-[rgba(255,255,255,0.85)]">
+            {subtitleLines.map((line, index) => (
+              <span key={`hero-sub-${index}`} className="block">
+                {line}
+              </span>
+            ))}
           </p>
 
-          <div className="mt-2 flex flex-col items-center gap-3">
+          <div className="mt-[1.5em] flex w-full max-w-xs flex-col items-center gap-3 sm:max-w-sm">
             <a href={hero.cta.href} className="btn-primary hero-cta w-full max-w-xs sm:max-w-none sm:w-auto">
               {hero.cta.label}
             </a>
             <a
               href={hero.secondaryCta.href}
-              className="text-sm font-medium text-white/70 transition hover:text-white"
+              className="text-[0.9em] font-medium text-white/70 transition hover:text-white"
             >
               {hero.secondaryCta.label}
             </a>

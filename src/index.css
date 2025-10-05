@@ -198,6 +198,38 @@ h1, h2, h3, h4, h5, h6 {
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-position 0.4s ease;
 }
 
+.hero-headline {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+}
+
+.hero-accent {
+  font-size: clamp(2rem, 4.2vw, 3rem);
+}
+
+@media (max-width: 540px) {
+  .hero-headline {
+    font-size: clamp(1.9rem, 6.5vw, 2.2rem);
+  }
+
+  .hero-accent {
+    font-size: clamp(1.5rem, 5.8vw, 2rem);
+    letter-spacing: -0.02em;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-headline {
+    font-size: clamp(1.7rem, 7vw, 2rem);
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-accent {
+    font-size: clamp(1.2rem, 6.2vw, 1.65rem);
+    letter-spacing: -0.025em;
+  }
+}
+
 .btn-primary--audit:hover {
   background-position: 100% 50%;
   box-shadow: 0 4px 18px rgba(19, 158, 156, 0.5), 0 0 22px rgba(19, 158, 156, 0.55);
@@ -235,8 +267,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Premium Buttons */
 .btn-primary {
   @apply inline-flex items-center justify-center rounded-xl px-8 py-4 text-lg font-semibold text-white transition-all;
-  background-color: #139e9c;
-  box-shadow: 0 8px 20px rgba(19, 158, 156, 0.35);
+  background-color: #13A89E;
+  box-shadow: 0 8px 22px rgba(19, 168, 158, 0.32);
   border: none;
   cursor: pointer;
 }
@@ -252,8 +284,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary:hover {
-  background-color: #11a8a4;
-  box-shadow: 0 10px 30px rgba(19, 158, 156, 0.55);
+  background-color: #18B6B5;
+  box-shadow: 0 0 18px rgba(24, 182, 181, 0.45), 0 12px 30px rgba(19, 168, 158, 0.4);
 }
 
 .btn-primary:focus-visible {
