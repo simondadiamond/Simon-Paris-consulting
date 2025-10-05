@@ -34,6 +34,26 @@ function reloadScript(src: string, attrs: Record<string, string> = {}) {
   return s;
 }
 
+type BrevoTranslation = {
+  common: {
+    selectedList: string;
+    selectedLists: string;
+    selectedOption: string;
+    selectedOptions: string;
+  };
+};
+
+type BrevoWindow = Window & {
+  REQUIRED_CODE_ERROR_MESSAGE?: string;
+  LOCALE?: "fr" | "en";
+  EMAIL_INVALID_MESSAGE?: string;
+  SMS_INVALID_MESSAGE?: string;
+  REQUIRED_ERROR_MESSAGE?: string;
+  GENERIC_INVALID_MESSAGE?: string;
+  translation?: BrevoTranslation;
+  AUTOHIDE?: boolean;
+};
+
 // --- Brevo Configuration Data ---
 
 const FORM_ACTION_URLS = {
@@ -200,27 +220,31 @@ const SignupForm: React.FC = () => {
     // 3) Set Brevo globals
     
     // --- EDITED: Dynamic Validation Messages based on language ---
-    const requiredErrorMsg = lang === 'en' 
-      ? "This field cannot be left blank. " 
-      : "Ce champ ne peut pas être laissé vide. ";
-      
-    const emailInvalidMsg = lang === 'en' 
-      ? "Invalid email address. Please check the format (ex. name@business.com)." 
-      : "Adresse courriel invalide. Veuillez vérifier le format (ex. nom@entreprise.com ).";
+    const requiredErrorMsg =
+      lang === "en"
+        ? "This field cannot be left blank."
+        : "Ce champ ne peut pas être laissé vide.";
 
-    (window as any).REQUIRED_CODE_ERROR_MESSAGE = lang === 'en' 
-      ? 'Please choose a country code' 
-      : 'Veuillez choisir un indicatif de pays';
-      
-    (window as any).LOCALE = lang; // DYNAMICALLY SETS LOCALE
-    
-    (window as any).EMAIL_INVALID_MESSAGE = emailInvalidMsg;
-    (window as any).SMS_INVALID_MESSAGE = emailInvalidMsg;
-    (window as any).REQUIRED_ERROR_MESSAGE = requiredErrorMsg;
-    (window as any).GENERIC_INVALID_MESSAGE = emailInvalidMsg;
+    const emailInvalidMsg =
+      lang === "en"
+        ? "Invalid email address. Please check the format (ex. name@business.com)."
+        : "Adresse courriel invalide. Veuillez vérifier le format (ex. nom@entreprise.com).";
 
+    const brevoWindow = window as BrevoWindow;
 
-    (window as any).translation = {
+    brevoWindow.REQUIRED_CODE_ERROR_MESSAGE =
+      lang === "en"
+        ? "Please choose a country code"
+        : "Veuillez choisir un indicatif de pays";
+
+    brevoWindow.LOCALE = lang; // DYNAMICALLY SETS LOCALE
+
+    brevoWindow.EMAIL_INVALID_MESSAGE = emailInvalidMsg;
+    brevoWindow.SMS_INVALID_MESSAGE = emailInvalidMsg;
+    brevoWindow.REQUIRED_ERROR_MESSAGE = requiredErrorMsg;
+    brevoWindow.GENERIC_INVALID_MESSAGE = emailInvalidMsg;
+
+    brevoWindow.translation = {
       common: {
         selectedList: "{quantity} list selected",
         selectedLists: "{quantity} lists selected",
@@ -228,7 +252,7 @@ const SignupForm: React.FC = () => {
         selectedOptions: "{quantity} selected",
       },
     };
-    (window as any).AUTOHIDE = Boolean(0);
+    brevoWindow.AUTOHIDE = Boolean(0);
 
     // 4) Ensure reCAPTCHA is present
     if (!document.querySelector(`script[src^="https://www.google.com/recaptcha/api.js"]`)) {

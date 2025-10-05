@@ -144,9 +144,17 @@ export const Header: React.FC<{
 };
 
 export const Footer: React.FC<{ langToggle?: { fr: string; en: string } }> = ({
-  langToggle: _langToggle
+  langToggle,
 }) => {
-  const { t } = useLanguage();
+  const { t, lang, setLang } = useLanguage();
+
+  const handleFooterLangSwitch = (targetLang: 'fr' | 'en') => {
+    if (!langToggle || lang === targetLang) return;
+    setLang(targetLang);
+    localStorage.setItem('lang', targetLang);
+    const href = targetLang === 'fr' ? langToggle.fr : langToggle.en;
+    window.location.href = href;
+  };
 
   return (
     <footer className="border-t border-white/10 bg-[#0B1220] text-white">
@@ -169,9 +177,37 @@ export const Footer: React.FC<{ langToggle?: { fr: string; en: string } }> = ({
         </div>
 
         <div className="mt-6 border-t border-white/10 pt-4">
-          <p className="text-center text-[11px] text-white/45 md:text-left">
-            {t.footer.copyright}
-          </p>
+          <div className="flex flex-col items-center gap-4 text-center md:flex-row md:items-center md:justify-between md:text-left">
+            <p className="text-[11px] text-white/45 md:text-left">
+              {t.footer.copyright}
+            </p>
+
+            {langToggle && (
+              <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.3em] text-white/40">
+                <button
+                  type="button"
+                  onClick={() => handleFooterLangSwitch('fr')}
+                  className={`transition-colors ${
+                    lang === 'fr' ? 'text-white' : 'hover:text-white/70'
+                  }`}
+                  aria-pressed={lang === 'fr'}
+                >
+                  FR
+                </button>
+                <span className="text-white/25">|</span>
+                <button
+                  type="button"
+                  onClick={() => handleFooterLangSwitch('en')}
+                  className={`transition-colors ${
+                    lang === 'en' ? 'text-white' : 'hover:text-white/70'
+                  }`}
+                  aria-pressed={lang === 'en'}
+                >
+                  EN
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </footer>
