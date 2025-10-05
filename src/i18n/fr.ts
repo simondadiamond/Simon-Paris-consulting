@@ -9,16 +9,20 @@ const fr: TranslationKeys = {
     cta: 'Diagnostic Éclair'
   },
   hero: {
-    title: 'Répondez plus vite. Gagnez plus de clients.',
-    highlight: 'Gagnez plus de clients',
+    title: 'L’IA pratique pour les PME du Québec. Rapide. Conforme. Rentable.',
+    highlight: 'Rapide. Conforme. Rentable.',
+    headline: {
+      line1: 'L’IA pratique pour les PME du Québec.',
+      highlight: 'Rapide. Conforme. Rentable.'
+    },
     subtitle:
-      'Pour cliniques, commerces et pros du Québec : des automatisations IA bilingues qui répondent à chaque nouveau contact en moins de 5 minutes — tout en respectant la Loi 25.',
+      'Je transforme vos suivis, vos tâches et votre conformité en systèmes IA bilingues\nqui travaillent pendant que vous dormez.',
     cta: {
-      label: 'Réserver mon Diagnostic Éclair',
-      href: 'https://cal.com/simonparis/diagnostic'
+      label: 'Diagnostic Éclair Gratuit',
+      href: '#book'
     },
     secondaryCta: {
-      label: 'Pas prêt? Rejoignez l’infolettre →',
+      label: 'Pas prêt ? Rejoignez l’infolettre →',
       href: '/fr/infolettre'
     }
   },
@@ -55,7 +59,8 @@ const fr: TranslationKeys = {
         'L’automatisation rapide à implanter dans vos outils actuels.',
         'Les risques de conformité à corriger avant les amendes de la Loi 25.'
       ],
-      timeline: 'Installation typique : 5 à 10 jours ouvrables.'
+      timeline: 'Installation typique : 5 à 10 jours ouvrables.',
+      href: 'https://cal.com/simonparis/diagnostic'
     }
   },
   problems: {
