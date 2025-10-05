@@ -8,13 +8,17 @@ export const en = {
     cta: 'Diagnostic Éclair'
   },
   hero: {
-    title: 'Reply faster. Win more clients.',
-    highlight: 'Win more clients',
+    title: 'Practical AI for Québec SMBs. Fast. Compliant. Profitable.',
+    highlight: 'Fast. Compliant. Profitable.',
+    headline: {
+      line1: 'Practical AI for Québec SMBs.',
+      highlight: 'Fast. Compliant. Profitable.'
+    },
     subtitle:
-      'For Québec clinics, trades & professional services: AI-powered bilingual automations that reply to every new inquiry in under 5 minutes — fully Law 25 compliant.',
+      'I turn your follow-ups, admin tasks and compliance into bilingual AI systems\nthat work while you sleep.',
     cta: {
-      label: 'Book My Free Audit',
-      href: 'https://cal.com/simonparis/mini-audit'
+      label: 'Free Mini Audit',
+      href: '#book'
     },
     secondaryCta: {
       label: 'Not ready yet? Join the newsletter →',
@@ -54,7 +58,8 @@ export const en = {
         'A quick-win automation that fits your current tools.',
         'Any compliance risks to fix before Law 25 fines.'
       ],
-      timeline: 'Typical setup: 5 – 10 business days.'
+      timeline: 'Typical setup: 5 – 10 business days.',
+      href: 'https://cal.com/simonparis/mini-audit'
     }
   },
   problems: {
