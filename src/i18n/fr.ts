@@ -80,49 +80,51 @@ const fr: TranslationKeys = {
     ],
     note: 'Tout cela se règle avec des <span class="font-semibold">automatisations bilingues</span> pensées pour votre équipe.'
   },
-  whatIBuild: {
-    heading: 'Des outils réels, <accent>conçus au Québec.</accent>',
-    badges: {
-      running: 'En production',
-      indev: 'En développement',
-      prototype: 'Prototype'
-    },
+  proofLab: {
+    title: 'Des outils réels, <highlight>conçus au Québec.</highlight>',
+    subtitle: 'Chaque flux est né d’une expérimentation interne — peaufiné et prêt pour les PME québécoises.',
     cards: [
       {
-        title: 'Moteur d’infolettres IA',
-        tagline: 'Automatise la création et l’envoi d’infolettres bilingues.',
-        description: 'Construit avec n8n + Brevo pour publier chaque semaine sans effort.',
-        status: 'running'
+        title: 'Moteur d’infolettre IA',
+        desc: 'Automatise la <highlight>création et l’envoi bilingues</highlight> des infolettres.',
+        status: 'Conçu au Québec — fait gagner des heures chaque semaine.',
+        badges: ['🧠 IA intégrée', '💬 Bilingue'],
+        image: null as { src: string; alt: string } | null
       },
       {
-        title: 'Journal de conformité (Loi 25)',
-        tagline: 'Enregistre et horodate chaque consentement automatiquement.',
-        description: 'Bilingue, prêt pour l’audit et adapté aux PME du Québec.',
-        status: 'running'
+        title: 'Suivi de conformité (Loi 25)',
+        desc: 'Consigne automatiquement <highlight>chaque consentement</highlight>.',
+        status: 'Bilingue et prêt pour les PME québécoises.',
+        badges: ['🔒 Prêt pour la Loi 25', '⚙️ Automatisé'],
+        image: null as { src: string; alt: string } | null
       },
       {
-        title: 'Centre de contrôle CRM',
-        tagline: 'Centralise vos contacts, projets et communications.',
-        description: 'Tableau Airtable utilisé pour gérer les opérations quotidiennes.',
-        status: 'running'
+        title: 'Centre de commande CRM',
+        desc: 'Centralise contacts, projets et <highlight>communications quotidiennes</highlight>.',
+        status: 'Maintient votre équipe alignée sans ajouter d’outils.',
+        badges: ['⚙️ Automatisé', '💬 Bilingue'],
+        image: null as { src: string; alt: string } | null
       },
       {
         title: 'Flux de capture et de planification',
-        tagline: 'Dirige automatiquement formulaires et réservations.',
-        description: 'Tally → n8n → Airtable → Cal.com — chaque piste suivie instantanément.',
-        status: 'running'
+        desc: 'Achemine formulaires et rendez-vous <highlight>automatiquement</highlight>.',
+        status: 'Ne perdez plus aucun lead.',
+        badges: ['⚙️ Automatisé', '🔒 Prêt pour la Loi 25'],
+        image: null as { src: string; alt: string } | null
       },
       {
-        title: 'Générateur de vidéos IA (avatars)',
-        tagline: 'Crée des vidéos bilingues pour renforcer la présence des PME.',
-        description: 'Propulsé par Heygen et des scripts IA personnalisés pour du contenu localisé.',
-        status: 'indev'
+        title: 'Moteur vidéo IA',
+        desc: 'Crée des vidéos bilingues propulsées par <highlight>Heygen + scripts IA</highlight>.',
+        status: 'Propulsé par Heygen + scripts IA.',
+        badges: ['🧠 IA intégrée', '💬 Bilingue'],
+        image: null as { src: string; alt: string } | null
       },
       {
-        title: 'Réceptionniste IA (prototype)',
-        tagline: 'Assistant bilingue 24/7 pour cliniques et petites entreprises.',
-        description: 'Planifie des rendez-vous, répond aux questions et assure la conformité.',
-        status: 'prototype'
+        title: 'Réceptionniste IA (Prototype)',
+        desc: 'Assistant 24/7 qui <highlight>prend des rendez-vous</highlight> et gère les consentements.',
+        status: 'Idéal pour les cliniques et entreprises de services.',
+        badges: ['🧠 IA intégrée', '🔒 Prêt pour la Loi 25'],
+        image: null as { src: string; alt: string } | null
       }
     ]
   },
