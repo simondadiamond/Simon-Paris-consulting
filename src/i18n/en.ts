@@ -79,49 +79,51 @@ export const en = {
     ],
     note: 'All of this is fixable with simple <span class="font-semibold">bilingual automations</span> built for your team.'
   },
-  whatIBuild: {
-    heading: 'Real tools, <accent>built in Québec.</accent>',
-    badges: {
-      running: 'Running',
-      indev: 'In development',
-      prototype: 'Prototype'
-    },
+  proofLab: {
+    title: 'Real tools, <highlight>built in Québec.</highlight>',
+    subtitle: 'Every workflow here started as an internal experiment — refined and ready for real SMBs.',
     cards: [
       {
         title: 'AI Newsletter Engine',
-        tagline: 'Automates bilingual newsletter creation and delivery.',
-        description: 'Built with n8n + Brevo to publish weekly updates without manual work.',
-        status: 'running'
+        desc: 'Automates <highlight>bilingual newsletter creation</highlight> and delivery.',
+        status: 'Built in Québec — saves hours each week.',
+        badges: ['🧠 AI-powered', '💬 Bilingual'],
+        image: null as { src: string; alt: string } | null
       },
       {
         title: 'Compliance Tracker (Law 25)',
-        tagline: 'Logs every consent and timestamp automatically.',
-        description: 'Bilingual, audit-ready, and built for Québec SMBs.',
-        status: 'running'
+        desc: 'Logs every consent automatically with <highlight>audit-ready proof</highlight>.',
+        status: 'Bilingual & audit-ready for Québec SMBs.',
+        badges: ['🔒 Law 25 Ready', '⚙️ Automated'],
+        image: null as { src: string; alt: string } | null
       },
       {
         title: 'CRM Command Center',
-        tagline: 'Centralizes contacts, projects, and communication.',
-        description: 'Airtable-powered hub used to run daily operations.',
-        status: 'running'
+        desc: 'Centralizes contacts, projects, and <highlight>day-to-day communication</highlight>.',
+        status: 'Keeps your team aligned without extra tools.',
+        badges: ['⚙️ Automated', '💬 Bilingual'],
+        image: null as { src: string; alt: string } | null
       },
       {
         title: 'Lead Capture & Scheduling Flow',
-        tagline: 'Routes form submissions and bookings automatically.',
-        description: 'Tally → n8n → Airtable → Cal.com — every lead tracked instantly.',
-        status: 'running'
+        desc: 'Routes form submissions and bookings <highlight>into one automation</highlight>.',
+        status: 'Never lose a lead again.',
+        badges: ['⚙️ Automated', '🔒 Law 25 Ready'],
+        image: null as { src: string; alt: string } | null
       },
       {
         title: 'AI Avatar Video Engine',
-        tagline: 'Creates bilingual videos to boost SMB visibility.',
-        description: 'Powered by Heygen + custom AI scripts for localized content.',
-        status: 'indev'
+        desc: 'Creates bilingual videos powered by <highlight>AI scripts + Heygen</highlight>.',
+        status: 'Powered by AI scripts + Heygen.',
+        badges: ['🧠 AI-powered', '💬 Bilingual'],
+        image: null as { src: string; alt: string } | null
       },
       {
         title: 'AI Receptionist (Prototype)',
-        tagline: '24/7 bilingual assistant for clinics and small businesses.',
-        description: 'Books appointments, answers questions, and keeps everything compliant.',
-        status: 'prototype'
+        desc: 'A 24/7 assistant that <highlight>books appointments</highlight> and tracks consent.',
+        status: 'Built for clinics & service SMBs.',
+        badges: ['🧠 AI-powered', '🔒 Law 25 Ready'],
+        image: null as { src: string; alt: string } | null
       }
     ]
   },
