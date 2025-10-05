@@ -111,6 +111,18 @@ const fr: TranslationKeys = {
         tagline: 'Dirige automatiquement formulaires et réservations.',
         description: 'Tally → n8n → Airtable → Cal.com — chaque piste suivie instantanément.',
         status: 'running'
+      },
+      {
+        title: 'Générateur de vidéos IA (avatars)',
+        tagline: 'Crée des vidéos bilingues pour renforcer la présence des PME.',
+        description: 'Propulsé par Heygen et des scripts IA personnalisés pour du contenu localisé.',
+        status: 'indev'
+      },
+      {
+        title: 'Réceptionniste IA (prototype)',
+        tagline: 'Assistant bilingue 24/7 pour cliniques et petites entreprises.',
+        description: 'Planifie des rendez-vous, répond aux questions et assure la conformité.',
+        status: 'prototype'
       }
     ]
   },

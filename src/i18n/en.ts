@@ -110,6 +110,18 @@ export const en = {
         tagline: 'Routes form submissions and bookings automatically.',
         description: 'Tally → n8n → Airtable → Cal.com — every lead tracked instantly.',
         status: 'running'
+      },
+      {
+        title: 'AI Avatar Video Engine',
+        tagline: 'Creates bilingual videos to boost SMB visibility.',
+        description: 'Powered by Heygen + custom AI scripts for localized content.',
+        status: 'indev'
+      },
+      {
+        title: 'AI Receptionist (Prototype)',
+        tagline: '24/7 bilingual assistant for clinics and small businesses.',
+        description: 'Books appointments, answers questions, and keeps everything compliant.',
+        status: 'prototype'
       }
     ]
   },
