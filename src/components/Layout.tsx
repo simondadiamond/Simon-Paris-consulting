@@ -25,7 +25,7 @@ export const Header: React.FC<{
 
   const resolvedTextClass = forceDarkBackground
     ? 'text-white'
-    : !isScrolled && isPrivacyPage
+    : isPrivacyPage
     ? 'text-[#121C2D]'
     : 'text-white';
   const textClass = resolvedTextClass;
@@ -86,6 +86,8 @@ export const Header: React.FC<{
 
   const headerBackgroundClass = forceDarkBackground
     ? 'bg-[#0B1320]/95 backdrop-blur-lg'
+    : isPrivacyPage
+    ? 'bg-white/90 backdrop-blur-lg shadow-sm'
     : isScrolled
     ? 'bg-[#0B1320]/90 backdrop-blur-lg'
     : 'bg-transparent';
@@ -182,31 +184,40 @@ export const Footer: React.FC<{ langToggle?: { fr: string; en: string } }> = ({
               {t.footer.copyright}
             </p>
 
-            {langToggle && (
-              <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.3em] text-white/40">
-                <button
-                  type="button"
-                  onClick={() => handleFooterLangSwitch('fr')}
-                  className={`transition-colors ${
-                    lang === 'fr' ? 'text-white' : 'hover:text-white/70'
-                  }`}
-                  aria-pressed={lang === 'fr'}
-                >
-                  FR
-                </button>
-                <span className="text-white/25">|</span>
-                <button
-                  type="button"
-                  onClick={() => handleFooterLangSwitch('en')}
-                  className={`transition-colors ${
-                    lang === 'en' ? 'text-white' : 'hover:text-white/70'
-                  }`}
-                  aria-pressed={lang === 'en'}
-                >
-                  EN
-                </button>
-              </div>
-            )}
+            <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
+              <a
+                href={lang === 'fr' ? '/fr/politique-confidentialite' : '/privacy'}
+                className="text-[11px] uppercase tracking-[0.3em] text-white/60 transition hover:text-white"
+              >
+                {t.footer.links.privacy}
+              </a>
+
+              {langToggle && (
+                <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.3em] text-white/40">
+                  <button
+                    type="button"
+                    onClick={() => handleFooterLangSwitch('fr')}
+                    className={`transition-colors ${
+                      lang === 'fr' ? 'text-white' : 'hover:text-white/70'
+                    }`}
+                    aria-pressed={lang === 'fr'}
+                  >
+                    FR
+                  </button>
+                  <span className="text-white/25">|</span>
+                  <button
+                    type="button"
+                    onClick={() => handleFooterLangSwitch('en')}
+                    className={`transition-colors ${
+                      lang === 'en' ? 'text-white' : 'hover:text-white/70'
+                    }`}
+                    aria-pressed={lang === 'en'}
+                  >
+                    EN
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
