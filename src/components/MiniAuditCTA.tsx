@@ -6,8 +6,10 @@ const MiniAuditCTA: React.FC = () => {
   const { t } = useLanguage();
   const bullets: string[] = t.cta.audit.bullets;
 
+  const auditHref = t.cta.audit.href ?? t.hero.cta.href;
+
   return (
-    <section className="relative bg-section-gradient-bottom py-24 lg:py-32">
+    <section id="book" className="relative bg-section-gradient-bottom py-24 lg:py-32">
       <div className="mx-auto flex w-full justify-center px-4 sm:px-6 lg:px-8">
         <div className="mini-audit-card group relative w-full max-w-[1100px] overflow-hidden text-white lg:w-4/5">
           <div className="pointer-events-none absolute inset-0">
@@ -38,7 +40,7 @@ const MiniAuditCTA: React.FC = () => {
               <span className="text-sm font-medium uppercase tracking-[0.2em] text-[#8AE8E6]">
                 {t.cta.audit.timeline}
               </span>
-              <a href={t.hero.cta.href} className="btn-primary btn-primary--audit">
+              <a href={auditHref} className="btn-primary btn-primary--audit">
                 {t.cta.bookAudit}
               </a>
             </div>
