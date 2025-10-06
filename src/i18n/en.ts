@@ -82,52 +82,41 @@ export const en = {
     note: 'All of this is fixable with simple <span class="font-semibold">bilingual automations</span> built for your team.'
   },
   proofLab: {
-    title: 'Real tools, <highlight>built in Québec.</highlight>',
-    subtitle: 'Every workflow here started as an internal experiment — refined and ready for real SMBs.',
+    title: 'Real <mark>results</mark>, built for Québec.',
+    subtitle:
+      'Every system started as a real business bottleneck — refined, tested, and ready to help Québec SMBs win back hours, reduce stress, and boost client trust.',
     cards: [
       {
         title: 'AI Newsletter Engine',
-        desc: 'Automates <highlight>bilingual newsletter creation</highlight> and delivery.',
-        status: 'Built in Québec — saves hours each week.',
-        badges: ['🧠 AI-powered', '💬 Bilingual'],
+        highlight: 'Turn',
+        description:
+          'missed updates into loyal clients — without writing a word.',
+        footer: 'Bilingual. Automated. Built in Québec.',
         image: {
           src: '/proof-lab-ai-newsletter.png',
           alt: 'Screenshot of the bilingual AI newsletter automation in Gmail.'
         } as { src: string; alt: string }
       },
       {
-        title: 'Compliance Tracker (Law 25)',
-        desc: 'Logs every consent automatically with <highlight>audit-ready proof</highlight>.',
-        status: 'Bilingual & audit-ready for Québec SMBs.',
-        badges: ['🔒 Law 25 Ready', '⚙️ Automated'],
+        title: 'Speed-to-Lead Engine',
+        highlight: 'Turn',
+        description:
+          'every message into a meeting — instantly.',
+        footer: 'Fully Law 25 ready. Converts while competitors sleep.',
         image: null as { src: string; alt: string } | null
       },
       {
         title: 'CRM Command Center',
-        desc: 'Centralizes contacts, projects, and <highlight>day-to-day communication</highlight>.',
-        status: 'Keeps your team aligned without extra tools.',
-        badges: ['⚙️ Automated', '💬 Bilingual'],
+        highlight: 'Your operations,',
+        description: 'finally in one flow.',
+        footer: 'Clear. Connected. No new logins, no lost context.',
         image: null as { src: string; alt: string } | null
       },
       {
-        title: 'Lead Capture & Scheduling Flow',
-        desc: 'Routes form submissions and bookings <highlight>into one automation</highlight>.',
-        status: 'Never lose a lead again.',
-        badges: ['⚙️ Automated', '🔒 Law 25 Ready'],
-        image: null as { src: string; alt: string } | null
-      },
-      {
-        title: 'AI Avatar Video Engine',
-        desc: 'Creates bilingual videos powered by <highlight>AI scripts + Heygen</highlight>.',
-        status: 'Powered by AI scripts + Heygen.',
-        badges: ['🧠 AI-powered', '💬 Bilingual'],
-        image: null as { src: string; alt: string } | null
-      },
-      {
-        title: 'AI Receptionist (Prototype)',
-        desc: 'A 24/7 assistant that <highlight>books appointments</highlight> and tracks consent.',
-        status: 'Built for clinics & service SMBs.',
-        badges: ['🧠 AI-powered', '🔒 Law 25 Ready'],
+        title: 'AI Receptionist',
+        highlight: 'A receptionist',
+        description: 'that never sleeps — or forgets a client.',
+        footer: 'Books appointments, manages consents, and speaks your clients’ language.',
         image: null as { src: string; alt: string } | null
       }
     ]

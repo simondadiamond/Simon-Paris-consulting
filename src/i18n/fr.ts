@@ -83,52 +83,43 @@ const fr: TranslationKeys = {
     note: 'Tout cela se règle avec des <span class="font-semibold">automatisations bilingues</span> pensées pour votre équipe.'
   },
   proofLab: {
-    title: 'Des outils réels, <highlight>conçus au Québec.</highlight>',
-    subtitle: 'Chaque flux est né d’une expérimentation interne — peaufiné et prêt pour les PME québécoises.',
+    title: 'Des <mark>résultats réels</mark>, conçus au Québec.',
+    subtitle:
+      'Chaque système est né d’un vrai goulot d’étranglement — peaufiné, testé, et prêt à vous faire gagner des heures, réduire le stress et inspirer la confiance de vos clients.',
     cards: [
       {
-        title: 'Moteur d’infolettre IA',
-        desc: 'Automatise la <highlight>création et l’envoi bilingues</highlight> des infolettres.',
-        status: 'Conçu au Québec — fait gagner des heures chaque semaine.',
-        badges: ['🧠 IA intégrée', '💬 Bilingue'],
+        title: 'Moteur d’infolettres IA',
+        highlight: 'Transformez',
+        description:
+          'vos suivis manqués en clients fidèles — sans rédiger une ligne.',
+        footer: 'Bilingue. Automatisé. Conçu au Québec.',
         image: {
           src: '/proof-lab-ai-newsletter.png',
           alt: 'Capture d’écran Gmail de l’automatisation d’infolettre bilingue.'
         } as { src: string; alt: string }
       },
       {
-        title: 'Suivi de conformité (Loi 25)',
-        desc: 'Consigne automatiquement <highlight>chaque consentement</highlight>.',
-        status: 'Bilingue et prêt pour les PME québécoises.',
-        badges: ['🔒 Prêt pour la Loi 25', '⚙️ Automatisé'],
+        title: 'Moteur Speed-to-Lead',
+        highlight: 'Convertissez',
+        description:
+          'chaque message en rendez-vous — en quelques secondes.',
+        footer: 'Entièrement conforme à la Loi 25. Convertit pendant que vos concurrents dorment.',
         image: null as { src: string; alt: string } | null
       },
       {
         title: 'Centre de commande CRM',
-        desc: 'Centralise contacts, projets et <highlight>communications quotidiennes</highlight>.',
-        status: 'Maintient votre équipe alignée sans ajouter d’outils.',
-        badges: ['⚙️ Automatisé', '💬 Bilingue'],
+        highlight: 'Vos opérations,',
+        description:
+          'enfin alignées dans un seul flux.',
+        footer: 'Clair. Connecté. Aucun nouvel outil, aucun contexte perdu.',
         image: null as { src: string; alt: string } | null
       },
       {
-        title: 'Flux de capture et de planification',
-        desc: 'Achemine formulaires et rendez-vous <highlight>automatiquement</highlight>.',
-        status: 'Ne perdez plus aucun lead.',
-        badges: ['⚙️ Automatisé', '🔒 Prêt pour la Loi 25'],
-        image: null as { src: string; alt: string } | null
-      },
-      {
-        title: 'Moteur vidéo IA',
-        desc: 'Crée des vidéos bilingues propulsées par <highlight>Heygen + scripts IA</highlight>.',
-        status: 'Propulsé par Heygen + scripts IA.',
-        badges: ['🧠 IA intégrée', '💬 Bilingue'],
-        image: null as { src: string; alt: string } | null
-      },
-      {
-        title: 'Réceptionniste IA (Prototype)',
-        desc: 'Assistant 24/7 qui <highlight>prend des rendez-vous</highlight> et gère les consentements.',
-        status: 'Idéal pour les cliniques et entreprises de services.',
-        badges: ['🧠 IA intégrée', '🔒 Prêt pour la Loi 25'],
+        title: 'Réceptionniste IA',
+        highlight: 'Un assistant',
+        description:
+          'qui ne dort jamais — et n’oublie aucun client.',
+        footer: 'Planifie les rendez-vous, gère les consentements et parle la langue de vos clients.',
         image: null as { src: string; alt: string } | null
       }
     ]

@@ -196,7 +196,9 @@ const ProofLab = () => {
 
   const placeholderIcons = [FlaskConical, ShieldCheck, LayoutDashboard, CalendarCheck, Video, Headset];
   const formatHighlight = (value: string) =>
-    value.replace(/<highlight>(.*?)<\/highlight>/g, '<span class="text-[#139E9C] font-semibold">$1</span>');
+    value
+      .replace(/<highlight>(.*?)<\/highlight>/g, '<span class="text-[#139E9C] font-semibold">$1</span>')
+      .replace(/<mark>(.*?)<\/mark>/g, '<span class="text-[#139E9C] font-semibold">$1</span>');
 
   const headingHtml = formatHighlight(t.proofLab.title);
   const cards = t.proofLab.cards.map((card, index) => ({
@@ -229,7 +231,7 @@ const ProofLab = () => {
         </div>
 
         <div
-          className={`mt-14 grid grid-cols-1 gap-6 transition-all duration-1000 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 lg:gap-10 ${
+          className={`mt-14 grid grid-cols-1 gap-6 transition-all duration-1000 sm:grid-cols-2 sm:gap-8 lg:grid-cols-2 lg:gap-10 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
@@ -262,24 +264,11 @@ const ProofLab = () => {
 
                 <div className="flex flex-1 flex-col gap-4 px-6 pb-7 pt-6 md:px-7 md:pt-7">
                   <h3 className="text-[19px] font-semibold text-[#121C2D]">{card.title}</h3>
-                  <p
-                    className="text-[15px] leading-6 text-slate-700"
-                    dangerouslySetInnerHTML={{ __html: formatHighlight(card.desc) }}
-                  />
-                  <p className="text-[13px] font-medium text-slate-500">{card.status}</p>
-
-                  {card.badges?.length ? (
-                    <div className="mt-auto flex flex-wrap gap-2 pt-2">
-                      {card.badges.map((badge: string) => (
-                        <span
-                          key={badge}
-                          className="inline-flex items-center rounded-full border border-[#139E9C]/20 bg-white/80 px-3 py-1 text-[12px] font-semibold uppercase tracking-wide text-[#139E9C]"
-                        >
-                          {badge}
-                        </span>
-                      ))}
-                    </div>
-                  ) : null}
+                  <p className="text-[15px] leading-6 text-slate-700">
+                    <span className="text-[#139E9C] font-semibold">{card.highlight}</span>
+                    {` ${card.description}`}
+                  </p>
+                  <p className="text-[13px] font-medium text-slate-500">{card.footer}</p>
                 </div>
               </article>
             );
