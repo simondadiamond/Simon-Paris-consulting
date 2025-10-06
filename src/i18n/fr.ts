@@ -24,24 +24,26 @@ const fr: TranslationKeys = {
   },
   sections: {
     problem: {
-      heading: 'Pourquoi les PME du Québec perdent du temps (et des marges <span class="accent">réelles</span>) chaque semaine…',
-      subheading: 'Les quatre problèmes que j’ai appris à résoudre — en commençant par mes propres systèmes.',
+      heading:
+        'J\'ai connu le chaos — et je sais <span style="color:#13A89E;">pourquoi ça bloque</span>.',
+      subheading:
+        'Chaque semaine, les PME du Québec perdent des heures à gérer la paperasse, relancer les clients et courir après la conformité. J\'aide les dirigeants à éliminer ces blocages — un système intelligent à la fois. Voici les plus fréquents :',
       cards: [
         {
-          title: 'Tâches administratives répétitives',
-          description: 'Des heures perdues à planifier, facturer et saisir manuellement des données.'
-        },
-        {
           title: 'Suivis trop tardifs',
-          description: 'Des clients ou soumissions qui tombent entre les mailles du filet.'
+          description: 'Des clients prêts à acheter qui passent à autre chose.'
         },
         {
-          title: 'Conformité à la dernière minute',
-          description: 'Des consentements et politiques gérés seulement sous pression.'
+          title: 'Tâches répétitives',
+          description: 'Copier, renvoyer, recommencer... chaque jour.'
         },
         {
-          title: 'Outils déconnectés',
-          description: 'Des systèmes qui ne se parlent pas — et font perdre du temps à votre équipe.'
+          title: 'Stress de conformité (Loi 25)',
+          description: 'Trop de règles, pas assez d’organisation.'
+        },
+        {
+          title: 'Outils dispersés',
+          description: 'Des systèmes qui ne se parlent pas, du temps perdu.'
         }
       ]
     }

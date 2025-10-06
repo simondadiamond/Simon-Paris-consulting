@@ -23,24 +23,26 @@ export const en = {
   },
   sections: {
     problem: {
-      heading: 'Why Québec SMBs lose time (and <span class="accent">real</span> margins) every week…',
-      subheading: 'The same four problems I’ve solved again and again — starting with my own systems.',
+      heading:
+        'I\'ve lived the chaos — and know <span style="color:#13A89E;">why it keeps you stuck</span>.',
+      subheading:
+        'Québec SMBs lose hours every week managing admin, chasing clients, and scrambling for compliance. I help owners clear these roadblocks — one intelligent system at a time. Here are the most common ones I see:',
       cards: [
         {
-          title: 'Repetitive admin tasks',
-          description: 'Hours lost on manual scheduling, invoices, and data entry.'
+          title: 'Slow follow-ups',
+          description: 'Ready-to-buy clients who move on.'
         },
         {
-          title: 'Delayed follow-ups',
-          description: 'Leads, quotes, and reminders sent too late to convert.'
+          title: 'Repetitive tasks',
+          description: 'Copy, resend, repeat… day after day.'
         },
         {
-          title: 'Last-minute compliance',
-          description: 'Privacy and consent handled only when an audit looms.'
+          title: 'Compliance stress (Law 25)',
+          description: 'Too many rules, not enough structure.'
         },
         {
           title: 'Disconnected tools',
-          description: 'Systems that don’t talk — forcing your team to do double work.'
+          description: 'Systems that don’t talk, time that slips away.'
         }
       ]
     }
