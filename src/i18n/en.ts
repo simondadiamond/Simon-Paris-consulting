@@ -11,7 +11,7 @@ export const en = {
     headline: 'Practical AI for Québec SMBs.',
     accent: 'Fast. Compliant. Profitable.',
     subtitle:
-      'I turn your follow-ups, admin tasks and compliance into bilingual AI systems\nthat work while you sleep.',
+      'An ongoing exploration of how AI and automation can simplify work for Québec SMBs — I document insights, workflows, and lessons learned along the way.',
     cta: {
       label: 'Free Mini Audit',
       href: 'https://cal.com/simonparis/mini-audit'
