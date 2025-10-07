@@ -90,6 +90,12 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
 }
 
+mark {
+  background-color: transparent;
+  color: #139E9C;
+  font-weight: 600;
+}
+
 /* Premium Typography */
 .text-hero {
   font-size: clamp(3rem, 7vw, 6rem);
