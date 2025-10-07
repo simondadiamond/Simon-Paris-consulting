@@ -11,7 +11,7 @@ const FinalCTA: React.FC = () => {
       <div className="mx-auto max-w-5xl px-6">
         <div className="flex flex-col items-center gap-6 text-center md:flex-row md:items-center md:justify-between md:gap-0 md:text-left">
           <div className="md:max-w-3xl md:pr-8">
-            <h2 className="text-2xl font-bold leading-tight md:text-3xl">
+            <h2 className="section-heading text-white">
               {t.finalcta.headline}
             </h2>
             <p className="mt-2 text-base text-white/70">

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -67,18 +67,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-input,
-textarea,
-select {
-  font-family: 'Inter', sans-serif;
-}
-
-input::placeholder,
-textarea::placeholder {
-  font-family: 'Inter', sans-serif;
-  color: #9CA3AF;
-}
-
 .input--hidden {
   position: absolute !important;
   left: -5000px;
@@ -86,8 +74,22 @@ textarea::placeholder {
   pointer-events: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
+input,
+textarea,
+select,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Inter', sans-serif;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-family: 'Inter', sans-serif;
+  color: #9CA3AF;
 }
 
 mark {
@@ -203,6 +205,14 @@ mark {
 
 .hero-headline {
   font-size: clamp(2.2rem, 4vw, 3.5rem);
+}
+
+.section-heading {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
 }
 
 .hero-accent {

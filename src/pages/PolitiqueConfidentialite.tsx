@@ -13,7 +13,7 @@ const PolitiqueConfidentialite = () => {
     <div className="min-h-screen bg-white">
       <Header langToggle={{ fr: '/fr/politique-confidentialite', en: '/privacy' }} />
       <main className="max-w-[800px] mx-auto pt-52 md:pt-60 p-4 md:p-8">
-        <h1 className="text-3xl md:text-4xl font-bold text-[#121C2D] mb-6">Politique de confidentialité (Loi 25 &amp; LCAPC)</h1>
+        <h1 className="section-heading text-[#121C2D] text-balance mb-6">Politique de confidentialité (Loi 25 &amp; LCAPC)</h1>
         <p className="mb-6 text-[0.9rem] md:text-base text-[#121C2D] leading-relaxed">
           Bienvenue chez Simon Paris Consulting. Nous respectons votre vie privée et nous engageons à protéger vos renseignements personnels conformément à la Loi 25 du Québec et à la Loi canadienne anti-pourriel (LCAPC). Cette politique décrit comment nous collectons, utilisons, divulguons et sécurisons vos données.
         </p>
