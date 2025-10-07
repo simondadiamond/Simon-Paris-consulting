@@ -22,6 +22,9 @@ import PartnerBar from './components/PartnerBar';
 import FinalCTA from './components/FinalCTA';
 import MiniAuditCTA from './components/MiniAuditCTA';
 
+const gradientTopLeft = 'linear-gradient(to top left, #ebf3fb, #effbfa 55%, #fff)';
+const gradientBottomLeft = 'linear-gradient(to bottom left, #ebf3fb, #effbfa 55%, #fff)';
+
 // Hero Component
 const Hero = () => {
   const { t } = useLanguage();
@@ -106,7 +109,7 @@ const ProblemSection = () => {
       id="automations"
       ref={sectionRef}
       className="relative overflow-hidden pt-[100px] pb-20 lg:pb-[100px]"
-      style={{ backgroundColor: 'var(--off-white)' }}
+      style={{ backgroundImage: gradientTopLeft }}
     >
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
@@ -129,9 +132,9 @@ const ProblemSection = () => {
           {cards.map((card, index) => (
             <div
               key={index}
-              className={`group flex h-full flex-col rounded-2xl border border-gray-100 bg-white p-7 text-center shadow-sm transition-all duration-300 ease-out transform ${
+              className={`group flex h-full flex-col rounded-[1.5rem] border border-white/60 bg-white p-7 text-center shadow-[0_18px_45px_rgba(18,28,45,0.08)] transition-all duration-300 ease-out ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              } hover:-translate-y-1 hover:scale-[1.015] hover:shadow-xl`}
+              } hover:-translate-y-[3px] hover:shadow-[0_26px_60px_rgba(18,28,45,0.16)]`}
               style={{ transitionDelay: isVisible ? '0ms' : `${index * 120}ms` }}
             >
               <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#139E9C]/10 text-[#139E9C] transition-transform duration-300 group-hover:scale-110">
@@ -208,7 +211,7 @@ const ProofLab = () => {
       ref={sectionRef}
       id="proof-lab"
       className="relative overflow-hidden py-24 lg:py-32"
-      style={{ backgroundColor: 'var(--off-white)' }}
+      style={{ backgroundImage: gradientBottomLeft }}
     >
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8">
@@ -301,7 +304,11 @@ const OfferCards = () => {
   const offers = t.offers.list;
 
   return (
-    <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ backgroundColor: 'var(--off-white)' }}>
+    <section
+      ref={sectionRef}
+      className="relative py-16 lg:py-20 overflow-hidden"
+      style={{ backgroundImage: gradientTopLeft }}
+    >
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
         <h2
           className={`text-display text-gray-900 mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
@@ -456,7 +463,11 @@ const ProofSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ backgroundColor: 'var(--off-white)' }}>
+    <section
+      ref={sectionRef}
+      className="relative py-16 lg:py-20 overflow-hidden"
+      style={{ backgroundColor: 'var(--off-white)' }}
+    >
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className={`text-center mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-display text-gray-900 mb-6">{t.proof.title}</h2>
@@ -501,7 +512,11 @@ const FAQ = () => {
   const faqs = t.faq.list;
 
   return (
-    <section ref={sectionRef} className="relative py-12 lg:py-20 overflow-hidden" style={{ backgroundColor: 'var(--off-white)' }}>
+    <section
+      ref={sectionRef}
+      className="relative py-12 lg:py-20 overflow-hidden"
+      style={{ backgroundImage: gradientBottomLeft }}
+    >
       <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2
@@ -563,7 +578,7 @@ function App() {
       {/* <OfferCards /> */}
       {/* <ROIMath /> */}
       {/* <Checklist /> */}
-      <ProofSection />
+      {/* <ProofSection /> */}
       <FAQ />
       <FinalCTA />
       <Footer />
