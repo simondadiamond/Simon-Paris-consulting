@@ -554,14 +554,14 @@ function App() {
   return (
     <div className="min-h-screen">
       <Header />
-        <Hero />
-        <PartnerBar />
-        <ProblemSection />
-        <ProofLab />
-        <MiniAuditCTA />
-        <OfferCards />
-      <ROIMath />
-      <Checklist />
+      <Hero />
+      <PartnerBar />
+      <ProblemSection />
+      <ProofLab />
+      <MiniAuditCTA />
+      {/* <OfferCards /> */}
+      {/* <ROIMath /> */}
+      {/* <Checklist /> */}
       <ProofSection />
       <FAQ />
       <FinalCTA />
