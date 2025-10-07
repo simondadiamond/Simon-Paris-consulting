@@ -280,6 +280,7 @@ const ProofLab = () => {
 };
 
 // Offer Cards Component
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const OfferCards = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -346,6 +347,7 @@ const OfferCards = () => {
 };
 
 // ROI Math Component
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ROIMath = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -394,6 +396,7 @@ const ROIMath = () => {
 };
 
 // Checklist Component
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Checklist = () => {
   const { t, lang } = useLanguage();
   const newsletterHref = lang === 'fr' ? '/fr/newsletter' : '/en/newsletter';
@@ -554,14 +557,14 @@ function App() {
   return (
     <div className="min-h-screen">
       <Header />
-        <Hero />
-        <PartnerBar />
-        <ProblemSection />
-        <ProofLab />
-        <MiniAuditCTA />
-        <OfferCards />
-      <ROIMath />
-      <Checklist />
+      <Hero />
+      <PartnerBar />
+      <ProblemSection />
+      <ProofLab />
+      <MiniAuditCTA />
+      {/* <OfferCards /> */}
+      {/* <ROIMath /> */}
+      {/* <Checklist /> */}
       <ProofSection />
       <FAQ />
       <FinalCTA />
