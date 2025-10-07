@@ -210,10 +210,6 @@ const ProofLab = () => {
       className="relative overflow-hidden py-24 lg:py-32"
       style={{ backgroundColor: 'var(--off-white)' }}
     >
-      <div className="pointer-events-none absolute inset-0 opacity-60">
-        <div className="absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_0%,rgba(34,128,255,0.12),transparent_65%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(80%_70%_at_20%_100%,rgba(19,158,156,0.12),transparent_70%)]" />
-      </div>
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8">
         <div
