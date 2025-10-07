@@ -12,7 +12,7 @@ const fr: TranslationKeys = {
     headline: 'L’IA pratique pour les PME du Québec.',
     accent: 'Rapide. Conforme. Rentable.',
     subtitle:
-      'Je transforme vos suivis, vos tâches et votre conformité en systèmes IA bilingues\nqui travaillent pendant que vous dormez.',
+      'Un espace d’expérimentation où j’explore comment l’IA et l’automatisation peuvent moderniser les opérations des PME du Québec, tout en partageant mes découvertes et mes apprentissages en chemin.',
     cta: {
       label: 'Diagnostic Éclair Gratuit',
       href: 'https://cal.com/simonparis/diagnostic'

@@ -21,7 +21,7 @@ const FinalCTA: React.FC = () => {
           <div className="flex flex-col items-center md:items-end">
             <a
               href={ctaHref}
-              className="bg-[#139E9C] text-white hover:bg-[#118C89] px-6 py-3 rounded-xl font-semibold shadow-md hover:shadow-lg transition focus:outline-none focus:ring-2 focus:ring-[#139E9C]/40"
+              className="btn-primary"
             >
               {t.finalcta.cta}
             </a>
