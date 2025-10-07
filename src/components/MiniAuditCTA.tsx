@@ -7,7 +7,10 @@ const MiniAuditCTA: React.FC = () => {
   const bullets: string[] = t.cta.audit.bullets;
 
   return (
-    <section className="relative bg-section-gradient-bottom py-24 lg:py-32">
+    <section
+      className="relative py-24 lg:py-32"
+      style={{ backgroundImage: 'linear-gradient(to top left, #ebf3fb, #effbfa 55%, #fff)' }}
+    >
       <div className="mx-auto flex w-full justify-center px-4 sm:px-6 lg:px-8">
         <div className="mini-audit-card group relative w-full max-w-[1100px] overflow-hidden text-white lg:w-4/5">
           <div className="pointer-events-none absolute inset-0">

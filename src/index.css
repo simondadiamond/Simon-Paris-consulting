@@ -11,22 +11,16 @@
   .font-inter {
     font-family: 'Inter', sans-serif;
   }
-  .bg-section-gradient-top {
-    background-image: linear-gradient(
-      to bottom left,
-      #e4eeff,
-      #e6faff 55%,
-      #ffffff
-    );
+  .bg-gradient-pain {
+    background: var(--gradient-pain);
   }
 
-  .bg-section-gradient-bottom {
-    background-image: linear-gradient(
-      to top left,
-      #e4eeff,
-      #e6faff 55%,
-      #ffffff
-    );
+  .bg-gradient-solution {
+    background: var(--gradient-solution);
+  }
+
+  .bg-gradient-mini-audit {
+    background: var(--gradient-mini-audit);
   }
 
   .line-clamp-3 {
@@ -47,6 +41,9 @@
   --text-secondary: #4B5563;
   --text-muted: #6B7280;
   --btn-gradient: linear-gradient(to right, #2280FF, theme('colors.teal.400'));
+  --gradient-pain: linear-gradient(to top left, #ecfaff, #feffff 55%, #ffffff);
+  --gradient-solution: linear-gradient(to top right, #ecfaff, #feffff 55%, #ffffff);
+  --gradient-mini-audit: linear-gradient(to bottom left, #ecfaff, #feffff 55%, #ffffff);
 }
 
 * {
@@ -91,6 +88,12 @@ textarea::placeholder {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
+}
+
+mark {
+  background-color: transparent;
+  color: #139E9C;
+  font-weight: 600;
 }
 
 /* Premium Typography */
