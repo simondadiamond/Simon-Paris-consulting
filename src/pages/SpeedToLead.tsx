@@ -167,7 +167,7 @@ const content = {
 const LandingFAQ: React.FC<{ title: string; intro: string; items: { q: string; a: string }[] }> = ({ title, intro, items }) => {
   const [open, setOpen] = useState<number | null>(null);
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16" style={{ backgroundColor: 'var(--off-white)' }}>
       <div className="max-w-4xl mx-auto px-6">
         <h2 className="text-3xl font-bold text-center mb-4">{title}</h2>
         <p className="text-center text-gray-700 mb-8">{intro}</p>
@@ -270,7 +270,7 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
 
         <PartnerBar />
 
-        <section className="py-16 bg-gradient-pain">
+        <section className="py-16" style={{ backgroundColor: 'var(--off-white)' }}>
           <div className="max-w-6xl mx-auto px-6">
             <h2 className="text-3xl font-bold mb-6">{t.whyTitle}</h2>
             <p className="mb-10 text-gray-700" dangerouslySetInnerHTML={{ __html: t.whyCopy }} />
@@ -290,7 +290,7 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
           </div>
         </section>
 
-        <section className="py-16 bg-gradient-solution">
+        <section className="py-16" style={{ backgroundColor: 'var(--off-white)' }}>
           <div className="max-w-6xl mx-auto px-6">
             <h2 className="text-3xl font-bold mb-6">{t.howTitle}</h2>
             <p className="mb-10 text-gray-700" dangerouslySetInnerHTML={{ __html: t.howCopy }} />
@@ -347,7 +347,7 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
           </div>
         </section>
 
-        <section className="py-16 bg-white">
+        <section className="py-16" style={{ backgroundColor: 'var(--off-white)' }}>
           <div className="max-w-6xl mx-auto px-6">
             <h2 className="text-3xl font-bold mb-6">{t.proofTitle}</h2>
             <p className="mb-10 text-gray-700" dangerouslySetInnerHTML={{ __html: t.proofCopy }} />
@@ -373,7 +373,7 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
           </div>
         </section>
 
-        <section className="py-16 bg-[#F9FAFB]">
+        <section className="py-16" style={{ backgroundColor: 'var(--off-white)' }}>
           <div className="max-w-3xl mx-auto px-6">
             <div className="card-light p-8 relative" data-spots="7">
               <span className="absolute top-4 left-4 bg-[#2280FF] text-white text-xs font-semibold px-3 py-1 rounded-full">

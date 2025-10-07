@@ -106,10 +106,7 @@ const ProblemSection = () => {
       id="automations"
       ref={sectionRef}
       className="relative overflow-hidden pt-[100px] pb-20 lg:pb-[100px]"
-      style={{
-        backgroundImage:
-          'linear-gradient(to top left, rgba(228, 238, 255, 0.6), rgba(230, 250, 255, 0.6) 55%, rgba(255, 255, 255, 0.6))'
-      }}
+      style={{ backgroundColor: 'var(--off-white)' }}
     >
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
@@ -210,7 +207,8 @@ const ProofLab = () => {
     <section
       ref={sectionRef}
       id="proof-lab"
-      className="relative overflow-hidden bg-gradient-mini-audit py-24 lg:py-32"
+      className="relative overflow-hidden py-24 lg:py-32"
+      style={{ backgroundColor: 'var(--off-white)' }}
     >
       <div className="pointer-events-none absolute inset-0 opacity-60">
         <div className="absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_0%,rgba(34,128,255,0.12),transparent_65%)]" />
@@ -307,7 +305,7 @@ const OfferCards = () => {
   const offers = t.offers.list;
 
   return (
-    <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+    <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ backgroundColor: 'var(--off-white)' }}>
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
         <h2
           className={`text-display text-gray-900 mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
@@ -368,7 +366,11 @@ const ROIMath = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#F9FAFB' }}>
+    <section
+      ref={sectionRef}
+      className="relative py-16 lg:py-20 overflow-hidden"
+      style={{ backgroundColor: 'var(--off-white)' }}
+    >
       <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center">
         <div className={`mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2
@@ -401,7 +403,7 @@ const Checklist = () => {
   const { t, lang } = useLanguage();
   const newsletterHref = lang === 'fr' ? '/fr/newsletter' : '/en/newsletter';
   return (
-    <section className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+    <section className="relative py-16 lg:py-20 overflow-hidden" style={{ backgroundColor: 'var(--off-white)' }}>
       <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8">
         <div className="card-light p-6 md:p-8 text-center">
           <div className="inline-flex items-center mb-4 text-sm font-medium text-gray-700">
@@ -458,7 +460,7 @@ const ProofSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+    <section ref={sectionRef} className="relative py-16 lg:py-20 overflow-hidden" style={{ backgroundColor: 'var(--off-white)' }}>
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className={`text-center mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-display text-gray-900 mb-6">{t.proof.title}</h2>
@@ -503,7 +505,7 @@ const FAQ = () => {
   const faqs = t.faq.list;
 
   return (
-    <section ref={sectionRef} className="relative py-12 lg:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+    <section ref={sectionRef} className="relative py-12 lg:py-20 overflow-hidden" style={{ backgroundColor: 'var(--off-white)' }}>
       <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2

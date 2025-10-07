@@ -30,7 +30,7 @@ const PartnerBar: React.FC = () => {
   const repeatedPartners = Array(6).fill(partners).flat();
 
   return (
-    <section className="py-12" style={{ background: '#F9FAFB' }}>
+    <section className="py-12" style={{ backgroundColor: 'var(--off-white)' }}>
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-center text-sm font-semibold tracking-wider uppercase font-mono mb-8 text-gray-900">
           {t.partners.title}
