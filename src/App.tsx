@@ -31,7 +31,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative isolate flex min-h-[90vh] items-center justify-center overflow-hidden bg-[#0B1320] text-white"
+      className="relative isolate flex min-h-screen items-center justify-center overflow-hidden bg-[#0B1320] text-white"
     >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_0%_0%,rgba(34,128,255,0.2),rgba(11,19,32,0)_60%),radial-gradient(120%_120%_at_85%_15%,rgba(19,158,156,0.25),rgba(11,19,32,0)_65%)] opacity-90" />
