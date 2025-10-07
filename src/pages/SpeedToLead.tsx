@@ -270,7 +270,7 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
 
         <PartnerBar />
 
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-gradient-pain">
           <div className="max-w-6xl mx-auto px-6">
             <h2 className="text-3xl font-bold mb-6">{t.whyTitle}</h2>
             <p className="mb-10 text-gray-700" dangerouslySetInnerHTML={{ __html: t.whyCopy }} />
@@ -290,7 +290,7 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
           </div>
         </section>
 
-        <section className="py-16 bg-[#F9FAFB]">
+        <section className="py-16 bg-gradient-solution">
           <div className="max-w-6xl mx-auto px-6">
             <h2 className="text-3xl font-bold mb-6">{t.howTitle}</h2>
             <p className="mb-10 text-gray-700" dangerouslySetInnerHTML={{ __html: t.howCopy }} />

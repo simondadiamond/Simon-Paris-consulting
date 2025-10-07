@@ -210,7 +210,7 @@ const ProofLab = () => {
     <section
       ref={sectionRef}
       id="proof-lab"
-      className="relative overflow-hidden bg-section-gradient-bottom py-24 lg:py-32"
+      className="relative overflow-hidden bg-gradient-mini-audit py-24 lg:py-32"
     >
       <div className="pointer-events-none absolute inset-0 opacity-60">
         <div className="absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_0%,rgba(34,128,255,0.12),transparent_65%)]" />
