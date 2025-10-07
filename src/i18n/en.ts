@@ -173,11 +173,9 @@ export const en = {
     note: 'Flat pricing. No hidden fees. French-first templates.'
   },
   roi: {
-    title: '<span class="accent">$199 today</span> saves clinics <span class="accent">~$600–900</span> every month',
-    without: 'Lost leads, 3–4 no-shows, late invoices ≈ $600–900/mo',
-    with: 'Pack from $199 → faster replies, fewer no‑shows, invoices on time',
-    note: 'Many clinics recoup the pack in the first week.',
-    disclaimer: 'Estimates based on ~$120–150 per appointment and typical lead leakage in Québec. Results vary.'
+    title: `Each pack starts at just $${PACK_PRICE} — most clinics add 2–3 for best results.`,
+    sub: 'Clinics typically recover $600–900/month in lost leads, no-shows, and admin hours — plus fewer headaches and happier staff.',
+    footnote: 'Estimates based on ~$120–150 per appointment and typical lead leakage in Québec. Results vary.'
   },
   checklist: {
     eyebrow: 'Weekly Briefing',
