@@ -118,7 +118,7 @@ const ProblemSection = () => {
           }`}
         >
           <h2
-            className="text-4xl font-semibold text-[#121C2D] md:text-5xl"
+            className="section-heading text-balance text-[#121C2D]"
             dangerouslySetInnerHTML={{ __html: t.sections.problem.heading }}
           />
           {t.sections.problem.subheading && (
@@ -221,7 +221,7 @@ const ProofLab = () => {
           }`}
         >
           <h2
-            className="text-balance text-3xl font-semibold text-[#121C2D] md:text-4xl"
+            className="section-heading text-balance text-[#121C2D]"
             dangerouslySetInnerHTML={{ __html: headingHtml }}
           />
           <p className="mt-4 text-base leading-relaxed text-slate-600 md:text-lg">{t.proofLab.subtitle}</p>
@@ -311,7 +311,7 @@ const OfferCards = () => {
     >
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
         <h2
-          className={`text-display text-gray-900 mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          className={`section-heading text-gray-900 mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
           dangerouslySetInnerHTML={{ __html: t.offers.heading }}
         />
 
@@ -377,7 +377,7 @@ const ROIMath = () => {
       <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center">
         <div className={`mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2
-            className="text-display text-gray-900 mb-6"
+            className="section-heading text-gray-900 mb-6"
             dangerouslySetInnerHTML={{ __html: t.roi.title }}
           />
         </div>
@@ -470,7 +470,7 @@ const ProofSection = () => {
     >
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className={`text-center mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-display text-gray-900 mb-6">{t.proof.title}</h2>
+          <h2 className="section-heading text-gray-900 mb-6">{t.proof.title}</h2>
         </div>
 
         <p
@@ -520,7 +520,7 @@ const FAQ = () => {
       <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2
-            className="text-display text-gray-900 mb-6"
+            className="section-heading text-gray-900 mb-6"
             dangerouslySetInnerHTML={{ __html: t.faq.title }}
           />
         </div>

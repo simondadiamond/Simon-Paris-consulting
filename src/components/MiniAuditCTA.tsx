@@ -20,7 +20,7 @@ const MiniAuditCTA: React.FC = () => {
           </div>
 
           <div className="relative mx-auto flex flex-col items-center gap-10 px-8 py-12 text-center sm:px-10 sm:py-14 lg:max-w-4xl lg:px-16 lg:py-16">
-            <h2 className="text-[clamp(1.75rem,3.8vw,2.75rem)] font-semibold leading-tight text-[#F4F6F8]">
+            <h2 className="section-heading text-[#F4F6F8]">
               {t.cta.audit.title}
             </h2>
 

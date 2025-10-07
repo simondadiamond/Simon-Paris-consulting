@@ -227,7 +227,7 @@ const Landing: React.FC<{ lang: Lang }> = ({ lang }) => {
           </div>
           <div className="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl font-bold mb-4">{t.hero.headline}</h1>
+              <h1 className="section-heading text-white mb-4">{t.hero.headline}</h1>
               <p className="mb-6 max-w-md">{t.hero.sub}</p>
               <a href="#demo" data-action="demo" className="btn-primary text-lg px-8 py-4">
                 {t.hero.cta}

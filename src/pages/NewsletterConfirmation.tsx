@@ -51,8 +51,8 @@ const NewsletterConfirmation: React.FC = () => {
         forceDarkBackground
       />
       <main className="flex flex-1 items-center justify-center px-4 py-24 md:px-6">
-        <div className="w-full max-w-[540px] rounded-[12px] bg-white/95 p-10 shadow-[0_28px_72px_rgba(18,28,45,0.12)] ring-1 ring-black/5 sm:p-12 font-inter">
-          <h1 className="text-3xl font-semibold text-[#121C2D] md:text-4xl">{copy.title}</h1>
+        <div className="w-full max-w-[540px] rounded-[12px] bg-white/95 p-10 shadow-[0_28px_72px_rgba(18,28,45,0.12)] ring-1 ring-black/5 sm:p-12">
+          <h1 className="section-heading text-[#121C2D] text-balance">{copy.title}</h1>
           <p className="mt-4 text-base leading-relaxed text-[#4B5563]">{copy.body}</p>
           <p className="mt-6 text-sm font-medium text-[#139E9C]">{copy.extra}</p>
           <a href={copy.backHome.href} className="btn-primary mt-10 inline-flex w-full justify-center sm:w-auto">

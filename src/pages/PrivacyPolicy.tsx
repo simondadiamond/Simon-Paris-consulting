@@ -13,7 +13,7 @@ const PrivacyPolicy = () => {
     <div className="min-h-screen bg-white">
       <Header langToggle={{ fr: '/fr/politique-confidentialite', en: '/privacy' }} />
       <main className="max-w-[800px] mx-auto pt-52 md:pt-60 p-4 md:p-8">
-        <h1 className="text-3xl md:text-4xl font-bold text-[#121C2D] mb-6">Privacy Policy (Law 25 &amp; CASL Compliance)</h1>
+        <h1 className="section-heading text-[#121C2D] text-balance mb-6">Privacy Policy (Law 25 &amp; CASL Compliance)</h1>
         <p className="mb-6 text-[0.9rem] md:text-base text-[#121C2D] leading-relaxed">
           Welcome to Simon Paris Consulting. We respect your privacy and are committed to protecting your personal information under Quebec’s Law 25 and Canada’s Anti-Spam Legislation (CASL). This policy explains how we collect, use, disclose, and safeguard your data.
         </p>

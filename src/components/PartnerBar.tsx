@@ -35,7 +35,7 @@ const PartnerBar: React.FC = () => {
       style={{ backgroundImage: 'linear-gradient(to bottom left, #ebf3fb, #effbfa 55%, #fff)' }}
     >
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-center text-sm font-semibold tracking-wider uppercase font-mono mb-8 text-gray-900">
+        <h2 className="text-center text-sm font-semibold tracking-wider uppercase mb-8 text-gray-900">
           {t.partners.title}
         </h2>
         <div className="overflow-hidden w-full">
