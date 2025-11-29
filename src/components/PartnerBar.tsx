@@ -1,33 +1,9 @@
 import React from 'react';
-import { useLanguage } from '../LanguageProvider';
 
 const PartnerBar: React.FC = () => {
-  const { t } = useLanguage();
+  const techStack = ['n8n', 'OpenAI', 'Supabase', 'React', 'Airtable', 'Make', 'C# (C-Sharp)'];
 
-  const partners = [
-    {
-      name: 'Microsoft for Startups',
-      logo:
-        'https://github.com/simondadiamond/workflowleaf-assets/blob/1ae5d2c4fc3b285cdd60ed5b3c986f0e14a3c4b7/partner-bar/Microsoft%20Startups.png?raw=true'
-    },
-    {
-      name: 'DigitalOcean Hatch',
-      logo:
-        'https://github.com/simondadiamond/workflowleaf-assets/blob/07e0a1d79616959fc3294b71c06da22e0078914d/partner-bar/hatch.png?raw=true'
-    },
-    {
-      name: 'Stripe',
-      logo:
-        'https://github.com/simondadiamond/workflowleaf-assets/blob/1ae5d2c4fc3b285cdd60ed5b3c986f0e14a3c4b7/partner-bar/Stripe%20Logo.svg?raw=true'
-    },
-    {
-      name: 'Airtable',
-      logo:
-        'https://github.com/simondadiamond/workflowleaf-assets/blob/1ae5d2c4fc3b285cdd60ed5b3c986f0e14a3c4b7/partner-bar/Airtable.png?raw=true'
-    }
-  ];
-
-  const repeatedPartners = Array(6).fill(partners).flat();
+  const repeatedTech = Array(6).fill(techStack).flat();
 
   return (
     <section
@@ -35,22 +11,15 @@ const PartnerBar: React.FC = () => {
       style={{ backgroundImage: 'linear-gradient(to bottom left, #ebf3fb, #effbfa 55%, #fff)' }}
     >
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-center text-sm font-semibold tracking-wider uppercase mb-8 text-gray-900">
-          {t.partners.title}
-        </h2>
         <div className="overflow-hidden w-full">
           <div className="flex w-max animate-scroll space-x-24 items-center">
-            {repeatedPartners.map((partner, index) => (
+            {repeatedTech.map((tech, index) => (
               <div
-                key={`${partner.name}-${index}`}
-                className="flex-shrink-0 h-9 w-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-                title={partner.name}
+                key={`${tech}-${index}`}
+                className="flex-shrink-0 h-9 w-auto flex items-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                title={tech}
               >
-                <img
-                  src={partner.logo}
-                  alt={`${partner.name} logo`}
-                  className="h-full w-auto object-contain"
-                />
+                <span className="text-xl font-semibold tracking-wide text-gray-800">{tech}</span>
               </div>
             ))}
           </div>
