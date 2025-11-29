@@ -18,7 +18,7 @@ import {
   FlaskConical
 } from 'lucide-react';
 import { Header, Footer } from './components/Layout';
-import PartnerBar from './components/PartnerBar';
+// import PartnerBar from './components/PartnerBar';
 import FinalCTA from './components/FinalCTA';
 import MiniAuditCTA from './components/MiniAuditCTA';
 
@@ -47,7 +47,6 @@ const Hero = () => {
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
           <h1 className="hero-headline text-balance font-semibold leading-[1.12] tracking-tight text-white">
             <span className="block">{hero.headline}</span>
-            <span className="hero-accent mt-2 block whitespace-nowrap text-[#13A89E]">{hero.accent}</span>
           </h1>
 
           <p className="mt-[1em] text-balance text-[clamp(1rem,2.2vw,1.4rem)] leading-[1.5] text-[rgba(255,255,255,0.85)]">
@@ -61,12 +60,6 @@ const Hero = () => {
           <div className="mt-[1.5em] flex w-full max-w-xs flex-col items-center gap-3 sm:max-w-sm">
             <a href={hero.cta.href} className="btn-primary hero-cta w-full max-w-xs sm:max-w-none sm:w-auto">
               {hero.cta.label}
-            </a>
-            <a
-              href={hero.secondaryCta.href}
-              className="text-[0.9em] font-medium text-white/70 transition hover:text-white"
-            >
-              {hero.secondaryCta.label}
             </a>
           </div>
         </div>
@@ -209,7 +202,7 @@ const ProofLab = () => {
   return (
     <section
       ref={sectionRef}
-      id="proof-lab"
+      id="projects"
       className="relative overflow-hidden py-24 lg:py-32"
       style={{ backgroundImage: gradientBottomLeft }}
     >
@@ -571,7 +564,7 @@ function App() {
     <div className="min-h-screen">
       <Header />
       <Hero />
-      <PartnerBar />
+      {/* <PartnerBar /> */}
       <ProblemSection />
       <ProofLab />
       <MiniAuditCTA />

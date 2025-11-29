@@ -8,17 +8,12 @@ export const en = {
     cta: 'Diagnostic Éclair'
   },
   hero: {
-    headline: 'Practical AI for Québec SMBs.',
-    accent: 'Fast. Compliant. Profitable.',
+    headline: 'AI Automation & Operations Architect',
     subtitle:
-      'An ongoing exploration of how AI and automation can simplify work for Québec SMBs — I document insights, workflows, and lessons learned along the way.',
+      'Designing resilient workflows and internal tooling. I bridge the gap between heavy code (TypeScript, React, Supabase) and agile orchestration (n8n, Make) to ship systems that actually work.',
     cta: {
-      label: 'Free Mini Audit',
-      href: 'https://cal.com/simonparis/mini-audit'
-    },
-    secondaryCta: {
-      label: 'Not ready yet? Join the newsletter →',
-      href: '/en/newsletter'
+      label: 'View Selected Work',
+      href: '#projects'
     }
   },
   sections: {
