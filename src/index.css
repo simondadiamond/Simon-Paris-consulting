@@ -357,6 +357,30 @@ mark {
   transform: translateY(0);
 }
 
+.btn-ghost-dark {
+  @apply inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-semibold transition-all;
+  background: transparent;
+  color: #ffffff;
+  border: 1.25px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.btn-ghost-dark:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-ghost-dark:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.22);
+}
+
+.btn-ghost-dark:active {
+  transform: translateY(0);
+}
+
 .btn-secondary {
   @apply inline-flex items-center justify-center font-semibold rounded-xl text-base sm:text-lg;
   padding: 14px 28px;
