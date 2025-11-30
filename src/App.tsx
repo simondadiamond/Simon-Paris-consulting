@@ -7,8 +7,6 @@ import {
   CalendarCheck,
   Video,
   Headset,
-  ChevronDown,
-  ChevronUp,
   Shield,
   FlaskConical
 } from 'lucide-react';
@@ -18,7 +16,6 @@ import FinalCTA from './components/FinalCTA';
 import MiniAuditCTA from './components/MiniAuditCTA';
 
 const gradientTopLeft = 'linear-gradient(to top left, #ebf3fb, #effbfa 55%, #fff)';
-const gradientBottomLeft = 'linear-gradient(to bottom left, #ebf3fb, #effbfa 55%, #fff)';
 
 // Hero Component
 const Hero = () => {
@@ -394,86 +391,6 @@ const ProofSection = () => {
   );
 };
 
-// FAQ Component
-const FAQ = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-  const { t } = useLanguage();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const faqs = t.faq.list;
-
-  return (
-    <section
-      ref={sectionRef}
-      className="relative py-12 lg:py-20 overflow-hidden"
-      style={{ backgroundImage: gradientBottomLeft }}
-    >
-      <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8">
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2
-            className="section-heading text-gray-900 mb-6"
-            dangerouslySetInnerHTML={{ __html: t.faq.title }}
-          />
-        </div>
-        
-        <div className={`space-y-4 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          {faqs.map((faq, index) => (
-            <div key={index} className="card-light overflow-hidden">
-              <button
-                className="w-full px-6 md:px-8 py-6 text-left flex justify-between items-center hover:bg-white/5 transition-colors"
-                onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
-              >
-                <span
-                  className="text-lg font-semibold text-gray-900 pr-8"
-                  dangerouslySetInnerHTML={{ __html: faq.question }}
-                />
-                {openFAQ === index ? (
-                  <ChevronUp className="w-6 h-6 text-[#2280FF] flex-shrink-0" />
-                ) : (
-                  <ChevronDown className="w-6 h-6 text-[#2280FF] flex-shrink-0" />
-                )}
-              </button>
-
-              <div
-                className={`transition-all duration-300 overflow-hidden ${
-                  openFAQ === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                }`}
-              >
-                <div className="px-6 md:px-8 pb-6">
-                  <p className="text-gray-700 mb-2">{faq.answer.intro}</p>
-                  <ul className="list-disc list-inside text-gray-700 space-y-1">
-                    {faq.answer.bullets.map((b: string, i: number) => (
-                      <li key={i}>{b}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
 // Main App Component
 function App() {
   return (
@@ -487,7 +404,6 @@ function App() {
       {/* <ROIMath /> */}
       {/* <Checklist /> */}
       {/* <ProofSection /> */}
-      <FAQ />
       <FinalCTA />
       <Footer />
     </div>

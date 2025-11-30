@@ -43,15 +43,12 @@ export const en = {
     }
   },
   cta: {
-    bookAudit: 'Book Free Mini Audit',
     audit: {
-      title: 'Here’s what we identify in your 20-minute Mini Audit.',
-      bullets: [
-        "The workflow that’s costing the most time or revenue.",
-        'A quick-win automation that fits your current tools.',
-        'Any compliance risks to fix before Law 25 fines.'
-      ],
-      timeline: 'Typical setup: 5 – 10 business days.'
+      title: 'Systems over Scripts.',
+      subtitle:
+        'I build automation that is documented, reliable, and compliant. If you value architecture over quick hacks, let\'s talk.',
+      ctaLabel: 'Connect on LinkedIn',
+      ctaHref: 'https://www.linkedin.com/in/simonparis1/'
     }
   },
   problems: {
