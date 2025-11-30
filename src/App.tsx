@@ -118,10 +118,6 @@ const ProofLab = () => {
       ref={sectionRef}
       id="projects"
       className="relative overflow-hidden bg-[#0B1320] py-24 lg:py-32"
-      style={{
-        backgroundImage:
-          'linear-gradient(to top right, rgba(19, 158, 156, 0.15) 0%, rgba(11, 19, 32, 0) 50%)'
-      }}
     >
       <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8">
         <div
