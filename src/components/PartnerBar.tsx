@@ -7,7 +7,13 @@ const PartnerBar: React.FC = () => {
   const stack = ['n8n', 'OpenAI', 'Supabase', 'JavaScript', 'REST APIs', 'Airtable', 'C#'];
 
   return (
-    <section className="bg-[#0B1320] py-10">
+    <section
+      className="bg-[#0B1320] py-10"
+      style={{
+        backgroundImage:
+          'radial-gradient(circle at 0% 100%, rgba(19, 158, 156, 0.15) 0%, rgba(11, 19, 32, 0) 50%)'
+      }}
+    >
       <div className="mx-auto max-w-6xl px-6 text-center">
         <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-slate-400">
           {t.partners.title}

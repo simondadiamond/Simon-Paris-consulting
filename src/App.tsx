@@ -32,6 +32,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-[linear-gradient(140deg,rgba(255,255,255,0.08),transparent_50%)] mix-blend-screen" />
         <div className="absolute -left-24 top-[-6rem] h-[22rem] w-[22rem] rounded-full bg-[#2280FF]/18 blur-[140px]" />
         <div className="absolute bottom-[-8rem] right-[-6rem] h-[28rem] w-[28rem] rounded-full bg-[#139E9C]/16 blur-[150px]" />
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-[linear-gradient(to_top,#0B1320_0%,transparent_20%)]" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-[60rem] px-4 py-24 text-center sm:px-6 lg:px-8 lg:py-32">
@@ -117,6 +118,10 @@ const ProofLab = () => {
       ref={sectionRef}
       id="projects"
       className="relative overflow-hidden bg-[#0B1320] py-24 lg:py-32"
+      style={{
+        backgroundImage:
+          'radial-gradient(circle at 100% 0%, rgba(19, 158, 156, 0.15) 0%, rgba(11, 19, 32, 0) 50%)'
+      }}
     >
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8">
