@@ -44,10 +44,10 @@ export const en = {
   },
   cta: {
     audit: {
-      title: 'Systems over Scripts.',
+      title: 'Ready for Senior Architecture?',
       subtitle:
-        'I build automation that is documented, reliable, and compliant. If you value architecture over quick hacks, let\'s talk.',
-      ctaLabel: 'Connect on LinkedIn',
+        'I build documented, resilient automation systems that scale. No quick hacks—just reliable Ops.',
+      ctaLabel: 'View Profile on LinkedIn',
       ctaHref: 'https://www.linkedin.com/in/simonparis1/'
     }
   },
@@ -74,9 +74,9 @@ export const en = {
     note: 'All of this is fixable with simple <span class="font-semibold">bilingual automations</span> built for your team.'
   },
   proofLab: {
-    title: 'Selected Projects & <mark>Experiments</mark>',
+    title: 'Featured <mark>Implementations</mark>',
     subtitle:
-      'Practical implementations of AI agents, automation pipelines, and internal tools.',
+      'Production-ready workflows, internal tooling, and autonomous agent architectures.',
     cards: [
       {
         title: 'AI Newsletter Engine',
@@ -236,7 +236,7 @@ export const en = {
     eyebrow: 'PRODUCTION SYSTEM',
     headline: 'Written By Robots',
     subtext:
-      'A weekly digest on AI Operations and technical architecture. Researched by agents, drafted by LLMs, and engineered by Simon Paris.',
+      'Automated research and drafting pipeline. Engineered by Simon Paris.',
     cta: 'Subscribe for Insights',
     href: '/en/newsletter'
   },

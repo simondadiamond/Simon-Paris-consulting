@@ -15,7 +15,7 @@ const FinalCTA: React.FC = () => {
         <div className="absolute inset-0 bg-[linear-gradient(150deg,rgba(255,255,255,0.08),transparent_55%)] mix-blend-screen" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-6 pb-12 pt-28 lg:pb-16 lg:pt-32">
+      <div className="relative mx-auto max-w-6xl px-6 pb-12 pt-24 lg:pb-16 lg:pt-28">
         <div className="mx-auto flex justify-center">
           <div className="mini-audit-card group relative w-full max-w-4xl overflow-hidden text-white">
             <div className="pointer-events-none absolute inset-0">
@@ -24,8 +24,8 @@ const FinalCTA: React.FC = () => {
               <div className="absolute -bottom-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-[#139E9C]/25 blur-[160px]" />
             </div>
 
-            <div className="relative mx-auto flex flex-col items-center gap-6 px-8 py-12 text-center sm:px-10 sm:py-14 lg:max-w-4xl lg:px-14 lg:py-16">
-              <h2 className="section-heading text-[#F4F6F8]">{t.cta.audit.title}</h2>
+            <div className="relative mx-auto flex flex-col items-center gap-5 px-7 py-10 text-center sm:px-9 sm:py-12 lg:max-w-4xl lg:px-12 lg:py-14">
+              <h2 className="text-2xl font-semibold text-[#F4F6F8] md:text-3xl">{t.cta.audit.title}</h2>
 
               <p className="max-w-3xl text-base leading-relaxed text-[#C7D0D8] sm:text-lg">{t.cta.audit.subtitle}</p>
 

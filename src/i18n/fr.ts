@@ -45,10 +45,10 @@ const fr: TranslationKeys = {
   },
   cta: {
     audit: {
-      title: 'Des systèmes plutôt que des scripts.',
+      title: 'Prêt pour une architecture senior ?',
       subtitle:
-        'Je bâtis des automatisations documentées, fiables et conformes. Si vous privilégiez l’architecture aux raccourcis, parlons-en.',
-      ctaLabel: 'Me joindre sur LinkedIn',
+        'Je conçois des systèmes d’automatisation documentés et résilients qui passent à l’échelle. Aucun bricolage — seulement une Ops fiable.',
+      ctaLabel: 'Voir le profil LinkedIn',
       ctaHref: 'https://www.linkedin.com/in/simonparis1/'
     }
   },
@@ -75,9 +75,9 @@ const fr: TranslationKeys = {
     note: 'Tout cela se règle avec des <span class="font-semibold">automatisations bilingues</span> pensées pour votre équipe.'
   },
   proofLab: {
-    title: 'Projets & <mark>expérimentations</mark> sélectionnés',
+    title: 'Implémentations <mark>mises en avant</mark>',
     subtitle:
-      'Implémentations pratiques d’agents IA, de pipelines d’automatisation et d’outils internes.',
+      'Workflows prêts pour la production, outils internes et architectures d’agents autonomes.',
     cards: [
       {
         title: 'Moteur d’infolettres IA',
@@ -238,8 +238,7 @@ const fr: TranslationKeys = {
   finalcta: {
     eyebrow: 'SYSTÈME EN PRODUCTION',
     headline: 'Écrit par des Robots',
-    subtext:
-      "Un condensé hebdomadaire sur les Opérations IA et l'architecture technique. Recherché par des agents, rédigé par des LLM, et ingénieré par Simon Paris.",
+    subtext: 'Pipeline automatisé de recherche et de rédaction. Conçu par Simon Paris.',
     cta: "S'abonner",
     href: '/fr/newsletter'
   },
