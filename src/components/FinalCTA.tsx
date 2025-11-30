@@ -38,8 +38,8 @@ const FinalCTA: React.FC = () => {
           </div>
         </div>
 
-        <div className="relative mt-12">
-          <div className="flex w-full flex-col gap-5 rounded-2xl px-6 py-8 text-center sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12 lg:rounded-[18px] lg:bg-white/0 lg:px-10 lg:py-10 lg:text-left">
+        <div className="relative mt-12 lg:mt-14">
+          <div className="flex w-full flex-col gap-4 rounded-2xl px-6 py-8 text-center sm:gap-5 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:rounded-[18px] lg:px-10 lg:py-8 lg:text-left">
             <div className="w-full space-y-2 text-center lg:max-w-3xl lg:text-left">
               <h2 className="text-balance text-[clamp(1.4rem,2vw,1.85rem)] font-semibold leading-tight text-white lg:leading-snug">
                 {t.finalcta.headline}
