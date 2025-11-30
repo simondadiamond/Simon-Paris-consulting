@@ -126,10 +126,10 @@ const ProofLab = () => {
           }`}
         >
           <h2
-            className="section-heading text-balance text-white"
+            className="text-balance text-3xl font-bold text-white md:text-4xl"
             dangerouslySetInnerHTML={{ __html: headingHtml }}
           />
-          <p className="mt-4 text-base leading-relaxed text-slate-300 md:text-lg">{t.proofLab.subtitle}</p>
+          <p className="mt-4 text-base leading-relaxed text-gray-400 md:text-lg">{t.proofLab.subtitle}</p>
         </div>
 
         <div
@@ -140,14 +140,12 @@ const ProofLab = () => {
           {cards.map((card, index) => {
             const CardIcon = card.icon;
             const hasImage = card.image && typeof card.image === 'object' && 'src' in card.image;
-            const backgroundTone = index % 2 === 0 ? 'bg-white' : 'bg-[#F8FBFB]';
-
             return (
               <article
                 key={card.title}
-                className={`group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-white/60 shadow-[0_18px_45px_rgba(18,28,45,0.08)] transition-all duration-500 ease-out ${
-                  backgroundTone
-                } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} hover:-translate-y-[2px] hover:opacity-95 hover:shadow-[0_24px_60px_rgba(18,28,45,0.18)]`}
+                className={`group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-white/10 bg-slate-900/50 backdrop-blur-sm shadow-[0_18px_45px_rgba(6,10,25,0.45)] transition-all duration-500 ease-out ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                } hover:-translate-y-[2px] hover:border-white/20 hover:bg-slate-900/70 hover:opacity-95 hover:shadow-[0_24px_60px_rgba(10,20,45,0.6)]`}
                 style={{ transitionDelay: isVisible ? `${index * 120}ms` : '0ms' }}
               >
                 <div className="relative aspect-[16/9] w-full overflow-hidden">
@@ -165,12 +163,12 @@ const ProofLab = () => {
                 </div>
 
                 <div className="flex flex-1 flex-col gap-4 px-6 pb-7 pt-6 md:px-7 md:pt-7">
-                  <h3 className="text-[19px] font-semibold text-[#121C2D]">{card.title}</h3>
-                  <p className="text-[15px] leading-6 text-slate-700">
+                  <h3 className="text-[19px] font-semibold text-white">{card.title}</h3>
+                  <p className="text-[15px] leading-6 text-gray-300">
                     <span className="text-[#139E9C] font-semibold">{card.highlight}</span>
                     {` ${card.description}`}
                   </p>
-                  <p className="text-[13px] font-medium text-slate-500">{card.footer}</p>
+                  <p className="text-[13px] font-medium text-gray-400">{card.footer}</p>
                 </div>
               </article>
             );
