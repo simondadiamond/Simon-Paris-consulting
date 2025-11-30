@@ -236,7 +236,7 @@ export const en = {
     eyebrow: 'PRODUCTION SYSTEM',
     headline: 'Written By Robots',
     subtext:
-      'Automated research and drafting pipeline. Engineered by Simon Paris.',
+      'A weekly digest on AI Operations and technical architecture. Researched by agents, drafted by LLMs, and engineered by Simon Paris.',
     cta: 'Subscribe for Insights',
     href: '/en/newsletter'
   },

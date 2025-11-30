@@ -238,7 +238,8 @@ const fr: TranslationKeys = {
   finalcta: {
     eyebrow: 'SYSTÈME EN PRODUCTION',
     headline: 'Écrit par des Robots',
-    subtext: 'Pipeline automatisé de recherche et de rédaction. Conçu par Simon Paris.',
+    subtext:
+      "Un condensé hebdomadaire sur les Opérations IA et l'architecture technique. Recherché par des agents, rédigé par des LLM, et ingénieré par Simon Paris.",
     cta: "S'abonner",
     href: '/fr/newsletter'
   },
