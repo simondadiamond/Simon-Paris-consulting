@@ -236,15 +236,12 @@ const fr: TranslationKeys = {
     ]
   },
   finalcta: {
-    headline: 'L’IA qui vous concerne.',
-    subtext: 'Chaque semaine, je traduis l’actualité IA en actions concrètes pour votre PME québécoise.',
-    cta: 'Joindre l’infolettre',
-    href: '/fr/newsletter',
-    alternativeHeadlines: [
-      'Faites travailler l’IA pour votre PME.',
-      'De l’actualité IA à vos prochaines actions.',
-      'Chaque semaine, une tactique IA applicable.'
-    ]
+    eyebrow: 'SYSTÈME EN PRODUCTION',
+    headline: 'Écrit par des Robots',
+    subtext:
+      "Un condensé hebdomadaire sur les Opérations IA et l'architecture technique. Recherché par des agents, rédigé par des LLM, et ingénieré par Simon Paris.",
+    cta: "S'abonner",
+    href: '/fr/newsletter'
   },
   stickyCta: 'Joindre l’infolettre',
   trustBadge: 'Conçu pour le Québec • Démo en direct • Bilingue et conforme à la Loi 96',

@@ -310,6 +310,77 @@ mark {
   transform: translateY(1px);
 }
 
+.btn-secondary-light {
+  @apply inline-flex items-center justify-center rounded-xl px-8 py-4 text-lg font-semibold transition-all;
+  background: transparent;
+  color: white;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  backdrop-filter: blur(2px);
+}
+
+.btn-secondary-light:hover {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+}
+
+.btn-secondary-light:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+.btn-secondary-light:active {
+  transform: translateY(0);
+}
+
+.btn-contrast-dark {
+  @apply inline-flex items-center justify-center rounded-xl px-8 py-4 text-lg font-semibold transition-all;
+  background: #ffffff;
+  color: #050b16;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.35), 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.btn-contrast-dark:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.45), 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.btn-contrast-dark:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25), 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.btn-contrast-dark:active {
+  transform: translateY(0);
+}
+
+.btn-ghost-dark {
+  @apply inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-semibold transition-all;
+  background: transparent;
+  color: #ffffff;
+  border: 1.25px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.btn-ghost-dark:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-ghost-dark:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.22);
+}
+
+.btn-ghost-dark:active {
+  transform: translateY(0);
+}
+
 .btn-secondary {
   @apply inline-flex items-center justify-center font-semibold rounded-xl text-base sm:text-lg;
   padding: 14px 28px;

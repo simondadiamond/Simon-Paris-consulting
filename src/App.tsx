@@ -10,10 +10,9 @@ import {
   Shield,
   FlaskConical
 } from 'lucide-react';
-import { Header, Footer } from './components/Layout';
+import { Header } from './components/Layout';
 import PartnerBar from './components/PartnerBar';
 import FinalCTA from './components/FinalCTA';
-import MiniAuditCTA from './components/MiniAuditCTA';
 
 const gradientTopLeft = 'linear-gradient(to top left, #ebf3fb, #effbfa 55%, #fff)';
 
@@ -399,13 +398,11 @@ function App() {
       <Hero />
       <PartnerBar />
       <ProofLab />
-      <MiniAuditCTA />
       {/* <OfferCards /> */}
       {/* <ROIMath /> */}
       {/* <Checklist /> */}
       {/* <ProofSection /> */}
       <FinalCTA />
-      <Footer />
     </div>
   );
 }

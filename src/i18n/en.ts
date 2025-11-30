@@ -233,15 +233,12 @@ export const en = {
     ]
   },
   finalcta: {
-    headline: 'AI that matters to you.',
-    subtext: 'Every week, I translate AI and automation news into concrete actions for your SMB.',
-    cta: 'Join the newsletter',
-    href: '/en/newsletter',
-    alternativeHeadlines: [
-      'Make AI work for your SMB.',
-      'Turn AI noise into next steps.',
-      'Weekly AI guidance you can act on.'
-    ]
+    eyebrow: 'PRODUCTION SYSTEM',
+    headline: 'Written By Robots',
+    subtext:
+      'A weekly digest on AI Operations and technical architecture. Researched by agents, drafted by LLMs, and engineered by Simon Paris.',
+    cta: 'Subscribe for Insights',
+    href: '/en/newsletter'
   },
   stickyCta: 'Join Newsletter',
   trustBadge: 'Built for Québec • Demo-first • Fully bilingual & Law 96\u2013compliant',
