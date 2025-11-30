@@ -7,14 +7,7 @@ const PartnerBar: React.FC = () => {
   const stack = ['n8n', 'OpenAI', 'Supabase', 'JavaScript', 'REST APIs', 'Airtable', 'C#'];
 
   return (
-    <section
-      className="relative overflow-hidden bg-[#0B1320] py-10"
-    >
-      <div className="pointer-events-none absolute inset-0">
-        {/* Bottom-Left Teal Glow */}
-        <div className="absolute bottom-[-50px] left-[-50px] h-64 w-64 rounded-full bg-[#139E9C]/20 blur-[80px]" />
-      </div>
-
+    <section className="bg-[#0B1320] py-10">
       <div className="mx-auto max-w-6xl px-6 text-center">
         <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-slate-400">
           {t.partners.title}

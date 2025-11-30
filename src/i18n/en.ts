@@ -79,10 +79,9 @@ export const en = {
       'Production-ready workflows, internal tooling, and autonomous agent architectures.',
     cards: [
       {
-        title: 'AI Newsletter Engine',
-        highlight: 'Turn',
-        description:
-          'missed updates into loyal clients — without writing a word.',
+        title: 'Intelligent Content Pipeline',
+        highlight: 'Automated',
+        description: 'research and summarization system.',
         footer: 'Bilingual. Automated. Built in Québec.',
         image: {
           src: '/proof-lab-ai-newsletter.png',
@@ -90,24 +89,23 @@ export const en = {
         } as { src: string; alt: string }
       },
       {
-        title: 'Speed-to-Lead Engine',
-        highlight: 'Turn',
-        description:
-          'every message into a meeting — instantly.',
+        title: 'Lead Scoring & Routing Orchestrator',
+        highlight: 'Webhook-based',
+        description: 'processing to score and route leads instantly.',
         footer: 'Fully Law 25 ready. Converts while competitors sleep.',
         image: null as { src: string; alt: string } | null
       },
       {
-        title: 'CRM Command Center',
-        highlight: 'Your operations,',
-        description: 'finally in one flow.',
+        title: 'Unified Operations Dashboard',
+        highlight: 'React/Supabase',
+        description: 'internal tool for holistic oversight.',
         footer: 'Clear. Connected. No new logins, no lost context.',
         image: null as { src: string; alt: string } | null
       },
       {
-        title: 'AI Receptionist',
-        highlight: 'A receptionist',
-        description: 'that never sleeps — or forgets a client.',
+        title: 'RAG-Powered Conversational Agent',
+        highlight: 'Context-aware',
+        description: 'bot integrating with calendar and internal knowledge APIs.',
         footer: 'Books appointments, manages consents, and speaks your clients’ language.',
         image: null as { src: string; alt: string } | null
       }

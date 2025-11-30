@@ -80,10 +80,9 @@ const fr: TranslationKeys = {
       'Workflows prêts pour la production, outils internes et architectures d’agents autonomes.',
     cards: [
       {
-        title: 'Moteur d’infolettres IA',
-        highlight: 'Transformez',
-        description:
-          'vos suivis manqués en clients fidèles — sans rédiger une ligne.',
+        title: 'Pipeline de contenu intelligent',
+        highlight: 'Automatisé',
+        description: 'pour la recherche et la synthèse.',
         footer: 'Bilingue. Automatisé. Conçu au Québec.',
         image: {
           src: '/proof-lab-ai-newsletter.png',
@@ -91,26 +90,26 @@ const fr: TranslationKeys = {
         } as { src: string; alt: string }
       },
       {
-        title: 'Moteur Speed-to-Lead',
-        highlight: 'Convertissez',
+        title: 'Orchestrateur de scoring & routage',
+        highlight: 'Traitement webhook',
         description:
-          'chaque message en rendez-vous — en quelques secondes.',
+          'pour scorer et router les leads instantanément.',
         footer: 'Entièrement conforme à la Loi 25. Convertit pendant que vos concurrents dorment.',
         image: null as { src: string; alt: string } | null
       },
       {
-        title: 'Centre de commande CRM',
-        highlight: 'Vos opérations,',
+        title: 'Tableau de bord des opérations unifiées',
+        highlight: 'Outil React/Supabase',
         description:
-          'enfin alignées dans un seul flux.',
+          'pour une supervision holistique.',
         footer: 'Clair. Connecté. Aucun nouvel outil, aucun contexte perdu.',
         image: null as { src: string; alt: string } | null
       },
       {
-        title: 'Réceptionniste IA',
-        highlight: 'Un assistant',
+        title: 'Agent conversationnel propulsé par RAG',
+        highlight: 'Bot contextuel',
         description:
-          'qui ne dort jamais — et n’oublie aucun client.',
+          'intégré au calendrier et aux API de connaissances internes.',
         footer: 'Planifie les rendez-vous, gère les consentements et parle la langue de vos clients.',
         image: null as { src: string; alt: string } | null
       }

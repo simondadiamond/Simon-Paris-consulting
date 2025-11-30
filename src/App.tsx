@@ -118,15 +118,11 @@ const ProofLab = () => {
       ref={sectionRef}
       id="projects"
       className="relative overflow-hidden bg-[#0B1320] py-24 lg:py-32"
+      style={{
+        backgroundImage:
+          'linear-gradient(to top right, rgba(19, 158, 156, 0.15) 0%, rgba(11, 19, 32, 0) 50%)'
+      }}
     >
-
-      <div className="pointer-events-none absolute inset-0">
-        {/* Top-Right Teal Glow */}
-        <div className="absolute right-[-50px] top-[-50px] h-80 w-80 rounded-full bg-[#139E9C]/15 blur-[100px]" />
-        {/* Optional: Subtle Blue Mirror at Bottom-Left to balance */}
-        <div className="absolute bottom-[-50px] left-[-50px] h-64 w-64 rounded-full bg-[#2280FF]/10 blur-[100px]" />
-      </div>
-
       <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8">
         <div
           className={`mx-auto max-w-3xl text-center transition-all duration-1000 ${
@@ -151,9 +147,9 @@ const ProofLab = () => {
             return (
               <article
                 key={card.title}
-                className={`group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-white/10 bg-slate-900/50 backdrop-blur-sm shadow-[0_18px_45px_rgba(6,10,25,0.45)] transition-all duration-500 ease-out ${
+                className={`group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-white/10 bg-slate-900 shadow-[0_18px_45px_rgba(6,10,25,0.45)] transition-all duration-500 ease-out ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                } hover:-translate-y-[2px] hover:border-white/20 hover:bg-slate-900/70 hover:opacity-95 hover:shadow-[0_24px_60px_rgba(10,20,45,0.6)]`}
+                } hover:-translate-y-[2px] hover:border-white/20 hover:bg-slate-900/90 hover:opacity-95 hover:shadow-[0_24px_60px_rgba(10,20,45,0.6)]`}
                 style={{ transitionDelay: isVisible ? `${index * 120}ms` : '0ms' }}
               >
                 <div className="relative aspect-[16/9] w-full overflow-hidden">
