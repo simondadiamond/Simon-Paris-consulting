@@ -10,9 +10,9 @@ export const en = {
   hero: {
     headline: 'AI Automation & Operations Architect',
     subtitle:
-      'Designing resilient workflows and internal tooling. I bridge the gap between heavy code (TypeScript, React, Supabase) and agile orchestration (n8n, Make) to ship systems that actually work.',
+      'I transform chaotic business processes into reliable AI systems. Specializing in advanced orchestration (n8n, Make) and LLM-powered workflows to build internal tools that drive real efficiency.',
     cta: {
-      label: 'View Selected Work',
+      label: 'See My Projects',
       href: '#projects'
     }
   },

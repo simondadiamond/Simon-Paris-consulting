@@ -11,9 +11,9 @@ const fr: TranslationKeys = {
   hero: {
     headline: 'Architecte en Automatisation et Opérations IA',
     subtitle:
-      'Je conçois des flux de travail résilients et des outils internes. Je fais le pont entre le développement (TypeScript, React, Supabase) et l’orchestration agile (n8n, Make) pour bâtir des systèmes robustes.',
+      'Je transforme des processus d’affaires chaotiques en systèmes IA fiables. Spécialisé en orchestration avancée (n8n, Make) et en flux de travail LLM pour bâtir des outils internes qui génèrent une réelle efficacité.',
     cta: {
-      label: 'Voir mes réalisations',
+      label: 'Voir mes projets',
       href: '#projects'
     }
   },
