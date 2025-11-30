@@ -116,7 +116,7 @@ const ProofLab = () => {
     <section
       ref={sectionRef}
       id="projects"
-      className="relative overflow-hidden py-24 lg:py-32 bg-gradient-to-bl from-[#139E9C]/15 via-[#0B1320] to-[#0B1320]"
+      className="relative overflow-hidden py-24 lg:py-32 bg-gradient-to-bl from-[#139E9C]/10 via-[#0B1320] to-[#0B1320]"
     >
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8">

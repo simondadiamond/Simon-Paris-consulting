@@ -7,7 +7,7 @@ const PartnerBar: React.FC = () => {
   const stack = ['n8n', 'OpenAI', 'Supabase', 'JavaScript', 'REST APIs', 'Airtable', 'C#'];
 
   return (
-    <section className="bg-gradient-to-tr from-[#139E9C]/15 via-[#0B1320] to-[#0B1320] py-10">
+    <section className="bg-gradient-to-tr from-[#139E9C]/10 via-[#0B1320] to-[#0B1320] py-10">
       <div className="mx-auto max-w-6xl px-6 text-center">
         <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-slate-400">
           {t.partners.title}
