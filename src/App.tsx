@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from './LanguageProvider';
 import {
-  MessageSquare,
   CheckCircle,
   ShieldCheck,
   LayoutDashboard,
@@ -10,15 +9,11 @@ import {
   Headset,
   ChevronDown,
   ChevronUp,
-  Repeat,
-  CalendarClock,
-  ShieldAlert,
-  Link2,
   Shield,
   FlaskConical
 } from 'lucide-react';
 import { Header, Footer } from './components/Layout';
-// import PartnerBar from './components/PartnerBar';
+import PartnerBar from './components/PartnerBar';
 import FinalCTA from './components/FinalCTA';
 import MiniAuditCTA from './components/MiniAuditCTA';
 
@@ -62,84 +57,6 @@ const Hero = () => {
               {hero.cta.label}
             </a>
           </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-// Problem Section Component
-const ProblemSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-  const { t } = useLanguage();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const problemIcons = [Repeat, CalendarClock, ShieldAlert, Link2];
-  const cards = t.sections.problem.cards.map((card, index) => ({
-    ...card,
-    icon: problemIcons[index] ?? MessageSquare
-  }));
-
-  return (
-    <section
-      id="automations"
-      ref={sectionRef}
-      className="relative overflow-hidden pt-[100px] pb-20 lg:pb-[100px]"
-      style={{ backgroundImage: gradientTopLeft }}
-    >
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div
-          className={`mx-auto flex max-w-3xl flex-col text-center transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <h2
-            className="section-heading text-balance text-[#121C2D]"
-            dangerouslySetInnerHTML={{ __html: t.sections.problem.heading }}
-          />
-          {t.sections.problem.subheading && (
-            <p className="mt-4 text-base text-[#475467]">
-              {t.sections.problem.subheading}
-            </p>
-          )}
-        </div>
-
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-8">
-          {cards.map((card, index) => (
-            <div
-              key={index}
-              className={`group flex h-full flex-col rounded-[1.5rem] border border-white/60 bg-white p-7 text-center shadow-[0_18px_45px_rgba(18,28,45,0.08)] transition-all duration-300 ease-out ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              } hover:-translate-y-[3px] hover:shadow-[0_26px_60px_rgba(18,28,45,0.16)]`}
-              style={{ transitionDelay: isVisible ? '0ms' : `${index * 120}ms` }}
-            >
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#139E9C]/10 text-[#139E9C] transition-transform duration-300 group-hover:scale-110">
-                <card.icon className="h-7 w-7" />
-              </div>
-
-              <div className="space-y-2">
-                <h3 className="text-lg font-semibold text-[#121C2D]">{card.title}</h3>
-                <p className="text-base leading-relaxed text-gray-600">{card.description}</p>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </section>
@@ -203,8 +120,7 @@ const ProofLab = () => {
     <section
       ref={sectionRef}
       id="projects"
-      className="relative overflow-hidden py-24 lg:py-32"
-      style={{ backgroundImage: gradientBottomLeft }}
+      className="relative overflow-hidden bg-[#0B1320] py-24 lg:py-32"
     >
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8">
@@ -214,10 +130,10 @@ const ProofLab = () => {
           }`}
         >
           <h2
-            className="section-heading text-balance text-[#121C2D]"
+            className="section-heading text-balance text-white"
             dangerouslySetInnerHTML={{ __html: headingHtml }}
           />
-          <p className="mt-4 text-base leading-relaxed text-slate-600 md:text-lg">{t.proofLab.subtitle}</p>
+          <p className="mt-4 text-base leading-relaxed text-slate-300 md:text-lg">{t.proofLab.subtitle}</p>
         </div>
 
         <div
@@ -564,8 +480,7 @@ function App() {
     <div className="min-h-screen">
       <Header />
       <Hero />
-      {/* <PartnerBar /> */}
-      <ProblemSection />
+      <PartnerBar />
       <ProofLab />
       <MiniAuditCTA />
       {/* <OfferCards /> */}

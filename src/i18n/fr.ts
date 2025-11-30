@@ -78,9 +78,9 @@ const fr: TranslationKeys = {
     note: 'Tout cela se règle avec des <span class="font-semibold">automatisations bilingues</span> pensées pour votre équipe.'
   },
   proofLab: {
-    title: 'Des <mark>résultats réels</mark>, conçus au Québec.',
+    title: 'Projets & <mark>expérimentations</mark> sélectionnés',
     subtitle:
-      'Chaque système est né d’un vrai goulot d’étranglement — peaufiné, testé, et prêt à vous faire gagner des heures, réduire le stress et inspirer la confiance de vos clients.',
+      'Implémentations pratiques d’agents IA, de pipelines d’automatisation et d’outils internes.',
     cards: [
       {
         title: 'Moteur d’infolettres IA',
@@ -252,7 +252,7 @@ const fr: TranslationKeys = {
   stickyCta: 'Joindre l’infolettre',
   trustBadge: 'Conçu pour le Québec • Démo en direct • Bilingue et conforme à la Loi 96',
   partners: {
-    title: 'Partenaires de confiance'
+    title: 'Stack technique'
   },
   newsletter: {
     meta: {
