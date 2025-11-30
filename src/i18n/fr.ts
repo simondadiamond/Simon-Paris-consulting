@@ -236,10 +236,33 @@ const fr: TranslationKeys = {
     ]
   },
   finalcta: {
-    headline: 'L’IA qui vous concerne.',
-    subtext: 'Chaque semaine, je traduis l’actualité IA en actions concrètes pour votre PME québécoise.',
-    cta: 'Joindre l’infolettre',
+    eyebrow: 'SYSTÈME EN PRODUCTION',
+    headline: 'Écrit par des Robots',
+    subtext:
+      'Un condensé hebdomadaire sur les Opérations IA et l\'architecture technique. Recherché par des agents, rédigé par des LLM, et ingénieré par Simon Paris.',
+    cta: "S'abonner",
     href: '/fr/newsletter',
+    footerNote: 'Automatisation en continu. Curations et validations incluses.',
+    highlights: [
+      {
+        label: 'Valeur',
+        copy: 'Collecte des abonnés qualifiés tout en gardant une image sobre et crédible.'
+      },
+      {
+        label: 'Compétence',
+        copy: 'Prouve une chaîne de contenu en production : recherche automatisée, rédaction LLM, ingénierie finale.'
+      }
+    ],
+    pipeline: {
+      title: 'Automatisation en direct',
+      subtitle: 'Le flux de production derrière chaque édition',
+      steps: [
+        'Des agents surveillent les sorties, benchmarks et guides d’implémentation.',
+        'Des LLM rédigent le condensé à partir de briefs structurés et de citations.',
+        'Simon ingénie, valide et livre la version finale en production.'
+      ],
+      note: "L'automatisation est la fonctionnalité. La qualité de production est la norme."
+    },
     alternativeHeadlines: [
       'Faites travailler l’IA pour votre PME.',
       'De l’actualité IA à vos prochaines actions.',

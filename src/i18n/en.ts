@@ -233,10 +233,33 @@ export const en = {
     ]
   },
   finalcta: {
-    headline: 'AI that matters to you.',
-    subtext: 'Every week, I translate AI and automation news into concrete actions for your SMB.',
-    cta: 'Join the newsletter',
+    eyebrow: 'PRODUCTION SYSTEM',
+    headline: 'Written By Robots',
+    subtext:
+      'A weekly digest on AI Operations and technical architecture. Researched by agents, drafted by LLMs, and engineered by Simon Paris.',
+    cta: 'Subscribe for Insights',
     href: '/en/newsletter',
+    footerNote: 'Automated delivery. Editorial judgment included.',
+    highlights: [
+      {
+        label: 'Value',
+        copy: 'Collects qualified subscribers for the AI newsletter while keeping the brand high-trust and minimal.'
+      },
+      {
+        label: 'Competence',
+        copy: 'Demonstrates a production-grade content pipeline—automated research, LLM drafting, and human engineering.'
+      }
+    ],
+    pipeline: {
+      title: 'Live Automation',
+      subtitle: 'The production workflow behind every issue',
+      steps: [
+        'Agents monitor releases, benchmarks, and implementation notes.',
+        'LLMs draft the digest with structured briefs and citations.',
+        'Simon engineers, validates, and ships the final production build.'
+      ],
+      note: 'Automation is the feature. Production quality is the standard.'
+    },
     alternativeHeadlines: [
       'Make AI work for your SMB.',
       'Turn AI noise into next steps.',
