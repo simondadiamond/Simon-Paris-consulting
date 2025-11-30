@@ -7,7 +7,7 @@ const FinalCTA: React.FC = () => {
   const ctaHref = t.finalcta?.href ?? fallbackHref;
 
   return (
-    <section className="relative overflow-hidden border-t border-white/10 bg-[#050B16] text-white">
+    <section className="relative mt-16 overflow-hidden border-t border-white/10 bg-[#050B16] text-white lg:mt-20">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-20 top-[-12rem] h-[22rem] w-[22rem] rounded-full bg-[#2280FF]/20 blur-[140px]" />
         <div className="absolute bottom-[-10rem] right-[-8rem] h-[26rem] w-[26rem] rounded-full bg-[#139E9C]/18 blur-[150px]" />
@@ -15,10 +15,7 @@ const FinalCTA: React.FC = () => {
       </div>
 
       <div className="relative mx-auto max-w-3xl px-6 py-16 text-center lg:py-20">
-        <div className="mx-auto inline-flex items-center rounded-full border border-white/15 bg-white/5 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-[#7AD7CF]">
-          {t.finalcta.eyebrow}
-        </div>
-        <div className="mt-6 space-y-3">
+        <div className="space-y-3">
           <h2 className="text-balance text-[clamp(1.9rem,3vw,2.4rem)] font-semibold leading-tight text-white">
             {t.finalcta.headline}
           </h2>
@@ -27,7 +24,7 @@ const FinalCTA: React.FC = () => {
           </p>
         </div>
         <div className="mt-8 flex justify-center">
-          <a href={ctaHref} className="btn-primary">
+          <a href={ctaHref} className="btn-secondary-light">
             {t.finalcta.cta}
           </a>
         </div>

@@ -310,6 +310,31 @@ mark {
   transform: translateY(1px);
 }
 
+.btn-secondary-light {
+  @apply inline-flex items-center justify-center rounded-xl px-8 py-4 text-lg font-semibold transition-all;
+  background: transparent;
+  color: white;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  backdrop-filter: blur(2px);
+}
+
+.btn-secondary-light:hover {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+}
+
+.btn-secondary-light:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+.btn-secondary-light:active {
+  transform: translateY(0);
+}
+
 .btn-secondary {
   @apply inline-flex items-center justify-center font-semibold rounded-xl text-base sm:text-lg;
   padding: 14px 28px;
