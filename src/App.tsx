@@ -118,6 +118,10 @@ const ProofLab = () => {
       ref={sectionRef}
       id="projects"
       className="relative overflow-hidden bg-[#0B1320] py-24 lg:py-32"
+      style={{
+        backgroundImage:
+          'radial-gradient(circle at 100% 0%, rgba(19, 158, 156, 0.2) 0%, rgba(11, 19, 32, 0) 50%)'
+      }}
     >
       <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8">
         <div
@@ -143,7 +147,7 @@ const ProofLab = () => {
             return (
               <article
                 key={card.title}
-                className={`group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-white/10 bg-slate-900 shadow-[0_18px_45px_rgba(6,10,25,0.45)] transition-all duration-500 ease-out ${
+                className={`group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-white/10 bg-slate-900/40 backdrop-blur-sm shadow-[0_18px_45px_rgba(6,10,25,0.45)] transition-all duration-500 ease-out ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 } hover:-translate-y-[2px] hover:border-white/20 hover:bg-slate-900/90 hover:opacity-95 hover:shadow-[0_24px_60px_rgba(10,20,45,0.6)]`}
                 style={{ transitionDelay: isVisible ? `${index * 120}ms` : '0ms' }}
