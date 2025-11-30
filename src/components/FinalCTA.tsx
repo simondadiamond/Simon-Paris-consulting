@@ -39,15 +39,15 @@ const FinalCTA: React.FC = () => {
         </div>
 
         <div className="relative mt-12 lg:mt-14">
-          <div className="flex w-full flex-col gap-4 rounded-2xl px-6 py-8 text-center sm:gap-5 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:rounded-[18px] lg:px-10 lg:py-8 lg:text-left">
-            <div className="w-full space-y-2 text-center lg:max-w-3xl lg:text-left">
+          <div className="flex w-full flex-col gap-4 rounded-2xl px-6 py-8 text-center sm:gap-5 sm:px-8 xl:flex-row xl:items-center xl:justify-between xl:gap-10 xl:rounded-[18px] xl:px-10 xl:py-8 xl:text-left">
+            <div className="w-full space-y-2 text-center xl:max-w-3xl xl:text-left">
               <h2 className="text-balance text-[clamp(1.4rem,2vw,1.85rem)] font-semibold leading-tight text-white lg:leading-snug">
                 {t.finalcta.headline}
               </h2>
               <p className="text-balance text-base leading-relaxed text-white/75 lg:text-[15px]">{t.finalcta.subtext}</p>
             </div>
 
-            <div className="flex w-full justify-center lg:w-auto lg:justify-end">
+            <div className="flex w-full justify-center xl:w-auto xl:justify-end">
               <a href={ctaHref} className="btn-ghost-dark">
                 {t.finalcta.cta}
               </a>
