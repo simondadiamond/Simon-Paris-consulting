@@ -49,7 +49,7 @@ const fr: TranslationKeys = {
       subtitle:
         'Je bâtis des automatisations documentées, fiables et conformes. Si vous privilégiez l’architecture aux raccourcis, parlons-en.',
       ctaLabel: 'Me joindre sur LinkedIn',
-      ctaHref: 'https://www.linkedin.com/in/simonparis/'
+      ctaHref: 'https://www.linkedin.com/in/simonparis1/'
     }
   },
   problems: {

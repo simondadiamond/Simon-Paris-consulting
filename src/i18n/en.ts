@@ -48,7 +48,7 @@ export const en = {
       subtitle:
         'I build automation that is documented, reliable, and compliant. If you value architecture over quick hacks, let\'s talk.',
       ctaLabel: 'Connect on LinkedIn',
-      ctaHref: 'https://www.linkedin.com/in/simonparis/'
+      ctaHref: 'https://www.linkedin.com/in/simonparis1/'
     }
   },
   problems: {
