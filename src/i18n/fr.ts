@@ -44,15 +44,12 @@ const fr: TranslationKeys = {
     }
   },
   cta: {
-    bookAudit: 'Réserver un Diagnostic Éclair',
     audit: {
-      title: 'Voici ce que l’on identifie dans votre Mini Audit de 20 minutes.',
-      bullets: [
-        'Le processus qui vous fait perdre le plus de temps ou de revenus.',
-        'L’automatisation rapide à implanter dans vos outils actuels.',
-        'Les risques de conformité à corriger avant les amendes de la Loi 25.'
-      ],
-      timeline: 'Installation typique : 5 à 10 jours ouvrables.'
+      title: 'Des systèmes plutôt que des scripts.',
+      subtitle:
+        'Je bâtis des automatisations documentées, fiables et conformes. Si vous privilégiez l’architecture aux raccourcis, parlons-en.',
+      ctaLabel: 'Me joindre sur LinkedIn',
+      ctaHref: 'https://www.linkedin.com/in/simonparis/'
     }
   },
   problems: {
