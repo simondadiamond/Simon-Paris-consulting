@@ -4,56 +4,23 @@ import { useLanguage } from '../LanguageProvider';
 const PartnerBar: React.FC = () => {
   const { t } = useLanguage();
 
-  const partners = [
-    {
-      name: 'Microsoft for Startups',
-      logo:
-        'https://github.com/simondadiamond/workflowleaf-assets/blob/1ae5d2c4fc3b285cdd60ed5b3c986f0e14a3c4b7/partner-bar/Microsoft%20Startups.png?raw=true'
-    },
-    {
-      name: 'DigitalOcean Hatch',
-      logo:
-        'https://github.com/simondadiamond/workflowleaf-assets/blob/07e0a1d79616959fc3294b71c06da22e0078914d/partner-bar/hatch.png?raw=true'
-    },
-    {
-      name: 'Stripe',
-      logo:
-        'https://github.com/simondadiamond/workflowleaf-assets/blob/1ae5d2c4fc3b285cdd60ed5b3c986f0e14a3c4b7/partner-bar/Stripe%20Logo.svg?raw=true'
-    },
-    {
-      name: 'Airtable',
-      logo:
-        'https://github.com/simondadiamond/workflowleaf-assets/blob/1ae5d2c4fc3b285cdd60ed5b3c986f0e14a3c4b7/partner-bar/Airtable.png?raw=true'
-    }
-  ];
-
-  const repeatedPartners = Array(6).fill(partners).flat();
+  const stack = ['n8n', 'OpenAI', 'Supabase', 'JavaScript', 'REST APIs', 'Airtable', 'C#'];
 
   return (
-    <section
-      className="py-12"
-      style={{ backgroundImage: 'linear-gradient(to bottom left, #ebf3fb, #effbfa 55%, #fff)' }}
-    >
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-center text-sm font-semibold tracking-wider uppercase mb-8 text-gray-900">
+    <section className="bg-[#0B1320] py-10">
+      <div className="mx-auto max-w-6xl px-6 text-center">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-slate-400">
           {t.partners.title}
-        </h2>
-        <div className="overflow-hidden w-full">
-          <div className="flex w-max animate-scroll space-x-24 items-center">
-            {repeatedPartners.map((partner, index) => (
-              <div
-                key={`${partner.name}-${index}`}
-                className="flex-shrink-0 h-9 w-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-                title={partner.name}
-              >
-                <img
-                  src={partner.logo}
-                  alt={`${partner.name} logo`}
-                  className="h-full w-auto object-contain"
-                />
-              </div>
-            ))}
-          </div>
+        </p>
+        <div className="mt-6 flex flex-wrap justify-center gap-3 sm:gap-4">
+          {stack.map((item) => (
+            <span
+              key={item}
+              className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.14em] text-slate-200 shadow-[0_1px_12px_rgba(0,0,0,0.15)]"
+            >
+              {item}
+            </span>
+          ))}
         </div>
       </div>
     </section>

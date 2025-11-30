@@ -77,9 +77,9 @@ export const en = {
     note: 'All of this is fixable with simple <span class="font-semibold">bilingual automations</span> built for your team.'
   },
   proofLab: {
-    title: 'Real <mark>results</mark>, built for Québec.',
+    title: 'Selected Projects & <mark>Experiments</mark>',
     subtitle:
-      'Every system started as a real business bottleneck — refined, tested, and ready to help Québec SMBs win back hours, reduce stress, and boost client trust.',
+      'Practical implementations of AI agents, automation pipelines, and internal tools.',
     cards: [
       {
         title: 'AI Newsletter Engine',
@@ -249,7 +249,7 @@ export const en = {
   stickyCta: 'Join Newsletter',
   trustBadge: 'Built for Québec • Demo-first • Fully bilingual & Law 96\u2013compliant',
   partners: {
-    title: 'Trusted & Supported By'
+    title: 'Tech Stack'
   },
   newsletter: {
     meta: {
