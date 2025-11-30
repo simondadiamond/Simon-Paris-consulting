@@ -9,17 +9,12 @@ const fr: TranslationKeys = {
     cta: 'Diagnostic Éclair'
   },
   hero: {
-    headline: 'L’IA pratique pour les PME du Québec.',
-    accent: 'Rapide. Conforme. Rentable.',
+    headline: 'Architecte en Automatisation et Opérations IA',
     subtitle:
-      'Un espace d’expérimentation où j’explore comment l’IA et l’automatisation peuvent moderniser les opérations des PME du Québec, tout en partageant mes découvertes et mes apprentissages en chemin.',
+      'Je transforme des processus d’affaires chaotiques en systèmes IA fiables. Spécialisé en orchestration avancée (n8n, Make) et en flux de travail LLM pour bâtir des outils internes qui génèrent une réelle efficacité.',
     cta: {
-      label: 'Diagnostic Éclair Gratuit',
-      href: 'https://cal.com/simonparis/diagnostic'
-    },
-    secondaryCta: {
-      label: 'Pas prêt ? Rejoignez l’infolettre →',
-      href: '/fr/infolettre'
+      label: 'Voir mes projets',
+      href: '#projects'
     }
   },
   sections: {
