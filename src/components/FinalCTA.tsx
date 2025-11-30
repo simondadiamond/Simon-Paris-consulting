@@ -8,7 +8,7 @@ const FinalCTA: React.FC = () => {
   const privacyLabel = lang === 'fr' ? 'Politique de confidentialité' : 'Privacy Policy';
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-tr from-[#139E9C]/30 via-[#0B1320] to-[#0B1320] text-white">
+    <section className="relative overflow-hidden bg-[#0B1320] bg-gradient-to-tr from-[#139E9C]/30 via-[#0B1320] to-[#0B1320] text-white">
       <div className="relative mx-auto max-w-6xl px-6 pb-12 pt-24 lg:pb-16 lg:pt-28">
         <div className="mx-auto flex justify-center">
           <div className="mini-audit-card group relative w-full max-w-4xl overflow-hidden text-white">
