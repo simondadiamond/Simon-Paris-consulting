@@ -8,12 +8,13 @@ const PartnerBar: React.FC = () => {
 
   return (
     <section
-      className="bg-[#0B1320] py-10"
-      style={{
-        backgroundImage:
-          'radial-gradient(circle at 0% 100%, rgba(19, 158, 156, 0.15) 0%, rgba(11, 19, 32, 0) 50%)'
-      }}
+      className="relative overflow-hidden bg-[#0B1320] py-10"
     >
+      <div className="pointer-events-none absolute inset-0">
+        {/* Bottom-Left Teal Glow */}
+        <div className="absolute bottom-[-50px] left-[-50px] h-64 w-64 rounded-full bg-[#139E9C]/20 blur-[80px]" />
+      </div>
+
       <div className="mx-auto max-w-6xl px-6 text-center">
         <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-slate-400">
           {t.partners.title}

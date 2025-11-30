@@ -118,11 +118,14 @@ const ProofLab = () => {
       ref={sectionRef}
       id="projects"
       className="relative overflow-hidden bg-[#0B1320] py-24 lg:py-32"
-      style={{
-        backgroundImage:
-          'radial-gradient(circle at 100% 0%, rgba(19, 158, 156, 0.15) 0%, rgba(11, 19, 32, 0) 50%)'
-      }}
     >
+
+      <div className="pointer-events-none absolute inset-0">
+        {/* Top-Right Teal Glow */}
+        <div className="absolute right-[-50px] top-[-50px] h-80 w-80 rounded-full bg-[#139E9C]/15 blur-[100px]" />
+        {/* Optional: Subtle Blue Mirror at Bottom-Left to balance */}
+        <div className="absolute bottom-[-50px] left-[-50px] h-64 w-64 rounded-full bg-[#2280FF]/10 blur-[100px]" />
+      </div>
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8">
         <div
