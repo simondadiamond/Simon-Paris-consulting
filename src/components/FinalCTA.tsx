@@ -8,7 +8,7 @@ const FinalCTA: React.FC = () => {
   const privacyLabel = lang === 'fr' ? 'Politique de confidentialité' : 'Privacy Policy';
 
   return (
-    <section className="relative overflow-hidden bg-[#0B1320] bg-gradient-to-tl from-[#139E9C]/35 via-[#0B1320] to-[#0B1320] text-white">
+    <section className="relative overflow-hidden bg-[#0B1320] bg-gradient-to-tl from-[#139E9C]/25 via-[#0B1320] to-[#0B1320] text-white">
       {/* REMOVED: The absolute positioned 'blobs' div that was here.
          Now the section relies purely on the clean 'bg-gradient-to-tl' class above.
       */}
