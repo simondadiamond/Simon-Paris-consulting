@@ -8,10 +8,22 @@ const FinalCTA: React.FC = () => {
   const privacyLabel = lang === 'fr' ? 'Politique de confidentialité' : 'Privacy Policy';
 
   return (
-    <section className="relative overflow-hidden bg-[#0B1320] bg-gradient-to-tl from-[#139E9C]/35 via-[#0B1320] to-[#0B1320] text-white">
+    <section className="relative overflow-hidden bg-[#050B16] text-white">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -left-24 top-[-14rem] h-[24rem] w-[24rem] rounded-full bg-[#2280FF]/18 blur-[160px]" />
+        <div className="absolute bottom-[-12rem] right-[-10rem] h-[28rem] w-[28rem] rounded-full bg-[#139E9C]/18 blur-[170px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(150deg,rgba(255,255,255,0.08),transparent_55%)] mix-blend-screen" />
+      </div>
+
       <div className="relative mx-auto max-w-6xl px-6 pb-12 pt-24 lg:pb-16 lg:pt-28">
         <div className="mx-auto flex justify-center">
           <div className="mini-audit-card group relative w-full max-w-4xl overflow-hidden text-white">
+            <div className="pointer-events-none absolute inset-0">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(34,128,255,0.18),transparent_60%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(19,158,156,0.22),transparent_65%)]" />
+              <div className="absolute -bottom-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-[#139E9C]/25 blur-[160px]" />
+            </div>
+
             <div className="relative mx-auto flex flex-col items-center gap-5 px-7 py-10 text-center sm:px-9 sm:py-12 lg:max-w-4xl lg:px-12 lg:py-14">
               <h2 className="text-2xl font-semibold text-[#F4F6F8] md:text-3xl">{t.cta.audit.title}</h2>
 
