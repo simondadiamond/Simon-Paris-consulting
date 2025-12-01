@@ -7,16 +7,15 @@ const FinalCTA: React.FC = () => {
   const ctaHref = t.finalcta?.href ?? fallbackHref;
   const privacyLabel = lang === 'fr' ? 'Politique de confidentialité' : 'Privacy Policy';
 
-    return (
+  return (
     <section className="relative overflow-hidden bg-[#0B1320] bg-gradient-to-tl from-[#139E9C]/35 via-[#0B1320] to-[#0B1320] text-white">
-      {/* 1. REMOVED THE "BLOBS" DIV BLOCK HERE. 
-         Now the section uses ONLY the clean gradient above.
+      {/* REMOVED: The absolute positioned 'blobs' div that was here.
+         Now the section relies purely on the clean 'bg-gradient-to-tl' class above.
       */}
 
       <div className="relative mx-auto max-w-6xl px-6 pb-12 pt-24 lg:pb-16 lg:pt-28">
         <div className="mx-auto flex justify-center">
           <div className="mini-audit-card group relative w-full max-w-4xl overflow-hidden text-white">
-            {/* KEEPING THE CARD GRADIENTS YOU LIKE */}
             <div className="pointer-events-none absolute inset-0">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(34,128,255,0.18),transparent_60%)]" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(19,158,156,0.22),transparent_65%)]" />
@@ -24,16 +23,13 @@ const FinalCTA: React.FC = () => {
             </div>
 
             <div className="relative mx-auto flex flex-col items-center gap-5 px-7 py-10 text-center sm:px-9 sm:py-12 lg:max-w-4xl lg:px-12 lg:py-14">
-              {/* UPDATED TITLE DIRECTLY */}
-              <h2 className="text-2xl font-semibold text-[#F4F6F8] md:text-3xl">
-                Need a Senior Automation Architect?
-              </h2>
+              <h2 className="text-2xl font-semibold text-[#F4F6F8] md:text-3xl">{t.cta.audit.title}</h2>
 
               <p className="max-w-3xl text-base leading-relaxed text-[#C7D0D8] sm:text-lg">{t.cta.audit.subtitle}</p>
 
               <div className="flex flex-col items-center">
                 <a href={t.cta.audit.ctaHref} className="btn-primary btn-primary--audit">
-                  View Profile on LinkedIn
+                  {t.cta.audit.ctaLabel}
                 </a>
               </div>
             </div>
@@ -44,16 +40,14 @@ const FinalCTA: React.FC = () => {
           <div className="flex w-full flex-col gap-4 rounded-2xl px-6 py-8 text-center sm:gap-4 sm:px-8 md:flex-row md:items-center md:justify-between md:gap-10 md:rounded-[18px] md:px-10 md:py-8 md:text-left">
             <div className="w-full space-y-2 text-center md:max-w-3xl md:text-left">
               <h2 className="text-balance text-[clamp(1.4rem,2vw,1.85rem)] font-semibold leading-tight text-white md:leading-snug">
-                Written By Robots
+                {t.finalcta.headline}
               </h2>
-              <p className="text-balance text-base leading-relaxed text-white/75 lg:text-[15px]">
-                A weekly digest on AI Operations and technical architecture. Researched by agents, drafted by LLMs, and engineered by Simon Paris.
-              </p>
+              <p className="text-balance text-base leading-relaxed text-white/75 lg:text-[15px]">{t.finalcta.subtext}</p>
             </div>
 
             <div className="flex w-full justify-center md:w-auto md:justify-end">
-              <a href={ctaHref} className="btn-ghost-dark border border-white/20 bg-transparent px-6 py-2 text-sm text-white hover:bg-white/10">
-                Subscribe for Insights
+              <a href={ctaHref} className="btn-ghost-dark">
+                {t.finalcta.cta}
               </a>
             </div>
           </div>
@@ -85,3 +79,6 @@ const FinalCTA: React.FC = () => {
       </div>
     </section>
   );
+};
+
+export default FinalCTA;
