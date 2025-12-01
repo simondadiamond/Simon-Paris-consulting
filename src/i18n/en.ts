@@ -300,7 +300,7 @@ export const en = {
     links: {
       privacy: 'Privacy Policy'
     },
-    copyright: '© 2024 Simon Paris Consulting'
+    copyright: '© 2025 Simon Paris Consulting'
   }
 };
 export type TranslationKeys = typeof en;
