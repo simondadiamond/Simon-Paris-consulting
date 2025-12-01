@@ -8,12 +8,10 @@ const FinalCTA: React.FC = () => {
   const privacyLabel = lang === 'fr' ? 'Politique de confidentialité' : 'Privacy Policy';
 
   return (
-    <section className="relative overflow-hidden bg-[#050B16] text-white">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-24 top-[-14rem] h-[24rem] w-[24rem] rounded-full bg-[#2280FF]/18 blur-[160px]" />
-        <div className="absolute bottom-[-12rem] right-[-10rem] h-[28rem] w-[28rem] rounded-full bg-[#139E9C]/18 blur-[170px]" />
-        <div className="absolute inset-0 bg-[linear-gradient(150deg,rgba(255,255,255,0.08),transparent_55%)] mix-blend-screen" />
-      </div>
+    <section className="relative overflow-hidden bg-[#0B1320] bg-gradient-to-tl from-[#139E9C]/35 via-[#0B1320] to-[#0B1320] text-white">
+      {/* REMOVED: The absolute positioned 'blobs' div that was here.
+         Now the section relies purely on the clean 'bg-gradient-to-tl' class above.
+      */}
 
       <div className="relative mx-auto max-w-6xl px-6 pb-12 pt-24 lg:pb-16 lg:pt-28">
         <div className="mx-auto flex justify-center">
