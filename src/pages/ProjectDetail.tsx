@@ -1,4 +1,6 @@
 import React, { useMemo } from 'react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
+import { Header, Footer } from '../components/Layout';
 import { useProjects } from '../hooks/useProjects';
 
 interface ProjectDetailProps {
@@ -30,6 +32,12 @@ const getEmbedUrl = (url: string) => {
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
   const { projects, loading, error } = useProjects();
   const project = useMemo(() => projects.find((item) => item.slug === slug), [projects, slug]);
+  const currentIndex = useMemo(() => projects.findIndex((item) => item.slug === slug), [projects, slug]);
+  const nextProject = useMemo(() => {
+    if (!projects.length || currentIndex === -1) return null;
+    const nextIndex = (currentIndex + 1) % projects.length;
+    return projects[nextIndex];
+  }, [currentIndex, projects]);
 
   const debugPanel = useMemo(() => {
     if (loading) return null;
@@ -99,6 +107,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
 
   return (
     <div className="relative min-h-screen bg-[#0B1320] text-white">
+      <Header forceDarkBackground />
       {debugPanel}
       <div className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 opacity-60">
@@ -107,8 +116,15 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
           <div className="absolute bottom-0 right-[-6rem] h-72 w-72 rounded-full bg-[#139E9C]/14 blur-[140px]" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-6xl px-6 py-16 lg:py-24">
-          <div className="flex flex-wrap items-center gap-3 text-sm font-semibold uppercase tracking-[0.16em] text-[#7ef9f6]">
+        <div className="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-28 lg:pb-24 lg:pt-36">
+          <a
+            href="/"
+            className="inline-flex items-center text-sm font-semibold text-[#7ef9f6] transition hover:text-[#8cfbf8]"
+          >
+            ← Back to Portfolio
+          </a>
+
+          <div className="mt-4 flex flex-wrap items-center gap-3 text-sm font-semibold uppercase tracking-[0.16em] text-[#7ef9f6]">
             <span className="rounded-full bg-[#139E9C]/15 px-3 py-1 ring-1 ring-[#139E9C]/30">Case Study</span>
             <span className="rounded-full bg-white/5 px-3 py-1 text-gray-200 ring-1 ring-white/10">{project.status}</span>
           </div>
@@ -120,7 +136,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
             </div>
             <div className="flex flex-wrap items-center gap-2">
               {project.techStack.map((tech) => (
-                <span key={tech} className="rounded-full bg-white/5 px-4 py-2 text-sm font-semibold text-gray-100 ring-1 ring-white/10">
+                <span
+                  key={tech}
+                  className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-[#139E9C]/10 backdrop-blur"
+                >
                   {tech}
                 </span>
               ))}
@@ -128,23 +147,30 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
           </div>
 
           <div className="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-slate-900/30 shadow-[0_30px_80px_rgba(8,12,24,0.55)]">
-            {project.demoVideoUrl && project.demoVideoUrl.startsWith('http') ? (
-              <div className="aspect-[16/9] w-full">
-                <iframe
-                  src={getEmbedUrl(project.demoVideoUrl)}
-                  title={`${project.title} demo`}
-                  className="h-full w-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-            ) : project.heroImage ? (
-              <img src={project.heroImage} alt={project.title} className="h-full w-full object-cover" />
-            ) : (
-              <div className="flex aspect-[16/9] items-center justify-center bg-gradient-to-br from-[#139E9C]/30 via-[#0B1320] to-[#0B1320] text-gray-200">
-                No media available
-              </div>
-            )}
+            <div className="flex h-8 items-center gap-2 bg-slate-900 px-4 py-2">
+              <span className="h-3 w-3 rounded-full bg-red-500" aria-hidden />
+              <span className="h-3 w-3 rounded-full bg-amber-400" aria-hidden />
+              <span className="h-3 w-3 rounded-full bg-emerald-500" aria-hidden />
+            </div>
+            <div className="border-t border-white/10">
+              {project.demoVideoUrl && project.demoVideoUrl.startsWith('http') ? (
+                <div className="aspect-[16/9] w-full">
+                  <iframe
+                    src={getEmbedUrl(project.demoVideoUrl)}
+                    title={`${project.title} demo`}
+                    className="h-full w-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              ) : project.heroImage ? (
+                <img src={project.heroImage} alt={project.title} className="h-full w-full object-cover" />
+              ) : (
+                <div className="flex aspect-[16/9] items-center justify-center bg-gradient-to-br from-[#139E9C]/30 via-[#0B1320] to-[#0B1320] text-gray-200">
+                  No media available
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="mt-14 grid gap-8 rounded-3xl border border-white/5 bg-slate-900/30 p-8 shadow-[0_20px_60px_rgba(6,10,25,0.45)] backdrop-blur lg:grid-cols-2 lg:gap-10">
@@ -168,7 +194,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
                 <img
                   src={project.architectureUrl}
                   alt={`${project.title} architecture`}
-                  className="max-h-[540px] w-full rounded-2xl object-contain ring-1 ring-white/10"
+                  className="max-h-[540px] w-full rounded-2xl object-contain ring-1 ring-white/10 transition duration-500 hover:scale-[1.02] hover:ring-[#139E9C]/40"
+                  style={{ cursor: 'zoom-in' }}
                 />
               ) : (
                 <div className="w-full rounded-2xl bg-slate-900/60 p-10 text-center text-gray-400 ring-1 ring-white/5">
@@ -178,12 +205,34 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
             </div>
           </div>
 
-          <div className="mt-14 rounded-3xl border border-[#139E9C]/30 bg-gradient-to-br from-[#139E9C]/10 via-[#0B1320] to-[#0B1320] p-10 shadow-[0_24px_70px_rgba(6,10,25,0.5)]">
-            <h2 className="text-2xl font-semibold text-white">Key Outcomes</h2>
+          <div className="mt-14 rounded-3xl border border-emerald-500/20 bg-emerald-900/10 p-10 shadow-[0_24px_70px_rgba(6,10,25,0.5)]">
+            <div className="flex items-center gap-3">
+              <CheckCircle className="h-6 w-6 text-emerald-400" aria-hidden />
+              <h2 className="text-2xl font-semibold text-white">Key Outcomes</h2>
+            </div>
             <p className="mt-4 text-lg leading-relaxed text-gray-200">{project.outcomes}</p>
           </div>
+
+          {nextProject && (
+            <a
+              href={`/project/${nextProject.slug}`}
+              className="mt-12 block overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-[#0B1320] via-slate-900/60 to-[#0E172A] p-8 shadow-[0_24px_70px_rgba(6,10,25,0.55)] transition-transform duration-500 hover:-translate-y-1 hover:border-[#139E9C]/40 hover:shadow-[0_28px_80px_rgba(19,158,156,0.3)]"
+            >
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <p className="text-sm uppercase tracking-[0.2em] text-[#7ef9f6]">Next Case Study</p>
+                  <h3 className="mt-2 text-2xl font-semibold text-white">{nextProject.title}</h3>
+                  <p className="mt-1 text-gray-300">{nextProject.tagline}</p>
+                </div>
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#139E9C]/15 text-[#7ef9f6]">
+                  <ArrowRight className="h-6 w-6" />
+                </div>
+              </div>
+            </a>
+          )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
