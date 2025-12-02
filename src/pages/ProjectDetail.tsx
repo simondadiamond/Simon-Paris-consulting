@@ -9,6 +9,25 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
   const { projects, loading, error } = useProjects();
   const project = useMemo(() => projects.find((item) => item.slug === slug), [projects, slug]);
 
+  const debugPanel = useMemo(() => {
+    if (loading) return null;
+
+    const formattedJson = JSON.stringify(projects, null, 2);
+
+    return (
+      <div className="fixed bottom-6 right-6 z-50 max-h-[70vh] w-[420px] overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 shadow-2xl backdrop-blur">
+        <details open className="h-full">
+          <summary className="cursor-pointer select-none px-4 py-3 text-sm font-semibold text-[#7ef9f6]">Debug: Projects JSON</summary>
+          <div className="max-h-[60vh] overflow-auto px-4 pb-4 text-xs leading-relaxed text-gray-200">
+            <pre className="whitespace-pre-wrap break-words">
+              <code>{formattedJson}</code>
+            </pre>
+          </div>
+        </details>
+      </div>
+    );
+  }, [loading, projects]);
+
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[#0B1320] text-white">
@@ -22,7 +41,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
 
   if (error) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#0B1320] px-6 text-white">
+      <div className="relative flex min-h-screen items-center justify-center bg-[#0B1320] px-6 text-white">
+        {debugPanel}
         <div className="max-w-lg rounded-2xl bg-slate-900/40 p-10 text-center shadow-lg ring-1 ring-white/10">
           <h1 className="text-2xl font-semibold text-white">Unable to load project</h1>
           <p className="mt-4 text-gray-300">Please try again or return to the homepage.</p>
@@ -39,7 +59,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
 
   if (!project) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#0B1320] px-6 text-white">
+      <div className="relative flex min-h-screen items-center justify-center bg-[#0B1320] px-6 text-white">
+        {debugPanel}
         <div className="max-w-lg rounded-2xl bg-slate-900/40 p-10 text-center shadow-lg ring-1 ring-white/10">
           <h1 className="text-3xl font-bold">404 - Project Not Found</h1>
           <p className="mt-4 text-gray-300">The case study you are looking for does not exist or has been moved.</p>
@@ -55,7 +76,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
   }
 
   return (
-    <div className="min-h-screen bg-[#0B1320] text-white">
+    <div className="relative min-h-screen bg-[#0B1320] text-white">
+      {debugPanel}
       <div className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 opacity-60">
           <div className="absolute inset-0 bg-[radial-gradient(80%_80%_at_15%_20%,rgba(19,158,156,0.18),rgba(11,19,32,0)),radial-gradient(60%_60%_at_85%_0%,rgba(34,128,255,0.16),rgba(11,19,32,0)_70%)]" />
