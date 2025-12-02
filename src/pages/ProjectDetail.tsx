@@ -47,10 +47,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
   }, [project?.outcomes]);
 
   const nextCaseStudyClasses = [
-    'mt-12 block overflow-hidden rounded-3xl border border-white/10',
+    'mt-12 block overflow-hidden rounded-3xl border border-[#139E9C]/40',
     'bg-gradient-to-r from-[#0B1320] via-slate-900/60 to-[#0E172A]',
-    'p-8 shadow-[0_24px_70px_rgba(6,10,25,0.55)] transition-transform duration-500',
-    'hover:-translate-y-1 hover:border-[#139E9C]/40 hover:shadow-[0_28px_80px_rgba(19,158,156,0.3)]',
+    'p-8 shadow-[0_24px_70px_rgba(19,158,156,0.25)] transition-transform duration-500',
+    'hover:-translate-y-1 hover:border-[#7ef9f6]/50 hover:shadow-[0_28px_90px_rgba(19,158,156,0.35)]',
   ].join(' ');
 
   const debugPanel = useMemo(() => {
