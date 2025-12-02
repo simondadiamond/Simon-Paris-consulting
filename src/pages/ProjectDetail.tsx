@@ -154,7 +154,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
             </div>
           </div>
 
-          <div className="mt-10 overflow-hidden rounded-2xl border border-white/10 bg-slate-900/50 shadow-2xl">
+          <div className="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-slate-900/50 shadow-2xl">
             {project.demoVideoUrl && project.demoVideoUrl.startsWith('http') ? (
               <div className="aspect-[16/9] w-full">
                 <iframe
