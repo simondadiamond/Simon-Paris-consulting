@@ -5,6 +5,28 @@ interface ProjectDetailProps {
   slug: string;
 }
 
+const getEmbedUrl = (url: string) => {
+  if (!url) return url;
+
+  if (url.includes('youtu.be/')) {
+    const videoId = url.split('youtu.be/')[1]?.split(/[?&]/)[0];
+    return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+  }
+
+  if (url.includes('youtube.com/watch')) {
+    const searchParams = url.split('?', 2)[1];
+    const params = new URLSearchParams(searchParams);
+    const videoId = params.get('v');
+    return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+  }
+
+  if (url.includes('loom.com/share/')) {
+    return url.replace('loom.com/share/', 'loom.com/embed/');
+  }
+
+  return url;
+};
+
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
   const { projects, loading, error } = useProjects();
   const project = useMemo(() => projects.find((item) => item.slug === slug), [projects, slug]);
@@ -109,7 +131,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
             {project.demoVideoUrl && project.demoVideoUrl.startsWith('http') ? (
               <div className="aspect-[16/9] w-full">
                 <iframe
-                  src={project.demoVideoUrl}
+                  src={getEmbedUrl(project.demoVideoUrl)}
                   title={`${project.title} demo`}
                   className="h-full w-full"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

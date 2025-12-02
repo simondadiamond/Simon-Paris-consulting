@@ -29,7 +29,7 @@ export const handler = async () => {
           ? techStackCsv.split(',').map((item) => item.trim()).filter(Boolean)
           : [];
 
-      const rawVideo = fields['Demo Video (Valid URL)'] || fields['Demo Video URL'] || '';
+      const rawVideo = fields['Demo Video URL'] || fields['Demo Video (Valid URL)'] || '';
       const demoVideoUrl = (typeof rawVideo === 'string' && rawVideo.startsWith('http')) ? rawVideo : '';
 
       return {
