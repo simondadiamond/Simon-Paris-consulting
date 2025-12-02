@@ -45,6 +45,8 @@ export const handler = async () => {
         demoVideoUrl,
         architectureUrl: architectureImageField?.url ?? '',
         outcomes: fields['Key Outcomes'] || '',
+        liveLink: fields['Live Link'] || '',
+        githubUrl: fields['GitHub Repo'] || '',
       };
     });
 
