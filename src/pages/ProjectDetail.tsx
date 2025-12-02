@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle, ChevronLeft, ExternalLink } from 'lucide-react';
 import { Header, Footer } from '../components/Layout';
 import { useProjects } from '../hooks/useProjects';
 
@@ -38,6 +38,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
     const nextIndex = (currentIndex + 1) % projects.length;
     return projects[nextIndex];
   }, [currentIndex, projects]);
+  const outcomes = useMemo(() => {
+    if (!project?.outcomes) return [];
+    return project.outcomes
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter(Boolean);
+  }, [project?.outcomes]);
 
   const debugPanel = useMemo(() => {
     if (loading) return null;
@@ -118,10 +125,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
 
         <div className="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-28 lg:pb-24 lg:pt-36">
           <a
-            href="/"
-            className="inline-flex items-center text-sm font-semibold text-[#7ef9f6] transition hover:text-[#8cfbf8]"
+            href="/#projects"
+            className="mb-6 inline-flex items-center gap-2 pb-6 text-xs font-bold uppercase tracking-[0.24em] text-slate-400 transition-colors hover:text-teal-400"
           >
-            ← Back to Portfolio
+            <ChevronLeft className="h-4 w-4" aria-hidden />
+            Back to Projects
           </a>
 
           <div className="mt-4 flex flex-wrap items-center gap-3 text-sm font-semibold uppercase tracking-[0.16em] text-[#7ef9f6]">
@@ -145,6 +153,33 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
               ))}
             </div>
           </div>
+
+          {(project.liveLink || project.githubUrl) && (
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              {project.liveLink && (
+                <a
+                  href={project.liveLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#139E9C] px-4 py-2 text-sm font-semibold text-[#0B1320] shadow-lg shadow-[#139E9C]/30 transition hover:brightness-110"
+                >
+                  Visit Live Site
+                  <ExternalLink className="h-4 w-4" aria-hidden />
+                </a>
+              )}
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:border-[#139E9C]/60 hover:text-[#7ef9f6]"
+                >
+                  View Source
+                  <span className="text-xs font-black">&lt;/&gt;</span>
+                </a>
+              )}
+            </div>
+          )}
 
           <div className="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-slate-900/30 shadow-[0_30px_80px_rgba(8,12,24,0.55)]">
             <div className="flex h-8 items-center gap-2 bg-slate-900 px-4 py-2">
@@ -205,13 +240,24 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
             </div>
           </div>
 
-          <div className="mt-14 rounded-3xl border border-emerald-500/20 bg-emerald-900/10 p-10 shadow-[0_24px_70px_rgba(6,10,25,0.5)]">
-            <div className="flex items-center gap-3">
-              <CheckCircle className="h-6 w-6 text-emerald-400" aria-hidden />
-              <h2 className="text-2xl font-semibold text-white">Key Outcomes</h2>
+          {outcomes.length > 0 && (
+            <div className="mt-14 rounded-3xl border border-emerald-500/20 bg-emerald-900/10 p-10 shadow-[0_24px_70px_rgba(6,10,25,0.5)]">
+              <div className="flex items-center gap-3">
+                <CheckCircle className="h-6 w-6 text-emerald-400" aria-hidden />
+                <h2 className="text-2xl font-semibold text-white">Key Outcomes</h2>
+              </div>
+              <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                {outcomes.map((outcome) => (
+                  <div key={outcome} className="flex items-start gap-3 rounded-2xl bg-slate-900/50 p-4 ring-1 ring-white/5">
+                    <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-400">
+                      <CheckCircle className="h-4 w-4" aria-hidden />
+                    </div>
+                    <p className="text-base leading-relaxed text-gray-100">{outcome}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-            <p className="mt-4 text-lg leading-relaxed text-gray-200">{project.outcomes}</p>
-          </div>
+          )}
 
           {nextProject && (
             <a
