@@ -161,50 +161,29 @@ export const Footer: React.FC<{ langToggle?: { fr: string; en: string } }> = ({
   const footerLabel = nextLang === 'fr' ? 'Switch language to French' : 'Switch language to English';
 
   return (
-    <footer className="border-t border-white/10 bg-[#0B1220] text-white">
-      <div className="mx-auto max-w-5xl px-6 py-8 md:py-10">
-        <div className="flex flex-col items-center gap-5 text-center md:flex-row md:items-start md:justify-between md:text-left">
-          <div>
-            <div className="text-lg font-medium text-white/80 md:text-xl">{t.header.brand}</div>
-            <p className="mt-1 text-xs text-white/60 md:text-sm">{t.footer.tagline}</p>
-          </div>
+    <footer className="border-t border-white/10 bg-gradient-to-r from-[#0B1320] via-[#0E182B] to-[#0B1320] text-white">
+      <div className="mx-auto max-w-6xl px-6 py-10">
+        <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:justify-between sm:text-left">
+          <span className="text-sm text-white/75">© 2025 Simon Paris</span>
 
-          <address className="text-xs text-white/60 not-italic md:text-right md:text-sm">
+          <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-6">
             <a
-              href={`mailto:${t.footer.contact.email}`}
-              className="block font-medium text-white/80 transition hover:text-white"
+              href={lang === 'fr' ? '/fr/politique-confidentialite' : '/privacy'}
+              className="text-sm text-white/70 transition hover:text-white"
             >
-              {t.footer.contact.emailLabel}: {t.footer.contact.email}
+              {t.footer.links.privacy}
             </a>
-            <div className="mt-1">{t.footer.contact.locationLabel}: {t.footer.contact.location}</div>
-          </address>
-        </div>
 
-        <div className="mt-6 border-t border-white/10 pt-4">
-          <div className="flex flex-col items-center gap-4 text-center md:flex-row md:items-center md:justify-between md:text-left">
-            <p className="text-[11px] text-white/45 md:text-left">
-              {t.footer.copyright}
-            </p>
-
-            <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
-              <a
-                href={lang === 'fr' ? '/fr/politique-confidentialite' : '/privacy'}
-                className="text-[11px] uppercase tracking-[0.3em] text-white/60 transition hover:text-white"
-              >
-                {t.footer.links.privacy}
-              </a>
-
-              <button
-                type="button"
-                onClick={toggleFooterLanguage}
-                className="flex items-center text-[11px] font-semibold uppercase tracking-[0.25em] text-white/55 transition hover:text-white focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                aria-label={footerLabel}
-              >
-                <span className={lang === 'fr' ? 'text-white' : 'text-white/55'}>FR</span>
-                <span className="mx-[6px] text-white/30">|</span>
-                <span className={lang === 'en' ? 'text-white' : 'text-white/55'}>EN</span>
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={toggleFooterLanguage}
+              className="flex items-center text-sm font-semibold tracking-[0.25em] text-white/70 transition hover:text-white focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              aria-label={footerLabel}
+            >
+              <span className={lang === 'fr' ? 'text-white' : 'text-white/60'}>FR</span>
+              <span className="mx-2 text-white/35">|</span>
+              <span className={lang === 'en' ? 'text-white' : 'text-white/60'}>EN</span>
+            </button>
           </div>
         </div>
       </div>
