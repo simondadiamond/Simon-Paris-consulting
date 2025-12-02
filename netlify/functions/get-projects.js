@@ -15,7 +15,22 @@ export const handler = async () => {
 
     const projects = records.map((record) => {
       const fields = record.fields || {};
+
       const heroImageField = Array.isArray(fields['Hero Image']) ? fields['Hero Image'][0] : null;
+      const architectureImageField = Array.isArray(fields['Architecture Diagram'])
+        ? fields['Architecture Diagram'][0]
+        : null;
+
+      const techStackRaw = fields['Tech Stack'];
+      const techStackCsv = fields['Tech Stack (CSV)'];
+      const techStack = Array.isArray(techStackRaw)
+        ? techStackRaw.filter(Boolean)
+        : typeof techStackCsv === 'string' && techStackCsv.length > 0
+          ? techStackCsv.split(',').map((item) => item.trim()).filter(Boolean)
+          : [];
+
+      const rawVideo = fields['Demo Video URL'] || fields['Demo Video (Valid URL)'] || '';
+      const demoVideoUrl = (typeof rawVideo === 'string' && rawVideo.startsWith('http')) ? rawVideo : '';
 
       return {
         id: record.id,
@@ -23,8 +38,13 @@ export const handler = async () => {
         tagline: fields['Short Tagline'] || '',
         slug: fields['Slug'] || '',
         status: fields['Status'] || '',
-        techStack: fields['Tech Stack'] || [],
-        heroImage: heroImageField?.url ?? null,
+        techStack,
+        heroImage: heroImageField?.url ?? '',
+        problem: fields['The Problem'] || '',
+        solution: fields['The Solution'] || '',
+        demoVideoUrl,
+        architectureUrl: architectureImageField?.url ?? '',
+        outcomes: fields['Key Outcomes'] || '',
       };
     });
 

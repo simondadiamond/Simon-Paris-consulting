@@ -3,18 +3,20 @@ import { useLanguage } from './LanguageProvider';
 import {
   CheckCircle,
   ShieldCheck,
-  LayoutDashboard,
-  CalendarCheck,
-  Video,
-  Headset,
-  Shield,
-  FlaskConical
+  Shield
 } from 'lucide-react';
 import { Header } from './components/Layout';
 import PartnerBar from './components/PartnerBar';
 import FinalCTA from './components/FinalCTA';
+import { useProjects } from './hooks/useProjects';
 
 const gradientTopLeft = 'linear-gradient(to top left, #ebf3fb, #effbfa 55%, #fff)';
+
+const Link: React.FC<{ href: string; children: React.ReactNode }> = ({ href, children }) => (
+  <a href={href} className="block">
+    {children}
+  </a>
+);
 
 // Hero Component
 const Hero = () => {
@@ -64,6 +66,7 @@ const ProofLab = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const { t } = useLanguage();
+  const { projects, loading, error } = useProjects();
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -100,17 +103,37 @@ const ProofLab = () => {
     return () => observer.disconnect();
   }, []);
 
-  const placeholderIcons = [FlaskConical, ShieldCheck, LayoutDashboard, CalendarCheck, Video, Headset];
   const formatHighlight = (value: string) =>
     value
       .replace(/<highlight>(.*?)<\/highlight>/g, '<span class="text-[#139E9C] font-semibold">$1</span>')
       .replace(/<mark>(.*?)<\/mark>/g, '<span class="text-[#139E9C] font-semibold">$1</span>');
 
   const headingHtml = formatHighlight(t.proofLab.title);
-  const cards = t.proofLab.cards.map((card, index) => ({
-    ...card,
-    icon: placeholderIcons[index] ?? FlaskConical
-  }));
+
+  const skeletonCards = Array.from({ length: 4 }).map((_, index) => (
+    <article
+      key={`skeleton-${index}`}
+      className={`group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-white/10 bg-slate-900/20 backdrop-blur-md shadow-[0_18px_45px_rgba(6,10,25,0.45)] transition-all duration-500 ease-out ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`}
+      style={{ transitionDelay: isVisible ? `${index * 120}ms` : '0ms' }}
+    >
+      <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-800/60">
+        <div className="h-full w-full animate-pulse bg-gradient-to-br from-slate-800 via-slate-700 to-slate-800" />
+      </div>
+      <div className="flex flex-1 flex-col gap-3 px-6 pb-7 pt-6 md:px-7 md:pt-7">
+        <div className="h-5 w-32 animate-pulse rounded-full bg-slate-700" />
+        <div className="h-6 w-3/4 animate-pulse rounded-full bg-slate-700" />
+        <div className="h-4 w-full animate-pulse rounded-full bg-slate-800" />
+        <div className="h-4 w-2/3 animate-pulse rounded-full bg-slate-800" />
+        <div className="flex gap-2">
+          <div className="h-6 w-16 animate-pulse rounded-full bg-slate-800" />
+          <div className="h-6 w-16 animate-pulse rounded-full bg-slate-800" />
+          <div className="h-6 w-16 animate-pulse rounded-full bg-slate-800" />
+        </div>
+      </div>
+    </article>
+  ));
 
   return (
     <section
@@ -137,42 +160,58 @@ const ProofLab = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          {cards.map((card, index) => {
-            const CardIcon = card.icon;
-            const hasImage = card.image && typeof card.image === 'object' && 'src' in card.image;
-            return (
-              <article
-                key={card.title}
-                className={`group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-white/10 bg-slate-900/20 backdrop-blur-md shadow-[0_18px_45px_rgba(6,10,25,0.45)] transition-all duration-500 ease-out ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                } hover:-translate-y-[2px] hover:border-white/20 hover:bg-slate-900/30 hover:opacity-95 hover:shadow-[0_24px_60px_rgba(10,20,45,0.6)]`}
-                style={{ transitionDelay: isVisible ? `${index * 120}ms` : '0ms' }}
-              >
-                <div className="relative aspect-[16/9] w-full overflow-hidden">
-                  {hasImage && card.image ? (
-                    <img
-                      src={card.image.src}
-                      alt={card.image.alt}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                    />
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#139E9C] via-[#0F6C8C] to-[#121C2D] transition-all duration-500 group-hover:brightness-110">
-                      <CardIcon className="h-10 w-10 text-white/85" />
-                    </div>
-                  )}
-                </div>
+          {loading && skeletonCards}
+          {!loading && projects.length === 0 && !error && (
+            <div className="col-span-full text-center text-gray-300">No projects available at the moment.</div>
+          )}
+          {!loading && error && (
+            <div className="col-span-full text-center text-red-400">Unable to load projects.</div>
+          )}
+          {!loading &&
+            projects.map((project, index) => (
+              <Link key={project.id} href={`/project/${project.slug}`}>
+                <article
+                  className={`group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-white/10 bg-slate-900/20 backdrop-blur-md shadow-[0_18px_45px_rgba(6,10,25,0.45)] transition-all duration-500 ease-out ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  } hover:-translate-y-[2px] hover:border-white/20 hover:bg-slate-900/30 hover:opacity-95 hover:shadow-[0_24px_60px_rgba(10,20,45,0.6)]`}
+                  style={{ transitionDelay: isVisible ? `${index * 120}ms` : '0ms' }}
+                >
+                  <div className="relative aspect-[16/9] w-full overflow-hidden">
+                    {project.heroImage ? (
+                      <img
+                        src={project.heroImage}
+                        alt={project.title}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#139E9C] via-[#0F6C8C] to-[#121C2D] text-white/85">
+                        <ShieldCheck className="h-10 w-10" />
+                      </div>
+                    )}
+                  </div>
 
-                <div className="flex flex-1 flex-col gap-4 px-6 pb-7 pt-6 md:px-7 md:pt-7">
-                  <h3 className="text-[19px] font-semibold text-white">{card.title}</h3>
-                  <p className="text-[15px] leading-6 text-gray-300">
-                    <span className="text-[#139E9C] font-semibold">{card.highlight}</span>
-                    {` ${card.description}`}
-                  </p>
-                  <p className="text-[13px] font-medium text-gray-400">{card.footer}</p>
-                </div>
-              </article>
-            );
-          })}
+                  <div className="flex flex-1 flex-col gap-4 px-6 pb-7 pt-6 md:px-7 md:pt-7">
+                    <div className="flex items-start justify-between gap-3">
+                      <h3 className="text-[19px] font-semibold text-white">{project.title}</h3>
+                      <span className="rounded-full bg-[#139E9C]/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#7ef9f6]">
+                        {project.status}
+                      </span>
+                    </div>
+                    <p className="text-[15px] leading-6 text-gray-300">{project.tagline}</p>
+                    <div className="flex flex-wrap gap-2 text-[13px] font-medium text-gray-300">
+                      {project.techStack?.map((tech) => (
+                        <span
+                          key={`${project.slug}-${tech}`}
+                          className="rounded-full bg-white/5 px-3 py-1 text-gray-200 ring-1 ring-white/10"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              </Link>
+            ))}
         </div>
       </div>
     </section>

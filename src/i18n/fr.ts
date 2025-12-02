@@ -303,7 +303,7 @@ const fr: TranslationKeys = {
     links: {
       privacy: 'Politique de confidentialité'
     },
-    copyright: '© 2024 Simon Paris Consulting'
+    copyright: '© 2025 Simon Paris Consulting'
   }
 };
 
