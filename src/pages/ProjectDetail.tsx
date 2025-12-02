@@ -154,31 +154,24 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
             </div>
           </div>
 
-          <div className="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-slate-900/30 shadow-[0_30px_80px_rgba(8,12,24,0.55)]">
-            <div className="flex h-8 items-center gap-2 bg-slate-900 px-4 py-2">
-              <span className="h-3 w-3 rounded-full bg-red-500" aria-hidden />
-              <span className="h-3 w-3 rounded-full bg-amber-400" aria-hidden />
-              <span className="h-3 w-3 rounded-full bg-emerald-500" aria-hidden />
-            </div>
-            <div className="border-t border-white/10">
-              {project.demoVideoUrl && project.demoVideoUrl.startsWith('http') ? (
-                <div className="aspect-[16/9] w-full">
-                  <iframe
-                    src={getEmbedUrl(project.demoVideoUrl)}
-                    title={`${project.title} demo`}
-                    className="h-full w-full"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-              ) : project.heroImage ? (
-                <img src={project.heroImage} alt={project.title} className="h-full w-full object-cover" />
-              ) : (
-                <div className="flex aspect-[16/9] items-center justify-center bg-gradient-to-br from-[#139E9C]/30 via-[#0B1320] to-[#0B1320] text-gray-200">
-                  No media available
-                </div>
-              )}
-            </div>
+          <div className="mt-10 overflow-hidden rounded-2xl border border-white/10 bg-slate-900/50 shadow-2xl">
+            {project.demoVideoUrl && project.demoVideoUrl.startsWith('http') ? (
+              <div className="aspect-[16/9] w-full">
+                <iframe
+                  src={getEmbedUrl(project.demoVideoUrl)}
+                  title={`${project.title} demo`}
+                  className="h-full w-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            ) : project.heroImage ? (
+              <img src={project.heroImage} alt={project.title} className="h-full w-full object-cover" />
+            ) : (
+              <div className="flex aspect-[16/9] items-center justify-center bg-gradient-to-br from-[#139E9C]/30 via-[#0B1320] to-[#0B1320] text-gray-200">
+                No media available
+              </div>
+            )}
           </div>
 
           {/* ACTION BAR - Insert this block */}
@@ -245,16 +238,18 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
                 <CheckCircle className="h-6 w-6 text-emerald-400" aria-hidden />
                 <h2 className="text-2xl font-semibold text-white">Key Outcomes</h2>
               </div>
-              <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-                {outcomes.map((outcome) => (
+              <div className="grid grid-cols-1 gap-4 p-6 md:grid-cols-3">
+                {outcomes.map((outcomeText, index) => (
                   <div
-                    key={outcome}
-                    className="flex items-center gap-3 rounded-xl border border-white/5 bg-slate-900/50 p-4 transition hover:bg-slate-900/80"
+                    key={index}
+                    className="flex h-full items-center gap-3 rounded-lg border border-white/5 bg-slate-900/40 px-4 py-3"
                   >
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-400">
-                      <CheckCircle className="h-4 w-4" aria-hidden />
+                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400">
+                      <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
                     </div>
-                    <p className="text-base leading-tight text-gray-100">{outcome}</p>
+                    <span className="text-sm font-medium leading-none text-gray-300">{outcomeText}</span>
                   </div>
                 ))}
               </div>
