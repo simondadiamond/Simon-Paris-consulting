@@ -132,17 +132,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
             Back to Projects
           </a>
 
-          <div className="mt-4 flex flex-wrap items-center gap-3 text-sm font-semibold uppercase tracking-[0.16em] text-[#7ef9f6]">
-            <span className="rounded-full bg-[#139E9C]/15 px-3 py-1 ring-1 ring-[#139E9C]/30">Case Study</span>
-            <span className="rounded-full bg-white/5 px-3 py-1 text-gray-200 ring-1 ring-white/10">{project.status}</span>
-          </div>
-
-          <div className="mt-6 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <div className="space-y-4">
-              <h1 className="text-balance text-4xl font-bold leading-tight text-white md:text-5xl">{project.title}</h1>
-              <p className="max-w-3xl text-lg leading-relaxed text-gray-300">{project.tagline}</p>
-            </div>
-            <div className="mt-4 flex flex-wrap items-center gap-2 lg:mt-0">
+          <div className="mt-6 space-y-4">
+            <h1 className="text-balance text-4xl font-bold leading-tight text-white md:text-5xl">{project.title}</h1>
+            <p className="max-w-3xl text-lg leading-relaxed text-gray-300">{project.tagline}</p>
+            <div className="mt-6 flex flex-wrap items-center gap-2">
               {project.techStack.map((tech) => (
                 <span
                   key={tech}
