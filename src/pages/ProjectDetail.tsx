@@ -226,16 +226,16 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
           </div>
 
           {outcomes.length > 0 && (
-            <div className="mt-14 rounded-3xl border border-emerald-500/20 bg-emerald-900/10 p-6 shadow-[0_24px_70px_rgba(6,10,25,0.5)]">
-              <div className="flex items-center gap-3">
-                <CheckCircle className="h-6 w-6 text-emerald-400" aria-hidden />
-                <h2 className="text-2xl font-semibold text-white">Key Outcomes</h2>
+            <div className="mt-10 rounded-2xl border border-emerald-500/15 bg-emerald-950/20 px-5 py-5 shadow-[0_18px_50px_rgba(6,10,25,0.4)]">
+              <div className="flex items-center gap-2 text-sm font-semibold text-white">
+                <CheckCircle className="h-5 w-5 text-emerald-400" aria-hidden />
+                <h2 className="text-lg">Key Outcomes</h2>
               </div>
-              <div className="grid grid-cols-1 gap-4 p-6 md:grid-cols-3">
+              <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-3">
                 {outcomes.map((outcomeText, index) => (
                   <div
                     key={index}
-                    className="flex h-full items-center gap-3 rounded-lg border border-white/5 bg-slate-900/40 px-4 py-3"
+                    className="flex h-full items-center gap-3 rounded-lg border border-white/8 bg-slate-900/30 px-4 py-3"
                   >
                     <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400">
                       <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
