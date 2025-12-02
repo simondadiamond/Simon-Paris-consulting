@@ -29,6 +29,9 @@ export const handler = async () => {
           ? techStackCsv.split(',').map((item) => item.trim()).filter(Boolean)
           : [];
 
+      const rawVideo = fields['Demo Video (Valid URL)'] || fields['Demo Video URL'] || '';
+      const demoVideoUrl = (typeof rawVideo === 'string' && rawVideo.startsWith('http')) ? rawVideo : '';
+
       return {
         id: record.id,
         title: fields['Project Name'] || '',
@@ -39,7 +42,7 @@ export const handler = async () => {
         heroImage: heroImageField?.url ?? '',
         problem: fields['The Problem'] || '',
         solution: fields['The Solution'] || '',
-        demoVideoUrl: fields['Demo Video (Valid URL)'] || fields['Demo Video URL'] || '',
+        demoVideoUrl,
         architectureUrl: architectureImageField?.url ?? '',
         outcomes: fields['Key Outcomes'] || '',
       };

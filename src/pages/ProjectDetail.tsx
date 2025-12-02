@@ -106,7 +106,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
           </div>
 
           <div className="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-slate-900/30 shadow-[0_30px_80px_rgba(8,12,24,0.55)]">
-            {project.demoVideoUrl ? (
+            {project.demoVideoUrl && project.demoVideoUrl.startsWith('http') ? (
               <div className="aspect-[16/9] w-full">
                 <iframe
                   src={project.demoVideoUrl}
