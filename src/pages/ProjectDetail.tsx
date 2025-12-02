@@ -46,6 +46,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
       .filter(Boolean);
   }, [project?.outcomes]);
 
+  const nextCaseStudyClasses = [
+    'mt-12 block overflow-hidden rounded-3xl border border-white/10',
+    'bg-gradient-to-r from-[#0B1320] via-slate-900/60 to-[#0E172A]',
+    'p-8 shadow-[0_24px_70px_rgba(6,10,25,0.55)] transition-transform duration-500',
+    'hover:-translate-y-1 hover:border-[#139E9C]/40 hover:shadow-[0_28px_80px_rgba(19,158,156,0.3)]',
+  ].join(' ');
+
   const debugPanel = useMemo(() => {
     if (loading) return null;
 
@@ -252,7 +259,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
           {nextProject && (
             <a
               href={`/project/${nextProject.slug}`}
-              className="mt-12 block overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-[#0B1320] via-slate-900/60 to-[#0E172A] p-8 shadow-[0_24px_70px_rgba(6,10,25,0.55)] transition-transform duration-500 hover:-translate-y-1 hover:border-[#139E9C]/40 hover:shadow-[0_28px_80px_rgba(19,158,156,0.3)]"
+              className={nextCaseStudyClasses}
             >
               <div className="flex items-center justify-between gap-4">
                 <div>
