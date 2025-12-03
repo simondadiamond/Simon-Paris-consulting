@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
-import { ArrowRight, CheckCircle, ChevronLeft } from 'lucide-react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { ArrowRight, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Header, Footer } from '../components/Layout';
 import { useProjects } from '../hooks/useProjects';
 
@@ -33,6 +33,14 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
   const { projects, loading, error } = useProjects();
   const project = useMemo(() => projects.find((item) => item.slug === slug), [projects, slug]);
   const currentIndex = useMemo(() => projects.findIndex((item) => item.slug === slug), [projects, slug]);
+  const heroImages = useMemo(() => {
+    if (!project) return [] as string[];
+    if (Array.isArray(project.heroImages) && project.heroImages.length > 0) {
+      return project.heroImages.filter(Boolean);
+    }
+    return project.heroImage ? [project.heroImage] : [];
+  }, [project]);
+  const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
   const nextProject = useMemo(() => {
     if (!projects.length || currentIndex === -1) return null;
     const nextIndex = (currentIndex + 1) % projects.length;
@@ -52,6 +60,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
     'p-8 shadow-[0_24px_70px_rgba(19,158,156,0.25)] transition-transform duration-500',
     'hover:-translate-y-1 hover:border-[#7ef9f6]/50 hover:shadow-[0_28px_90px_rgba(19,158,156,0.35)]',
   ].join(' ');
+
+  useEffect(() => {
+    setCurrentHeroIndex(0);
+  }, [project?.id]);
 
   if (loading) {
     return (
@@ -143,8 +155,42 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
                   allowFullScreen
                 />
               </div>
-            ) : project.heroImage ? (
-              <img src={project.heroImage} alt={project.title} className="h-full w-full object-cover" />
+            ) : heroImages.length > 0 ? (
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-950/40">
+                <img
+                  src={heroImages[currentHeroIndex]}
+                  alt={`${project.title} visual ${currentHeroIndex + 1}`}
+                  className="h-full w-full object-cover transition duration-500 ease-in-out"
+                />
+                {heroImages.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      aria-label="Previous image"
+                      onClick={() => setCurrentHeroIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length)}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-black/35 p-2 text-white shadow-lg transition hover:bg-black/55 focus:outline-none focus:ring-2 focus:ring-[#7ef9f6]"
+                    >
+                      <ChevronLeft className="h-5 w-5" />
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Next image"
+                      onClick={() => setCurrentHeroIndex((prev) => (prev + 1) % heroImages.length)}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-black/35 p-2 text-white shadow-lg transition hover:bg-black/55 focus:outline-none focus:ring-2 focus:ring-[#7ef9f6]"
+                    >
+                      <ChevronRight className="h-5 w-5" />
+                    </button>
+                    <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+                      {heroImages.map((_, index) => (
+                        <span
+                          key={`hero-dot-${index}`}
+                          className={`h-2.5 w-2.5 rounded-full transition ${index === currentHeroIndex ? 'bg-[#7ef9f6]' : 'bg-white/40'}`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
             ) : (
               <div className="flex aspect-[16/9] items-center justify-center bg-gradient-to-br from-[#139E9C]/30 via-[#0B1320] to-[#0B1320] text-gray-200">
                 No media available

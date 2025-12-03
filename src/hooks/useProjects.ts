@@ -7,6 +7,7 @@ export interface Project {
   tagline: string;
   status: string;
   techStack: string[];
+  heroImages: string[];
   heroImage: string;
   problem: string;
   solution: string;

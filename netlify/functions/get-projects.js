@@ -16,7 +16,7 @@ export const handler = async () => {
     const projects = records.map((record) => {
       const fields = record.fields || {};
 
-      const heroImageField = Array.isArray(fields['Hero Image']) ? fields['Hero Image'][0] : null;
+      const heroImageField = Array.isArray(fields['Hero Image']) ? fields['Hero Image'] : [];
       const architectureImageField = Array.isArray(fields['Architecture Diagram'])
         ? fields['Architecture Diagram'][0]
         : null;
@@ -39,7 +39,8 @@ export const handler = async () => {
         slug: fields['Slug'] || '',
         status: fields['Status'] || '',
         techStack,
-        heroImage: heroImageField?.url ?? '',
+        heroImages: heroImageField.map((image) => image?.url).filter(Boolean),
+        heroImage: heroImageField[0]?.url ?? '',
         problem: fields['The Problem'] || '',
         solution: fields['The Solution'] || '',
         demoVideoUrl,
