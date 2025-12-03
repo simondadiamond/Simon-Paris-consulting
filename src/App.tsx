@@ -177,9 +177,9 @@ const ProofLab = () => {
                   style={{ transitionDelay: isVisible ? `${index * 120}ms` : '0ms' }}
                 >
                   <div className="relative aspect-[16/9] w-full overflow-hidden">
-                    {project.heroImage ? (
+                    {project.heroImages?.[0] ? (
                       <img
-                        src={project.heroImage}
+                        src={project.heroImages[0]}
                         alt={project.title}
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                       />
