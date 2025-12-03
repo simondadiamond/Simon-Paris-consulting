@@ -46,6 +46,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
       .filter(Boolean);
   }, [project?.outcomes]);
 
+  const nextCaseStudyClasses = [
+    'mt-12 block overflow-hidden rounded-3xl border border-[#139E9C]/40',
+    'bg-gradient-to-r from-[#0B1320] via-slate-900/60 to-[#0E172A]',
+    'p-8 shadow-[0_24px_70px_rgba(19,158,156,0.25)] transition-transform duration-500',
+    'hover:-translate-y-1 hover:border-[#7ef9f6]/50 hover:shadow-[0_28px_90px_rgba(19,158,156,0.35)]',
+  ].join(' ');
+
   const debugPanel = useMemo(() => {
     if (loading) return null;
 
@@ -132,17 +139,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
             Back to Projects
           </a>
 
-          <div className="mt-4 flex flex-wrap items-center gap-3 text-sm font-semibold uppercase tracking-[0.16em] text-[#7ef9f6]">
-            <span className="rounded-full bg-[#139E9C]/15 px-3 py-1 ring-1 ring-[#139E9C]/30">Case Study</span>
-            <span className="rounded-full bg-white/5 px-3 py-1 text-gray-200 ring-1 ring-white/10">{project.status}</span>
-          </div>
-
-          <div className="mt-6 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <div className="space-y-4">
-              <h1 className="text-balance text-4xl font-bold leading-tight text-white md:text-5xl">{project.title}</h1>
-              <p className="max-w-3xl text-lg leading-relaxed text-gray-300">{project.tagline}</p>
-            </div>
-            <div className="mt-4 flex flex-wrap items-center gap-2 lg:mt-0">
+          <div className="mt-6 space-y-4">
+            <h1 className="text-balance text-4xl font-bold leading-tight text-white md:text-5xl">{project.title}</h1>
+            <p className="max-w-3xl text-lg leading-relaxed text-gray-300">{project.tagline}</p>
+            <div className="mt-6 flex flex-wrap items-center gap-2">
               {project.techStack.map((tech) => (
                 <span
                   key={tech}
@@ -154,31 +154,24 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
             </div>
           </div>
 
-          <div className="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-slate-900/30 shadow-[0_30px_80px_rgba(8,12,24,0.55)]">
-            <div className="flex h-8 items-center gap-2 bg-slate-900 px-4 py-2">
-              <span className="h-3 w-3 rounded-full bg-red-500" aria-hidden />
-              <span className="h-3 w-3 rounded-full bg-amber-400" aria-hidden />
-              <span className="h-3 w-3 rounded-full bg-emerald-500" aria-hidden />
-            </div>
-            <div className="border-t border-white/10">
-              {project.demoVideoUrl && project.demoVideoUrl.startsWith('http') ? (
-                <div className="aspect-[16/9] w-full">
-                  <iframe
-                    src={getEmbedUrl(project.demoVideoUrl)}
-                    title={`${project.title} demo`}
-                    className="h-full w-full"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-              ) : project.heroImage ? (
-                <img src={project.heroImage} alt={project.title} className="h-full w-full object-cover" />
-              ) : (
-                <div className="flex aspect-[16/9] items-center justify-center bg-gradient-to-br from-[#139E9C]/30 via-[#0B1320] to-[#0B1320] text-gray-200">
-                  No media available
-                </div>
-              )}
-            </div>
+          <div className="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-slate-900/50 shadow-2xl">
+            {project.demoVideoUrl && project.demoVideoUrl.startsWith('http') ? (
+              <div className="aspect-[16/9] w-full">
+                <iframe
+                  src={getEmbedUrl(project.demoVideoUrl)}
+                  title={`${project.title} demo`}
+                  className="h-full w-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            ) : project.heroImage ? (
+              <img src={project.heroImage} alt={project.title} className="h-full w-full object-cover" />
+            ) : (
+              <div className="flex aspect-[16/9] items-center justify-center bg-gradient-to-br from-[#139E9C]/30 via-[#0B1320] to-[#0B1320] text-gray-200">
+                No media available
+              </div>
+            )}
           </div>
 
           {/* ACTION BAR - Insert this block */}
@@ -240,21 +233,23 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
           </div>
 
           {outcomes.length > 0 && (
-            <div className="mt-14 rounded-3xl border border-emerald-500/20 bg-emerald-900/10 p-6 shadow-[0_24px_70px_rgba(6,10,25,0.5)]">
-              <div className="flex items-center gap-3">
-                <CheckCircle className="h-6 w-6 text-emerald-400" aria-hidden />
-                <h2 className="text-2xl font-semibold text-white">Key Outcomes</h2>
+            <div className="mt-10 rounded-2xl border border-[#139E9C]/25 bg-slate-900/30 px-5 py-5">
+              <div className="flex items-center gap-2 text-sm font-semibold text-white">
+                <CheckCircle className="h-5 w-5 text-emerald-400" aria-hidden />
+                <h2 className="text-lg">Key Outcomes</h2>
               </div>
-              <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-                {outcomes.map((outcome) => (
+              <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-3">
+                {outcomes.map((outcomeText, index) => (
                   <div
-                    key={outcome}
-                    className="flex items-center gap-3 rounded-xl border border-white/5 bg-slate-900/50 p-4 transition hover:bg-slate-900/80"
+                    key={index}
+                    className="flex h-full items-center gap-3 rounded-lg border border-[#139E9C]/20 bg-slate-900/30 px-4 py-3"
                   >
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-400">
-                      <CheckCircle className="h-4 w-4" aria-hidden />
+                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400">
+                      <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
                     </div>
-                    <p className="text-base leading-tight text-gray-100">{outcome}</p>
+                    <span className="text-sm font-medium leading-none text-gray-300">{outcomeText}</span>
                   </div>
                 ))}
               </div>
@@ -264,7 +259,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
           {nextProject && (
             <a
               href={`/project/${nextProject.slug}`}
-              className="mt-12 block overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-[#0B1320] via-slate-900/60 to-[#0E172A] p-8 shadow-[0_24px_70px_rgba(6,10,25,0.55)] transition-transform duration-500 hover:-translate-y-1 hover:border-[#139E9C]/40 hover:shadow-[0_28px_80px_rgba(19,158,156,0.3)]"
+              className={nextCaseStudyClasses}
             >
               <div className="flex items-center justify-between gap-4">
                 <div>
