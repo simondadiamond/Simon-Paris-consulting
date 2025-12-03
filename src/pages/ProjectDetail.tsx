@@ -181,11 +181,17 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
           <div className="mt-14 grid gap-8 rounded-3xl border border-white/5 bg-slate-900/30 p-8 shadow-[0_20px_60px_rgba(6,10,25,0.45)] backdrop-blur lg:grid-cols-2 lg:gap-10">
             <div>
               <h2 className="text-xl font-semibold text-white">The Challenge</h2>
-              <p className="mt-4 text-base leading-relaxed text-gray-300">{project.problem}</p>
+              <div
+                className="rich-text mt-4 text-base leading-relaxed text-gray-300"
+                dangerouslySetInnerHTML={{ __html: project.problem }}
+              />
             </div>
             <div>
               <h2 className="text-xl font-semibold text-white">The Solution</h2>
-              <p className="mt-4 text-base leading-relaxed text-gray-300">{project.solution}</p>
+              <div
+                className="rich-text mt-4 text-base leading-relaxed text-gray-300"
+                dangerouslySetInnerHTML={{ __html: project.solution }}
+              />
             </div>
           </div>
 

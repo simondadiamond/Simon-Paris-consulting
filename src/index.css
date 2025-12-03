@@ -98,6 +98,33 @@ mark {
   font-weight: 600;
 }
 
+.rich-text p + p,
+.rich-text p + ul,
+.rich-text p + ol,
+.rich-text ul + p,
+.rich-text ol + p,
+.rich-text li + li {
+  margin-top: 0.75rem;
+}
+
+.rich-text ul,
+.rich-text ol {
+  padding-left: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.rich-text ul {
+  list-style-type: disc;
+}
+
+.rich-text ol {
+  list-style-type: decimal;
+}
+
+.rich-text li {
+  line-height: 1.6;
+}
+
 /* Premium Typography */
 .text-hero {
   font-size: clamp(3rem, 7vw, 6rem);
