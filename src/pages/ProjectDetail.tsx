@@ -29,6 +29,83 @@ const getEmbedUrl = (url: string) => {
   return url;
 };
 
+const sanitizeHtml = (dirty: string) => {
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return dirty;
+  }
+
+  const allowedTags = new Set([
+    'p',
+    'br',
+    'ul',
+    'ol',
+    'li',
+    'strong',
+    'em',
+    'b',
+    'i',
+    'u',
+    'a',
+    'h1',
+    'h2',
+    'h3',
+    'h4',
+    'h5',
+    'h6',
+    'blockquote',
+    'code',
+    'pre',
+    'span',
+    'div',
+  ]);
+
+  const template = document.createElement('template');
+  template.innerHTML = dirty;
+
+  const sanitizeNode = (node: Node) => {
+    if (node.nodeType === Node.ELEMENT_NODE) {
+      const element = node as HTMLElement;
+      const tagName = element.tagName.toLowerCase();
+
+      if (!allowedTags.has(tagName)) {
+        const parent = element.parentNode;
+        if (!parent) return;
+        while (element.firstChild) {
+          parent.insertBefore(element.firstChild, element);
+        }
+        parent.removeChild(element);
+        return;
+      }
+
+      Array.from(element.attributes).forEach((attr) => {
+        const name = attr.name.toLowerCase();
+        if (name.startsWith('on')) {
+          element.removeAttribute(attr.name);
+          return;
+        }
+
+        if (name === 'href') {
+          const href = element.getAttribute('href') || '';
+          if (href.trim().toLowerCase().startsWith('javascript:')) {
+            element.removeAttribute('href');
+          }
+          element.setAttribute('rel', 'noopener noreferrer');
+          return;
+        }
+
+        if (name !== 'target' && name !== 'rel') {
+          element.removeAttribute(attr.name);
+        }
+      });
+    }
+
+    Array.from(node.childNodes).forEach(sanitizeNode);
+  };
+
+  Array.from(template.content.childNodes).forEach(sanitizeNode);
+  return template.innerHTML;
+};
+
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
   const { projects, loading, error } = useProjects();
   const project = useMemo(() => projects.find((item) => item.slug === slug), [projects, slug]);
@@ -45,6 +122,16 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
       .map((line) => line.trim())
       .filter(Boolean);
   }, [project?.outcomes]);
+
+  const sanitizedProblem = useMemo(
+    () => (project?.problem ? sanitizeHtml(project.problem) : ''),
+    [project?.problem],
+  );
+
+  const sanitizedSolution = useMemo(
+    () => (project?.solution ? sanitizeHtml(project.solution) : ''),
+    [project?.solution],
+  );
 
   const nextCaseStudyClasses = [
     'mt-12 block overflow-hidden rounded-3xl border border-[#139E9C]/40',
@@ -181,11 +268,17 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
           <div className="mt-14 grid gap-8 rounded-3xl border border-white/5 bg-slate-900/30 p-8 shadow-[0_20px_60px_rgba(6,10,25,0.45)] backdrop-blur lg:grid-cols-2 lg:gap-10">
             <div>
               <h2 className="text-xl font-semibold text-white">The Challenge</h2>
-              <p className="mt-4 text-base leading-relaxed text-gray-300">{project.problem}</p>
+              <div
+                className="rich-text mt-4 text-base leading-relaxed text-gray-300"
+                dangerouslySetInnerHTML={{ __html: sanitizedProblem }}
+              />
             </div>
             <div>
               <h2 className="text-xl font-semibold text-white">The Solution</h2>
-              <p className="mt-4 text-base leading-relaxed text-gray-300">{project.solution}</p>
+              <div
+                className="rich-text mt-4 text-base leading-relaxed text-gray-300"
+                dangerouslySetInnerHTML={{ __html: sanitizedSolution }}
+              />
             </div>
           </div>
 
