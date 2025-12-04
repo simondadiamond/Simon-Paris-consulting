@@ -384,49 +384,6 @@ const Checklist = () => {
   );
 };
 
-// Proof Section Component
-const ProofSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-  const { t } = useLanguage();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-      }
-    }, { threshold: 0.3 });
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <section
-      ref={sectionRef}
-      className="relative py-16 lg:py-20 overflow-hidden"
-      style={{ backgroundColor: 'var(--off-white)' }}
-    >
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        <div className={`text-center mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="section-heading text-gray-900 mb-6">{t.proof.title}</h2>
-        </div>
-
-        <p
-          className={`max-w-3xl mx-auto text-center text-gray-700 transition-all duration-1000 delay-200 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          {t.proof.bullets.join(' • ')}
-        </p>
-      </div>
-    </section>
-  );
-};
-
 // Main App Component
 function App() {
   return (
@@ -438,7 +395,6 @@ function App() {
       {/* <OfferCards /> */}
       {/* <ROIMath /> */}
       {/* <Checklist /> */}
-      {/* <ProofSection /> */}
       <FinalCTA />
     </div>
   );
