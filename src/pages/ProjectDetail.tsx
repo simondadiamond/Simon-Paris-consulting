@@ -141,6 +141,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
     [project?.solution],
   );
 
+  const sanitizedEngineeringChallenge = useMemo(
+    () => (project?.engineeringChallenge ? sanitizeHtml(project.engineeringChallenge) : ''),
+    [project?.engineeringChallenge],
+  );
+
   const nextCaseStudyClasses = [
     'mt-12 block overflow-hidden rounded-3xl border border-[#139E9C]/40',
     'bg-gradient-to-r from-[#0B1320] via-slate-900/60 to-[#0E172A]',
@@ -328,26 +333,32 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
             </div>
           </div>
 
-          <div className="mt-14 overflow-hidden rounded-3xl border border-white/10 bg-slate-900/40 shadow-[0_24px_70px_rgba(6,10,25,0.55)]">
-            <div className="border-b border-white/5 px-8 py-6">
-              <h2 className="text-2xl font-semibold text-white">How It Works</h2>
-              <p className="mt-2 text-gray-300">System architecture and flow visualization.</p>
+          {project.engineeringChallenge && (
+            <div className="mt-10 rounded-3xl border border-white/5 bg-slate-900/30 p-8 shadow-[0_20px_60px_rgba(6,10,25,0.45)] backdrop-blur">
+              <h2 className="text-xl font-semibold text-white">Engineering Challenge</h2>
+              <div
+                className="rich-text mt-4 text-base leading-relaxed text-gray-300"
+                dangerouslySetInnerHTML={{ __html: sanitizedEngineeringChallenge }}
+              />
             </div>
-            <div className="flex items-center justify-center bg-slate-950/40 p-6">
-              {project.architectureUrl ? (
+          )}
+
+          {project.architectureUrl && (
+            <div className="mt-14 overflow-hidden rounded-3xl border border-white/10 bg-slate-900/40 shadow-[0_24px_70px_rgba(6,10,25,0.55)]">
+              <div className="border-b border-white/5 px-8 py-6">
+                <h2 className="text-2xl font-semibold text-white">How It Works</h2>
+                <p className="mt-2 text-gray-300">System architecture and flow visualization.</p>
+              </div>
+              <div className="flex items-center justify-center bg-slate-950/40 p-6">
                 <img
                   src={project.architectureUrl}
                   alt={`${project.title} architecture`}
                   className="max-h-[540px] w-full rounded-2xl object-contain ring-1 ring-white/10 transition duration-500 hover:scale-[1.02] hover:ring-[#139E9C]/40"
                   style={{ cursor: 'zoom-in' }}
                 />
-              ) : (
-                <div className="w-full rounded-2xl bg-slate-900/60 p-10 text-center text-gray-400 ring-1 ring-white/5">
-                  Architecture diagram coming soon.
-                </div>
-              )}
+              </div>
             </div>
-          </div>
+          )}
 
           {outcomes.length > 0 && (
             <div className="mt-10 rounded-2xl border border-[#139E9C]/25 bg-slate-900/30 px-5 py-5">
