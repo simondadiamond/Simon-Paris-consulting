@@ -6,6 +6,7 @@ export interface Project {
   title: string;
   tagline: string;
   status: string;
+  engineeringChallenge: string;
   techStack: string[];
   heroImages: string[];
   heroImage: string;

@@ -38,6 +38,7 @@ export const handler = async () => {
         tagline: fields['Short Tagline'] || '',
         slug: fields['Slug'] || '',
         status: fields['Status'] || '',
+        engineeringChallenge: fields['Engineering Challenge'] || '',
         techStack,
         heroImages: heroImageField.map((image) => image?.url).filter(Boolean),
         heroImage: heroImageField[0]?.url ?? '',
