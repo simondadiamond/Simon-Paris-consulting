@@ -11,9 +11,9 @@ const fr: TranslationKeys = {
   hero: {
     headline: 'Architecte en Automatisation et Opérations IA',
     subtitle:
-      'Je transforme des processus d’affaires chaotiques en systèmes IA fiables. Spécialisé en orchestration avancée (n8n, Make) et en flux de travail LLM pour bâtir des outils internes qui génèrent une réelle efficacité.',
+      'Je conçois des flux résilients et des outils internes. Je fais le pont entre l\'orchestration technique (n8n, Make) et l\'adoption pratique pour bâtir des systèmes qui augmentent réellement l\'efficacité des équipes.',
     cta: {
-      label: 'Voir mes projets',
+      label: 'Voir mes projets et études de cas',
       href: '#projects'
     }
   },
@@ -45,10 +45,10 @@ const fr: TranslationKeys = {
   },
   cta: {
     audit: {
-      title: 'Prêt pour une architecture senior ?',
+      title: 'Vous cherchez un Architecte en Opérations IA ?',
       subtitle:
-        'Je conçois des systèmes d’automatisation documentés et résilients qui passent à l’échelle. Aucun bricolage — seulement une Ops fiable.',
-      ctaLabel: 'Voir le profil LinkedIn',
+        'Je bâtis des systèmes d\'automatisation documentés et résilients. Pas de solutions temporaires, seulement des opérations fiables.',
+      ctaLabel: 'Voir mon profil LinkedIn',
       ctaHref: 'https://www.linkedin.com/in/simonparis1/'
     }
   },

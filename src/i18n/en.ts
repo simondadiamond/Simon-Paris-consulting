@@ -10,9 +10,9 @@ export const en = {
   hero: {
     headline: 'AI Automation & Operations Architect',
     subtitle:
-      'I transform chaotic business processes into reliable AI systems. Specializing in advanced orchestration (n8n, Make) and LLM-powered workflows to build internal tools that drive real efficiency.',
+      'Designing resilient workflows and internal tooling. I bridge the gap between advanced orchestration (n8n, Make) and practical adoption to build systems that empower teams to work smarter.',
     cta: {
-      label: 'See My Projects',
+      label: 'View Projects & Case Studies',
       href: '#projects'
     }
   },
@@ -44,7 +44,7 @@ export const en = {
   },
   cta: {
     audit: {
-      title: 'Ready for Senior Architecture?',
+      title: 'Looking for a Senior AI Operations Architect?',
       subtitle:
         'I build documented, resilient automation systems that scale. No quick hacks—just reliable Ops.',
       ctaLabel: 'View Profile on LinkedIn',
