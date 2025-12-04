@@ -343,26 +343,22 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
             </div>
           )}
 
-          <div className="mt-14 overflow-hidden rounded-3xl border border-white/10 bg-slate-900/40 shadow-[0_24px_70px_rgba(6,10,25,0.55)]">
-            <div className="border-b border-white/5 px-8 py-6">
-              <h2 className="text-2xl font-semibold text-white">How It Works</h2>
-              <p className="mt-2 text-gray-300">System architecture and flow visualization.</p>
-            </div>
-            <div className="flex items-center justify-center bg-slate-950/40 p-6">
-              {project.architectureUrl ? (
+          {project.architectureUrl && (
+            <div className="mt-14 overflow-hidden rounded-3xl border border-white/10 bg-slate-900/40 shadow-[0_24px_70px_rgba(6,10,25,0.55)]">
+              <div className="border-b border-white/5 px-8 py-6">
+                <h2 className="text-2xl font-semibold text-white">How It Works</h2>
+                <p className="mt-2 text-gray-300">System architecture and flow visualization.</p>
+              </div>
+              <div className="flex items-center justify-center bg-slate-950/40 p-6">
                 <img
                   src={project.architectureUrl}
                   alt={`${project.title} architecture`}
                   className="max-h-[540px] w-full rounded-2xl object-contain ring-1 ring-white/10 transition duration-500 hover:scale-[1.02] hover:ring-[#139E9C]/40"
                   style={{ cursor: 'zoom-in' }}
                 />
-              ) : (
-                <div className="w-full rounded-2xl bg-slate-900/60 p-10 text-center text-gray-400 ring-1 ring-white/5">
-                  Architecture diagram coming soon.
-                </div>
-              )}
+              </div>
             </div>
-          </div>
+          )}
 
           {outcomes.length > 0 && (
             <div className="mt-10 rounded-2xl border border-[#139E9C]/25 bg-slate-900/30 px-5 py-5">
