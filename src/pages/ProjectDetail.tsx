@@ -361,23 +361,23 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ slug }) => {
           )}
 
           {outcomes.length > 0 && (
-            <div className="mt-10 rounded-2xl border border-[#139E9C]/25 bg-slate-900/30 px-5 py-5">
-              <div className="flex items-center gap-2 text-sm font-semibold text-white">
+            <div className="mt-10 rounded-2xl border border-[#139E9C]/25 bg-slate-900/30 px-6 py-6 shadow-[0_14px_50px_rgba(6,10,25,0.35)]">
+              <div className="flex items-center gap-2 text-base font-semibold text-white md:text-lg">
                 <CheckCircle className="h-5 w-5 text-emerald-400" aria-hidden />
-                <h2 className="text-lg">Key Outcomes</h2>
+                <h2 className="text-lg md:text-xl">Key Outcomes</h2>
               </div>
-              <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-3">
+              <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-3">
                 {outcomes.map((outcomeText, index) => (
                   <div
                     key={index}
-                    className="flex h-full items-center gap-3 rounded-lg border border-[#139E9C]/20 bg-slate-900/30 px-4 py-3"
+                    className="flex h-full items-start gap-3 rounded-xl border border-[#139E9C]/20 bg-slate-900/40 px-5 py-4"
                   >
-                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400">
-                      <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                    <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400">
+                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <span className="text-sm font-medium leading-none text-gray-300">{outcomeText}</span>
+                    <span className="text-base font-medium leading-relaxed text-gray-200">{outcomeText}</span>
                   </div>
                 ))}
               </div>
